@@ -161,6 +161,8 @@ bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle && killall -SIGU
 # Touchpad controls - implement me
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 
+#exec --no-startup-id bash -c "if [ $HOSTNAME == 'orpheus' ]; then xrandr --output eDP1 --mode 1920x1080 --primary --output DP1 --preferred --left-of eDP1; fi"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -170,10 +172,6 @@ bar {
 for_window [class="Thunar"] floating enable
 for_window [class="Transmission"] floating enable
 hide_edge_borders both
-
-if [ $HOSTNAME == 'orpheus'; then
-  exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --primary --output DP1 --preferred --left-of eDP1
-fi
 
 exec --no-startup-id "ssh-add"
 exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0"
