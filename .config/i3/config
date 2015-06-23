@@ -171,6 +171,10 @@ for_window [class="Thunar"] floating enable
 for_window [class="Transmission"] floating enable
 hide_edge_borders both
 
+if [ $HOSTNAME == 'orpheus'; then
+  exec --no-startup-id xrandr --output eDP1 --mode 1920x1080 --primary --output DP1 --preferred --left-of eDP1
+fi
+
 exec --no-startup-id "ssh-add"
 exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0"
 exec --no-startup-id nm-applet
