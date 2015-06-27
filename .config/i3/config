@@ -177,4 +177,5 @@ exec --no-startup-id "ssh-add"
 exec --no-startup-id "xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0"
 exec --no-startup-id nm-applet
 exec --no-startup-id "kupfer --no-splash"
+exec --no-startup-id bash -c 'eval $(cat ~/.fehbg)'
 exec --no-startup-id earthporndesktop
