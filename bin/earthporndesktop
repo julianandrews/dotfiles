@@ -11,8 +11,6 @@ sub_url = "http://www.reddit.com/r/EarthPorn/top.json"
 headers = {'User-Agent': 'earthpornbg v0.1'}
 params = {'t': 'day'}
 directory = '/home/julian/Pictures'
-# Find with 'xfconf-query --channel xfce4-desktop --list'
-display_variable = '/backdrop/screen0/monitorLVDS-1/workspace0/last-image'
 mimetypes.guess_extension('image/jpeg') # hack to make result .jpeg
 mimetypes.init()
 
@@ -36,6 +34,8 @@ def set_desktop(filename):
     set_i3_desktop(filename)
 
 def set_xfce_desktop(filename):
+    # Find with 'xfconf-query --channel xfce4-desktop --list'
+    display_variable = '/backdrop/screen0/monitorLVDS-1/workspace0/last-image'
     os.environ['DBUS_SESSION_BUS_ADDRESS'] = get_dbus_session_bus_address()
     desktop_set = ['xfconf-query', '-c', 'xfce4-desktop', '-p', 
             display_variable, '-s']
