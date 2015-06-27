@@ -10,3 +10,6 @@
 	path = .vim/bundle/command-t
 	url = git@github.com:wincent/command-t.git
         ignore = dirty
+[submodule ".vim/bundle/ack.vim"]
+	path = .vim/bundle/ack.vim
+	url = git@github.com:mileszs/ack.vim.git

@@ -13,11 +13,16 @@ Plugin 'gmarik/Vundle.vim'
 " manually installed bundles
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wincent/command-t'
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
 filetype plugin indent on    " required
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 set expandtab
 set softtabstop=2
