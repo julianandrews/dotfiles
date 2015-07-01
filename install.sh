@@ -21,7 +21,8 @@ backup_and_link .config/i3status
 backup_and_link .config/xfce4/terminal/terminalrc
 backup_and_link .config/flake8
 backup_and_link .virtualenvs/postactivate
-backup_and_link bin
+backup_and_link bin/earthporndesktop
+backup_and_link bin/gmail-count
 backup_and_link .bashrc
 backup_and_link .vimrc
 backup_and_link .vim
@@ -29,5 +30,5 @@ backup_and_link .vim
 git submodule init
 git submodule update
 
-.vim/bundle/YouCompleteMe/install.sh --clang-completer
-build_command_t
+#.vim/bundle/YouCompleteMe/install.sh --clang-completer
+#build_command_t
