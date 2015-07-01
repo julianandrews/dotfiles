@@ -29,5 +29,5 @@ backup_and_link .vim
 git submodule init
 git submodule update
 
-.vim/bundle/YouCompleteMe/install.sh --clang-completer
-build_command_t
+#.vim/bundle/YouCompleteMe/install.sh --clang-completer
+#build_command_t
