@@ -132,4 +132,6 @@ export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 
 # Aliases
 alias m='python manage.py'
+alias mr='python manage.py runserver_plus'
+alias ms='python manage.py shell_plus'
 alias mm='merge --no-commit --no-ff --log'
