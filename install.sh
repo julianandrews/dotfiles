@@ -20,7 +20,8 @@ backup_and_link .config/i3
 backup_and_link .config/i3status
 backup_and_link .config/xfce4/terminal/terminalrc
 backup_and_link .virtualenvs/postactivate
-backup_and_link bin
+backup_and_link bin/earthporndesktop
+backup_and_link bin/gmail-count
 backup_and_link .bashrc
 backup_and_link .vimrc
 backup_and_link .vim
