@@ -138,4 +138,6 @@ fi
 
 # Aliases
 alias m='python manage.py'
-alias mm='merge --no-commit --no-ff --log'
+alias mr='python manage.py runserver_plus'
+alias ms='python manage.py shell_plus'
+alias mm='git merge --no-commit --no-ff --log'
