@@ -130,6 +130,12 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 
+# Get ssh - keys from gnome-keyring
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
+
 # Aliases
 alias m='python manage.py'
 alias mm='merge --no-commit --no-ff --log'
