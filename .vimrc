@@ -33,6 +33,7 @@ set number
 set background=dark
 set clipboard^=unnamedplus
 set backspace=2
+set hlsearch
 syntax on
 
 highlight ExtraWhitespace ctermbg=red guibg=red
