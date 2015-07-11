@@ -41,4 +41,3 @@ Todo
 * lightdm config
 * ssh-add
 * fix i3status
-* clean up .dotfiles/install.sh

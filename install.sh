@@ -5,24 +5,16 @@ function backup_and_link {
   mkdir -p "$backup_dir"
   source_file="$dotfile_dir/home/$1"
   target_file="$HOME/$1"
+  mkdir -p $(dirname $target_file)
   if [ -L "$target_file" ]; then unlink "$target_file"; fi
   if [ -e "$target_file" ]; then mv "$target_file" "$backup_dir"; fi
   ln -s "$source_file" "$target_file"
 }
 
-backup_and_link .config/i3
-backup_and_link .config/i3status
-backup_and_link .config/xfce4/terminal/terminalrc
-backup_and_link .config/flake8
-backup_and_link .config/fontconfig/fonts.conf
-backup_and_link .virtualenvs/postactivate
-backup_and_link bin/earthporndesktop
-backup_and_link .bashrc
-backup_and_link .xsessionrc
-backup_and_link .vimrc
-backup_and_link .vim
-backup_and_link .gitconfig
-backup_and_link .gitignore_global
+cd home
+find . -path ./.vim -prune -o -type f | while read f; do
+  backup_and_link "$f"
+done
 
 git submodule init
 git submodule update

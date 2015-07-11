@@ -1,0 +1,6 @@
+OPTIONS=name:Julian,catname:Hector,dogname:Sargon
+OPTIONS=disclose:yi na -v -g -c
+OPTIONS=number_pad:2
+OPTIONS=color,showexp,showweight,showdmg,hilite_pet,lit_corridor
+OPTIONS=!legacy,!news
+OPTIONS=pickup_types:$,pickup_burden:Burdened
