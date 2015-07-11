@@ -33,3 +33,11 @@ Command-T
     cd .vim/bundle/commend-t/ruby/command-t
     ruby extconf.rb
     make
+
+Todo
+====
+
+* lightdm config
+* ssh-add
+* fix i3status
+* clean up .dotfiles/install.sh
