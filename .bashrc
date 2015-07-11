@@ -120,21 +120,10 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # Setup git prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
-
-# Get ssh - keys from gnome-keyring
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
 
 # Aliases
 alias m='python manage.py'
