@@ -1,9 +1,9 @@
 dotfile_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 function backup_and_link {
-  backup_dir="$dotfile_dir/backup"
+  backup_dir="$dotfile_dir/backup_home"
   mkdir -p "$backup_dir"
-  source_file="$dotfile_dir/$1"
+  source_file="$dotfile_dir/home/$1"
   target_file="$HOME/$1"
   if [ -L "$target_file" ]; then unlink "$target_file"; fi
   if [ -e "$target_file" ]; then mv "$target_file" "$backup_dir"; fi
@@ -11,7 +11,7 @@ function backup_and_link {
 }
 
 function build_command_t {
-  cd "$dotfile_dir/.vim/bundle/command-t/ruby/command-t"
+  cd "$dotfile_dir/home/.vim/bundle/command-t/ruby/command-t"
   ruby extconf.rb
   make
 }
@@ -31,5 +31,5 @@ backup_and_link .gitconfig
 git submodule init
 git submodule update
 
-#.vim/bundle/YouCompleteMe/install.sh --clang-completer
+#home/.vim/bundle/YouCompleteMe/install.sh --clang-completer
 #build_command_t
