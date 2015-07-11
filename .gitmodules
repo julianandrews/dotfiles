@@ -4,6 +4,7 @@
 [submodule "home/.vim/bundle/command-t"]
 	path = home/.vim/bundle/command-t
 	url = git@github.com:wincent/command-t.git
+        ignore = dirty
 [submodule "home/.vim/bundle/vim-flake8"]
 	path = home/.vim/bundle/vim-flake8
 	url = git@github.com:nvie/vim-flake8.git
