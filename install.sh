@@ -20,6 +20,7 @@ backup_and_link .config/i3
 backup_and_link .config/i3status
 backup_and_link .config/xfce4/terminal/terminalrc
 backup_and_link .config/flake8
+backup_and_link .config/fontconfig/fonts.conf
 backup_and_link .virtualenvs/postactivate
 backup_and_link bin/earthporndesktop
 backup_and_link .bashrc
