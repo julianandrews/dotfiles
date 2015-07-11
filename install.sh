@@ -10,12 +10,6 @@ function backup_and_link {
   ln -s "$source_file" "$target_file"
 }
 
-function build_command_t {
-  cd "$dotfile_dir/home/.vim/bundle/command-t/ruby/command-t"
-  ruby extconf.rb
-  make
-}
-
 backup_and_link .config/i3
 backup_and_link .config/i3status
 backup_and_link .config/xfce4/terminal/terminalrc
@@ -28,9 +22,7 @@ backup_and_link .xsessionrc
 backup_and_link .vimrc
 backup_and_link .vim
 backup_and_link .gitconfig
+backup_and_link .gitignore_global
 
 git submodule init
 git submodule update
-
-#home/.vim/bundle/YouCompleteMe/install.sh --clang-completer
-#build_command_t

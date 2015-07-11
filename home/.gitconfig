@@ -3,3 +3,5 @@
 	name = Julian Andrews
 [push]
 	default = simple
+[core]
+	excludesfile = /home/julian/.gitignore_global
