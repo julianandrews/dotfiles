@@ -1,10 +1,1 @@
-.vim/.netrwhist
-.vim/after
-.vim/autoload
-.vim/compiler
-.vim/doc
-.vim/ftdetect
-.vim/ftplugin
-.vim/indent
-.vim/syntax
-backup/*
+backup_home/*

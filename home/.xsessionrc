@@ -1,4 +1,16 @@
+# Configure touchpad
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
 xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
-bash -c eval $(cat ~/.fehbg)
-~/bin/earthporndesktop &
+
+# setup monitor on orpheus
+if [ $HOSTNAME == 'orpheus' ]
+then
+  xrandr --output eDP1 --mode 1920x1080 --primary --output DP1 --preferred --left-of eDP1
+fi
+
+# Startup kupfer
+kupfer --no-splash &
+
+# Load wallpaper.
+eval $(cat ~/.fehbg)
+# earthporndesktop &
