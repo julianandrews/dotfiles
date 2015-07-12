@@ -150,8 +150,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute && killall -SIGUSR1 i3status
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute && killall -SIGUSR1 i3status
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute && killall -SIGUSR1 i3status
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle && killall -SIGUSR1 i3status
 
 # Sreen brightness controls
@@ -169,5 +169,3 @@ bar {
 for_window [class="Thunar"] floating enable
 for_window [class="Transmission"] floating enable
 hide_edge_borders both
-
-#exec --no-startup-id "wicd-client --tray"
