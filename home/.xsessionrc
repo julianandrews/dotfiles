@@ -13,4 +13,3 @@ kupfer --no-splash &
 
 # Load wallpaper.
 eval $(cat ~/.fehbg)
-earthporndesktop &
