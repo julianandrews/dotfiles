@@ -150,22 +150,24 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Audio controls
-#bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute && killall -SIGUSR1 i3status
-#bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute && killall -SIGUSR1 i3status
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec amixer -qD pulse set Master 5%+ unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec amixer -qD pulse set Master 5%- unmute && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec amixer -qD pulse set Master 1+ toggle && killall -SIGUSR1 i3status
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
+# Other media keys
+bindsym XF86Sleep exec sudo pm-suspend
+bindsym XF86HomePage exec sensible-browser
+bindsym XF86Calculator exec i3-sensible-terminal -e python
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
-        #status_command ~/.config/i3status/custom_status.sh
 }
 
-for_window [class="Thunar"] floating enable
 for_window [class="Transmission"] floating enable
 hide_edge_borders both
