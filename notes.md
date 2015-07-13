@@ -43,6 +43,6 @@ Command-T
 ---------
 Install with:
 
-    cd .vim/bundle/commend-t/ruby/command-t
+    cd .vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
