@@ -46,3 +46,11 @@ Install with:
     cd .vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
+
+Issues
+======
+install.sh
+----------
+
+* Doesn't handle prexisting directory symlinks well.
+* Backup seems a little wonky.
