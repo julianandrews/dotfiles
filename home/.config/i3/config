@@ -170,4 +170,5 @@ bar {
 }
 
 for_window [class="Transmission"] floating enable
+for_window [class="Thunar" title="File Operation Progress"] floating enable
 hide_edge_borders both
