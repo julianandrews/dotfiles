@@ -15,7 +15,7 @@ pidgin
 
 Home only
 ---------
-ecryptfs-utils electrum gourmet slashem vlc transmission-cli transmission-gtk gimp nvidia-driver
+ecryptfs-utils electrum gourmet slashem vlc transmission-cli transmission-gtk gimp nvidia-driver bluez-firmware pavucontrol bluez-tools
 
 Debs
 ----
