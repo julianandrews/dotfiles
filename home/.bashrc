@@ -116,6 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Enable gnome-keyring for ssh keys
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi
+
 # Setup virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
