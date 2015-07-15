@@ -63,7 +63,10 @@ Suspend Privileges
 Setup with:
 
     sudo visudo
-    Add `julian  ALL = NOPASSWD: /usr/sbin/pm-suspend`
+    Add
+      julian  ALL = NOPASSWD: /usr/sbin/pm-suspend
+      julian  ALL = NOPASSWD: /sbin/shutdown
+      julian  ALL = NOPASSWD: /sbin/reboot
 
 Misc
 ----
