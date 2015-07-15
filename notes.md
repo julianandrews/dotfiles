@@ -47,6 +47,28 @@ Install with:
     ruby extconf.rb
     make
 
+Other Installation/Setup
+========================
+
+Pip
+---
+Install with(quick easy way to get latest version):
+
+    sudo apt-get install python-pip
+    pip install --upgrade pip
+    sudo apt-get remove python-pip && sudo apt-get autoremove
+
+Suspend Privileges
+------------------
+Setup with:
+
+    sudo visudo
+    Add `julian  ALL = NOPASSWD: /usr/sbin/pm-suspend`
+
+Misc
+----
+Set Kupfer style to remove rounded corners
+
 Issues
 ======
 install.sh
