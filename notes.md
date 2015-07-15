@@ -55,7 +55,7 @@ Pip
 Install with(quick easy way to get latest version):
 
     sudo apt-get install python-pip
-    pip install --upgrade pip
+    sudo pip install --upgrade pip
     sudo apt-get remove python-pip && sudo apt-get autoremove
 
 Suspend Privileges
