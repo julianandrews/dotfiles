@@ -5,7 +5,7 @@ xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics
 # setup monitor on orpheus
 if [ $HOSTNAME == 'orpheus' ]
 then
-  xrandr --output eDP1 --mode 1920x1080 --primary --output DP1 --preferred --left-of eDP1
+  xrandr --output eDP1 --mode 1920x1080 --primary --output VGA1 --preferred --left-of eDP1
 fi
 
 # Startup kupfer
