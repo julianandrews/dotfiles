@@ -28,8 +28,13 @@ Compilation
 ---
 Install with:
 
-    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu/
+    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --prefix=/usr
     sudo checkinstall
+
+If using dotfiles, follow up with
+
+    git submodule update --init --recursive
+
 
 `python-config-dir` may not be universal.
 
