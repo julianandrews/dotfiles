@@ -30,6 +30,8 @@ Install with:
 
     ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --prefix=/usr
     sudo checkinstall
+    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
+    sudo update-alternatives --set editor /usr/bin/vim
 
 If using dotfiles, follow up with
 
@@ -76,6 +78,7 @@ Setup with:
 Misc
 ----
 Set Kupfer style to remove rounded corners
+Run lxappearance
 
 Issues
 ======
