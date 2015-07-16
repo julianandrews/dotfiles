@@ -5,7 +5,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -36,6 +36,9 @@ set clipboard^=unnamedplus
 set backspace=2
 set hlsearch
 syntax on
+
+" Ggrep with quickfix open
+command -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
