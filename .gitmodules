@@ -20,3 +20,6 @@
 [submodule "home/.vim/bundle/vim-fugitive"]
 	path = home/.vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
+[submodule "home/.vim/bundle/ListToggle"]
+	path = home/.vim/bundle/ListToggle
+	url = git@github.com:Valloric/ListToggle.git
