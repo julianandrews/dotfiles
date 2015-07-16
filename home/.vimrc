@@ -35,7 +35,6 @@ set number
 set background=dark
 set clipboard^=unnamedplus
 set backspace=2
-set hlsearch
 syntax on
 
 " Ggrep with quickfix open
