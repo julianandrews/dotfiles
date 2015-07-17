@@ -1,0 +1,86 @@
+#!/usr/bin/python
+
+import argparse
+import base64
+import getpass
+import keyring
+import urllib2
+import xml.etree.ElementTree
+
+SERVICE_NAME = 'gmail-count'
+
+
+def set_password(email_address):
+    password = getpass.getpass()
+    try:
+        keyring.set_password(SERVICE_NAME, email_address, password)
+    except keyring.errors.PasswordSetError:
+        print("Failed to set password for '%s'" % email_address)
+
+
+def delete_password(email_address):
+    try:
+        keyring.delete_password(SERVICE_NAME, email_address)
+    except keyring.errors.PasswordDeleteError, e:
+        print(e.message)
+
+
+def get_url(email_address):
+    localpart, _, domain = email_address.rpartition('@')
+    if domain == 'gmail.com':
+        return 'https://mail.google.com/mail/feed/atom'
+    else:
+        return 'https://mail.google.com/a/%s/feed/atom/' % domain
+
+
+def get_mail_count(email_address, verbose=False):
+    password = keyring.get_password(SERVICE_NAME, email_address)
+    if password is None:
+        if verbose:
+            print("No password found for '%s'." % email_address)
+        return '?'
+
+    url = get_url(email_address)
+    req = urllib2.Request(url)
+    authorization = base64.encodestring("%s:%s" % (email_address, password)).strip()
+    req.add_header("Authorization", "Basic %s" % authorization)
+
+    node = None
+    try:
+        stream = urllib2.urlopen(req)
+    except urllib2.HTTPError, e:
+        if verbose:
+            print("Request failed: '%s'" % e)
+    else:
+        try:
+            xml_string = stream.read()
+            tree = xml.etree.ElementTree.fromstring(xml_string)
+        except xml.etree.ElementTree.ParseError, e:
+            if verbose:
+                print("Failed to parse XML:\n%s" % xml_string)
+        else:
+            node = tree.find('{http://purl.org/atom/ns#}fullcount')
+
+    return node.text if node is not None else '?'
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Check gmail message count.')
+    parser.add_argument('-s', '--set-pass', dest='set_pass', action='store_true',
+                        help='set the password for email_address')
+    parser.add_argument('-d', '--delete-pass', dest='delete_pass', action='store_true',
+                        help='delete the password for email_address')
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        help='increase verbosity')
+    parser.add_argument('email_address', help='Email Address')
+    args = parser.parse_args()
+
+    if args.set_pass and args.delete_pass:
+        raise parser.error('-s and -d are mutually exclusive')
+    elif args.set_pass:
+        set_password(args.email_address)
+    elif args.delete_pass:
+        delete_password(args.email_address)
+    else:
+        count = get_mail_count(args.email_address, verbose=args.verbose)
+        print(count)
