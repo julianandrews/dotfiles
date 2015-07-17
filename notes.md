@@ -7,7 +7,7 @@ task-laptop
 
 Packages
 --------
-build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests virtualenv virtualenvwrapper git xorg xinput alsa-utils pulseaudio wicd i3 xmonad xmobar lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree ttf-mscorefonts-installer ttf-dejavu pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearchger-ag ranger
+build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests virtualenv virtualenvwrapper git xorg xinput alsa-utils pulseaudio wicd i3 xmonad xmobar lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree ttf-mscorefonts-installer ttf-dejavu pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearchger-ag ranger xorg-dev
 
 Work only
 ---------
@@ -28,7 +28,7 @@ Compilation
 ---
 Install with:
 
-    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --prefix=/usr
+    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --prefix=/usr
     sudo checkinstall
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
     sudo update-alternatives --set editor /usr/bin/vim
