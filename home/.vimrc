@@ -33,7 +33,7 @@ set softtabstop=2
 set shiftwidth=2
 set number
 set background=dark
-set clipboard^=unnamedplus
+set clipboard^=unnamed
 set backspace=2
 syntax on
 
