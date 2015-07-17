@@ -150,9 +150,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -qD pulse set Master 5%+ unmute && killall -SIGUSR1 i3status
-bindsym XF86AudioLowerVolume exec amixer -qD pulse set Master 5%- unmute && killall -SIGUSR1 i3status
-bindsym XF86AudioMute exec amixer -qD pulse set Master 1+ toggle && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec amixer -qD pulse set Master 5%+ unmute && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -qD pulse set Master 5%- unmute && pkill -RTMIN+1 i3blocks
+
+bindsym XF86AudioMute exec amixer -qD pulse set Master 1+ toggle && pkill -RTMIN+1 i3blocks
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight -inc 20
@@ -166,7 +167,7 @@ bindsym XF86Calculator exec i3-sensible-terminal -e python
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 for_window [class="Transmission"] floating enable
