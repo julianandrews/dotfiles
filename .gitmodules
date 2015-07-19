@@ -23,3 +23,6 @@
 [submodule "home/.vim/bundle/ListToggle"]
 	path = home/.vim/bundle/ListToggle
 	url = git@github.com:Valloric/ListToggle.git
+[submodule "home/.vim/bundle/vim-airline"]
+	path = home/.vim/bundle/vim-airline
+	url = git@github.com:bling/vim-airline.git

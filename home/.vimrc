@@ -18,6 +18,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/ListToggle'
+Plugin 'bling/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,6 +36,8 @@ set number
 set background=dark
 set clipboard^=unnamed
 set backspace=2
+set t_Co=256
+set laststatus=2
 syntax on
 
 " Ggrep with quickfix open
