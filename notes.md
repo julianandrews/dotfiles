@@ -87,3 +87,11 @@ install.sh
 
 * Doesn't handle prexisting directory symlinks well.
 * Backup seems a little wonky.
+
+Media Keys
+----------
+XF86Tools (music player?)
+XF86Search
+XF86Menu
+XF86MonBrightnessDown
+XF86MonBrightnessUp

@@ -162,6 +162,7 @@ bindsym XF86AudioMute exec amixer -qD pulse set Master 1+ toggle && pkill -RTMIN
 # Other media keys
 bindsym XF86Sleep exec sudo pm-suspend
 bindsym XF86HomePage exec sensible-browser
+bindsym XF86Mail exec sensible-browser https://mail.google.com
 bindsym XF86Calculator exec i3-sensible-terminal -e python
 
 # Start i3bar to display a workspace bar (plus the system information i3status
