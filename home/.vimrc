@@ -29,6 +29,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+let g:airline_right_sep = '◀'
+let g:airline_left_sep = '▶'
+
 set expandtab
 set softtabstop=2
 set shiftwidth=2
