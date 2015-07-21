@@ -131,7 +131,7 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 
-PATH=$PATH:~/bin
+PATH=$PATH:~/bin:/sbin:/usr/sbin
 
 # Aliases
 alias m='python manage.py'
