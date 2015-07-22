@@ -32,6 +32,7 @@ endif
 let g:airline_right_sep = '◀'
 let g:airline_left_sep = '▶'
 
+syntax on
 set expandtab
 set softtabstop=2
 set shiftwidth=2
@@ -41,10 +42,12 @@ set clipboard^=unnamed
 set backspace=2
 set t_Co=256
 set laststatus=2
-syntax on
+
+hi CursorLine term=NONE cterm=NONE ctermbg=8
+nnoremap <Leader>c :set cursorline!<CR>
 
 " Ggrep with quickfix open
-command -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
+command! -nargs=+ Gg execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
