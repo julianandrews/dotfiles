@@ -1,7 +1,12 @@
-!#/bin/bash
+!#/bin/sh
 
-email_address='jandrews271@gmail.com'
-[[ "$HOSTNAME" = "orpheus" ]] && email_address='jandrews@fusionbox.com'
+if [ "$(hostname)" = "orpheus" ]
+then
+  email_address='jandrews@fusionbox.com'
+else
+  email_address='jandrews271@gmail.com'
+fi
+
 [[ $BLOCK_BUTTON = 1 ]] && xdg-open https://inbox.google.com
 count=$(~/bin/gmail_count "$email_address")
 case "$count" in
