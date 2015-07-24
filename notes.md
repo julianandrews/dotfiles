@@ -95,3 +95,9 @@ XF86Search
 XF86Menu
 XF86MonBrightnessDown
 XF86MonBrightnessUp
+XF86Display
+XF86Battery
+
+Misc
+----
+Bluetooth/USB/monitor auto
