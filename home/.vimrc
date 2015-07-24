@@ -17,7 +17,6 @@ Plugin 'mileszs/ack.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/ListToggle'
 Plugin 'bling/vim-airline'
 
 " All of your Plugins must be added before the following line
