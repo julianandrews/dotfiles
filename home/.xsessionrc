@@ -14,4 +14,4 @@ xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics
 kupfer --no-splash &
 
 # Setup monitors and load wallpaper.
-setup_monitors && eval $(cat ~/.fehbg) &
+setup_monitors && ~/.fehbg &
