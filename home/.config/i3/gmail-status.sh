@@ -1,24 +1,18 @@
-!#/bin/sh
+#!/bin/sh
 
-if [ "$(hostname)" = "orpheus" ]
-then
-  email_address='jandrews@fusionbox.com'
-else
-  email_address='jandrews271@gmail.com'
-fi
+[ "$BLOCK_BUTTON" = "1" ] && xdg-open https://inbox.google.com
 
-[[ $BLOCK_BUTTON = 1 ]] && xdg-open https://inbox.google.com
-count=$(~/bin/gmail_count "$email_address")
-case "$count" in
-  \?)
-    color=\#FF0000
-    ;;
-  0)
-    color=\#888888
-    ;;
-  *)
-    color=\#00FF00
-    ;;
+case $(hostname) in
+  orpheus)     email='jandrews@fusionbox.com' ;;
+  *)           email='jandrews271@gmail.com' ;;
+esac
+
+count=$(~/bin/gmail_count "$email")
+
+case $count in
+  ''|*[!0-9]*) color=\#FF0000 ;;
+  0)           color=\#888888 ;;
+  *)           color=\#00FF00 ;;
 esac
 
 echo "$count"
