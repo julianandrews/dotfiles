@@ -37,9 +37,6 @@ If using dotfiles, follow up with
 
     git submodule update --init --recursive
 
-
-`python-config-dir` may not be universal.
-
 YouCompleteMe
 -------------
 Install with:
@@ -73,12 +70,13 @@ Setup with:
     Add
       julian  ALL = NOPASSWD: /usr/sbin/pm-suspend
       julian  ALL = NOPASSWD: /sbin/shutdown
-      julian  ALL = NOPASSWD: /sbin/reboot
 
 Misc
 ----
-Set Kupfer style to remove rounded corners
-Run lxappearance
+* Set Kupfer style to remove rounded corners
+* Run lxappearance
+* Add `load-module module-switch-on-connect` to end of `/etc/pulse/default.pa`
+* Set `greeter-hide-users=false` and `greeter-show-manual-login=false` in `/etc/lightdm/lightdm.conf` under [SeatDefaults]
 
 Issues
 ======
@@ -100,4 +98,4 @@ XF86Battery
 
 Misc
 ----
-Bluetooth/USB/monitor auto
+USB/monitor auto
