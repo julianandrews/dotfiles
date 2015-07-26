@@ -10,7 +10,7 @@ if [ "$ethernet_up" ]
 then
   [ "$ssid" ] && full_text="Ethernet/$ssid" || full_text='Ethernet'
 else
-  [ "$ssid" ] && full_text="$ssid" || (full_text='NetDown' && color=\#FF0000)
+  [ ! "$ssid" ] && full_text='NetDown' && color=\#FF0000 || full_text="$ssid"
 fi
 
 echo "$full_text"
