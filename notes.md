@@ -1,15 +1,9 @@
 Packages
 ========
 
-Setup
------
-Add `contrib` and `non-free` to `/etc/apt/sources.list`. E.g.:
-
-    deb http://http.debian.net/debian/ jessie main contrib non-free
-
 Packages
 --------
-build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests virtualenv virtualenvwrapper git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree ttf-mscorefonts-installer ttf-dejavu pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks unrar parallel
+build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests virtualenv virtualenvwrapper git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree ttf-mscorefonts-installer ttf-dejavu pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks unrar
 
 Work only
 ---------
@@ -17,7 +11,7 @@ pidgin
 
 Home only
 ---------
-ecryptfs-utils electrum gourmet slashem vlc transmission-cli transmission-gtk gimp nvidia-driver bluez-firmware pavucontrol pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev libxml2-dev libxslt1-dev qtmobility-dev ffmpeg slashem guvcview easytag
+electrum gourmet slashem vlc transmission-cli transmission-gtk gimp bluez-firmware pavucontrol pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev libxml2-dev libxslt1-dev qtmobility-dev ffmpeg slashem guvcview easytag
 
 Debs
 ----
@@ -31,6 +25,7 @@ Vim
 ###Compilation
 Install with:
 
+    sudo apt-get remove vim-common vim-tiny
     ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --prefix=/usr
     sudo checkinstall
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
@@ -68,10 +63,11 @@ Setup with:
     Add
       julian  ALL = NOPASSWD: /usr/sbin/pm-suspend
       julian  ALL = NOPASSWD: /sbin/shutdown
+      julian  ALL = NOPASSWD: /sbin/reboot
 
 Steam
 -----
-Install with:
+Install nvidia drivers, then install with:
 
     dpkg --add-architecture i386
     sudo apt-get install steam
@@ -79,7 +75,7 @@ Install with:
 
 lightdm Config
 --------------
-Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` and `greeter-show-manual-login=false` under [SeatDefaults]
+Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
 
 Grub2 Config
 -----------
