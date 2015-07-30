@@ -124,7 +124,7 @@ fi
 
 # Setup virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Setup git prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
