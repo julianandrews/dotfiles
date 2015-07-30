@@ -18,6 +18,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,6 +42,8 @@ set clipboard^=unnamed
 set backspace=2
 set t_Co=256
 set laststatus=2
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 hi CursorLine term=NONE cterm=NONE ctermbg=8
 nnoremap <Leader>c :set cursorline!<CR>

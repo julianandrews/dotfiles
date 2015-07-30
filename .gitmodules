@@ -23,3 +23,6 @@
 [submodule "home/.vim/bundle/vim-airline"]
 	path = home/.vim/bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
+[submodule "home/.vim/bundle/syntastic"]
+	path = home/.vim/bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
