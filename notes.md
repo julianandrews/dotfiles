@@ -3,7 +3,7 @@ Packages
 
 Packages
 --------
-build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests virtualenv virtualenvwrapper git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree ttf-mscorefonts-installer ttf-dejavu pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks unrar
+build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks unrar
 
 Work only
 ---------
@@ -84,6 +84,7 @@ Grub2 Config
 
 Misc
 ----
+* `sudo pip install virtualenv virtualenvwrapper`
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
 * Add `load-module module-switch-on-connect` to end of `/etc/pulse/default.pa`
