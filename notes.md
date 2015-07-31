@@ -1,9 +1,8 @@
 Packages
 ========
-
 Packages
 --------
-build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 xarchiver pepperflashplugin-nonfree pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks unrar
+build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 p7zip-full unzip unrar pepperflashplugin-nonfree pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks
 
 Work only
 ---------
@@ -31,10 +30,6 @@ Install with:
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
     sudo update-alternatives --set editor /usr/bin/vim
 
-If using dotfiles, follow up with
-
-    git submodule update --init --recursive
-
 ###YouCompleteMe
 Install with:
 
@@ -47,14 +42,6 @@ Install with:
     ruby extconf.rb
     make
 
-Pip
----
-Install with(quick easy way to get latest version):
-
-    sudo apt-get install python-pip
-    sudo pip install --upgrade pip
-    sudo apt-get remove python-pip && sudo apt-get autoremove
-
 Suspend/Shutdown Privileges
 ------------------
 Setup with:
@@ -65,29 +52,16 @@ Setup with:
       julian  ALL = NOPASSWD: /sbin/shutdown
       julian  ALL = NOPASSWD: /sbin/reboot
 
-Steam
------
-Install nvidia drivers, then install with:
-
-    dpkg --add-architecture i386
-    sudo apt-get install steam
-    sudo apt-get install libgl1-nvidia-glx:i386
-
-lightdm Config
---------------
-Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
-
-Grub2 Config
------------
-* Edit `/etc/default/grub`
-* run `sudo update-grub`
-
 Misc
 ----
+* Install pip
 * `sudo pip install virtualenv virtualenvwrapper`
+* Edit `/etc/pulse/defaul.pa`. Add `load-module module-switch-on-connect` to end.
+* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
+* Config Grub2
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
-* Add `load-module module-switch-on-connect` to end of `/etc/pulse/default.pa`
+* Install Steam
 
 Issues
 ======
@@ -101,8 +75,6 @@ Media Keys
 * XF86Tools (music player?)
 * XF86Search
 * XF86Menu
-* XF86MonBrightnessDown
-* XF86MonBrightnessUp
 * XF86Display
 * XF86Battery
 
