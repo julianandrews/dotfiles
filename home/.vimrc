@@ -57,16 +57,33 @@ let g:syntastic_javascript_checkers = ['eslint']
 " CommandT config
 let g:CommandTFileScanner='find'
 
-map <Space> <Nop>
-let mapleader = "\<Space>"
-
 " Toggle search highlighting on/off
 nnoremap <Leader>/ :set hlsearch!<CR>
 " Toggle cursorline highlighting on/off
 nnoremap <Leader>? :set cursorline!<CR>
-" Quickfix next/previous
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>N :cprevious<CR>
+" Quickfix next
+function! CNextWrap()
+  try
+    cnext
+  catch /^Vim\%((\a\+)\)\=:E553/
+    cfirst
+  endtry
+endfunction
+nnoremap <Space> :call CNextWrap()<CR>
 " Locationlist next/previous
-nnoremap <Leader>c :lnext<CR>
-nnoremap <Leader>C :lprevious<CR>
+function! LNextWrap()
+  try
+    lnext
+  catch /^Vim\%((\a\+)\)\=:E553/
+    lfirst
+  endtry
+endfunction
+function! LPreviousWrap()
+  try
+    lprevious
+  catch /^Vim\%((\a\+)\)\=:E553/
+    llast
+  endtry
+endfunction
+nnoremap <Tab> :call LNextWrap()<CR>
+nnoremap <S-Tab> :call LPreviousWrap()<CR>
