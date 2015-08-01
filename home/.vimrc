@@ -61,29 +61,6 @@ let g:CommandTFileScanner='find'
 nnoremap <Leader>/ :set hlsearch!<CR>
 " Toggle cursorline highlighting on/off
 nnoremap <Leader>? :set cursorline!<CR>
-" Quickfix next
-function! CNextWrap()
-  try
-    cnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    cfirst
-  endtry
-endfunction
-nnoremap <Space> :call CNextWrap()<CR>
 " Locationlist next/previous
-function! LNextWrap()
-  try
-    lnext
-  catch /^Vim\%((\a\+)\)\=:E553/
-    lfirst
-  endtry
-endfunction
-function! LPreviousWrap()
-  try
-    lprevious
-  catch /^Vim\%((\a\+)\)\=:E553/
-    llast
-  endtry
-endfunction
-nnoremap <Tab> :call LNextWrap()<CR>
-nnoremap <S-Tab> :call LPreviousWrap()<CR>
+nnoremap <Tab> :lnext<CR>
+nnoremap <S-Tab> :lprevious<CR>
