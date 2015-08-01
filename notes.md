@@ -80,4 +80,5 @@ Media Keys
 
 Misc
 ----
-* USB/monitor auto
+* monitor auto
+* brightness tweaks
