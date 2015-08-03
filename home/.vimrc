@@ -57,7 +57,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:CommandTFileScanner='find'
 
 " Toggle search highlighting on/off
-nnoremap <Leader>/ :set hlsearch!<CR>
+nnoremap <Leader>/ :let @/ = ""<CR>
 " Toggle cursorline highlighting on/off
 nnoremap <Leader>? :set cursorline!<CR>
 " Locationlist next/previous
