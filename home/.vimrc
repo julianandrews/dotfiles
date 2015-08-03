@@ -56,6 +56,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 " CommandT config
 let g:CommandTFileScanner='find'
 
+" Clear trailing whitespace in .py files on save
+autocmd BufWritePre *.py :%s/\s\+$//e
+
 " Toggle search highlighting on/off
 nnoremap <Leader>/ :let @/ = ""<CR>
 " Toggle cursorline highlighting on/off
