@@ -60,9 +60,8 @@ let g:CommandTFileScanner='find'
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Toggle search highlighting on/off
-nnoremap <Leader>/ :let @/ = ""<CR>
+nnoremap <Leader>/ :let @/ = "" <bar> set nocursorline<CR>
 " Toggle cursorline highlighting on/off
 nnoremap <Leader>? :set cursorline!<CR>
-" Locationlist next/previous
-nnoremap <Tab> :lnext<CR>
-nnoremap <S-Tab> :lprevious<CR>
+nnoremap <Tab> :set cursorline <bar> lnext<CR>
+nnoremap <S-Tab> :set cursorline <bar> lprevious<CR>
