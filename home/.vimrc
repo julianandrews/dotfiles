@@ -34,6 +34,7 @@ set backspace=2
 set t_Co=256
 set laststatus=2
 set wildignore+=*.pyc
+set mouse=a
 set hlsearch
 hi CursorLine term=NONE cterm=NONE ctermbg=8
 
