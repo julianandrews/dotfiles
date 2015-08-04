@@ -62,6 +62,7 @@ Misc
 * xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
+* Run exo-preferred-applications to configure xfce4-terminal link handling
 * Install Steam
 
 Issues
