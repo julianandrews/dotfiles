@@ -10,7 +10,7 @@ pidgin
 
 Home only
 ---------
-electrum gourmet slashem vlc transmission-cli transmission-gtk gimp bluez-firmware pavucontrol pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev libxml2-dev libxslt1-dev qtmobility-dev ffmpeg slashem guvcview easytag
+electrum gourmet slashem vlc transmission-cli transmission-gtk gimp bluez-firmware pavucontrol pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev libxml2-dev libxslt1-dev qtmobility-dev ffmpeg slashem guvcview easytag virtualbox
 
 Debs
 ----
@@ -59,6 +59,7 @@ Misc
 * Edit `/etc/pulse/defaul.pa`. Add `load-module module-switch-on-connect` to end.
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
 * Config Grub2
+* xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
 * Install Steam
