@@ -1,34 +1,31 @@
-##
-## Put me in ~/.irssi/scripts, and then execute the following in irssi:
-##
-##       /load perl
-##       /script load notify
-##
- 
 use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
  
-$VERSION = "0.01";
+$VERSION = "0.1";
 %IRSSI = (
-    authors     => 'Luke Macken',
-    contact     => 'lewk@csh.rit.edu',
-    name        => 'notify.pl',
-    description => 'TODO',
-    license     => 'GNU General Public License',
-    url         => 'http://www.csh.rit.edu/~lewk/code/irssi-notify',
+  authors     => 'Julian Andrews',
+  contact     => 'jandrews271@gmail.com',
+  name        => 'notify',
+  description => 'Simple `notify-send` based message notifications',
+  license     => 'GNU General Public License',
 );
  
 sub notify {
-    my ($dest, $text, $stripped) = @_;
-    my $level = $dest->{level};
-    return if !$dest->{server};
-    return if $level & MSGLEVEL_NO_ACT;
-    return if !($level & MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT);
- 
-    $stripped =~ s/[^a-zA-Z0-9 .,!?\@:\>]//g;
-    my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
-    system("notify-send '$dest->{target}' '$stripped' -u $urgency");
+  my ($dest, $text, $stripped) = @_;
+  my $level = $dest->{level};
+  my $target = $dest->{target};
+  my $server = $dest->{server};
+  my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
+
+  # !(($target == '&bitlbee') && (substr($stripped, 0, 7) == '<@root>'))
+
+  if( $server &&
+      !($level & MSGLEVEL_NO_ACT) &&
+      ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
+  ) {
+    system("notify-send '$target' '$stripped' -u $urgency");
+  }
 }
  
 Irssi::signal_add('print text', 'notify');
