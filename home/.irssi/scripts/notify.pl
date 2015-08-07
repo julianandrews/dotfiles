@@ -17,14 +17,17 @@ sub notify {
   my $target = $dest->{target};
   my $server = $dest->{server};
   my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
-
-  # !(($target == '&bitlbee') && (substr($stripped, 0, 7) == '<@root>'))
+  $stripped =~ s/'/\&apos;/g;
 
   if( $server &&
       !($level & MSGLEVEL_NO_ACT) &&
       ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
   ) {
-    system("notify-send '$target' '$stripped' -u $urgency");
+    my $sender = $stripped;
+    $sender =~ s/^\<.([^\>]+)\>.+/$1/;
+    $stripped =~ s/^\<.[^\>]+\>.//;
+    my $summary = $target . ": " . $sender;
+    system("notify-send '$summary' '$stripped' -u '$urgency'");
   }
 }
  
