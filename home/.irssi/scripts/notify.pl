@@ -14,20 +14,18 @@ $VERSION = "0.1";
 sub notify {
   my ($dest, $text, $stripped) = @_;
   my $level = $dest->{level};
-  my $target = $dest->{target};
-  my $server = $dest->{server};
-  my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
   $stripped =~ s/'/\&apos;/g;
+  $stripped =~ /^\< ([^\>]+)\> (.*)/;
 
-  if( $server &&
+  my $summary = "$dest->{target}: $1";
+  my $message = $2;
+  my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
+
+  if( $dest->{server} &&
       !($level & MSGLEVEL_NO_ACT) &&
       ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
   ) {
-    my $sender = $stripped;
-    $sender =~ s/^\<.([^\>]+)\>.+/$1/;
-    $stripped =~ s/^\<.[^\>]+\>.//;
-    my $summary = $target . ": " . $sender;
-    system("notify-send '$summary' '$stripped' -u '$urgency'");
+    system("notify-send '$summary' '$message' -u '$urgency'");
   }
 }
  
