@@ -2,7 +2,7 @@ Packages
 ========
 Packages
 --------
-build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 p7zip-full unzip unrar pepperflashplugin-nonfree pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks htop irssi mcabber
+build-essential cmake checkinstall libncurses5-dev python python-dev python3 python3-dev ruby ruby-dev python-flake8 python-requests git xorg xinput alsa-utils pulseaudio wicd i3 lightdm lxappearance faenza-icon-theme chromium feh kupfer xfce4-terminal libnotify-bin httpie tree evince gnumeric libvorbisfile3 p7zip-full unzip unrar pepperflashplugin-nonfree pm-utils gnome-keyring postgresql postgresql-server-dev-9.4 silversearcher-ag ranger xorg-dev sqlite i3blocks htop irssi mcabber libvirt-bin qemu-kvm bridge-utils virt-manager
 
 Home only
 ---------
@@ -10,7 +10,7 @@ electrum gourmet slashem vlc transmission-cli transmission-gtk gimp bluez-firmwa
 
 Debs
 ----
-google-talkplugin
+google-musicmanager-beta google-talkplugin
 
 Other Installation/Setup
 ========================
