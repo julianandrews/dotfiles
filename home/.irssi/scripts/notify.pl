@@ -14,7 +14,6 @@ $VERSION = "0.1";
 sub notify {
   my ($dest, $text, $stripped) = @_;
   my $level = $dest->{level};
-  $stripped =~ s/'/\&apos;/g;
   $stripped =~ /^\< ([^\>]+)\> (.*)/;
 
   my $summary = "$dest->{target}: $1";
@@ -25,8 +24,7 @@ sub notify {
       !($level & MSGLEVEL_NO_ACT) &&
       ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
   ) {
-    my @args = ("notify-send", "$summary", "$message", "-u", "$urgency");
-    system(@args);
+    system("notify-send", "$summary", "$message", "-u", "$urgency");
   }
 }
  
