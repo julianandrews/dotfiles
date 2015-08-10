@@ -25,7 +25,8 @@ sub notify {
       !($level & MSGLEVEL_NO_ACT) &&
       ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
   ) {
-    system("notify-send '$summary' '$message' -u '$urgency'");
+    my @args = ("notify-send", "$summary", "$message", "-u", "$urgency");
+    system(@args);
   }
 }
  
