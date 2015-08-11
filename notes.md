@@ -21,10 +21,10 @@ Vim
 Install with:
 
     sudo apt-get remove vim-common vim-tiny
-    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp --prefix=/usr
+    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
     sudo checkinstall
-    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
-    sudo update-alternatives --set editor /usr/bin/vim
+    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+    sudo update-alternatives --set editor /usr/local/bin/vim
 
 ###YouCompleteMe
 Install with:
@@ -34,7 +34,7 @@ Install with:
 ###Command-T
 Install with:
 
-    cd .vim/bundle/command-t/ruby/command-t
+    cd ~/.vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
 
