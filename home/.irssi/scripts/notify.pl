@@ -2,7 +2,7 @@ use strict;
 use Irssi;
 use vars qw($VERSION %IRSSI);
  
-$VERSION = "1.0";
+$VERSION = "1.1";
 %IRSSI = (
   authors     => 'Julian Andrews',
   contact     => 'jandrews271@gmail.com',
@@ -13,14 +13,13 @@ $VERSION = "1.0";
  
 sub notify {
   my ($dest, $text, $stripped) = @_;
-  my $level = $dest->{level};
   $stripped =~ /^\< ([^\>]+)\> (.*)/;
 
   my $summary = "$dest->{target}: $1";
   my $message = $2;
   my $urgency = 'critical';
 
-  if($level & MSGLEVEL_HILIGHT) {
+  if($dest->{level} & MSGLEVEL_HILIGHT) {
     system("notify-send", "$summary", "$message", "-u", "$urgency");
   }
 }
