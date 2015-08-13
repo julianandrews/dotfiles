@@ -18,12 +18,9 @@ sub notify {
 
   my $summary = "$dest->{target}: $1";
   my $message = $2;
-  my $urgency = $level & MSGLEVEL_HILIGHT ? 'critical' : 'normal';
+  my $urgency = 'critical';
 
-  if( $dest->{server} &&
-      !($level & MSGLEVEL_NO_ACT) &&
-      ($level & (MSGLEVEL_PUBLIC | MSGLEVEL_MSGS | MSGLEVEL_HILIGHT))
-  ) {
+  if($level & MSGLEVEL_HILIGHT) {
     system("notify-send", "$summary", "$message", "-u", "$urgency");
   }
 }
