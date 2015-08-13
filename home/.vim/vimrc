@@ -36,6 +36,8 @@ set laststatus=2
 set wildignore+=*.pyc
 set mouse=a
 set hlsearch
+set cursorline
+set wildmenu
 hi CursorLine term=NONE cterm=NONE ctermbg=234
 
 " Ack config
@@ -62,8 +64,8 @@ let g:CommandTFileScanner='find'
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Toggle search highlighting on/off
-nnoremap <Leader>/ :let @/ = ""<CR>
-" Toggle cursorline highlighting on/off
-nnoremap <Leader>? :set cursorline!<CR>
-nnoremap <Tab> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>endtry<cr>
-nnoremap <S-Tab> :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>llast<bar>endtry<cr>
+nnoremap <Leader>/ :let @/ = ""<cr>
+
+" Cycle through location list
+nnoremap <silent> <Tab> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+nnoremap <silent> <S-Tab> :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>llast<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
