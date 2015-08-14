@@ -60,7 +60,7 @@ if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\$ '
   else
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;41m\]\w\[\033[00m\]\$ '
   fi
 else
   if [ -n "${SSH_TTY}" ]; then
@@ -136,6 +136,7 @@ fi
 
 # Setup virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/sites
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Setup git prompt
