@@ -60,6 +60,7 @@ Misc
 * Run lxappearance
 * Run exo-preferred-applications to configure xfce4-terminal link handling
 * Install Steam
+* Add `acpi_backlight=vendor` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub` and run `sudo update-grub`
 
 Issues
 ======
