@@ -13,7 +13,7 @@ $VERSION = "1.1";
  
 sub notify {
   my ($dest, $text, $stripped) = @_;
-  $stripped =~ /^\< ([^\>]+)\> (.*)/;
+  $stripped =~ /^\< ?([^\>]+)\> (.*)$/;
 
   my $summary = "$dest->{target}: $1";
   my $message = $2;
