@@ -63,6 +63,9 @@ let g:CommandTFileScanner='find'
 " Clear trailing whitespace in .py files on save
 autocmd BufWritePre *.py :%s/\s\+$//e
 
+" Clear trailing whitespace with <F12>
+nnoremap <silent> <F12> :%s/\s\+$//e<cr>
+
 " Toggle search highlighting on/off
 nnoremap <silent> <Leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 
