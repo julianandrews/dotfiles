@@ -10,6 +10,9 @@ setup_monitors () {
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
 xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
 
+# map capslock to escape
+setxkbmap -option caps:escape
+
 # Startup kupfer
 kupfer --no-splash &
 
