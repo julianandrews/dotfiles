@@ -160,7 +160,7 @@ bindsym XF86AudioMute exec amixer -qD pulse set Master 1+ toggle && pkill -RTMIN
 #bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
 # Other media keys
-bindsym XF86Sleep exec sudo i3lock && pm-suspend
+bindsym XF86Sleep exec i3lock -c 000000 && sudo pm-suspend
 bindsym XF86HomePage exec sensible-browser
 bindsym XF86Mail exec sensible-browser https://mail.google.com
 bindsym XF86Calculator exec i3-sensible-terminal -e python
