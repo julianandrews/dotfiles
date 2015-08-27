@@ -18,3 +18,5 @@ kupfer --no-splash &
 
 # Setup monitors and load wallpaper.
 setup_monitors && ~/.fehbg &
+
+xautolock -time 5 -locker ~/bin/screen-lock.sh &
