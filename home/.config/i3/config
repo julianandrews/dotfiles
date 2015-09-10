@@ -149,7 +149,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+z exec ~/bin/screen-lock.sh
+bindsym $mod+z exec ~/.local/bin/screen-lock.sh
 
 # Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -qD pulse set Master 5%+ unmute && pkill -RTMIN+1 i3blocks

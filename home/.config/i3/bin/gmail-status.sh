@@ -7,7 +7,7 @@ case $(hostname) in
   *)           email='jandrews271@gmail.com' ;;
 esac
 
-full_text=$(~/bin/gmail-count "$email")
+full_text=$(~/.local/bin/gmail-count "$email")
 
 case $full_text in
   ''|*[!0-9]*) color=\#FF0000 ;;
