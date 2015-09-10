@@ -130,11 +130,12 @@ fi
 # Setup virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/sites
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
 
 # Setup git prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 
-PATH=$PATH:~/bin:/sbin:/usr/sbin
+PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
