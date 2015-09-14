@@ -121,9 +121,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# VI-mode!!!
-set -o vi
-
 # Enable gnome-keyring for ssh keys
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
