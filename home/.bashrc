@@ -133,6 +133,10 @@ export PROJECT_HOME=$HOME/sites
 export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
 source ~/.local/bin/virtualenvwrapper_lazy.sh
 
+# Setup libvirt/vagrant
+export LIBVIRT_DEFAULT_URI=qemu:///system
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
 # Setup git prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
