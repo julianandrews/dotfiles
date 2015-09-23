@@ -27,7 +27,7 @@ def fetch_image():
     urls = get_urls()
     random.shuffle(urls)
     for url in urls:
-        response = requests.get(url, stream=True)
+        response = requests.get(url, stream=True, headers=headers)
         ext = mimetypes.guess_extension(response.headers['Content-Type'])
         if ext in extensions:
             target = os.path.join(directory, "%s%s" % (basename, ext))
