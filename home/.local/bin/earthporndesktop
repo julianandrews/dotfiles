@@ -3,58 +3,41 @@ import mimetypes
 import os
 import random
 import requests
-import shutil
 import subprocess
-import urllib
 
 sub_url = "http://www.reddit.com/r/EarthPorn/top.json"
-headers = {'User-Agent': 'earthpornbg v0.1'}
+headers = {'User-Agent': 'earthpornbg v0.2'}
 params = {'t': 'day'}
 directory = '/home/julian/Pictures'
 extensions = ('.jpg', '.jpeg', '.png')
 basename = 'earthporndesktop_bg'
-mimetypes.guess_extension('image/jpeg') # hack to make result .jpeg
+mimetypes.guess_extension('image/jpeg')  # hack to make result .jpeg
 mimetypes.init()
 
+
 def fetch_image():
-    global headers
-    r = requests.get(sub_url, params=params, headers=headers)
-    r.raise_for_status()
-    urls = [listing['data']['url'] for listing in r.json()['data']['children']]
+    target = None
+    request = requests.get(sub_url, params=params, headers=headers)
+    request.raise_for_status()
+    urls = [listing['data']['url']
+            for listing in request.json()['data']['children']]
     urls = [url for url in urls if url.endswith(extensions)]
-    if urls == []:
-        return None
-    source, headers = urllib.urlretrieve(random.choice(urls))
-    if not headers.getmaintype() == 'image':
-        return None
-    ext = mimetypes.guess_extension(headers.gettype())
-    target = os.path.join(directory, "%s%s" % (basename, ext))
-    shutil.copy(source, target)
+    if urls:
+        url = random.choice(urls)
+        response = requests.get(url, stream=True)
+        ext = mimetypes.guess_extension(response.headers['Content-Type'])
+        if ext in extensions:
+            target = os.path.join(directory, "%s%s" % (basename, ext))
+            with open(target, 'wb') as f:
+                f.write(response.content)
     return target
 
+
 def set_desktop(filename):
-    set_i3_desktop(filename)
-
-def set_xfce_desktop(filename):
-    # Find with 'xfconf-query --channel xfce4-desktop --list'
-    display_variable = '/backdrop/screen0/monitorLVDS-1/workspace0/last-image'
-    os.environ['DBUS_SESSION_BUS_ADDRESS'] = get_dbus_session_bus_address()
-    desktop_set = ['xfconf-query', '-c', 'xfce4-desktop', '-p',
-            display_variable, '-s']
-    subprocess.call(desktop_set + [''])
-    subprocess.call(desktop_set + [filename])
-
-def set_i3_desktop(filename):
     subprocess.call(('feh', '--bg-scale', filename))
 
-def get_dbus_session_bus_address():
-    pid = subprocess.Popen(['pgrep', 'xfce4-session'],
-            stdout=subprocess.PIPE).stdout.read().strip()
-    with open('/proc/%s/environ' % pid) as f:
-        keys = f.read().split('\x00')
-    return [k for k in keys if k.startswith('DBUS_SESSION_BUS_ADDRESS')][0][25:]
 
 if __name__ == '__main__':
     filename = fetch_image()
-    if not filename is None:
+    if filename is not None:
         set_desktop(filename)
