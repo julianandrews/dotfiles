@@ -15,22 +15,25 @@ mimetypes.guess_extension('image/jpeg')  # hack to make result .jpeg
 mimetypes.init()
 
 
-def fetch_image():
-    target = None
-    request = requests.get(sub_url, params=params, headers=headers)
-    request.raise_for_status()
+def get_urls():
+    response = requests.get(sub_url, params=params, headers=headers)
+    response.raise_for_status()
     urls = [listing['data']['url']
-            for listing in request.json()['data']['children']]
-    urls = [url for url in urls if url.endswith(extensions)]
-    if urls:
-        url = random.choice(urls)
+            for listing in response.json()['data']['children']]
+    return [url for url in urls if url.endswith(extensions)]
+
+
+def fetch_image():
+    urls = get_urls()
+    random.shuffle(urls)
+    for url in urls:
         response = requests.get(url, stream=True)
         ext = mimetypes.guess_extension(response.headers['Content-Type'])
         if ext in extensions:
             target = os.path.join(directory, "%s%s" % (basename, ext))
             with open(target, 'wb') as f:
                 f.write(response.content)
-    return target
+            return target
 
 
 def set_desktop(filename):
