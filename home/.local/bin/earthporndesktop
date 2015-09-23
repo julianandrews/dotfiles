@@ -18,9 +18,13 @@ mimetypes.init()
 def get_urls():
     response = requests.get(sub_url, params=params, headers=headers)
     response.raise_for_status()
-    urls = [listing['data']['url']
-            for listing in response.json()['data']['children']]
+    listings = response.json()['data']['children']
+    urls = [listing['data']['url'] for listing in listings] 
     return [url for url in urls if url.endswith(extensions)]
+
+
+def set_desktop(filename):
+    subprocess.call(('feh', '--bg-scale', filename))
 
 
 def fetch_image():
@@ -28,19 +32,15 @@ def fetch_image():
     random.shuffle(urls)
     for url in urls:
         response = requests.get(url, stream=True, headers=headers)
+        response.raise_for_status()
         ext = mimetypes.guess_extension(response.headers['Content-Type'])
         if ext in extensions:
-            target = os.path.join(directory, "%s%s" % (basename, ext))
-            with open(target, 'wb') as f:
+            filename = os.path.join(directory, "%s%s" % (basename, ext))
+            with open(filename, 'wb') as f:
                 f.write(response.content)
-            return target
-
-
-def set_desktop(filename):
-    subprocess.call(('feh', '--bg-scale', filename))
+                set_desktop(filename)
+                return
 
 
 if __name__ == '__main__':
-    filename = fetch_image()
-    if filename is not None:
-        set_desktop(filename)
+    fetch_image()
