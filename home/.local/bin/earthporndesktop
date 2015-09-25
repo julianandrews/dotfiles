@@ -5,7 +5,8 @@ import random
 import requests
 import subprocess
 
-sub_url = "http://www.reddit.com/r/EarthPorn/top.json"
+subreddits = ['EarthPorn', 'SpacePorn']
+sub_url = "http://www.reddit.com/r/{}/top.json"
 headers = {'User-Agent': 'earthpornbg v0.2'}
 params = {'t': 'day'}
 directory = '/home/julian/Pictures'
@@ -16,10 +17,13 @@ mimetypes.init()
 
 
 def get_urls():
-    response = requests.get(sub_url, params=params, headers=headers)
-    response.raise_for_status()
-    listings = response.json()['data']['children']
-    urls = [listing['data']['url'] for listing in listings]
+    urls = []
+    for sub in subreddits:
+        response = requests.get(sub_url.format(sub), params=params, headers=headers)
+        response.raise_for_status()
+        listings = response.json()['data']['children']
+        urls.extend([listing['data']['url'] for listing in listings])
+
     return [url for url in urls if url.endswith(extensions)]
 
 
