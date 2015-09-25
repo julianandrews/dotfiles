@@ -143,6 +143,6 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 
 # Python tab completion
-export PYTHONSTARTUP=~/.config/pythonrc
+export PYTHONSTARTUP=~/.config/pystartup
 
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
