@@ -145,4 +145,9 @@ export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
 # Python tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
+# Ruby gem bin path
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
