@@ -131,7 +131,7 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/sites
 export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-source ~/.local/bin/virtualenvwrapper_lazy.sh
+source ~/.local/bin/virtualenvwrapper.sh
 
 # Setup libvirt/vagrant
 export LIBVIRT_DEFAULT_URI=qemu:///system
