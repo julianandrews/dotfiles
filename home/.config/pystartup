@@ -8,9 +8,8 @@ if python_version == 2:
     import os
     import readline
     import rlcompleter
-    import xdg.BaseDirectory
 
-    historyPath = os.path.join(xdg.BaseDirectory.xdg_data_home, 'pyhistory')
+    historyPath = os.path.expanduser("~/.pyhistory")
 
     if os.path.exists(historyPath):
         readline.read_history_file(historyPath)
@@ -22,4 +21,4 @@ if python_version == 2:
 
     readline.parse_and_bind('tab:complete')
 
-    del atexit, os, readline, rlcompleter, xdg, save_history, historyPath
+    del atexit, os, readline, rlcompleter, save_history, historyPath
