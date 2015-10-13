@@ -2,7 +2,7 @@ setup_monitors () {
   hostname=$(hostname)
   if [ "$hostname" = 'orpheus' ]
   then
-    xrandr --output eDP1 --mode 1920x1080 --primary --output VGA1 --preferred --left-of eDP1 &
+    xrandr --output eDP1 --preferred --primary --output HDMI1 --preferred --left-of eDP1 &
   fi
 }
 
