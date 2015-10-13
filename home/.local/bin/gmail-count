@@ -7,7 +7,7 @@ import keyring
 import urllib2
 import xml.etree.ElementTree
 
-SERVICE_NAME = 'gmail-count'
+SERVICE_NAME = 'gmail'
 
 
 def set_password(email_address):
