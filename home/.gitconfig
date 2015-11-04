@@ -1,5 +1,5 @@
 [user]
-	email = jandrews271@gmail.com
+	email = jandrews@fusionbox.com
 	name = Julian Andrews
 [push]
 	default = simple
@@ -7,3 +7,5 @@
 	excludesfile = /home/julian/.gitignore_global
 [pull]
 	rebase = true
+[merge]
+        ff = false
