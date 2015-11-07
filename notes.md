@@ -2,21 +2,21 @@ Packages
 ========
 Packages
 --------
-build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt feh scrot imagemagick iptables-persistent gnupg nmap
+build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt feh scrot imagemagick iptables-persistent gnupg nmap macchanger
 
 libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext
 
 git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-requests python-pygments python-xdg python-xmpp openjdk-8-jre postgresql postgresql-server-dev-9.4 sqlite
 
-lightdm xorg xorg-dev xinput alsa-utils pulseaudio wicd i3 xautolock i3blocks lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client 
+lightdm xorg xorg-dev xinput alsa-utils pulseaudio wicd i3 xautolock i3blocks lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client
 
-xfce4-terminal chromium pepperflashplugin-nonfree kupfer gnumeric iceweasel weechat
+xfce4-terminal chromium pepperflashplugin-nonfree kupfer gnumeric
 
-nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev 
+nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev
 
 Work only
 ---------
-mysql-client mysql-server
+mysql-client mysql-server iceweasel weechat mcabber
 
 Home only
 ---------
