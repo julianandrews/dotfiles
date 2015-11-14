@@ -38,6 +38,8 @@ set mouse=a
 set hlsearch
 set cursorline
 set wildmenu
+set tags=tags
+set completeopt=menu
 hi CursorLine term=NONE cterm=NONE ctermbg=234
 
 " Ack config
@@ -60,15 +62,19 @@ hi SyntasticError ctermbg=118 ctermfg=0
 " CommandT config
 let g:CommandTFileScanner='find'
 
-" Clear trailing whitespace in .py files on save
-autocmd BufWritePre *.py :%s/\s\+$//e
+" YouCompleteMe config
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 
-" Clear trailing whitespace with <F12>
-nnoremap <silent> <F12> :%s/\s\+$//e<cr>
+" Clear trailing whitespace in .py and .js files on save
+autocmd BufWritePre *.py,*.js :%s/\s\+$//e
 
-" Toggle search highlighting on/off
+" Toggle search/syntastic highlighting on/off
 nnoremap <silent> <Leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 
 " Cycle through location list
 nnoremap <silent> <Tab> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
 nnoremap <silent> <S-Tab> :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>llast<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+
+" Build ctags with F12
+noremap <F12> :!ctags -R --fields=+l -f ./tags $VIRTUAL_ENV/lib/python*/site-packages ./<CR>
