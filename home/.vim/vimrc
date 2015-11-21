@@ -28,10 +28,8 @@ syntax on
 set expandtab
 set softtabstop=2 shiftwidth=2
 set number
-set background=dark
 set clipboard^=unnamed
 set backspace=2
-set t_Co=256
 set laststatus=2
 set wildignore+=*.pyc
 set mouse=a
@@ -40,7 +38,10 @@ set cursorline
 set wildmenu
 set tags=tags
 set completeopt=menu
-hi CursorLine term=NONE cterm=NONE ctermbg=234
+
+set t_Co=256
+set background=dark
+highlight CursorLine term=none cterm=none ctermbg=234
 
 " Ack config
 if executable('ag')
