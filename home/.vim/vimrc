@@ -36,7 +36,7 @@ set mouse=a
 set hlsearch
 set cursorline
 set wildmenu
-set tags=tags
+set tags=$VIRTUAL_ENV/tags
 set completeopt=menu
 
 set t_Co=256
@@ -74,4 +74,4 @@ autocmd BufWritePre *.py,*.js :%s/\s\+$//e
 nnoremap <silent> <Leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 
 " Build ctags with F12
-noremap <F12> :!ctags -R --fields=+l -f ./tags $VIRTUAL_ENV/lib/python*/site-packages ./<CR>
+noremap <F12> :!ctags -R --fields=+l --python-kinds=-iv -f $VIRTUAL_ENV/tags $VIRTUAL_ENV/{src,lib/python*/site-packages}<CR>
