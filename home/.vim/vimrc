@@ -80,4 +80,10 @@ let mapleader = "\<space>"
 nnoremap <silent> <leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 
 " Build ctags with F12
-noremap <F12> :!ctags -R --fields=+l --python-kinds=-iv -f ./tags $VIRTUAL_ENV/{src,lib/python*/site-packages}<CR>
+noremap <F12> :!ctags -R --fields=+l --python-kinds=-iv -f ./tags $VIRTUAL_ENV/{src,lib/python*/site-packages}<cr>
+
+" Handicap arrow keys
+map <left> <nop>
+map <right> <nop>
+map <up> <nop>
+map <down> <nop>
