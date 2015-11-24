@@ -77,7 +77,7 @@ noremap <space> <nop>
 let mapleader = "\<space>"
 
 " Toggle search/syntastic highlighting on/off
-nnoremap <silent> <Leader>/ :let @/ = ""<bar>SyntasticReset<cr>
+nnoremap <silent> <leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 
 " Build ctags with F12
 noremap <F12> :!ctags -R --fields=+l --python-kinds=-iv -f ./tags $VIRTUAL_ENV/{src,lib/python*/site-packages}<CR>
