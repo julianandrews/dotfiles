@@ -66,31 +66,27 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+s split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
+bindsym $mod+Shift+w layout stacking
 bindsym $mod+e layout toggle split
+
+# create new split container
+bindsym $mod+s split v
+bindsym $mod+d split h
+
+# focus the parent/child container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-bindsym $mod+d focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
