@@ -1,0 +1,45 @@
+Config {
+  font = "xft:Deja Vu Mono:size=10:antialias=true",
+  additionalFonts = [],
+  borderColor = "black",
+  border = TopB,
+  bgColor = "black",
+  fgColor = "grey",
+  alpha = 255,
+  position = Bottom,
+  textOffset = -1,
+  iconOffset = -1,
+  lowerOnStart = True,
+  pickBroadest = False,
+  persistent = False,
+  hideOnStart = False,
+  iconRoot = ".",
+  allDesktops = True,
+  overrideRedirect = True,
+  commands = [
+    Run StdinReader,
+    Run Network "eth0" [
+      "-t","<action=`wicd-client --no-tray`><dev></action>"
+    ] 10,
+    Run Wireless "wlan0" [
+      "-t","<action=`wicd-client --no-tray`><essid></action>"
+    ] 10,
+    Run Weather "KBDU" [
+      "-t","<action=`xdg-open https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
+      "-L","50","-H","80",
+      "--normal","#FFFF44",
+      "--high","#FF4444",
+      "--low","#4444FF"
+    ] 36000,
+    Run Battery [
+      "-t","<acstatus><left>%",
+      "-L","20","-H","80","--high","green","--low","red",
+      "--","-O","<fc=#FFFF00>⚡</fc>","-i","⚡","-o",""
+    ] 10,
+    Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 60,
+    Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %H:%M</action>" "date" 10
+  ],
+  sepChar = "%",
+  alignSep = "}{",
+  template = "%StdinReader% } { %gmail% | %eth0% %wlan0wi% | %battery% | %KBDU% | %date%"
+}
