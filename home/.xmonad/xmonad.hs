@@ -39,7 +39,7 @@ myManageHook = composeAll
     className =? "chromium-browser" --> viewShift "3",
     manageDocks
   ]
-  where viewShift = doF . liftM2 (.) W.greedyView W.shift
+  where viewShift = doF . liftM2 (.) W.view W.shift
 
 myConfig = defaultConfig {
     modMask = mod4Mask,
