@@ -26,12 +26,6 @@ myKeys =
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh")
-  ] ++ 
-  [
-   (otherModMasks ++ "M-" ++ [key], action tag)
-      | (tag, key)  <- zip myWorkspaces "123456789"
-      , (otherModMasks, action) <- [ ("", windows . W.view) -- was W.greedyView
-                                      , ("S-", windows . W.shift)] 
   ]
 
 myLayouts = tall ||| myTabbed

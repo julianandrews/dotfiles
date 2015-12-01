@@ -83,6 +83,7 @@ Misc Setup
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
 * Run exo-preferred-applications to configure xfce4-terminal link handling
+* xdg-settings set default-web-browser chromium.desktop
 
 Home Computer Specific
 ----------------------
