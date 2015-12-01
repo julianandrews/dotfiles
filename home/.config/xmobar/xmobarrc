@@ -1,5 +1,5 @@
 Config {
-  font = "xft:Deja Vu Mono:size=10:antialias=true",
+  font = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true",
   additionalFonts = [],
   borderColor = "black",
   border = TopB,
