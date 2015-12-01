@@ -18,12 +18,6 @@ Config {
   overrideRedirect = True,
   commands = [
     Run StdinReader,
-    Run Network "eth0" [
-      "-t","<action=`wicd-client --no-tray`><dev></action>"
-    ] 10,
-    Run Wireless "wlan0" [
-      "-t","<action=`wicd-client --no-tray`><essid></action>"
-    ] 10,
     Run Weather "KBDU" [
       "-t","<action=`xdg-open https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
       "-L","50","-H","80","-n","#FFFF44","-h","#FF4444","-l","#4444FF"
@@ -33,10 +27,11 @@ Config {
       "-L","20","-H","80","-h","green","-l","red",
       "--","-O","<fc=#FFFF00>⚡</fc>","-i","⚡","-o",""
     ] 10,
-    Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 60,
+    Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
+    Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
     Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %H:%M</action>" "date" 10
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% } { %gmail% | %eth0% %wlan0wi% | %battery% | %KBDU% | %date%"
+  template = "%StdinReader% } { %gmail% | %netstatus% | %battery% | %KBDU% | %date%"
 }
