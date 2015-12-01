@@ -29,7 +29,7 @@ Config {
     ] 10,
     Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
     Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
-    Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %H:%M</action>" "date" 10
+    Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %l:%M</action>" "date" 10
   ],
   sepChar = "%",
   alignSep = "}{",
