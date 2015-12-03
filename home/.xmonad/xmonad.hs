@@ -25,9 +25,7 @@ myKeys =
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
-    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh"),
-    ("M-0", windows $ W.greedyView "☺"),
-    ("M-S-0", windows $ W.shift "☺")
+    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh")
   ] ++
   [ (otherModMasks ++ "M-" ++ [key], action tag)
       | (tag, key)  <- zip myWorkspaces "1234567890"
