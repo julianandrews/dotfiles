@@ -28,6 +28,11 @@ myKeys =
     ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh"),
     ("M-0", windows $ W.greedyView "☺"),
     ("M-S-0", windows $ W.shift "☺")
+  ] ++
+  [ (otherModMasks ++ "M-" ++ [key], action tag)
+      | (tag, key)  <- zip myWorkspaces "1234567890"
+      , (otherModMasks, action) <- [ ("", windows . W.view)
+                                      , ("S-", windows . W.shift)]
   ]
 
 myLayouts = tall ||| myTabbed
