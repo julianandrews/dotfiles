@@ -14,7 +14,7 @@ import qualified XMonad.StackSet as W
 
 main = xmonad =<< xmobar myConfig
 
-myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 myKeys =
   [
@@ -25,7 +25,9 @@ myKeys =
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
-    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh")
+    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh"),
+    ("M-0", windows $ W.greedyView "0"),
+    ("M-S-0", windows $ W.shift "0")
   ]
 
 myLayouts = tall ||| myTabbed
