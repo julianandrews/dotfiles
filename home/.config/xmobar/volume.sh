@@ -1,6 +1,6 @@
 #~/bin/sh
 PACTL_SCRIPT=/home/julian/.config/xmobar/pulseaudio-ctl
-LOW_VOLUME=35
+LOW_VOLUME=50
 HIGH_VOLUME=100
 
 info=$($PACTL_SCRIPT full-status)
@@ -18,4 +18,4 @@ else
   fi
 fi
 
-echo "<action=\`$PACTL_SCRIPT mute\` button=2><action=\`$PACTL_SCRIPT down\` button=3><action=\`$PACTL_SCRIPT up\` button=1><fc=${color}>♫${volume}</fc></action></action></action>"
+echo "<action=\`$PACTL_SCRIPT mute\` button=2><action=\`$PACTL_SCRIPT down\` button=3><action=\`$PACTL_SCRIPT up\` button=1>♫<fc=${color}>${volume}</fc>%</action></action></action>"
