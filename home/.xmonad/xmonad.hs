@@ -20,9 +20,10 @@ buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
   where
     myPP = xmobarPP {
         ppCurrent = xmobarColor "yellow" "" . wrap "[" "]",
-        ppHiddenNoWindows = xmobarColor "grey" "",
+        ppHiddenNoWindows = \workspaceId -> "",
         ppTitle = xmobarColor "green"  "" . shorten 120,
         ppVisible = wrap "(" ")",
+        ppLayout = \layout -> "<action=xdotool key super+space>" ++ layout ++ "</action>",
         ppUrgent = xmobarColor "red" "yellow"
       }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
