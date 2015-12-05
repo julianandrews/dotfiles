@@ -28,10 +28,11 @@ Config {
       "--","-O","<fc=#FFFF00>⚡</fc>","-i","⚡","-o",""
     ] 10,
     Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
+    Run Com "/home/julian/.config/xmobar/volume.sh" [] "volume" 50,
     Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
     Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %l:%M</action>" "date" 10
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = "%UnsafeStdinReader% } { %gmail% | %netstatus% | %battery% | %KBDU% | %date%"
+  template = "%UnsafeStdinReader% } { %gmail% | %battery% | %netstatus% | %volume% | %KBDU% | %date%"
 }
