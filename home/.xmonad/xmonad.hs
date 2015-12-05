@@ -1,16 +1,19 @@
-import XMonad
 import Control.Monad (liftM2)
+import XMonad
 import XMonad.Layout.Tabbed
-import XMonad.Util.Themes
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Hooks.DynamicLog
 import XMonad.Util.Run (runInTerm)
+import XMonad.Util.Themes
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers 
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.Fullscreen
 import qualified XMonad.StackSet as W
+
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowNavigation
 
 main = do
   config <- buildConfig
@@ -32,7 +35,7 @@ myConfig = defaultConfig {
     modMask = mod4Mask,
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
-    layoutHook = myLayouts,
+    layoutHook = myLayout,
     manageHook = myManageHook,
     focusedBorderColor = "#00FFFF",
     normalBorderColor = "#000000"
@@ -56,7 +59,7 @@ myEventHook = composeAll [
     docksEventHook
   ] 
 
-myLayouts = avoidStruts $ tall ||| myTabbed
+myLayout = avoidStruts $ tall ||| myTabbed
   where
     tall = smartBorders $ Tall 1 (3/100) (1/2)
     myTabbed = renamed [Replace "Tabbed"] . fullscreenFull . noBorders $
