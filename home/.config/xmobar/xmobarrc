@@ -17,7 +17,7 @@ Config {
   allDesktops = True,
   overrideRedirect = True,
   commands = [
-    Run StdinReader,
+    Run UnsafeStdinReader,
     Run Weather "KBDU" [
       "-t","<action=`xdg-open https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
       "-L","50","-H","80","-n","#FFFF44","-h","#FF4444","-l","#4444FF"
@@ -33,5 +33,5 @@ Config {
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% } { %gmail% | %netstatus% | %battery% | %KBDU% | %date%"
+  template = "%UnsafeStdinReader% } { %gmail% | %netstatus% | %battery% | %KBDU% | %date%"
 }
