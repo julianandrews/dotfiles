@@ -12,8 +12,7 @@ import XMonad.Layout.Renamed
 import XMonad.Layout.Fullscreen
 import qualified XMonad.StackSet as W
 
-import XMonad.Layout.SubLayouts
-import XMonad.Layout.WindowNavigation
+import XMonad.Layout.LayoutBuilder
 
 main = do
   config <- buildConfig
@@ -59,14 +58,18 @@ myEventHook = composeAll [
     docksEventHook
   ] 
 
-myLayout = avoidStruts $ tall ||| myTabbed
+myLayout = avoidStruts $ myMain ||| myTabbed
   where
-    tall = smartBorders $ Tall 1 (3/100) (1/2)
     myTabbed = renamed [Replace "Tabbed"] . fullscreenFull . noBorders $
       tabbed shrinkText myTheme
     myTheme = (theme kavonPeacockTheme) {
       fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true"
     }
+    myMain  = 
+      renamed [Replace "Main"] . smartBorders
+        $ layoutN 1 (relBox 0 0 0.5 1) (Just $ relBox 0 0 1 1) Full
+        $ layoutN 1 (relBox 0.5 0 1 0.5) (Just $ relBox 0.5 0 1 1) Full 
+        $ layoutAll (relBox 0.5 0.5 1 1) myTabbed
  
 myManageHook = composeAll [
     className =? "Transmission-gtk" --> doFloat,
