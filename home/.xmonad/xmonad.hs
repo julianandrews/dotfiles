@@ -1,18 +1,19 @@
 import Control.Monad (liftM2)
+
 import XMonad
-import XMonad.Layout.Tabbed
-import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
+import XMonad.StackSet (view, shift)
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
-import XMonad.Util.Themes
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageHelpers 
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Renamed
-import XMonad.Layout.Fullscreen
-import qualified XMonad.StackSet as W
-
-import XMonad.Layout.LayoutBuilder
+import XMonad.Util.Themes (theme, kavonPeacockTheme)
+import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
+import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox)
+import XMonad.Layout.NoBorders (noBorders, smartBorders)
+import XMonad.Layout.Renamed (renamed, Rename(Replace))
+import XMonad.Layout.Fullscreen (
+    fullscreenFull, fullscreenEventHook, fullscreenManageHook
+  )
 
 main = do
   config <- buildConfig
@@ -45,7 +46,7 @@ myWorkspaces = clickable . (map xmobarEscape) $ workspaces
   where
     workspaces = ["✣", "⚙", "★", "4", "5", "6", "7", "8", "✉", "☺"]
     clickable list = [
-        "<action=xdotool key super+" ++ show (i) ++ ">" ++ ws ++ "</action>" |
+        "<action=xdotool key super+" ++ show i ++ ">" ++ ws ++ "</action>" |
           (i, ws) <- zip "1234567890" list
       ]
     xmobarEscape = concatMap doubleLts
@@ -58,13 +59,13 @@ myEventHook = composeAll [
     docksEventHook
   ] 
 
-myLayout = avoidStruts $ myMain ||| myTabbed
+myLayout = avoidStruts $ myMain ||| (noBorders myTabbed)
   where
-    myTabbed = renamed [Replace "Tabbed"] . fullscreenFull . noBorders $
-      tabbed shrinkText myTheme
+    myTabbed = renamed [Replace "Tabbed"] . fullscreenFull
+      $ tabbed shrinkText myTheme
     myTheme = (theme kavonPeacockTheme) {
-      fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true"
-    }
+        fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true"
+      }
     myMain  = 
       renamed [Replace "Main"] . smartBorders
         $ layoutN 1 (relBox 0 0 0.5 1) (Just $ relBox 0 0 1 1) Full
@@ -90,5 +91,8 @@ myKeys = [
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
-      (modMasks, action) <- [("", windows . W.view), ("S-", windows . W.shift)]
+      (modMasks, action) <- [
+          ("", windows . view),
+          ("S-", windows . shift)
+        ]
   ]
