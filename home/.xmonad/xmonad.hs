@@ -68,10 +68,10 @@ myLayout = avoidStruts $ myMain ||| (noBorders myTabbed)
       }
     myMain  = 
       renamed [Replace "Main"] . smartBorders
-        $ layoutN 1 (relBox 0 0 0.5 1) (Just $ relBox 0 0 1 1) Full
-        $ layoutN 1 (relBox 0.5 0 1 0.5) (Just $ relBox 0.5 0 1 1) Full 
-        $ layoutAll (relBox 0.5 0.5 1 1) myTabbed
- 
+        $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) Full
+        $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) Full 
+        $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
+
 myManageHook = composeAll [
     className =? "Transmission-gtk" --> doFloat,
     manageDocks,
