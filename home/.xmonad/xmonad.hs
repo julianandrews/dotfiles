@@ -49,10 +49,9 @@ myWorkspaces = clickable . (map xmobarEscape) $ workspaces
         "<action=xdotool key super+" ++ show i ++ ">" ++ ws ++ "</action>" |
           (i, ws) <- zip "1234567890" list
       ]
-    xmobarEscape = concatMap doubleLts
-      where
-        doubleLts '<' = "<<"
-        doubleLts x   = [x]
+    xmobarEscape = concatMap $ \char -> case char of
+      '<' -> "<<"
+      _ -> [char]
 
 myEventHook = composeAll [
     fullscreenEventHook,
