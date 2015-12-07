@@ -66,14 +66,26 @@ Install with:
 
 Using the https url to clone avoids having to configure ssh keys manually.
 
-Suspend/Shutdown Privileges
+Auto lock on suspend
 ------------------
 Setup with:
 
-    sudo visudo
-    Add
-      julian  ALL = NOPASSWD: /usr/sbin/pm-suspend
-      julian  ALL = NOPASSWD: /sbin/shutdown
+    sudo -e /etc/systemd/system/screen-lock.service
+
+        [Unit]
+        Description=screen-lock
+        Before=sleep.target
+
+        [Service]
+        User=julian
+        Type=forking
+        Environment=DISPLAY=:0
+        ExecStart=/home/julian/.local/bin/screen-lock.sh
+
+        [Install]
+        WantedBy=sleep.target
+
+    sudo systemctl enable screen-lock.service
 
 Misc Setup
 ----------

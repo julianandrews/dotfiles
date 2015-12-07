@@ -79,7 +79,7 @@ myManageHook = composeAll [
   ]
 
 myKeys = [
-    ("<XF86Sleep>", spawn "/home/julian/.local/bin/screen-lock.sh"),
+    ("<XF86Sleep>", spawn "systemctl suspend"),
     ("<XF86HomePage>", spawn "sensible-browser"),
     ("<XF86Mail>", spawn "sensible-browser https://mail.google.com"),
     ("<XF86Calculator>", runInTerm "" "python" ),
