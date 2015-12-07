@@ -83,6 +83,14 @@ nnoremap <silent> <leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 " Build ctags with F12
 noremap <F12> :!ctags -R --fields=+l --python-kinds=-iv -f ./tags $VIRTUAL_ENV/{src,lib/python*/site-packages}<cr>
 
+" Cycle through location list
+nnoremap <silent> <F2> :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>lfirst<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+nnoremap <silent> <F3> :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>llast<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+
+" Cycle through quickfix list
+nnoremap <silent> <F4> :try<bar>cnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>cfirst<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+nnoremap <silent> <F5> :try<bar>cprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<bar>42\):/<bar>clast<bar>catch /^Vim\%((\a\+)\)\=:E776/<bar>endtry<cr>
+
 " Handicap arrow keys
 map <left> <nop>
 map <right> <nop>
