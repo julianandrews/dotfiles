@@ -19,7 +19,7 @@ Config {
   commands = [
     Run UnsafeStdinReader,
     Run Weather "KBDU" [
-      "-t","<action=`xdg-open https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
+      "-t","<action=`sensible-browser https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
       "-L","50","-H","80","-n","#FFFF44","-h","#FF4444","-l","#4444FF"
     ] 36000,
     Run Battery [
@@ -30,7 +30,7 @@ Config {
     Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
     Run Com "/home/julian/.config/xmobar/volume.sh" [] "volume" 10,
     Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
-    Run Date "<action=`xdg-open https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %l:%M</action>" "date" 10
+    Run Date "<action=`sensible-browser https://calendar.google.com && xdotool key 'super+3'`>%a %b %_d %l:%M</action>" "date" 10
   ],
   sepChar = "%",
   alignSep = "}{",

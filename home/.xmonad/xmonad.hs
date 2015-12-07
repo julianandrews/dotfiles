@@ -81,7 +81,7 @@ myManageHook = composeAll [
 myKeys = [
     ("<XF86Sleep>", spawn "/home/julian/.local/bin/screen-lock.sh"),
     ("<XF86HomePage>", spawn "sensible-browser"),
-    ("<XF86Mail>", spawn "xdg-open https://mail.google.com"),
+    ("<XF86Mail>", spawn "sensible-browser https://mail.google.com"),
     ("<XF86Calculator>", runInTerm "" "python" ),
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
