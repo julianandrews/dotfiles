@@ -76,7 +76,7 @@ purpleTheme =
           }
       }
 
-focusedColor = "#814374"
+focusedColor = "#81206D"
 unfocusedColor = "#51A39D"
 
 myLayout = myMain ||| (noBorders myTabbed)
