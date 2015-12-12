@@ -6,7 +6,8 @@ import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
 import XMonad.StackSet (view, shift)
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
-import XMonad.Util.Themes (theme, kavonPeacockTheme)
+import XMonad.Util.Themes
+import XMonad.Layout.Decoration
 import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
 import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox)
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
@@ -37,7 +38,7 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = myLayout,
     manageHook = myManageHook,
-    focusedBorderColor = "#00FFFF",
+    focusedBorderColor = unfocusedColor,
     normalBorderColor = "#000000"
   }
   `additionalKeysP` myKeys
@@ -58,18 +59,35 @@ myEventHook = composeAll [
     docksEventHook
   ] 
 
-myLayout = avoidStruts $ myMain ||| (noBorders myTabbed)
+purpleTheme :: ThemeInfo
+purpleTheme =
+    (TI "" "" "" defaultTheme) {
+        themeName = "Purple Theme",
+        themeAuthor = "Julian Andrews",
+        themeDescription = "Pleasant purple theme",
+        theme = defaultTheme {
+            fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true",
+            activeColor         = focusedColor,
+            activeBorderColor   = focusedColor,
+            activeTextColor     = "#FFFFFF",
+            inactiveColor       = unfocusedColor,
+            inactiveBorderColor = unfocusedColor,
+            inactiveTextColor   = "#222222"
+          }
+      }
+
+focusedColor = "#814374"
+unfocusedColor = "#51A39D"
+
+myLayout = myMain ||| (noBorders myTabbed)
   where
     myTabbed = renamed [Replace "Tabbed"] . fullscreenFull
-      $ tabbed shrinkText myTheme
-    myTheme = (theme kavonPeacockTheme) {
-        fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true"
-      }
+      $ tabbed shrinkText (theme purpleTheme)
     myMain  = 
       renamed [Replace "Main"] . smartBorders
         $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) Full
         $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) Full 
-        $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
+        $ layoutAll (relBox (3/5) (1/2) 1 1) (tabbed shrinkText (theme purpleTheme))
 
 myManageHook = composeAll [
     className =? "Transmission-gtk" --> doFloat,
