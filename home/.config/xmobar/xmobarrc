@@ -25,7 +25,7 @@ Config {
         Run Battery [
             "-t","<acstatus><left>%",
             "-L","20","-H","80","-h","green","-l","red",
-            "--","-O","<fc=#FFFF00>⚡</fc>","-i","⚡","-o",""
+            "--","-O","<fc=#00FF00>⚡</fc>","-i","<fc=#8800FF>⚡</fc>","-o",""
           ] 10,
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
         Run Com "/home/julian/.config/xmobar/volume.sh" [] "volume" 10,
