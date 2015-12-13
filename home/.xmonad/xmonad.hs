@@ -9,7 +9,7 @@ import XMonad.Util.Run (runInTerm)
 import XMonad.Util.Themes
 import XMonad.Layout.Decoration
 import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
-import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox)
+import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.Fullscreen (
@@ -104,7 +104,9 @@ myKeys = [
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
-    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh")
+    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh"),
+    ("M-,", sendMessage $ IncLayoutN (-1)),
+    ("M-.", sendMessage $ IncLayoutN 1)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
