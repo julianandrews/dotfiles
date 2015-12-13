@@ -1,9 +1,11 @@
 import Control.Monad (liftM2)
+import Data.List (isPrefixOf)
 
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
-import XMonad.StackSet (view, shift)
+import XMonad.Hooks.ManageHelpers
+import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
 import XMonad.Util.Themes
@@ -79,22 +81,27 @@ purpleTheme =
 focusedColor = "#81206D"
 unfocusedColor = "#51A39D"
 
-myLayout = myMain ||| (noBorders myTabbed)
+myLayout = myMain ||| myFullscreenTabbed
   where
-    myTabbed = renamed [Replace "Tabbed"] . fullscreenFull
-      $ tabbed shrinkText (theme purpleTheme)
+    myTabbed = tabbed shrinkText (theme purpleTheme)
+    myFullscreenTabbed = noBorders . renamed [Replace "Tabbed"] . fullscreenFull
+      $ myTabbed
     myMain  = 
       renamed [Replace "Main"] . smartBorders
-        $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) Full
-        $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) Full 
-        $ layoutAll (relBox (3/5) (1/2) 1 1) (tabbed shrinkText (theme purpleTheme))
+        $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) myTabbed
+        $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) myTabbed
+        $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
 
 myManageHook = composeAll [
+    role =? "gimp-image-window" --> (ask >>= doF . W.sink),
+    fmap (isPrefixOf "Gimp-") className --> doFloat,
     className =? "Transmission-gtk" --> doFloat,
+    fmap (isPrefixOf "Sgt-") className --> doFloat,
     manageDocks,
     fullscreenManageHook,
     manageHook defaultConfig
   ]
+  where role = stringProperty "WM_WINDOW_ROLE"
 
 myKeys = [
     ("<XF86Sleep>", spawn "systemctl suspend"),
@@ -111,7 +118,7 @@ myKeys = [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
       (modMasks, action) <- [
-          ("", windows . view),
-          ("S-", windows . shift)
+          ("", windows . W.view),
+          ("S-", windows . W.shift)
         ]
   ]
