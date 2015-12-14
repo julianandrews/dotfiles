@@ -3,3 +3,4 @@
 .eslintrc
 .project
 tags
+.cache
