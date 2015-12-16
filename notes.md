@@ -102,6 +102,7 @@ Home Computer Specific
 * Add `acpi_backlight=vendor` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub` and run `sudo update-grub`
 * xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
 * Edit `/etc/pulse/defaul.pa`. Add `load-module module-switch-on-connect` to end.
+* In Weechat `/script install lnotify.py`
 
 Issues
 ======
