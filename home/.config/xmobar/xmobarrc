@@ -21,7 +21,7 @@ Config {
         Run Weather "KBDU" [
             "-t","<action=`sensible-browser https://www.google.com/search?q=weather && xdotool key 'super+3'`><tempF>° F</action>",
             "-L","50","-H","80","-n","#FFFF44","-h","#FF4444","-l","#4444FF"
-          ] 36000,
+          ] 3000,
         Run Battery [
             "-t","<acstatus><left>%",
             "-L","20","-H","80","-h","green","-l","red",
