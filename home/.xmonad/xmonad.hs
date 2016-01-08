@@ -10,7 +10,7 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
 import XMonad.Util.Themes
 import XMonad.Layout.Decoration
-import XMonad.Actions.CycleWS (nextScreen, prevScreen)
+import XMonad.Actions.CycleWS (nextScreen,  swapNextScreen, prevScreen, swapPrevScreen)
 import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
 import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
@@ -116,7 +116,9 @@ myKeys = [
     ("M-,", sendMessage $ IncLayoutN (-1)),
     ("M-.", sendMessage $ IncLayoutN 1),
     ("M-w", prevScreen),
-    ("M-e", nextScreen)
+    ("M-e", nextScreen),
+    ("M-S-w", swapPrevScreen),
+    ("M-S-e", swapNextScreen)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
