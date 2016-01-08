@@ -10,6 +10,7 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
 import XMonad.Util.Themes
 import XMonad.Layout.Decoration
+import XMonad.Actions.CycleWS (nextScreen, prevScreen)
 import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
 import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
 import XMonad.Layout.NoBorders (noBorders, smartBorders)
@@ -27,9 +28,9 @@ buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
     myPP = xmobarPP {
         ppCurrent = xmobarColor "yellow" "" . wrap "[" "]",
         ppHiddenNoWindows = \workspaceId -> "",
-        ppTitle = xmobarColor "green"  "" . shorten 120,
+        ppTitle = xmobarColor "#FF00FF"  "" . shorten 120,
         ppVisible = wrap "(" ")",
-        ppLayout = \layout -> "<action=xdotool key super+space>" ++ layout ++ "</action>",
+        ppLayout = \layout -> xmobarColor "#FF9000" "" $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
         ppUrgent = xmobarColor "red" "yellow"
       }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
@@ -113,12 +114,14 @@ myKeys = [
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "/home/julian/.local/bin/screen-lock.sh"),
     ("M-,", sendMessage $ IncLayoutN (-1)),
-    ("M-.", sendMessage $ IncLayoutN 1)
+    ("M-.", sendMessage $ IncLayoutN 1),
+    ("M-w", prevScreen),
+    ("M-e", nextScreen)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
       (modMasks, action) <- [
-          ("", windows . W.view),
+          ("", windows . W.greedyView),
           ("S-", windows . W.shift)
         ]
   ]

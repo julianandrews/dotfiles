@@ -30,7 +30,7 @@ Config {
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
         Run Com "/home/julian/.config/xmobar/volume.sh" [] "volume" 10,
         Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
-        Run Date "<action=`sensible-browser https://calendar.google.com && xdotool key 'super+3'`><fc=#990099>%a %b %_d %l:%M</fc></action>" "date" 10
+        Run Date "<action=`sensible-browser https://calendar.google.com && xdotool key 'super+3'`><fc=#FF00FF>%a %b %_d %l:%M</fc></action>" "date" 10
       ],
     sepChar = "%",
     alignSep = "}{",
