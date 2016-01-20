@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveDataTypeable #-}
 import Control.Monad (liftM2)
 import Data.List (isPrefixOf)
 
@@ -18,6 +19,8 @@ import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.Fullscreen (
     fullscreenFull, fullscreenEventHook, fullscreenManageHook
   )
+import XMonad.Layout.MultiToggle
+import XMonad.Layout.MultiToggle.Instances
 
 main = do
   config <- buildConfig
@@ -87,8 +90,8 @@ myLayout = myMain ||| myFullscreenTabbed
     myTabbed = tabbed shrinkText (theme purpleTheme)
     myFullscreenTabbed = noBorders . renamed [Replace "Tabbed"] . fullscreenFull
       $ myTabbed
-    myMain  = 
-      renamed [Replace "Main"] . smartBorders
+    myMain = 
+      mkToggle (single MIRROR) . renamed [Replace "Main"] . smartBorders
         $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) myTabbed
         $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) myTabbed
         $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
@@ -118,7 +121,8 @@ myKeys = [
     ("M-w", prevScreen),
     ("M-e", nextScreen),
     ("M-S-w", swapPrevScreen),
-    ("M-S-e", swapNextScreen)
+    ("M-S-e", swapNextScreen),
+    ("M-x", sendMessage $ Toggle MIRROR)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
