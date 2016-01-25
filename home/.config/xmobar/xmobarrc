@@ -34,5 +34,5 @@ Config {
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%date% | %KBDU% } %UnsafeStdinReader% { %gmail% | %volume% | %battery% | %netstatus%"
+    template = "%UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %volume% | %battery% | %netstatus%"
   }
