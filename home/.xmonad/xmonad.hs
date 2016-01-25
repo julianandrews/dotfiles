@@ -26,13 +26,16 @@ main = do
   config <- buildConfig
   xmonad config
 
+myPurple = "#99087B"
+myTeal = "#0CE8D8"
+
 buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
   where
     myPP = xmobarPP {
-        ppCurrent = xmobarColor "yellow" "" . wrap "[" "]",
+        ppCurrent = xmobarColor myTeal "",
         ppHiddenNoWindows = \workspaceId -> "",
-        ppTitle = xmobarColor "#FF00FF"  "" . shorten 120,
-        ppVisible = wrap "(" ")",
+        ppTitle = xmobarColor myTeal "" . shorten 120,
+        ppVisible = xmobarColor myPurple "",
         ppLayout = \layout -> xmobarColor "#FF9000" "" $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
         ppUrgent = xmobarColor "red" "yellow"
       }
@@ -44,8 +47,8 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = myLayout,
     manageHook = myManageHook,
-    focusedBorderColor = unfocusedColor,
-    normalBorderColor = "#000000"
+    focusedBorderColor = myTeal,
+    normalBorderColor = myPurple
   }
   `additionalKeysP` myKeys
 
@@ -73,17 +76,14 @@ purpleTheme =
         themeDescription = "Pleasant purple theme",
         theme = defaultTheme {
             fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true",
-            activeColor         = focusedColor,
-            activeBorderColor   = focusedColor,
-            activeTextColor     = "#FFFFFF",
-            inactiveColor       = unfocusedColor,
-            inactiveBorderColor = unfocusedColor,
-            inactiveTextColor   = "#222222"
+            activeColor         = myTeal,
+            activeBorderColor   = myTeal,
+            activeTextColor     = "#000000",
+            inactiveColor       = myPurple,
+            inactiveBorderColor = myPurple,
+            inactiveTextColor   = "#FFFFFF"
           }
       }
-
-focusedColor = "#81206D"
-unfocusedColor = "#51A39D"
 
 myLayout = myHorizontal ||| myVertical ||| myFullscreenTabbed
   where
