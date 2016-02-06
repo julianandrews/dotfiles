@@ -15,16 +15,18 @@ URxvt.font:                 xft:DejavuSansMono-11
 URxvt.boldFont:             xft:DejavuSansMono-11:style=bold
 URxvt.letterSpace:          -1
 URxvt.intensityStyles:      true
-URxvt.colorUL:              yellow
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher
-URxvt.matcher.button:       1
+URxvt.perl-ext-common:      default,matcher,keyboard-select
 URxvt.urlLauncher:          chromium
+URxvt.matcher.button:       3
+URxvt.keysym.Meta-z:        perl:matcher:list
+URxvt.keysym.Meta-a:        perl:keyboard-select:activate
 
 ! Cursor/Pointer
 URxvt.cursorBlink:          false
 URxvt.cursorUnderline:      false
+URxvt.matcher.rend.0:       Uline fg5
 URxvt.pointerBlank:         false
 
 ! Background
