@@ -11,8 +11,8 @@ URxvt.scrollBar:            false
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt.font:                 xft:DejavuSansMono:pixelsize=14
-URxvt.boldFont:             xft:DejavuSansMono:pixelsize=14
+URxvt.font:                 xft:DejavuSansMono-11
+URxvt.boldFont:             xft:DejavuSansMono-11:style=bold
 URxvt.letterSpace:          -1
 URxvt.intensityStyles:      true
 URxvt.colorUL:              yellow
