@@ -13,6 +13,9 @@ xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics
 # map capslock to escape
 setxkbmap -option caps:escape
 
+# disable bell
+xset b off
+
 # Startup kupfer
 kupfer --no-splash &
 

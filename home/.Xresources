@@ -2,7 +2,7 @@
 URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.urgentOnBell:         true
-URxvt.visualBell:           true
+URxvt.visualBell:           false
 URxvt.loginShell:           false
 URxvt.saveLines:            1000
 URxvt.internalBorder:       0
