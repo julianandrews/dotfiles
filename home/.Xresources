@@ -35,8 +35,8 @@ URxvt.shading:              10
 *foreground:                #9ECFF5
 *background:                #000000
 *cursorColor:               #0D4C80      
-*color0:                    #AA0000
-*color1:                    #00AA00
+*color0:                    #000000
+*color1:                    #AA0000
 *color2:                    #00AA00
 *color3:                    #AA5500
 *color4:                    #0000AA
