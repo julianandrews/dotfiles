@@ -151,6 +151,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 # Solarized dircolors
-eval `dircolors ~/.config/dircolors/dircolors.256dark`
+eval $(dircolors ~/.config/dircolors/dircolors.256dark)
 
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
