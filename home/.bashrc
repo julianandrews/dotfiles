@@ -150,4 +150,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+# Solarized dircolors
+eval $(dircolors ~/.config/dircolors/dircolors.256dark)
+
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin

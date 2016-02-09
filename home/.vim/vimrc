@@ -21,6 +21,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'pangloss/vim-javascript'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,7 +46,7 @@ set completeopt=menu
 
 set t_Co=256
 set background=dark
-highlight CursorLine term=none cterm=none ctermbg=234
+colorscheme solarized
 
 " Ack config
 if executable('ag')
