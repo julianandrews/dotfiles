@@ -85,14 +85,22 @@ nnoremap <silent> <leader>/ :let @/ = ""<bar>SyntasticReset<cr>
 " Build ctags with F12
 noremap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")<cr>
 
-" Cycle through location list
-nnoremap <silent> <F1> :try<bar>:try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E553/<bar>lfirst<bar>catch/^Vim\%((\a\+)\)\=:E776/<bar>endtry<bar>catch /^Vim\%((\a\+)\)\=:E42/<bar>endtry<cr>
-nnoremap <silent> <F2> :try<bar>:try<bar>lprev<bar>catch /^Vim\%((\a\+)\)\=:E553/<bar>llast<bar>catch/^Vim\%((\a\+)\)\=:E776/<bar>endtry<bar>catch /^Vim\%((\a\+)\)\=:E42/<bar>endtry<cr>
+fun! CycleList(nextcom, firstcom)
+    try
+        try
+            execute a:nextcom
+        catch /^Vim\%((\a\+)\)\=:E553/
+            execute a:firstcom
+        catch /^Vim\%((\a\+)\)\=:E776/
+        endtry
+    catch /^Vim\%((\a\+)\)\=:E42/
+    endtry
+endfun
 
-" Cycle through quickfix list
-nnoremap <silent> <F3> :try<bar>:try<bar>cnext<bar>catch /^Vim\%((\a\+)\)\=:E553/<bar>cfirst<bar>catch/^Vim\%((\a\+)\)\=:E776/<bar>endtry<bar>catch /^Vim\%((\a\+)\)\=:E42/<bar>endtry<cr>
-nnoremap <silent> <F4> :try<bar>:try<bar>cprev<bar>catch /^Vim\%((\a\+)\)\=:E553/<bar>clast<bar>catch/^Vim\%((\a\+)\)\=:E776/<bar>endtry<bar>catch /^Vim\%((\a\+)\)\=:E42/<bar>endtry<cr>
-
+nnoremap <silent> <F1> :call CycleList("lnext", "lfirst")<CR>
+nnoremap <silent> <F2> :call CycleList("lprev", "llast")<CR>
+nnoremap <silent> <F3> :call CycleList("cnext", "cfirst")<CR>
+nnoremap <silent> <F4> :call CycleList("cprev", "clast")<CR>
 
 " Handicap arrow keys
 map <left> <nop>
