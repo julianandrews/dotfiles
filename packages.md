@@ -4,7 +4,7 @@ build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar
 
 libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev
 
-git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-requests python-xdg python-xmpp openjdk-8-jre postgresql postgresql-server-dev-9.5 sqlite exuberant-ctags postgis python3.4 python3.4-dev
+git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-requests python-xdg python-xmpp openjdk-8-jre postgresql postgresql-server-dev-9.5 sqlite exuberant-ctags postgis python3.4 python3.4-dev, ghc, hlint
 
 lightdm xorg xorg-dev xinput alsa-utils pulseaudio wicd i3 xautolock i3blocks lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color fonts-hack-otf
 
