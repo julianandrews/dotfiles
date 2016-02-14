@@ -3,19 +3,25 @@ import Control.Monad (liftM2)
 import Data.List (isPrefixOf)
 
 import XMonad
-import XMonad.Hooks.DynamicLog (shorten, statusBar, xmobar, xmobarColor, xmobarPP, PP(..))
+import XMonad.Hooks.DynamicLog (
+        shorten, statusBar, xmobar, xmobarColor, xmobarPP, PP(..)
+    )
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
 import XMonad.Util.Themes (ThemeInfo(..))
 import XMonad.Layout.Decoration (Theme(..), defaultTheme)
-import XMonad.Actions.CycleWS (nextScreen,  swapNextScreen, prevScreen, swapPrevScreen)
+import XMonad.Actions.CycleWS (
+        nextScreen,  swapNextScreen, prevScreen, swapPrevScreen
+    )
 import XMonad.Layout.Tabbed (tabbed, shrinkText)
 import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Actions.NoBorders (toggleBorder)
-import XMonad.Layout.Fullscreen (fullscreenFull, fullscreenEventHook, fullscreenManageHook)
+import XMonad.Layout.Fullscreen (
+        fullscreenFull, fullscreenEventHook, fullscreenManageHook
+    )
 
 import Solarized
 
@@ -30,7 +36,8 @@ buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
         ppHiddenNoWindows = \workspaceId -> "",
         ppTitle = xmobarColor solarizedCyan "" . shorten 120,
         ppVisible = xmobarColor solarizedBase02 "",
-        ppLayout = \layout -> xmobarColor solarizedYellow "" $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
+        ppLayout = \layout -> xmobarColor solarizedYellow ""
+            $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
         ppUrgent = xmobarColor solarizedRed "yellow"
       }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
