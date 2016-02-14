@@ -3,24 +3,19 @@ import Control.Monad (liftM2)
 import Data.List (isPrefixOf)
 
 import XMonad
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicLog (shorten, statusBar, xmobar, xmobarColor, xmobarPP, PP(..))
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
-import XMonad.Hooks.ManageHelpers
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
-import XMonad.Util.Themes
-import XMonad.Layout.Decoration
+import XMonad.Util.Themes (ThemeInfo(..))
+import XMonad.Layout.Decoration (Theme(..), defaultTheme)
 import XMonad.Actions.CycleWS (nextScreen,  swapNextScreen, prevScreen, swapPrevScreen)
-import XMonad.Layout.Tabbed (tabbed, shrinkText, fontName)
+import XMonad.Layout.Tabbed (tabbed, shrinkText)
 import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
-import XMonad.Layout.NoBorders (noBorders, smartBorders)
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
-import XMonad.Layout.Fullscreen (
-    fullscreenFull, fullscreenEventHook, fullscreenManageHook
-  )
-import XMonad.Layout.MultiToggle
-import XMonad.Layout.MultiToggle.Instances
+import XMonad.Actions.NoBorders (toggleBorder)
+import XMonad.Layout.Fullscreen (fullscreenFull, fullscreenEventHook, fullscreenManageHook)
 
 import Solarized
 
@@ -89,15 +84,15 @@ solarizedTheme =
 myLayout = myHorizontal ||| myVertical ||| myFullscreenTabbed
   where
     myTabbed = tabbed shrinkText (theme solarizedTheme)
-    myFullscreenTabbed = noBorders . renamed [Replace "Tabbed"] . fullscreenFull
+    myFullscreenTabbed = renamed [Replace "Tabbed"] . fullscreenFull
       $ myTabbed
     myHorizontal = 
-      renamed [Replace "Horizontal"] . smartBorders
+      renamed [Replace "Horizontal"]
         $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) myTabbed
         $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) myTabbed
         $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
     myVertical =
-      renamed [Replace "Vertical"] . smartBorders
+      renamed [Replace "Vertical"]
         $ layoutN 1 (relBox 0 0 1 (3/5)) (Just $ relBox 0 0 1 1) myTabbed
         $ layoutN 1 (relBox 0 (3/5) (1/2) 1) (Just $ relBox 0 (3/5) 1 1) myTabbed
         $ layoutAll (relBox (1/2) (3/5) 1 1) myTabbed
@@ -129,7 +124,7 @@ myKeys = [
     ("M-e", nextScreen),
     ("M-S-w", swapPrevScreen),
     ("M-S-e", swapNextScreen),
-    ("M-x", sendMessage $ Toggle MIRROR)
+    ("M-a", withFocused toggleBorder)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces "1234567890",
