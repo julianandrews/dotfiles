@@ -91,18 +91,19 @@ solarizedTheme =
 myLayout = myHorizontal ||| myVertical ||| myFullscreenTabbed
   where
     myTabbed = tabbed shrinkText (theme solarizedTheme)
-    myFullscreenTabbed = renamed [Replace "Tabbed"] . fullscreenFull
-      $ myTabbed
+    myFullscreenTabbed = renamed [Replace "Tabbed"] . fullscreenFull $ myTabbed
+    r1 = 3/5
+    r2 = 1/2
     myHorizontal = 
       renamed [Replace "Horizontal"]
-        $ layoutN 1 (relBox 0 0 (3/5) 1) (Just $ relBox 0 0 1 1) myTabbed
-        $ layoutN 1 (relBox (3/5) 0 1 (1/2)) (Just $ relBox (3/5) 0 1 1) myTabbed
-        $ layoutAll (relBox (3/5) (1/2) 1 1) myTabbed
+        $ layoutN 1 (relBox 0 0 r1 1) (Just $ relBox 0 0 1 1) myTabbed
+        $ layoutN 1 (relBox r1 0 1 r2) (Just $ relBox r1 0 1 1) myTabbed
+        $ layoutAll (relBox r1 r2 1 1) myTabbed
     myVertical =
       renamed [Replace "Vertical"]
-        $ layoutN 1 (relBox 0 0 1 (3/5)) (Just $ relBox 0 0 1 1) myTabbed
-        $ layoutN 1 (relBox 0 (3/5) (1/2) 1) (Just $ relBox 0 (3/5) 1 1) myTabbed
-        $ layoutAll (relBox (1/2) (3/5) 1 1) myTabbed
+        $ layoutN 1 (relBox 0 0 1 r1) (Just $ relBox 0 0 1 1) myTabbed
+        $ layoutN 1 (relBox 0 r1 r2 1) (Just $ relBox 0 r1 1 1) myTabbed
+        $ layoutAll (relBox r2 r1 1 1) myTabbed
         
 
 myManageHook = composeAll [
