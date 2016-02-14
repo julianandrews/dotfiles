@@ -74,7 +74,7 @@ solarizedTheme =
         themeAuthor = "Julian Andrews",
         themeDescription = "Theme using Solarized's colors",
         theme = defaultTheme {
-            fontName = "xft:Deja Vu Mono-bold-11",
+            fontName            = "xft:Deja Vu Mono:size=10",
             activeColor         = solarizedCyan,
             activeBorderColor   = solarizedBase03,
             activeTextColor     = solarizedBase03,
