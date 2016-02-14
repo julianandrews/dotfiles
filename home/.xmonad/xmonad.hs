@@ -22,22 +22,21 @@ import XMonad.Layout.Fullscreen (
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 
+import Solarized
+
 main = do
   config <- buildConfig
   xmonad config
 
-myPurple = "#99087B"
-myTeal = "#0CE8D8"
-
 buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
   where
     myPP = xmobarPP {
-        ppCurrent = xmobarColor myTeal "",
+        ppCurrent = xmobarColor solarizedCyan "",
         ppHiddenNoWindows = \workspaceId -> "",
-        ppTitle = xmobarColor myTeal "" . shorten 120,
-        ppVisible = xmobarColor myPurple "",
-        ppLayout = \layout -> xmobarColor "#FF9000" "" $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
-        ppUrgent = xmobarColor "red" "yellow"
+        ppTitle = xmobarColor solarizedCyan "" . shorten 120,
+        ppVisible = xmobarColor solarizedBase02 "",
+        ppLayout = \layout -> xmobarColor solarizedYellow "" $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
+        ppUrgent = xmobarColor solarizedRed "yellow"
       }
     toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
@@ -47,8 +46,8 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = myLayout,
     manageHook = myManageHook,
-    focusedBorderColor = myTeal,
-    normalBorderColor = myPurple
+    focusedBorderColor = solarizedCyan,
+    normalBorderColor = solarizedBase02
   }
   `additionalKeysP` myKeys
 
@@ -68,26 +67,28 @@ myEventHook = composeAll [
     docksEventHook
   ] 
 
-purpleTheme :: ThemeInfo
-purpleTheme =
+solarizedTheme :: ThemeInfo
+solarizedTheme =
     (TI "" "" "" defaultTheme) {
-        themeName = "Purple Theme",
+        themeName = "Solarized Theme",
         themeAuthor = "Julian Andrews",
-        themeDescription = "Pleasant purple theme",
+        themeDescription = "Theme using Solarized's colors",
         theme = defaultTheme {
-            fontName = "xft:Deja Vu Mono:size=10:antialias=true:hinting=true",
-            activeColor         = myTeal,
-            activeBorderColor   = myTeal,
-            activeTextColor     = "#000000",
-            inactiveColor       = myPurple,
-            inactiveBorderColor = myPurple,
-            inactiveTextColor   = "#FFFFFF"
+            fontName = "xft:Deja Vu Mono-bold-11",
+            activeColor         = solarizedCyan,
+            activeBorderColor   = solarizedBase03,
+            activeTextColor     = solarizedBase03,
+            inactiveColor       = solarizedBase02,
+            inactiveBorderColor = solarizedBase03,
+            inactiveTextColor   = solarizedBase00,
+            urgentColor         = solarizedRed,
+            decoHeight          = 27
           }
       }
 
 myLayout = myHorizontal ||| myVertical ||| myFullscreenTabbed
   where
-    myTabbed = tabbed shrinkText (theme purpleTheme)
+    myTabbed = tabbed shrinkText (theme solarizedTheme)
     myFullscreenTabbed = noBorders . renamed [Replace "Tabbed"] . fullscreenFull
       $ myTabbed
     myHorizontal = 

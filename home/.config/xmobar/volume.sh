@@ -10,11 +10,11 @@ if [ "$muted" = 'yes' ]; then
   color="#FF0000"
 else
   if [ "$volume" -le "$LOW_VOLUME" ]; then
-    color="#4444FF"
+    color="#268BD2"
   elif [ "$volume" -gt "$HIGH_VOLUME" ]; then
-    color="#FFA500"
+    color="#CB4B16"
   else
-    color="#00FF00"
+    color="#B58900"
   fi
 fi
 
