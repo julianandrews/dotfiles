@@ -58,9 +58,10 @@ fi
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[00m\]:\[\033[36m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[0m\]:\[\033[36m\]\w\[\033[0m\]\$ '
   else
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;41m\]\w\[\033[00m\]\$ '
+    # PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;41m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\w\[\033[0m\]\$ '
   fi
 else
   if [ -n "${SSH_TTY}" ]; then
@@ -140,7 +141,7 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # Setup git prompt
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
-export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[35m\](%s)\[\033[00m\]\") \$ "
+export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[1;35m\](%s)\[\033[00m\]\") \$ "
 
 # Python tab completion
 export PYTHONSTARTUP=~/.config/pystartup

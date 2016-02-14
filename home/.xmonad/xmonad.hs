@@ -33,10 +33,10 @@ main = do
 buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
   where
     myPP = xmobarPP {
-        ppCurrent = xmobarColor solarizedCyan "",
+        ppCurrent = xmobarColor solarizedMagenta "",
         ppHiddenNoWindows = \workspaceId -> "",
         ppTitle = xmobarColor solarizedCyan "" . shorten 120,
-        ppVisible = xmobarColor solarizedBase02 "",
+        ppVisible = xmobarColor solarizedYellow "",
         ppLayout = \layout -> xmobarColor solarizedYellow ""
             $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
         ppUrgent = xmobarColor solarizedRed "yellow"
