@@ -1,35 +1,8 @@
 Installation/Setup
 ========================
 
-Vim
----
-
-###Compilation
-Install with:
-
-    sudo apt-get remove vim-common vim-tiny
-    apt-get source vim
-    cd vim-*
-    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
-    sudo checkinstall
-    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
-    sudo update-alternatives --set editor /usr/local/bin/vim
-
-###YouCompleteMe
-Install with:
-
-    ~/.vim/bundle/YouCompleteMe/install.sh
-
-###Command-T
-Install with:
-
-    cd ~/.vim/bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-
 Dotfiles
 --------
-Install with:
 
     git clone https://github.com/julianandrews/dotfiles.git
     mv dotfiles ~/.dotfiles
@@ -38,6 +11,41 @@ Install with:
     git remote set-url origin git@github.com:julianandrews/dotfiles.git
 
 Using the https url to clone avoids having to configure ssh keys manually.
+
+Vim
+---
+
+###Installation
+
+    apt-get source vim
+    cd vim-*
+    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
+    sudo apt-get remove vim-common vim-tiny
+    sudo checkinstall
+    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+    sudo update-alternatives --set editor /usr/local/bin/vim
+
+For the `checkinstall` step, setting the package name to `vim-custom` or something like that avoids potential conflicts.
+
+###YouCompleteMe
+
+    ~/.vim/bundle/YouCompleteMe/install.sh
+
+###Command-T
+
+    cd ~/.vim/bundle/command-t/ruby/command-t
+    ruby extconf.rb
+    make
+
+Node + Eslint
+-------------
+
+    curl https://nodejs.org/dist/v5.6.0/node-v5.6.0.tar.gz | tar -xz
+    cd node-v5.6.0/
+    ./configure --prefix=$HOME/.local
+    make
+    make install
+    npm install -g eslint
 
 Auto lock on suspend
 ------------------
@@ -67,11 +75,10 @@ Misc Setup
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
-* xdg-settings set default-web-browser chromium.desktop
+* `xdg-settings set default-web-browser chromium.desktop`
 * In Weechat `/script install lnotify.py`
-* xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
+* `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
-* Installing and uninstall xfce4-terminal may be needed for font configuration. I should figure this out at some point.
 
 Home Computer Specific
 ----------------------
