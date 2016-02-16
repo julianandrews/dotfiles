@@ -7,14 +7,14 @@ info=$($PACTL_SCRIPT full-status)
 volume=$(echo $info | cut -d ' ' -f 1)
 muted=$(echo $info | cut -d ' ' -f 2)
 if [ "$muted" = 'yes' ]; then
-  color="#FF0000"
+  color="#DC322F"
 else
   if [ "$volume" -le "$LOW_VOLUME" ]; then
-    color="#268BD2"
+    color="#6C71C4"
   elif [ "$volume" -gt "$HIGH_VOLUME" ]; then
     color="#CB4B16"
   else
-    color="#B58900"
+    color="#2AA198"
   fi
 fi
 
