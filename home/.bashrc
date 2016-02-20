@@ -58,10 +58,10 @@ fi
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\u@\h\[\033[0m\]:\[\033[36m\]\w\[\033[0m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[32m\]\u@\h\[\033[0m\]:\[\033[36m\]\w\[\033[0m\]\$ '
   else
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;41m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[0;32m\]\w\[\033[0m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\w\[\033[0m\]\$ '
   fi
 else
   if [ -n "${SSH_TTY}" ]; then
