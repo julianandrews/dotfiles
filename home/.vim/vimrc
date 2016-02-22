@@ -81,7 +81,7 @@ autocmd BufWritePre *.py,*.js :%s/\s\+$//e
 noremap <space> <nop>
 let mapleader = "\<space>"
 
-" Toggle search/syntastic highlighting on/off
+" Toggle syntax highlighting
 nnoremap <silent> <leader>/ :noh<cr>
 
 " Syntastic check
@@ -90,6 +90,7 @@ nnoremap <leader>f :SyntasticCheck<cr>
 " Build ctags with F12
 noremap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))") ./<cr>
 
+" Cycle through quickfix/location lists
 fun! CycleList(nextcom, firstcom)
     try
         try
