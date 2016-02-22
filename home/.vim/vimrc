@@ -33,7 +33,7 @@ syntax on
 set expandtab
 set softtabstop=4 shiftwidth=4
 set number
-set clipboard^=unnamed
+set clipboard=unnamedplus
 set backspace=2
 set laststatus=2
 set lazyredraw
@@ -106,6 +106,15 @@ nnoremap <silent> <F1> :call CycleList("lnext", "lfirst")<cr>
 nnoremap <silent> <F2> :call CycleList("lprev", "llast")<cr>
 nnoremap <silent> <F3> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <silent> <F4> :call CycleList("cprev", "clast")<cr>
+
+" Paste from the PRIMARY clipboard (selection) with Shift-Insert
+nnoremap <S-Insert> "*p
+vnoremap <S-Insert> "*p
+inoremap <S-Insert> <C-R>*
+" Alternative mapping, lets see which I use!
+nnoremap <leader>p  "*p
+vnoremap <leader>p "*p
+inoremap <leader>p <C-R>*
 
 " Handicap arrow keys
 map <left> <nop>
