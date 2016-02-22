@@ -113,9 +113,8 @@ nnoremap <S-Insert> "*p
 vnoremap <S-Insert> "*p
 inoremap <S-Insert> <C-R>*
 " Alternative mapping, lets see which I use!
-nnoremap <leader>p  "*p
+nnoremap <leader>p "*p
 vnoremap <leader>p "*p
-inoremap <leader>p <C-R>*
 
 " Handicap arrow keys
 map <left> <nop>
