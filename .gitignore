@@ -1,2 +1,4 @@
 backup_home/*
-home/.vim
+home/.vim/bundle
+home/.vim/spell
+home/.vim/.netrwhist
