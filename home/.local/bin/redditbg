@@ -42,7 +42,6 @@ def load_bad_urls():
 
 def save_bad_urls(data):
     cache_file = os.path.join(get_data_dir(), 'bad_urls')
-    import pdb; pdb.set_trace()
     with open(cache_file, 'w') as f:
         json.dump(data, f)
 
