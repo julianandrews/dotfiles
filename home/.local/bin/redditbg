@@ -1,0 +1,76 @@
+#!/usr/bin/python3
+import io
+import os
+import random
+import requests
+import subprocess
+import xdg.BaseDirectory
+
+from PIL import Image
+
+subreddits = ['EarthPorn', 'SpacePorn', 'EyeCandy', 'NaturePics']
+sub_url = "http://www.reddit.com/r/{}/top.json"
+query_params = {'t': 'day'}
+headers = {'User-Agent': 'linux:redditbg v0.3 (by /u/nolemurs)'}
+
+
+def screen_resolutions():
+    xrandr_lines = subprocess.check_output(
+        ['xrandr', '-q'], universal_newlines=True
+    ).split('\n')
+    lines = [line.strip().split()[0] for line in xrandr_lines if '*' in line]
+    return [map(int, line.split('x')) for line in lines]
+
+
+def get_urls():
+    urls = []
+    for sub in subreddits:
+        url = sub_url.format(sub)
+        response = requests.get(url, params=query_params, headers=headers)
+        response.raise_for_status()
+        listings = response.json()['data']['children']
+        urls.extend([listing['data']['url'] for listing in listings])
+    return urls
+
+
+def fetch_images(urls, number=1):
+    random.shuffle(urls)
+    images = []
+    for url in urls:
+        response = requests.get(url, stream=True, headers=headers)
+        response.raise_for_status()
+        if response.headers['Content-Type'].startswith('image/'):
+            image = Image.open(io.BytesIO(response.content))
+            images.append(image)
+            if len(images) >= number:
+                return images
+
+
+def save_images(images):
+    directory = os.path.join(xdg.BaseDirectory.xdg_data_home, 'redditbg')
+    os.makedirs(directory, exist_ok=True)
+    filenames = []
+    for index, image in enumerate(images):
+        filename = os.path.join(directory, "image-%s.jpg" % image)
+        image.save(filename)
+        filenames.append(filename)
+    return filenames
+
+
+def set_desktop(filenames):
+    subprocess.call(
+        sum((['--bg-fill', filename] for filename in filenames), ['feh'])
+    )
+
+
+def fetch_all_dekstop_images():
+    resolutions = screen_resolutions()
+    urls = get_urls()
+    images = fetch_images(urls, len(resolutions))
+    if images:
+        filenames = save_images(images)
+        set_desktop(filenames)
+
+
+if __name__ == '__main__':
+    fetch_all_dekstop_images()

@@ -70,8 +70,9 @@ Setup with:
 
 Misc Setup
 ----------
-* `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && rm get-pip.py`
+* `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && python3 get-pip.py && rm get-pip.py`
 * `pip install --user virtualenv virtualenvwrapper`
+* `pip3 install --user requests pillow pyxdg`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
 * Set Kupfer style to remove rounded corners
 * Run lxappearance
