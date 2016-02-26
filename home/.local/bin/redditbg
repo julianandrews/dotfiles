@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import io
+import json
 import os
 import random
 import requests
@@ -23,6 +24,29 @@ def screen_resolutions():
     return [map(int, line.split('x')) for line in lines]
 
 
+def get_data_dir():
+    directory = os.path.join(xdg.BaseDirectory.xdg_data_home, 'redditbg')
+    os.makedirs(directory, exist_ok=True)
+    return directory
+
+
+def load_bad_urls():
+    cache_file = os.path.join(get_data_dir(), 'bad_urls')
+    try:
+        with open(cache_file) as f:
+            data = json.load(f)
+    except IOError:
+        data = {}
+    return data
+
+
+def save_bad_urls(data):
+    cache_file = os.path.join(get_data_dir(), 'bad_urls')
+    import pdb; pdb.set_trace()
+    with open(cache_file, 'w') as f:
+        json.dump(data, f)
+
+
 def get_urls():
     urls = []
     for sub in subreddits:
@@ -44,7 +68,10 @@ def preprocess_url(url):
 def fetch_images(urls, number=1, image_acceptable=lambda im, ims: True):
     random.shuffle(urls)
     images = []
+    bad_urls = load_bad_urls()
     for url in map(preprocess_url, urls):
+        if bad_urls.get(url):
+            continue
         response = requests.get(url, stream=True, headers=headers)
         response.raise_for_status()
         if response.headers['Content-Type'].startswith('image/'):
@@ -52,15 +79,18 @@ def fetch_images(urls, number=1, image_acceptable=lambda im, ims: True):
             if image_acceptable(image, images):
                 images.append(image)
                 if len(images) >= number:
-                    return images
+                    break
+        else:
+            bad_urls[url] = True
+    save_bad_urls(bad_urls)
+    return images
 
 
 def save_images(images):
-    directory = os.path.join(xdg.BaseDirectory.xdg_data_home, 'redditbg')
-    os.makedirs(directory, exist_ok=True)
     filenames = []
+    directory = get_data_dir()
     for index, image in enumerate(images):
-        filename = os.path.join(directory, "image-%s.jpg" % image)
+        filename = os.path.join(directory, "image-%s.jpg" % index)
         image.save(filename)
         filenames.append(filename)
     return filenames
@@ -74,14 +104,15 @@ def set_desktop(filenames):
 
 def fetch_all_dekstop_images():
     resolutions = screen_resolutions()
+    screen_count = len(resolutions)
 
     def image_acceptable(image, already_accepted):
         x, y = image.size
         return x > 1200 and y > 1000
 
     urls = get_urls()
-    images = fetch_images(urls, len(resolutions), image_acceptable)
-    if images:
+    images = fetch_images(urls, screen_count, image_acceptable)
+    if len(images) == screen_count:
         filenames = save_images(images)
         set_desktop(filenames)
 
