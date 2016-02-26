@@ -4,13 +4,14 @@ import os
 import random
 import requests
 import subprocess
+import urllib.parse
 import xdg.BaseDirectory
 
 from PIL import Image
 
 subreddits = ['EarthPorn', 'SpacePorn', 'EyeCandy', 'NaturePics']
 sub_url = "http://www.reddit.com/r/{}/top.json"
-query_params = {'t': 'day'}
+query_params = {'t': 'day', 'limit': 100}
 headers = {'User-Agent': 'linux:redditbg v0.3 (by /u/nolemurs)'}
 
 
@@ -33,17 +34,25 @@ def get_urls():
     return urls
 
 
-def fetch_images(urls, number=1):
+def preprocess_url(url):
+    if urllib.parse.urlparse(url).netloc == 'imgur.com':
+        # Fake a .jpg url to get a raw image
+        url = url + '.jpg'
+    return url
+
+
+def fetch_images(urls, number=1, image_acceptable=lambda im, ims: True):
     random.shuffle(urls)
     images = []
-    for url in urls:
+    for url in map(preprocess_url, urls):
         response = requests.get(url, stream=True, headers=headers)
         response.raise_for_status()
         if response.headers['Content-Type'].startswith('image/'):
             image = Image.open(io.BytesIO(response.content))
-            images.append(image)
-            if len(images) >= number:
-                return images
+            if image_acceptable(image, images):
+                images.append(image)
+                if len(images) >= number:
+                    return images
 
 
 def save_images(images):
@@ -65,8 +74,13 @@ def set_desktop(filenames):
 
 def fetch_all_dekstop_images():
     resolutions = screen_resolutions()
+
+    def image_acceptable(image, already_accepted):
+        x, y = image.size
+        return x > 1200 and y > 1000
+
     urls = get_urls()
-    images = fetch_images(urls, len(resolutions))
+    images = fetch_images(urls, len(resolutions), image_acceptable)
     if images:
         filenames = save_images(images)
         set_desktop(filenames)
