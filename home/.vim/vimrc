@@ -70,9 +70,6 @@ hi SyntasticError ctermbg=118 ctermfg=0
 " CommandT config
 let g:CommandTFileScanner='find'
 
-" Enable Braceless
-autocmd FileType python BracelessEnable
-
 " Clear trailing whitespace in .py and .js files on save
 autocmd BufWritePre *.py,*.js :%s/\s\+$//e
 
@@ -85,9 +82,6 @@ nnoremap <silent> <leader>/ :noh<cr>
 
 " Syntastic check
 nnoremap <leader>f :SyntasticCheck<cr>
-
-" Build ctags with F12
-noremap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))") ./<cr>
 
 " Cycle through quickfix/location lists
 fun! CycleList(nextcom, firstcom)
