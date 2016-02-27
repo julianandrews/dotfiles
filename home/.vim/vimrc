@@ -107,16 +107,7 @@ nnoremap <silent> <F2> :call CycleList("lprev", "llast")<cr>
 nnoremap <silent> <F3> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <silent> <F4> :call CycleList("cprev", "clast")<cr>
 
-" Paste from the PRIMARY clipboard (selection) with Shift-Insert
-nnoremap <S-Insert> "*p
-vnoremap <S-Insert> "*p
-inoremap <S-Insert> <C-R>*
-" Alternative mapping, lets see which I use!
+" Paste from PRIMARY buffer
 nnoremap <leader>p "*p
 vnoremap <leader>p "*p
-
-" Handicap arrow keys
-map <left> <nop>
-map <right> <nop>
-map <up> <nop>
-map <down> <nop>
+inoremap <S-Insert> <C-R>*
