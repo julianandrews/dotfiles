@@ -70,9 +70,6 @@ hi SyntasticError ctermbg=118 ctermfg=0
 " CommandT config
 let g:CommandTFileScanner='find'
 
-" YouCompleteMe config
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-
 " Enable Braceless
 autocmd FileType python BracelessEnable
 
