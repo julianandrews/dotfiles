@@ -8,7 +8,7 @@ git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby
 
 lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd xautolock i3lock lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color
 
-chromium pepperflashplugin-nonfree kupfer gnumeric pavucontrol weechat evince
+chromium pepperflashplugin-nonfree kupfer gnumeric pavucontrol weechat evince gimp ffmpeg
 
 nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev
 
@@ -18,7 +18,7 @@ mysql-client mysql-server iceweasel
 
 Home only
 ---------
-electrum gourmet slashem vlc transmission-cli transmission-gtk gimp bluez-firmware pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev qtmobility-dev ffmpeg slashem guvcview easytag sgt-puzzles
+electrum gourmet slashem vlc transmission-cli transmission-gtk bluez-firmware pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev qtmobility-dev slashem guvcview easytag sgt-puzzles
 
 Home only Debs
 --------------
