@@ -1,2 +1,0 @@
-#!/bin/bash
-vim -u ~/.vim/vimrc.more "${1:--}"
