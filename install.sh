@@ -12,9 +12,6 @@ function backup_and_link {
 }
 
 cd home
-find . -path ./.vim -prune -o -type f | while read f; do
+find . -type f | while read f; do
   backup_and_link "$f"
 done
-
-git submodule init
-git submodule update

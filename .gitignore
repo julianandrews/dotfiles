@@ -1,4 +1,1 @@
-backup_home/*
-home/.vim/bundle
-home/.vim/spell
-home/.vim/.netrwhist
+backup_home
