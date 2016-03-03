@@ -61,7 +61,7 @@ Setup with:
         User=julian
         Type=forking
         Environment=DISPLAY=:0
-        ExecStart=/home/julian/.local/bin/screen-lock.sh
+        ExecStart=/home/julian/.local/bin/screen-lock
 
         [Install]
         WantedBy=sleep.target
