@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 ethernet_up=$(cat /sys/class/net/eth0/operstate | grep 'up')
 ssid=$(/sbin/iwgetid -r)
