@@ -72,8 +72,8 @@ if __name__ == '__main__':
         raise parser.error('-s and -d are mutually exclusive')
     elif args.set_pass:
         password = getpass.getpass()
-        keyring.set_password(SERVICE_NAME, email_address, password)
+        keyring.set_password(SERVICE_NAME, args.email_address, password)
     elif args.delete_pass:
-        keyring.delete_password(SERVICE_NAME, email_address)
+        keyring.delete_password(SERVICE_NAME, args.email_address)
     else:
         print(get_mail_count(args.email_address) or '?')
