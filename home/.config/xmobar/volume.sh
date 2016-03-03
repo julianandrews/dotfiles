@@ -1,6 +1,6 @@
 #/usr/bin/env sh
 
-PACTL_SCRIPT=/home/julian/.config/xmobar/pulseaudio-ctl
+PACTL_SCRIPT=/home/julian/.config/xmobar/pulseaudio-ctl.sh
 LOW_VOLUME=50
 HIGH_VOLUME=100
 
