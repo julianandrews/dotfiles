@@ -50,7 +50,8 @@ myConfig = defaultConfig {
     layoutHook = myLayout,
     manageHook = myManageHook,
     focusedBorderColor = solarizedYellow,
-    normalBorderColor = solarizedBase02
+    normalBorderColor = solarizedBase02,
+    borderWidth = 2
   }
   `additionalKeysP` myKeys
 
