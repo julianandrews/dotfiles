@@ -49,7 +49,7 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = myLayout,
     manageHook = myManageHook,
-    focusedBorderColor = solarizedCyan,
+    focusedBorderColor = solarizedYellow,
     normalBorderColor = solarizedBase02
   }
   `additionalKeysP` myKeys
