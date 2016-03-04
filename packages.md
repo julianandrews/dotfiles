@@ -6,7 +6,7 @@ libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev ge
 
 git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-xdg python-xmpp openjdk-8-jre postgresql postgresql-server-dev-9.5 sqlite exuberant-ctags postgis python3.4 python3.4-dev hlint haskell-platform
 
-lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd xautolock i3lock lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color
+lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd xautolock i3lock lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color udevil
 
 chromium pepperflashplugin-nonfree kupfer gnumeric pavucontrol weechat evince gimp ffmpeg
 

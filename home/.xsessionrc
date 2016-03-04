@@ -23,3 +23,5 @@ kupfer --no-splash &
 setup_monitors && ~/.fehbg &
 
 xautolock -time 5 -locker ~/.local/bin/screen-lock &
+
+devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &

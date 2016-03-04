@@ -91,6 +91,5 @@ Issues
 ======
 * install.sh deletes preexisting symlinks
 * orpheus needs auto-lock on sleep fixed
-* udev rule for usb flash drives
 * monitor config keybindings/udev rules
 * xmonad layout resizing
