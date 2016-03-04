@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 image_file=/tmp/screen_lock.png
 scrot -z "$image_file"
