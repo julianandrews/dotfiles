@@ -6,6 +6,7 @@ case $(hostname) in
 esac
 
 full_text=$(~/.local/bin/gmail-count "$email")
+full_text=${full_text:-?}
 
 case $full_text in
   ''|*[!0-9]*) color=\#dc322f ;;
