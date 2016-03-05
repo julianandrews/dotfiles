@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+hostname=$(hostname)
+displays=$(xrandr | grep ' connected' | cut -d ' ' -f 1)
+
+hasdisplay() {
+  echo $displays | grep -q $1
+}
+
+if [ "$hostname" = 'dean' ]
+then
+  if hasdisplay 'LVDS-1'
+  then
+    if hasdisplay 'DP-2'
+    then
+      xrandr --output DP-2 --primary --preferred --output LVDS-1 --preferred --right-of DP-2
+    else
+      xrandr --output LVDS-1 --preferred --output DP-2 --off
+    fi
+  fi
+fi

@@ -1,14 +1,6 @@
-setup_monitors () {
-  hostname=$(hostname)
-  if [ "$hostname" = 'orpheus' ]
-  then
-    xrandr --output eDP1 --preferred --primary --output HDMI1 --preferred --left-of eDP1 &
-  fi
-}
-
 # Configure touchpad
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
-xinput --set-prop --type=int --format=8  'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
+xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
 
 # map capslock to escape
 setxkbmap -option caps:escape
@@ -16,12 +8,14 @@ setxkbmap -option caps:escape
 # disable bell
 xset b off
 
-# Startup kupfer
-kupfer --no-splash &
-
 # Setup monitors and load wallpaper.
-setup_monitors && ~/.fehbg &
+~/.local/bin/set-monitors && ~/.fehbg & disown
 
-xautolock -time 5 -locker ~/.local/bin/screen-lock &
+# Setup autolock
+xautolock -time 5 -locker ~/.local/bin/screen-lock & disown
 
-devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
+# Setup usb automount
+devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" & disown
+
+# Startup kupfer
+kupfer --no-splash & disown
