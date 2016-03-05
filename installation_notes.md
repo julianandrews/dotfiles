@@ -68,19 +68,23 @@ Setup with:
 
     sudo systemctl enable screen-lock.service
 
+Python Packages
+---------------
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py
+    pip install --user virtualenv virtualenvwrapper
+    pip3 install --user requests pillow pyxdg keyring secretstorage pygments
+
+Also install https://github.com/john2x/solarized-pygment
+
 Misc Setup
 ----------
-* `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py`
-* `pip install --user virtualenv virtualenvwrapper`
-* `pip3 install --user requests pillow pyxdg keyring secretstorage pygments`
-* install https://github.com/john2x/solarized-pygment
-* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
-* Set Kupfer style to remove rounded corners
-* Run lxappearance
-* `xdg-settings set default-web-browser chromium.desktop`
-* In Weechat `/script install lnotify.py`
-* `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
+* `xdg-settings set default-web-browser chromium.desktop`
+* `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
+* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
+* Run lxappearance
+* In Weechat `/script install lnotify.py`
 
 Home Computer Specific
 ----------------------
