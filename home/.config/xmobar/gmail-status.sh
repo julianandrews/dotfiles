@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 case $(hostname) in
   orpheus)     email='jandrews@fusionbox.com'; url='https://mail.google.com' ;;
   *)           email='jandrews271@gmail.com'; url='https://inbox.google.com' ;;
 esac
 
-full_text=$(~/.local/bin/gmail-count "$email")
+full_text=$(~/.local/bin/gmailcount "$email")
 full_text=${full_text:-?}
 
 case $full_text in
