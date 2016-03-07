@@ -10,7 +10,7 @@ Config {
     textOffset = -1,
     iconOffset = -1,
     lowerOnStart = True,
-    pickBroadest = True,
+    pickBroadest = False,
     persistent = False,
     hideOnStart = False,
     iconRoot = ".",

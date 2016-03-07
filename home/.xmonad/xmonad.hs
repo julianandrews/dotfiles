@@ -1,47 +1,24 @@
-{-# LANGUAGE DeriveDataTypeable #-}
-import Control.Monad (liftM2)
 import Data.List (isPrefixOf)
 
 import XMonad
-import XMonad.Hooks.DynamicLog (
-        shorten, statusBar, xmobar, xmobarColor, xmobarPP, PP(..)
-    )
-import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook, avoidStruts)
-import qualified XMonad.StackSet as W
+import XMonad.Actions.CycleWS (nextScreen, swapNextScreen, prevScreen, swapPrevScreen)
+import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
+import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Layout.Fullscreen (fullscreenManageHook)
+import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
+import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
-import XMonad.Util.Themes (ThemeInfo(..))
-import XMonad.Layout.Decoration (Theme(..), defaultTheme)
-import XMonad.Actions.CycleWS (
-        nextScreen,  swapNextScreen, prevScreen, swapPrevScreen
-    )
-import XMonad.Layout.Tabbed (tabbed, shrinkText)
-import XMonad.Layout.LayoutBuilder (layoutN, layoutAll, relBox, IncLayoutN(..))
-import XMonad.Layout.Renamed (renamed, Rename(Replace))
-import XMonad.Actions.NoBorders (toggleBorder)
-import XMonad.Layout.Fullscreen (
-        fullscreenFull, fullscreenEventHook, fullscreenManageHook
-    )
 
-import TallTabbed
+import qualified XMonad.StackSet as W
+
+import Layout
 import Solarized
+import StatusBar
 
 main = do
-  config <- buildConfig
+  config <- addStatusBar . ewmh $ myConfig
   xmonad config
-
-buildConfig = statusBar "xmobar" myPP toggleStrutsKey myConfig
-  where
-    myPP = xmobarPP {
-        ppCurrent = xmobarColor solarizedMagenta "",
-        ppHiddenNoWindows = \workspaceId -> "",
-        ppTitle = xmobarColor solarizedCyan "" . shorten 80,
-        ppVisible = xmobarColor solarizedYellow "",
-        ppLayout = \layout -> xmobarColor solarizedYellow ""
-            $ "<action=xdotool key super+space>" ++ layout ++ "</action>",
-        ppUrgent = xmobarColor solarizedRed "yellow"
-      }
-    toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 myConfig = defaultConfig {
     modMask = mod4Mask,
@@ -55,49 +32,26 @@ myConfig = defaultConfig {
   }
   `additionalKeysP` myKeys
 
-myWorkspaces = clickable . (map xmobarEscape) $ workspaces
+myWorkspaceKeys :: String
+myWorkspaceKeys = "1234567890"
+
+myWorkspaces :: [String]
+myWorkspaces = clickable . map xmobarEscape $ workspaces
   where
     workspaces = ["✣", "⚙", "★", "4", "5", "6", "7", "8", "✉", "☺"]
-    clickable list = [
-        "<action=xdotool key super+" ++ show i ++ ">" ++ ws ++ "</action>" |
-          (i, ws) <- zip "1234567890" list
-      ]
-    xmobarEscape = concatMap $ \char -> case char of
-      '<' -> "<<"
-      _ -> [char]
+    clickable = zipWith (addStatusBarAction . ("xdotool key super+" ++) . show) myWorkspaceKeys
+    xmobarEscape = concatMap escapeLT
+    escapeLT '<' = "<<"
+    escapeLT c = [c]
 
 myEventHook = composeAll [
     fullscreenEventHook,
     docksEventHook
   ] 
 
-solarizedTheme :: ThemeInfo
-solarizedTheme =
-    (TI "" "" "" defaultTheme) {
-        themeName = "Solarized Theme",
-        themeAuthor = "Julian Andrews",
-        themeDescription = "Theme using Solarized's colors",
-        theme = defaultTheme {
-            fontName            = "xft:Deja Vu Mono:size=10",
-            activeColor         = solarizedCyan,
-            activeBorderColor   = solarizedBase03,
-            activeTextColor     = solarizedBase03,
-            inactiveColor       = solarizedBase02,
-            inactiveBorderColor = solarizedBase03,
-            inactiveTextColor   = solarizedBase00,
-            urgentColor         = solarizedRed,
-            decoHeight          = 27
-          }
-      }
-
-myLayout = myHorizontal ||| myVertical ||| myFullscreenTabbed
-  where
-    myTabbed = tabbed shrinkText (theme solarizedTheme)
-    myFullscreenTabbed = renamed [Replace "Tabbed"] . fullscreenFull $ myTabbed
-    r1 = 3/5
-    r2 = 1/2
-    myHorizontal = renamed [Replace "Horizontal"] $ horizontal myTabbed 1 1 r1 r2
-    myVertical = renamed [Replace "Vertical"] $ vertical myTabbed 1 1 r1 r2
+myLayout = renamed [Replace "Horizontal"] horizontalTabbed ||| 
+           renamed [Replace "Vertical"] verticalTabbed |||
+           renamed [Replace "Tabbed"] myTabbed
 
 myManageHook = composeAll [
     role =? "gimp-image-window" --> (ask >>= doF . W.sink),
@@ -124,11 +78,10 @@ myKeys = [
     ("M-w", prevScreen),
     ("M-e", nextScreen),
     ("M-S-w", swapPrevScreen),
-    ("M-S-e", swapNextScreen),
-    ("M-a", withFocused toggleBorder)
+    ("M-S-e", swapNextScreen)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
-      (tag, key)  <- zip myWorkspaces "1234567890",
+      (tag, key)  <- zip myWorkspaces myWorkspaceKeys,
       (modMasks, action) <- [
           ("", windows . W.greedyView),
           ("S-", windows . W.shift)
