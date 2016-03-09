@@ -31,7 +31,7 @@ filetype plugin indent on    " required
 
 syntax on
 set expandtab
-set softtabstop=4 shiftwidth=4
+set shiftwidth=2 tabstop=2 softtabstop=2
 set number
 set clipboard=unnamedplus
 set backspace=2

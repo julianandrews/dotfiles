@@ -1,3 +1,5 @@
+setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
 " Enable Braceless for python
 autocmd FileType python BracelessEnable
 
