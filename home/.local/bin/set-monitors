@@ -12,7 +12,7 @@ primary() {
   if [ "$hostname" = 'dean' ]
   then
     hasdisplay 'DP-2' && [ "$1" = 'DP-2' ] && echo -n ' --primary'
-  elif ["$hostname" = 'orpheus' ]
+  elif [ "$hostname" = 'orpheus' ]
   then
     if hasdisplay 'HDMI1'
     then
