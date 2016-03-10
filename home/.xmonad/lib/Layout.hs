@@ -12,9 +12,6 @@ import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Layout.Simplest (Simplest)
 import qualified XMonad.StackSet as W
 
-type MyTabbed = ModifiedLayout (Decoration TabbedDecoration DefaultShrinker) Simplest
-type MixedTabbed = LayoutN MyTabbed (LayoutN MyTabbed (LayoutN MyTabbed Full))
-
 solarizedTheme :: ThemeInfo
 solarizedTheme = TI "Solarized Theme" "Julian Andrews" "Theme using Solarized's colors" (
   defaultTheme {
@@ -44,7 +41,10 @@ vertical baseLayout n1 n2 r1 r2 =
   $ layoutN n2 (relBox 0 r1 r2 1) (Just $ relBox 0 r1 1 1) baseLayout
   $ layoutAll (relBox r2 r1 1 1) baseLayout
 
-myTabbed :: MyTabbed Window
+type MyTabbed = ModifiedLayout (Decoration TabbedDecoration DefaultShrinker) Simplest
+type MixedTabbed = LayoutN MyTabbed (LayoutN MyTabbed (LayoutN MyTabbed Full))
+
+myTabbed :: (Eq a, Read a) => MyTabbed a
 myTabbed = tabbed shrinkText (theme solarizedTheme)
 
 horizontalTabbed :: MixedTabbed Window
@@ -52,18 +52,3 @@ horizontalTabbed = horizontal myTabbed 1 1 (3/5) (1/2)
 
 verticalTabbed :: MixedTabbed Window
 verticalTabbed = vertical myTabbed 1 1 (3/5) (1/2)
-
--- data Experimental a = Experimental {
---         n1 :: Int,
---         n2 :: Int,
---         r1 :: Rational,
---         r2 :: Rational,
---         rInc :: Rational
---     } deriving (Show, Read)
-
--- instance LayoutClass Experimental a where
---     runLayout (W.Workspace wid l ms) = runLayout (W.Workspace wid l' ms)
---         where l' = vertical myTabbed 1 1 (3/5) (1/2)
-
--- experimental :: Experimental a
--- experimental = Experimental 1 1 (3/5) (1/2)
