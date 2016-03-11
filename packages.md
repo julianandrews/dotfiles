@@ -1,6 +1,6 @@
 Shared
 --------
-build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen
+build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen pigz cowsay
 
 libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev
 
