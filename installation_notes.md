@@ -5,34 +5,32 @@ Dotfiles
 --------
 
     git clone https://github.com/julianandrews/dotfiles.git
+    git remote set-url origin git@github.com:julianandrews/dotfiles.git
     mv dotfiles ~/.dotfiles
     cd ~/.dotfiles
     ./install.sh
-    git remote set-url origin git@github.com:julianandrews/dotfiles.git
 
-Using the https url to clone avoids having to configure ssh keys manually.
+Using the https url to clone avoids having to configure ssh just to get the
+dotfiles.
 
 Vim
 ---
 
-###Installation
-
     apt-get source vim
     cd vim-*
-    ./configure --with-features=normal --with-x --enable-multibyte --enable-rubyinterp --enable-pythoninterp --enable-perlinterp --enable-luainterp
+    ./configure --with-features=normal --with-x --enable-multibyte \
+      --enable-rubyinterp --enable-pythoninterp --enable-perlinterp \
+      --enable-luainterp
     sudo apt-get remove vim-common vim-tiny
     sudo checkinstall
     sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
     sudo update-alternatives --set editor /usr/local/bin/vim
 
-For the `checkinstall` step, setting the package name to `vim-custom` or something like that avoids potential conflicts.
-
-###YouCompleteMe
+For the `checkinstall` step, setting the package name to `vim-custom` or
+something like that avoids potential conflicts. After installation run
+`:PluginInstall` in vim, and then from the shell:
 
     ~/.vim/bundle/YouCompleteMe/install.sh
-
-###Command-T
-
     cd ~/.vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
@@ -40,8 +38,8 @@ For the `checkinstall` step, setting the package name to `vim-custom` or somethi
 Node + Eslint
 -------------
 
-    curl https://nodejs.org/dist/v5.6.0/node-v5.6.0.tar.gz | tar -xz
-    cd node-v5.6.0/
+    curl <tarball_url> | tar -xz
+    cd <node_dir>
     ./configure --prefix=$HOME/.local
     make
     make install
@@ -49,7 +47,6 @@ Node + Eslint
 
 Auto lock on suspend
 ------------------
-Setup with:
 
     sudo -e /etc/systemd/system/screen-lock.service
 
@@ -71,11 +68,13 @@ Setup with:
 Python Packages
 ---------------
 
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py --user && python3 get-pip.py --user && rm get-pip.py
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+      && python get-pip.py --user && python3 get-pip.py --user \
+      && rm get-pip.py
     pip install --user virtualenv virtualenvwrapper
     pip3 install --user requests pillow pyxdg pygments gmailcount[secretservice]
 
-Also install https://github.com/john2x/solarized-pygment
+Also install https://github.com/john2x/solarized-pygment to user space.
 
 Monitor Hotplugging
 -------------------
@@ -97,7 +96,8 @@ Misc Setup
 
 Home Computer Specific
 ----------------------
-* Add `acpi_backlight=vendor` to `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub` and run `sudo update-grub`
+* Add `acpi_backlight=vendor` to `GRUB_CMDLINE_LINUX_DEFAULT` in
+  `/etc/default/grub` and run `sudo update-grub`
 * Edit `/etc/pulse/defaul.pa`. Add `load-module module-switch-on-connect` to end.
 
 Issues
