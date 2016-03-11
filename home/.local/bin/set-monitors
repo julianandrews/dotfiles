@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
+home=/home/julian
+
 export DISPLAY=:0.0
-export XAUTHORITY=/home/julian/.Xauthority
+export XAUTHORITY="$home/.Xauthority"
 
 hostname=$(hostname)
 displays=$(xrandr | grep 'connected' | cut -d ' ' -f 1)
@@ -59,3 +61,4 @@ do
 done
 
 xrandr $args
+[ -x "$home/.fehbg" ] && "$home/.fehbg"
