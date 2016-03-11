@@ -79,9 +79,9 @@ Also install https://github.com/john2x/solarized-pygment to user space.
 Monitor Hotplugging
 -------------------
 
-    sudo -e /etc/udev/rules.d/70-monitor-rules
+    sudo -e /etc/udev/rules.d/70-monitor.rules
 
-        SUBSYSTEM=="drm", ACTION=="change, RUN+="/home/julian/.local/bin/set-monitors"
+        SUBSYSTEM=="drm", ACTION=="change", RUN+="/home/julian/.local/bin/set-monitors"
 
     sudo udevadm control --reload-rules
 
