@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+export DISPLAY=:0.0
+export XAUTHORITY=/home/julian/.Xauthority
+
 hostname=$(hostname)
 displays=$(xrandr | grep 'connected' | cut -d ' ' -f 1)
 connected_displays=$(xrandr | grep ' connected' | cut -d ' ' -f 1)

@@ -77,6 +77,15 @@ Python Packages
 
 Also install https://github.com/john2x/solarized-pygment
 
+Monitor Hotplugging
+-------------------
+
+    sudo -e /etc/udev/rules.d/70-monitor-rules
+
+        SUBSYSTEM=="drm", ACTION=="change, RUN+="/home/julian/.local/bin/set-monitors"
+
+    sudo udevadm control --reload-rules
+
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
@@ -94,6 +103,4 @@ Home Computer Specific
 Issues
 ======
 * install.sh deletes preexisting symlinks
-* orpheus needs auto-lock on sleep fixed
-* monitor config keybindings/udev rules
 * xmonad layout resizing
