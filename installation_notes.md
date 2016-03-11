@@ -104,3 +104,4 @@ Issues
 ======
 * install.sh deletes preexisting symlinks
 * xmonad layout resizing
+* Xmonad screen cycling reversed
