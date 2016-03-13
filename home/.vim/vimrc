@@ -71,7 +71,7 @@ hi SyntasticError ctermbg=118 ctermfg=0
 let g:CommandTFileScanner='find'
 
 " Clear trailing whitespace in .py and .js files on save
-autocmd BufWritePre *.py,*.js :%s/\s\+$//e
+autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
 
 " Remap leader key to space
 noremap <space> <nop>
