@@ -46,7 +46,7 @@ set tags=tags
 set completeopt=menu
 
 set undofile
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undodir//
 
 set t_Co=256
 set background=dark
