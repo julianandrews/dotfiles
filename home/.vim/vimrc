@@ -45,6 +45,9 @@ set wildmenu
 set tags=tags
 set completeopt=menu
 
+set undofile
+set undodir=~/.vim/undodir
+
 set t_Co=256
 set background=dark
 colorscheme solarized
@@ -70,7 +73,7 @@ hi SyntasticError ctermbg=118 ctermfg=0
 " CommandT config
 let g:CommandTFileScanner='find'
 
-" Clear trailing whitespace in .py and .js files on save
+" Clear trailing whitespace in selected file types on save
 autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
 
 " Remap leader key to space
