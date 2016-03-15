@@ -6,6 +6,7 @@ import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Layout.Fullscreen (fullscreenManageHook)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
+import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OtherIndicated))
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runInTerm)
@@ -24,7 +25,7 @@ myConfig = defaultConfig {
     modMask = mod4Mask,
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
-    layoutHook = myLayout,
+    layoutHook = lessBorders OtherIndicated $ myLayout,
     manageHook = myManageHook,
     focusedBorderColor = solarizedYellow,
     normalBorderColor = solarizedBase02,
@@ -47,9 +48,9 @@ myWorkspaces = clickable . map xmobarEscape $ workspaces
 myEventHook = composeAll [
     fullscreenEventHook,
     docksEventHook
-  ] 
+  ]
 
-myLayout = renamed [Replace "Horizontal"] horizontalTabbed ||| 
+myLayout = renamed [Replace "Horizontal"] horizontalTabbed |||
            renamed [Replace "Vertical"] verticalTabbed |||
            renamed [Replace "Tabbed"] myTabbed
 
