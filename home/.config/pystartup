@@ -1,24 +1,18 @@
-import sys
+import atexit
+import os
+import readline
+import rlcompleter
 
-python_version = sys.version_info[0]
-del sys
+historyPath = os.path.expanduser("~/.python_history")
 
-if python_version == 2:
-    import atexit
-    import os
+if os.path.exists(historyPath):
+    readline.read_history_file(historyPath)
+
+@atexit.register
+def save_history(historyPath=historyPath):
     import readline
-    import rlcompleter
+    readline.write_history_file(historyPath)
 
-    historyPath = os.path.expanduser("~/.pyhistory")
+readline.parse_and_bind('tab:complete')
 
-    if os.path.exists(historyPath):
-        readline.read_history_file(historyPath)
-
-    @atexit.register
-    def save_history(historyPath=historyPath):
-        import readline
-        readline.write_history_file(historyPath)
-
-    readline.parse_and_bind('tab:complete')
-
-    del atexit, os, readline, rlcompleter, save_history, historyPath
+del atexit, os, readline, rlcompleter, save_history, historyPath
