@@ -1,6 +1,6 @@
 Shared
 --------
-build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen pigz cowsay
+build-essential cmake checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen pigz cowsay smartmontools
 
 libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev
 
@@ -8,7 +8,7 @@ git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby
 
 lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd xautolock i3lock lxappearance faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color udevil
 
-chromium pepperflashplugin-nonfree kupfer gnumeric pavucontrol weechat evince gimp ffmpeg
+chromium pepperflashplugin-nonfree kupfer gnumeric pavucontrol weechat evince gimp ffmpeg gparted
 
 nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev
 
