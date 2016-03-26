@@ -27,13 +27,25 @@ Vim
     sudo update-alternatives --set editor /usr/local/bin/vim
 
 For the `checkinstall` step, setting the package name to `vim-custom` or
-something like that avoids potential conflicts. After installation run
-`:PluginInstall` in vim, and then from the shell:
+something like that avoids potential conflicts.
+
+After installation run `:PluginInstall` in vim, and then from the shell:
 
     ~/.vim/bundle/YouCompleteMe/install.sh
     cd ~/.vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
+
+Python Packages
+---------------
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+      && python get-pip.py --user && python3 get-pip.py --user \
+      && rm get-pip.py
+    pip install --user virtualenv virtualenvwrapper
+    pip3 install --user requests pillow pyxdg pygments gmailcount[secretservice]
+
+Also install https://github.com/john2x/solarized-pygment to user space.
 
 Node + Eslint
 -------------
@@ -65,17 +77,6 @@ Auto lock on suspend
 
     sudo systemctl enable screen-lock.service
 
-Python Packages
----------------
-
-    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-      && python get-pip.py --user && python3 get-pip.py --user \
-      && rm get-pip.py
-    pip install --user virtualenv virtualenvwrapper
-    pip3 install --user requests pillow pyxdg pygments gmailcount[secretservice]
-
-Also install https://github.com/john2x/solarized-pygment to user space.
-
 Monitor Hotplugging
 -------------------
 
@@ -91,8 +92,9 @@ Misc Setup
 * `xdg-settings set default-web-browser chromium.desktop`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
-* Run lxappearance
 * In Weechat `/script install lnotify.py`
+* `mkdir -p ~/.weechat/python/autoload`
+* `ln -s "$(realpath ~/.weechat/python/i3lock_away.py)" ~/.weechat/python/autoload/`
 
 Home Computer Specific
 ----------------------
