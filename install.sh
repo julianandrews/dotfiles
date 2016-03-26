@@ -5,16 +5,21 @@ function backup_and_link {
   source_file="$1"
   rel_path=$(echo $1 | sed 's|'"$dotfile_dir/home"'/||')
   target_file="$HOME/$rel_path"
+  file_backup_dir="$(dirname "$backup_dir/$rel_path")"
   if [ -L "$target_file" ]
   then
-    # I should figure out how to properly backup a symlink
+    real_file="$(readlink -f "$target_file")"
+    if [ "$real_file" != "$source_file" ]
+    then
+      mkdir -p "$file_backup_dir"
+      ln -s "$real_file" "$file_backup_dir/$(basename "$target_file")"
+    fi
     unlink "$target_file"
   fi
   if [ -e "$target_file" ]
   then
-    file_backup_dir="$(dirname "$backup_dir/$rel_path")"
     mkdir -p "$file_backup_dir"
-    mv "$target_file" "$file_backup_dir"
+    mv "$target_file" "$file_backup_dir/"
   fi
   mkdir -p $(dirname $target_file)
   ln -s "$source_file" "$target_file"

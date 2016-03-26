@@ -102,6 +102,5 @@ Home Computer Specific
 
 Issues
 ======
-* install.sh deletes preexisting symlinks
-* xmonad layout resizing
-* Xmonad screen cycling reversed
+* XMonad layout resizing
+* XMonad screen cycling reversed
