@@ -33,7 +33,7 @@ syntax on
 set expandtab
 set shiftwidth=2 tabstop=2 softtabstop=2
 set number
-set clipboard=unnamedplus
+set clipboard=unnamed
 set backspace=2
 set laststatus=2
 set lazyredraw
@@ -105,6 +105,6 @@ nnoremap <silent> <F3> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <silent> <F4> :call CycleList("cprev", "clast")<cr>
 
 " Paste from PRIMARY buffer
-nnoremap <leader>p "*p
-vnoremap <leader>p "*p
-inoremap <S-Insert> <C-R>*
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+inoremap <S-Insert> <C-R>+
