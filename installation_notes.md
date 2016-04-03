@@ -110,6 +110,16 @@ Yubikey
 
   sude udevadm control --reload-rules
 
+Tarsnap
+-------
+
+    sudo -e /etc/cron.daily/tarsnap-backup
+
+        #!/usr/bin/env sh
+        su julian -c /home/julian/.local/bin/tarsnap-backup
+
+    sudo chmod a+x /etc/crond.daily/tarsnap-backup
+
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`

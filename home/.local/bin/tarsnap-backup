@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+backupfile="$(uname -n)-$(date +%Y-%m_%H-%M-%S)"
+tarsnap -c -f "$backupfile" /home/julian/Private /home/julian/Documents /home/julian/Pictures /home/julian/Videos
