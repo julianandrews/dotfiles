@@ -139,4 +139,4 @@ Home Computer Specific
 Issues
 ======
 * XMonad layout resizing
-* XMonad screen cycling reversed
+* Switch to tarsnap write-only key
