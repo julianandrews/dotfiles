@@ -1,7 +1,7 @@
 dotfile_dir=$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)
 
 function backup_and_link {
-  backup_dir="$dotfile_dir/backup-$(date +%Y-%m-%d-%H%M%S)"
+  backup_dir="$dotfile_dir/backup-$(date +%Y-%m-%d_%H-%M-%S)"
   source_file="$1"
   rel_path=$(echo $1 | sed 's|'"$dotfile_dir/home"'/||')
   target_file="$HOME/$rel_path"
