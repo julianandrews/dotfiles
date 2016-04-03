@@ -39,7 +39,7 @@ myWorkspaceKeys = "1234567890"
 myWorkspaces :: [String]
 myWorkspaces = clickable . map xmobarEscape $ workspaces
   where
-    workspaces = ["1", "2", "★", "4", "5", "6", "7", "8", "✉", "☺"]
+    workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
     clickable = zipWith (addStatusBarAction . ("xdotool key super+" ++) . show) myWorkspaceKeys
     xmobarEscape = concatMap escapeLT
     escapeLT '<' = "<<"
