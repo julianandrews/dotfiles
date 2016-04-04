@@ -139,4 +139,3 @@ Home Computer Specific
 Issues
 ======
 * XMonad layout resizing
-* Switch to tarsnap write-only key
