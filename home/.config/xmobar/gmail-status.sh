@@ -10,8 +10,8 @@ full_text=${full_text:-?}
 
 case $full_text in
   ''|*[!0-9]*) color=\#dc322f ;;
-  0)           color=\#888888 ;;
+  0)           color=\#586e75 ;;
   *)           color=\#2AA198 ;;
 esac
 
-echo "<action=\`xdg-open $url\`><fc=$color>✉ $full_text</fc></action>"
+echo "<action=\`xdg-open $url\`><fc=$color><fn=1></fn> $full_text</fc></action>"

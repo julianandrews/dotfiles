@@ -1,10 +1,10 @@
 Config {
     font = "xft:Deja Vu Mono-10.5",
-    additionalFonts = [],
+    additionalFonts = ["xft:FontAwesome-10"],
     borderColor = "black",
     border = TopB,
     bgColor = "black",
-    fgColor = "#93a1a1",
+    fgColor = "#586e75",
     alpha = 255,
     position = Bottom,
     textOffset = -1,
@@ -20,12 +20,12 @@ Config {
         Run UnsafeStdinReader,
         Run Weather "KBDU" [
             "-t","<action=`sensible-browser https://www.google.com/search?q=weather`><tempF>° F</action>",
-            "-L","32","-H","80","-n","#B58900","-h","#DC322F","-l","#268BD2"
+            "-L","35","-H","72","-n","#268bd2","-h","#b58900","-l","#93a1a1"
           ] 3000,
         Run Battery [
-            "-t","<acstatus><left>%",
+            "-t","<acstatus> <left>%",
             "-L","20","-H","80","-h","#268bd2","-l","#dc322f",
-            "--","-O","⚡","-i","<fc=#cb4b16>⚡</fc>","-o",""
+            "--","-O","<fc=#859900><fn=1></fn></fc>","-i","<fc=#6c71c4><fn=1></fn></fc>","-o","<fc=#073642><fn=1></fn></fc>"
           ] 10,
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
         Run Com "/home/julian/.config/xmobar/volume.sh" [] "volume" 10,
@@ -34,5 +34,5 @@ Config {
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = "%UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %volume% | %battery% | %netstatus%"
+    template = " %UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %volume% | %battery% | %netstatus% "
   }
