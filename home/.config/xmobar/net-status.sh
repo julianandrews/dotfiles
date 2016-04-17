@@ -5,7 +5,7 @@ ssid=$(/sbin/iwgetid -r)
 color=\#268bd2
 wifi_text="<fc=#6c71c4><fn=1></fn></fc> $ssid"
 ethernet_text="<fn=1></fn>"
-netdown_text="<fc=$dc322f><fn=1></fn></fc>"
+netdown_text="<fc=#dc322f><fn=1></fn></fc>"
 
 if [ "$ethernet_up" ]
 then
