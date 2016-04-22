@@ -9,13 +9,17 @@ setxkbmap -option caps:escape
 xset b off
 
 # Setup monitors and load wallpaper.
-~/.local/bin/set-monitors && ~/.fehbg & disown
+~/.local/bin/set-monitors && ~/.fehbg &
 
 # Setup autolock
-xautolock -time 5 -locker ~/.local/bin/screen-lock & disown
+xautolock -time 5 -locker ~/.local/bin/screen-lock &
+
+# Setup volume fifo
+[ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe ]
+~/.config/xmobar/volume.sh &
 
 # Setup usb automount
-devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" & disown
+devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
 
 # Startup kupfer
-kupfer --no-splash & disown
+kupfer --no-splash &

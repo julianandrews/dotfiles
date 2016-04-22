@@ -29,11 +29,10 @@ Config {
           ] 10,
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10,
         Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
-        Run Com "/home/julian/.config/xmobar/volume.sh" [] "updatevol" 50,
         Run Date "<action=`sensible-browser https://calendar.google.com`><fc=#d33682>%a %b %_d %l:%M</fc></action>" "date" 10,
         Run PipeReader "/tmp/.volume-pipe" "volume"
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = " %UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %updatevol%%volume% | %battery% | %netstatus% "
+    template = " %UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %volume% | %battery% | %netstatus% "
   }
