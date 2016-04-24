@@ -2,11 +2,14 @@
 xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
 xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
 
-# map capslock to escape
+# Map capslock to escape
 setxkbmap -option caps:escape
 
-# disable bell
+# Disable bell
 xset b off
+
+# Increase keyboard repeat rate
+xset r rate 250 50
 
 # Setup monitors and load wallpaper.
 ~/.local/bin/set-monitors && ~/.fehbg &
