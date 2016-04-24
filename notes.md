@@ -77,6 +77,27 @@ Auto lock on suspend
 
     sudo systemctl enable screen-lock.service
 
+Reset xset options on wake
+--------------------------
+
+    sudo -e /etc/systemd/system/xset-on-wak.service
+
+        [Unit]
+        Description=Reset xset options on wake
+        After=suspend.target
+        After=hibernate.target
+
+        [Service]
+        User=julian
+        Environment=DISPLAY=:0
+        ExecStart=/home/julian/.local/bin/xconfig
+
+        [Install]
+        WantedBy=suspend.target
+        WantedBy=hibernate.target
+
+  sudo systemctl enable xset-on-wake.service
+
 Monitor Hotplugging
 -------------------
 
@@ -139,3 +160,7 @@ Home Computer Specific
 Issues
 ======
 * XMonad layout resizing
+* screen dims on power plug in
+* screen *doesn't* dim on idle
+* No good media key bindings for normal keyboard
+* Missing instructions for brightness control (see /etc/acpi/)
