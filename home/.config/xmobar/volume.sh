@@ -44,4 +44,4 @@ pipe=/tmp/.volume-pipe
 this_script=$(realpath $0)
 [ ! -p "$pipe" ] && mkfifo "$pipe"
 
-echo "<action=\`$this_script mute\` button=2><action=\`$this_script down\` button=3><action=\`$this_script down 1\` button=5><action=\`$this_script up\` button=1><action=\`$this_script up 1\` button=4><fc=${color}>$icon_string ${volume}</fc>%</action></action></action></action></action>" > $pipe
+echo "<action=\`$this_script mute\` button=2><action=\`$this_script down\` button=3><action=\`$this_script down 1\` button=5><action=\`$this_script up\` button=1><action=\`$this_script up 1\` button=4><fc=${color}>$icon_string ${volume}</fc>%</action></action></action></action></action>" > "$pipe"
