@@ -80,7 +80,7 @@ Auto lock on suspend
 Reset xset options on wake
 --------------------------
 
-    sudo -e /etc/systemd/system/xset-on-wak.service
+    sudo -e /etc/systemd/system/xset-on-wake.service
 
         [Unit]
         Description=Reset xset options on wake
