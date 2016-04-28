@@ -78,7 +78,7 @@ autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
 noremap <space> <nop>
 let mapleader = "\<space>"
 
-" FZF!
+" fzf
 nnoremap <leader>t :FZF<cr>
 
 " Toggle syntax highlighting
