@@ -159,4 +159,4 @@ PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
-export FZF_DEFAULT_OPTS='--tiebreak=begin,length,index'
+export FZF_DEFAULT_OPTS='--tiebreak=begin,end,length,index'
