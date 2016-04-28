@@ -155,3 +155,5 @@ fi
 eval $(dircolors ~/.config/dircolors/dircolors.256dark)
 
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

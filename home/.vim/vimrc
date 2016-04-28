@@ -14,7 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'wincent/command-t'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
@@ -47,6 +46,9 @@ set completeopt=menu
 set undofile
 set undodir=~/.vim/undodir//
 
+" fzf!!!
+set rtp+=~/.fzf
+
 set t_Co=256
 set background=dark
 colorscheme solarized
@@ -69,15 +71,15 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_haskell_checkers = ['hlint']
 hi SyntasticError ctermbg=118 ctermfg=0
 
-" CommandT config
-let g:CommandTFileScanner='find'
-
 " Clear trailing whitespace in selected file types on save
 autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
 
 " Remap leader key to space
 noremap <space> <nop>
 let mapleader = "\<space>"
+
+" FZF!
+nnoremap <leader>t :FZF<cr>
 
 " Toggle syntax highlighting
 nnoremap <silent> <leader>/ :noh<cr>
