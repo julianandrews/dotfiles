@@ -19,7 +19,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'pangloss/vim-javascript'
 Plugin 'bling/vim-airline'
-Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
@@ -52,11 +51,6 @@ set rtp+=~/.fzf
 set t_Co=256
 set background=dark
 colorscheme solarized
-
-" Ack config
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 
 " Airline config
 let g:airline_right_sep = '◀'
