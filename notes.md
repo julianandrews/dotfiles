@@ -29,13 +29,6 @@ Vim
 For the `checkinstall` step, setting the package name to `vim-custom` or
 something like that avoids potential conflicts.
 
-After installation run `:PluginInstall` in vim, and then from the shell:
-
-    ~/.vim/bundle/YouCompleteMe/install.sh
-    cd ~/.vim/bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-
 Python Packages
 ---------------
 

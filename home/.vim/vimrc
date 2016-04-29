@@ -1,31 +1,22 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Autoinstall vim-plug if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'scrooloose/syntastic'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'pangloss/vim-javascript'
+Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" manually installed bundles
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'pangloss/vim-javascript'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-
-filetype plugin indent on    " required
-
+filetype plugin indent on
 syntax on
 set expandtab
 set shiftwidth=2 tabstop=2 softtabstop=2
