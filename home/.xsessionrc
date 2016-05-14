@@ -11,6 +11,9 @@ xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics 
 # Setup autolock
 xautolock -time 5 -locker ~/.local/bin/screen-lock &
 
+# urxvt daemon
+urxvtd -q -f -o &
+
 # Setup volume fifo
 [ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe ]
 ~/.config/xmobar/volume.sh &
