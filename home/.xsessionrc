@@ -15,7 +15,7 @@ xautolock -time 5 -locker ~/.local/bin/screen-lock &
 urxvtd -q -f -o &
 
 # Setup volume fifo
-[ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe ]
+[ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe
 ~/.config/xmobar/volume.sh &
 
 # Setup usb automount
