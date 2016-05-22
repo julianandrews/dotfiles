@@ -6,6 +6,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'scrooloose/syntastic'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
@@ -36,12 +37,13 @@ set completeopt=menu
 set undofile
 set undodir=~/.vim/undodir//
 
-" fzf!!!
-set rtp+=~/.fzf
-
 set t_Co=256
 set background=dark
 colorscheme solarized
+
+" Remap leader key to space
+noremap <space> <nop>
+let mapleader = "\<space>"
 
 " Airline config
 let g:airline_right_sep = '◀'
@@ -59,18 +61,15 @@ hi SyntasticError ctermbg=9 ctermfg=0
 " Clear trailing whitespace in selected file types on save
 autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
 
-" Remap leader key to space
-noremap <space> <nop>
-let mapleader = "\<space>"
-
 " fzf
-nnoremap <leader>t :FZF<cr>
+set rtp+=~/.fzf
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>F :GitFiles<cr>
+nnoremap <leader>c :Commits<cr>
+nnoremap <leader>r :History:<cr>
 
 " Toggle syntax highlighting
 nnoremap <silent> <leader>/ :noh<cr>
-
-" Syntastic check
-nnoremap <leader>f :SyntasticCheck<cr>
 
 " Cycle through quickfix/location lists
 fun! CycleList(nextcom, firstcom)
