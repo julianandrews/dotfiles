@@ -1,23 +1,16 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+    *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
+HISTSIZE=5000
+HISTFILESIZE=10000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5000
-HISTFILESIZE=10000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -32,35 +25,23 @@ shopt -s globstar
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+# uncomment the line below to force color if supported
+# force_color_prompt=yes
+if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[32m\]\u@\h\[\033[0m\]:\[\033[36m\]\w\[\033[0m\]\$ '
   else
-    # PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;41m\]\w\[\033[00m\]\$ '
     PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\w\[\033[0m\]\$ '
   fi
 else
@@ -74,41 +55,32 @@ unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+  xterm*|rxvt*)
     if [ -n "${SSH_TTY}" ]; then
       PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     else
       PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\w\a\]$PS1"
     fi
     ;;
-*)
+  *)
     ;;
 esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -122,41 +94,44 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Enable gnome-keyring for ssh keys
+# enable gnome-keyring for ssh keys
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
 fi
 
-# Setup virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/sites
-export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-source ~/.local/bin/virtualenvwrapper.sh
+# setup virtualenvwrapper
+if [ -e ~/.local/bin/virtualenvwrapper.sh ]
+then
+  export WORKON_HOME=$HOME/.virtualenvs
+  export PROJECT_HOME=$HOME/sites
+  export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+  source ~/.local/bin/virtualenvwrapper.sh
+fi
 
-# Setup libvirt/vagrant
+# setup libvirt/vagrant
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
-# Setup git prompt
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[1;35m\](%s)\[\033[00m\]\") \$ "
+# setup git prompt
+if git --version &>/dev/null
+then
+  export GIT_PS1_SHOWDIRTYSTATE=true
+  export GIT_PS1_SHOWUNTRACKEDFILES=true
+  export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[1;35m\](%s)\[\033[00m\]\") \$ "
+fi
 
-# Python tab completion
+# python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-# Ruby gem bin path
+# ruby gem bin path
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
-
-# Solarized dircolors
-eval $(dircolors ~/.config/dircolors/dircolors.256dark)
 
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
-export FZF_DEFAULT_OPTS='--tiebreak=begin,end,length,index'
+export FZF_DEFAULT_OPTS='--tiebreak=end,begin,length,index'
