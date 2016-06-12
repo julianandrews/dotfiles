@@ -8,7 +8,7 @@ git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby
 
 lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring cups cups-client xmonad xmobar xdotool rxvt-unicode-256color udevil kupfer fonts-font-awesome fonts-dejavu
 
-chromium pepperflashplugin-nonfree gnumeric pavucontrol weechat evince gimp ffmpeg gparted
+chromium pepperflashplugin-nonfree gnumeric pavucontrol weechat evince gimp ffmpeg gparted eog
 
 nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev
 
