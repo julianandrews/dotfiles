@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
