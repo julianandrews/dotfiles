@@ -57,16 +57,17 @@ Auto lock on suspend
 
         [Unit]
         Description=screen-lock
-        Before=sleep.target
+        After=suspend.target
 
         [Service]
         User=julian
         Type=forking
         Environment=DISPLAY=:0
         ExecStart=/home/julian/.local/bin/screen-lock
+        StandardOutput=syslog
 
         [Install]
-        WantedBy=sleep.target
+        WantedBy=multi-user.target sleep.target
 
     sudo systemctl enable screen-lock.service
 
@@ -139,7 +140,7 @@ Misc Setup
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
 * `xdg-settings set default-web-browser chromium.desktop`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
-* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under [SeatDefaults]
+* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
 * In Weechat `/script install lnotify.py`
 * `mkdir -p ~/.weechat/python/autoload`
 * `ln -s "$(realpath ~/.weechat/python/i3lock_away.py)" ~/.weechat/python/autoload/`
