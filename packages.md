@@ -10,7 +10,7 @@ lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd wicd-cli xautolock i
 
 chromium pepperflashplugin-nonfree gnumeric pavucontrol weechat evince gimp ffmpeg gparted eog
 
-nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev
+nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev vagrant-libvirt
 
 Work only
 ---------
