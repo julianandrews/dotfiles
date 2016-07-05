@@ -158,3 +158,4 @@ Issues
 * screen *doesn't* dim on idle
 * No good media key bindings for normal keyboard
 * Missing instructions for brightness control (see /etc/acpi/)
+* xmoboar volume script should be run on start
