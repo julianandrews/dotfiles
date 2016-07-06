@@ -106,7 +106,6 @@ then
   export WORKON_HOME=$HOME/.virtualenvs
   export PROJECT_HOME=$HOME/sites
   export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-  export VIRTUALENVWRAPPER_PYTHON=python3
   source ~/.local/bin/virtualenvwrapper.sh
 fi
 
