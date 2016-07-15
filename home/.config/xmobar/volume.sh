@@ -6,6 +6,9 @@ max_volume=150
 increment=${2:-5}
 
 info=$(pacmd list-sinks)
+if [ "$info" == "" ]; then
+  exit 1
+fi
 sink=$(echo "$info" | awk '/\* index:/{ print $3 }')
 volume=$(echo "$info" | grep -A 15 '* index' | awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g')
 muted=$(echo "$info" | grep -A 15 '* index' | awk '/muted:/{ print $2 }')
