@@ -9,7 +9,7 @@ xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics 
 ~/.local/bin/set-monitors && ~/.fehbg &
 
 # Setup autolock
-xautolock -time 5 -locker ~/.local/bin/screen-lock &
+xautolock -time 8 -locker ~/.local/bin/screen-lock &
 
 # urxvt daemon
 urxvtd -q -f -o &
