@@ -138,12 +138,12 @@ Tarsnap
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
-* `xdg-settings set default-web-browser chromium.desktop`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
 * In Weechat `/script install lnotify.py`
 * `mkdir -p ~/.weechat/python/autoload`
 * `ln -s "$(realpath ~/.weechat/python/i3lock_away.py)" ~/.weechat/python/autoload/`
+* add `contrib non-free` to all etc/apt/sources.list lines
 
 Home Computer Specific
 ----------------------
