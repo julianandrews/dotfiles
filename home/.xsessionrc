@@ -1,6 +1,9 @@
 # Configure touchpad
-xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
-xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
+if [ hostname = dean ]
+then
+  xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
+  xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
+fi
 
 # xset and setxkbmap commands
 ~/.local/bin/xconfig
@@ -16,10 +19,10 @@ urxvtd -q -f -o &
 
 # Setup volume fifo
 [ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe
-~/.config/xmobar/volume.sh &
+~/.config/xmobar/volume.sh > /dev/null &
 
 # Setup usb automount
 devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
 
 # Startup kupfer
-kupfer --no-splash &
+kupfer --no-splash > /dev/null &
