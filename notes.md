@@ -36,7 +36,7 @@ Python Packages
       python3 get-pip.py --user && \
       python2 get-pip.py --user && rm get-pip.py
     python2 -m pip install --user notify2 virtualenv virtualenvwrapper
-    python3 -m pip install --user bpython gmailcount[secretservice] pillow pygments pyxdg requests
+    python3 -m pip install --user bpython gmailcount[secretservice] pillow pygments pyxdg requests six
 
 Also install https://github.com/john2x/solarized-pygment to user space (python3).
 
@@ -138,6 +138,7 @@ Tarsnap
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
+* `sude update-alternatives --set x-www-browser /usr/bin/chromium`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
 * In Weechat `/script install lnotify.py`
