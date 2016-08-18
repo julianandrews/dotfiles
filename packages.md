@@ -14,7 +14,7 @@ nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt
 
 Work only
 ---------
-mysql-client mysql-server iceweasel
+mysql-client mysql-server iceweasel libmysqlclient-dev
 
 Home only
 ---------
