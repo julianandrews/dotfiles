@@ -13,7 +13,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'pangloss/vim-javascript'
-Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
@@ -44,10 +43,6 @@ colorscheme solarized
 " Remap leader key to space
 noremap <space> <nop>
 let mapleader = "\<space>"
-
-" Airline config
-let g:airline_right_sep = '◀'
-let g:airline_left_sep = '▶'
 
 " Syntastic config
 let g:syntastic_aggregate_errors = 1
