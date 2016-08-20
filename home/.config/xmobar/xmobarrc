@@ -20,10 +20,6 @@ Config {
         Run UnsafeStdinReader,
         Run Date "<action=`sensible-browser https://calendar.google.com`><fc=#d33682>%a %b %_d %l:%M</fc></action>" "date" 10,
         Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
-        Run Weather "KBDU" [
-            "-t","<action=`sensible-browser https://www.google.com/search?q=weather`><tempF>° F</action>",
-            "-L","35","-H","72","-n","#268bd2","-h","#b58900","-l","#93a1a1"
-          ] 3000,
         Run PipeReader "/tmp/.volume-pipe" "volume",
         Run Battery [
             "-t","<acstatus> <left>%",
@@ -34,5 +30,5 @@ Config {
       ],
     sepChar = "%",
     alignSep = "}{",
-    template = " %UnsafeStdinReader% } %date% { %gmail% | %KBDU% | %volume% | %battery% | %netstatus% "
+    template = " %UnsafeStdinReader% } %date% { %gmail% | %volume% | %battery% | %netstatus% "
   }
