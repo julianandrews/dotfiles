@@ -5,7 +5,7 @@ case $(hostname) in
   *)           email='jandrews271@gmail.com'; url='https://inbox.google.com' ;;
 esac
 
-full_text=$(~/.local/bin/gmailcount "$email")
+full_text=$(~/.local/bin/gmailcount -t 0.3 "$email")
 full_text=${full_text:-?}
 
 case $full_text in
