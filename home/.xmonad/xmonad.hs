@@ -26,11 +26,14 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = lessBorders OtherIndicated myLayout,
     manageHook = myManageHook,
+    startupHook = myStartupHook,
     focusedBorderColor = solarizedYellow,
     normalBorderColor = solarizedBase02,
     borderWidth = 2
   }
   `additionalKeysP` myKeys
+
+myStartupHook = spawn "/home/julian/.config/xmobar/volume.sh"
 
 myWorkspaceKeys :: String
 myWorkspaceKeys = "1234567890"

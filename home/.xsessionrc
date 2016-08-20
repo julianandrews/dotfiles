@@ -17,10 +17,6 @@ xautolock -time 8 -locker ~/.local/bin/screen-lock &
 # urxvt daemon
 urxvtd -q -f -o &
 
-# Setup volume fifo
-[ -p /tmp/.volume-pipe ] || mkfifo /tmp/.volume-pipe
-~/.config/xmobar/volume.sh > /dev/null &
-
 # Setup usb automount
 devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
 
