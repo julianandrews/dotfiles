@@ -1,34 +1,24 @@
 Config {
     font = "xft:Deja Vu Mono-10.5",
     additionalFonts = ["xft:FontAwesome-10"],
-    borderColor = "black",
-    border = TopB,
-    bgColor = "black",
+    bgColor = "#000000",
     fgColor = "#586e75",
     alpha = 255,
     position = Bottom,
-    textOffset = -1,
-    iconOffset = -1,
-    lowerOnStart = True,
-    pickBroadest = False,
-    persistent = False,
-    hideOnStart = False,
-    iconRoot = ".",
-    allDesktops = True,
-    overrideRedirect = True,
     commands = [
         Run UnsafeStdinReader,
-        Run Date "<action=`sensible-browser https://calendar.google.com`><fc=#d33682>%a %b %_d %l:%M</fc></action>" "date" 10,
-        Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 300,
+        Run Date "<fc=#d33682>%a %b %_d %l:%M</fc>" "date" 10,
+        Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 30,
         Run PipeReader "/tmp/.volume-pipe" "volume",
         Run Battery [
             "-t","<acstatus> <left>%",
             "-L","20","-H","80","-h","#268bd2","-l","#dc322f",
-            "--","-O","<fc=#859900><fn=1></fn></fc>","-i","<fc=#6c71c4><fn=1></fn></fc>","-o","<fc=#073642><fn=1></fn></fc>"
+            "--",
+            "-O","<fc=#859900><fn=1></fn></fc>",
+            "-i","<fc=#6c71c4><fn=1></fn></fc>",
+            "-o","<fc=#073642><fn=1></fn></fc>"
           ] 10,
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10
       ],
-    sepChar = "%",
-    alignSep = "}{",
     template = " %UnsafeStdinReader% } %date% { %gmail% | %volume% | %battery% | %netstatus% "
   }
