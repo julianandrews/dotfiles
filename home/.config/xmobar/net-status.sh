@@ -14,4 +14,4 @@ else
   [ ! "$ssid" ] && full_text="$netdown_text" || full_text="$wifi_text"
 fi
 
-echo "<action=\`wicd-client --no-tray &> /dev/null\`><fc=$color>$full_text</fc></action>"
+echo "<action=\`x-terminal-emulator -e wicd-curses\`><fc=$color>$full_text</fc></action>"
