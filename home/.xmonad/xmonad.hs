@@ -33,7 +33,9 @@ myConfig = defaultConfig {
   }
   `additionalKeysP` myKeys
 
-myStartupHook = spawn "/home/julian/.config/xmobar/volume.sh"
+myStartupHook = do
+  spawn "/home/julian/.config/xmobar/volume.sh"
+  spawn "/home/julian/.config/xmobar/gmail-status.sh"
 
 myWorkspaceKeys :: String
 myWorkspaceKeys = "1234567890"
