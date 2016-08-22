@@ -13,8 +13,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 Plug 'hynek/vim-python-pep8-indent'
+
 Plug 'ternjs/tern_for_vim'
 Plug 'pangloss/vim-javascript'
+Plug 'stephpy/vim-yaml'
+Plug 'saltstack/salt-vim'
+Plug 'glench/vim-jinja2-syntax'
 call plug#end()
 
 filetype plugin indent on
