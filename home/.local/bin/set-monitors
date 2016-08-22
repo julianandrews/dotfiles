@@ -19,12 +19,12 @@ primary() {
     hasdisplay 'DP-2' && [ "$1" = 'DP-2' ] && echo -n ' --primary'
   elif [ "$hostname" = 'orpheus' ]
   then
-    if hasdisplay 'HDMI1'
+    if hasdisplay 'HDMI-1'
     then
-      [ "$1" = 'HDMI1' ] && echo -n ' --primary'
-    elif hasdisplay 'VGA1'
+      [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
+    elif hasdisplay 'VGA-1'
     then
-      [ "$1" = 'VGA1' ] && echo -n ' --primary'
+      [ "$1" = 'VGA-1' ] && echo -n ' --primary'
     fi
   fi
 }
@@ -35,19 +35,19 @@ positioning() {
     [ "$1" = 'LVDS-1' ] && hasdisplay 'DP-2' && echo -n ' --right-of DP-2'
   elif [ "$hostname" = 'orpheus' ]
   then
-    if hasdisplay 'HDMI1'
+    if hasdisplay 'HDMI-1'
     then
-      [ "$1" = 'VGA1' ] && echo -n ' --right-of HDMI1'
-      [ "$1" = 'HDMI1' ] && hasdisplay 'eDP1' && echo -n ' --right-of eDP1'
-    elif hasdisplay 'VGA1'
+      [ "$1" = 'VGA-1' ] && echo -n ' --right-of HDMI-1'
+      [ "$1" = 'HDMI-1' ] && hasdisplay 'eDP-1' && echo -n ' --right-of eDP-1'
+    elif hasdisplay 'VGA-1'
     then
-      [ "$1" = 'VGA1' ] && hasdisplay 'eDP1' && echo -n ' --right-of eDP1'
+      [ "$1" = 'VGA-1' ] && hasdisplay 'eDP-1' && echo -n ' --right-of eDP-1'
     fi
   fi
 }
 
 rotation() {
-  [ "$hostname" = 'orpheus' ] && [ "$1" = 'HDMI1' ] && echo -n ' --rotate left'
+  [ "$hostname" = 'orpheus' ] && [ "$1" = 'HDMI-1' ] && echo -n ' --rotate left'
 }
 
 modifiers() {
