@@ -108,3 +108,6 @@ nnoremap <silent> <F4> :call CycleList("cprev", "clast")<cr>
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 inoremap <S-Insert> <C-R>+
+
+" Use htmldjango by default for html files
+au BufNewFile,BufRead *.html set filetype=htmldjango
