@@ -8,7 +8,7 @@ Config {
     commands = [
         Run UnsafeStdinReader,
         Run Date "<fc=#d33682>%a %b %_d %l:%M</fc>" "date" 10,
-        Run Com "/home/julian/.config/xmobar/gmail-status.sh" [] "gmail" 200,
+        Run Com "/home/julian/.config/xmobar/gmail-status.sh" ["15"] "gmail" 200,
         Run PipeReader "/tmp/.volume-pipe" "volume",
         Run Battery [
             "-t","<acstatus> <left>%",
