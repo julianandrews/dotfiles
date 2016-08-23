@@ -8,6 +8,10 @@ case $(hostname) in
   *)           email='jandrews271@gmail.com'; url='https://inbox.google.com' ;;
 esac
 
+echo_status() {
+  echo "<action=\`xdg-open $url\`><fc=$2><fn=1></fn> $1</fc></action>"
+}
+
 write_to_fifo() {
   full_text=$("$gmailcount" "$email")
   full_text=${full_text:-?}
@@ -18,9 +22,10 @@ write_to_fifo() {
     *)           color=\#2AA198 ;;
   esac
 
-  echo "<action=\`xdg-open $url\`><fc=$color><fn=1></fn> $full_text</fc></action>" > "$pipe"
+  echo_status "$full_text" "$color" > "$pipe"
 }
 
 [ ! -p "$pipe" ] && mkfifo "$pipe"
-dd if="$pipe" iflag=nonblock 2>/dev/null | tail -n1
+output=$(dd if="$pipe" iflag=nonblock 2>/dev/null | tail -n1 | xargs)
+[ -z "$output" ] && echo_status "?" \#dc233f || echo "$output"
 write_to_fifo &
