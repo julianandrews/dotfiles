@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-PIPE=/tmp/.gmail-pipe
-LOCK=/tmp/.gmail-pipe-lock
+STATUSFILE=/tmp/.gmail-status
 GMAILCOUNT=/home/julian/.local/bin/gmailcount
 SLEEPTIME=${1:-0}
 
@@ -10,21 +9,11 @@ case $(hostname) in
   *)           EMAIL='jandrews271@gmail.com'; URL='https://inbox.google.com' ;;
 esac
 
-release_lock() {
-  rm -f "$LOCK"
-}
-
-get_lock() {
-  [ -e "$LOCK" ] && kill -0 "$(<$LOCK)" 2>/dev/null || release_lock
-  [ ! -e "$LOCK" ] && echo "$$" > "$LOCK" || return 1
-}
-
 echo_status() {
   echo "<action=\`xdg-open $URL\`><fc=$2><fn=1></fn> $1</fc></action>"
 }
 
-write_to_fifo() {
-  get_lock || return 1
+write_data() {
   sleep "$SLEEPTIME"
   full_text=$("$GMAILCOUNT" "$EMAIL")
   full_text=${full_text:-?}
@@ -35,11 +24,11 @@ write_to_fifo() {
     *)           color=\#2AA198 ;;
   esac
 
-  echo_status "$full_text" "$color" > "$PIPE"
-  release_lock
+  echo_status "$full_text" "$color" > "$STATUSFILE"
 }
 
-[ ! -p "$PIPE" ] && mkfifo "$PIPE"
-output=$(dd if="$PIPE" iflag=nonblock 2>/dev/null | tail -n1 | xargs)
+touch "$STATUSFILE"
+output=$(cat "$STATUSFILE")
 [ ! -z "$output" ] && echo "$output" || echo_status "?" \#6c71c4
-write_to_fifo &
+> "$STATUSFILE"
+write_data &
