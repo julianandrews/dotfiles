@@ -44,16 +44,21 @@ set t_Co=256
 set background=dark
 colorscheme solarized
 
+function! VirtualenvName()
+  let l:parts = split($VIRTUAL_ENV, "/")
+  return len(l:parts) > 0 ? l:parts[-1] : ""
+endfunction
+
 " Status Line
-set statusline=%<                                                            "Truncation Point
-set statusline+=%1*%h%r%w%m%*\                                               "Flags
-set statusline+=%f\                                                          "File Name
-set statusline+=%2*%y%*\                                                     "File Type
-set statusline+=%3*[%{fugitive#head()}]%*\                                   "Git Branch
-set statusline+=%4*[%{system('echo\ -n\ $(basename\ \"$VIRTUAL_ENV\")')}]%*  "Virtualenv
-set statusline+=%=                                                           "Right Align
-set statusline+=%l:%c\                                                       "Row and Column
-set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*                  "Syntastic
+set statusline=%<                                           "Truncation Point
+set statusline+=%1*%h%r%w%m%*\                              "Flags
+set statusline+=%f\                                         "File Name
+set statusline+=%2*%y%*\                                    "File Type
+set statusline+=%3*[%{fugitive#head()}]%*\                  "Git Branch
+set statusline+=%4*[%{VirtualenvName()}]%*                  "Virtualenv
+set statusline+=%=                                          "Right Align
+set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%* "Syntastic
+set statusline+=%l:%c\                                      "Row and Column
 
 set laststatus=2
 hi StatusLine ctermbg=6 ctermfg=0
