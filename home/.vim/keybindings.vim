@@ -5,6 +5,7 @@ let mapleader = "\<space>"
 " fzf
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :GitFiles<cr>
+nnoremap <leader>g :Buffers<cr>
 nnoremap <leader>c :Commits<cr>
 nnoremap <leader>r :History:<cr>
 
