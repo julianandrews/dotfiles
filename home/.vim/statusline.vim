@@ -11,8 +11,25 @@ function! VirtualenvStatus()
 endfunction
 
 function! GitStatus()
-  return StatusFormat(fugitive#head())
+  if exists("b:gitstatus")
+    return StatusFormat(b:gitstatus)
+  else
+    return ""
+  endif
+  " return StatusFormat(fugitive#head())
 endfunction
+
+function! SetGitStatus()
+  let l:gitstatus = system('bash -c "source /usr/lib/git-core/git-sh-prompt && cd ' . expand('%:p:h') . ' && __git_ps1"')
+  let l:length = len(l:gitstatus)
+  if l:length > 0
+    let b:gitstatus = strpart(l:gitstatus, 2, l:length - 3)
+  else
+    let b:gitstatus = ""
+  endif
+endfunction
+
+autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * call SetGitStatus()
 
 " Status Line
 set statusline=%<\                                          "Truncation Point
@@ -31,4 +48,3 @@ hi User1 ctermbg=0 ctermfg=1
 hi User2 ctermbg=0 ctermfg=2
 hi User3 ctermbg=0 ctermfg=5
 hi User4 ctermbg=0 ctermfg=3
-
