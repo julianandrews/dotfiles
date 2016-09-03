@@ -32,8 +32,8 @@ endfunction
 autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * call SetGitStatus()
 
 " Status Line
-set statusline=%<\                                          "Truncation Point
-set statusline+=%1*%h%r%w%m%*\                              "Flags
+set statusline=%<                                           "Truncation Point
+set statusline+=%1*%h%r%w%m%*                               "Flags
 set statusline+=%f\                                         "File Name
 set statusline+=%2*%{FiletypeStatus()}%*                    "File Type
 set statusline+=%3*%{GitStatus()}%*                         "Git Branch
