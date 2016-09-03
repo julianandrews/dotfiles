@@ -8,7 +8,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/syntastic'
-Plug 'valloric/youcompleteme', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
