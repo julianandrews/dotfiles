@@ -6,7 +6,7 @@ checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silverse
 
 git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-xdg python-xmpp python3-dbus default-jre postgresql postgresql-server-dev-all sqlite exuberant-ctags postgis hlint
 
-lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd wicd-curses xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring cups cups-client hplip xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color udevil kupfer fonts-font-awesome fonts-dejavu
+lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd wicd-curses xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring cups cups-client hplip xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color udevil kupfer fonts-font-awesome fonts-dejavu dunst
 
 chromium pepperflashplugin-nonfree gnumeric pavucontrol weechat evince gimp libav-tools gparted eog
 
