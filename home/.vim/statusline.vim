@@ -29,7 +29,7 @@ function! SetGitStatus()
   endif
 endfunction
 
-autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * call SetGitStatus()
+autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * silent! call SetGitStatus()
 
 " Status Line
 set statusline=%<                                           "Truncation Point
