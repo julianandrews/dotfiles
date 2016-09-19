@@ -3,3 +3,4 @@
 .project
 tags
 .cache
+requirements.dev*
