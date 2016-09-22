@@ -18,9 +18,7 @@ Vim
 
     apt-get source vim
     cd vim-*
-    ./configure --with-features=normal --with-x --enable-multibyte \
-      --enable-rubyinterp --enable-pythoninterp --enable-perlinterp \
-      --enable-luainterp
+    ./configure --with-features=normal --with-x --enable-python3interp=dynamic
     sudo apt-get remove vim-common vim-tiny
     sudo checkinstall
     sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1

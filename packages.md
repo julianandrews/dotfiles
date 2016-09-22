@@ -4,7 +4,7 @@ build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-
 
 checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen pigz cowsay smartmontools ecryptfs-utils
 
-git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-xdg python-xmpp python3-dbus default-jre postgresql postgresql-server-dev-all sqlite exuberant-ctags postgis hlint
+git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-xdg python-xmpp python3-dbus default-jre postgresql postgresql-server-dev-all sqlite exuberant-ctags postgis hlint rustc cargo
 
 lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd wicd-curses xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring cups cups-client hplip xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color udevil kupfer fonts-font-awesome fonts-dejavu dunst
 
