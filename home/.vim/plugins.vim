@@ -19,6 +19,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'stephpy/vim-yaml'
 Plug 'saltstack/salt-vim'
 Plug 'glench/vim-jinja2-syntax'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 filetype plugin indent on
