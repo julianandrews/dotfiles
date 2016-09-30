@@ -10,4 +10,4 @@
 [merge]
   ff = false
 [alias]
-  lg = log --pretty=format:'%C(magenta bold)%h%Creset - %s %Cgreen(%cr) %C(blue)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
+  lg = log --pretty=format:'%C(blue)%h%Creset - %s %Cgreen(%cr) %C(magenta bold)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
