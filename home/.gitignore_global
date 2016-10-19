@@ -4,3 +4,4 @@
 tags
 .cache
 requirements.dev*
+.tern-project
