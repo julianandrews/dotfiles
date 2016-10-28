@@ -33,4 +33,4 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_haskell_checkers = ['hlint']
-hi SyntasticError ctermbg=9 ctermfg=0
+hi link SyntasticError Error
