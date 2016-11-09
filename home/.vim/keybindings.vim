@@ -3,11 +3,16 @@ noremap <space> <nop>
 let mapleader = "\<space>"
 
 " fzf
+command! -nargs=+ -bang Rg call fzf#vim#grep(
+    \'rg --column --line-number --no-heading --color=always '.<q-args>,
+    \1,
+    \<bang>0
+    \)
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :GitFiles<cr>
 nnoremap <leader>g :Buffers<cr>
 nnoremap <leader>c :Commits<cr>
-nnoremap <leader>r :History:<cr>
+nnoremap <leader>r :History<cr>
 
 " YouCompleteMe
 nnoremap <leader>j :YcmCompleter GoTo<cr>
