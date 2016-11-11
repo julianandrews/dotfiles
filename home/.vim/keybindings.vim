@@ -34,10 +34,10 @@ fun! CycleList(nextcom, firstcom)
     endtry
 endfun
 
-nnoremap <silent> <F1> :call CycleList("lnext", "lfirst")<cr>
-nnoremap <silent> <F2> :call CycleList("lprev", "llast")<cr>
-nnoremap <silent> <F3> :call CycleList("cnext", "cfirst")<cr>
-nnoremap <silent> <F4> :call CycleList("cprev", "clast")<cr>
+nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
+nnoremap <silent> <F2> :call CycleList("lnext", "lfirst")<cr>
+nnoremap <silent> <F3> :call CycleList("cprev", "clast")<cr>
+nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 
 " Paste from PRIMARY buffer
 nnoremap <leader>p "+p

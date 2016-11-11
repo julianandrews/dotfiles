@@ -7,7 +7,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --tern-completer --racer-completer' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -26,11 +26,11 @@ filetype plugin indent on
 
 set rtp+=~/.fzf
 
-" Syntastic config
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_enable_signs = 0
-let g:syntastic_python_checkers = ['python', 'flake8']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_haskell_checkers = ['hlint']
-hi link SyntasticError Error
+" Ale config
+let g:ale_linters = {
+      \'python': ['flake8'],
+      \'javascript': ['eslint'],
+      \'haskell': ['hlint'],
+      \}
+let g:ale_set_signs = 0
+let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
