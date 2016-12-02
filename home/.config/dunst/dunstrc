@@ -133,7 +133,7 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = false
+    startup_notification = yes
 
     # dmenu path.
     dmenu = /usr/bin/dmenu -p dunst:
@@ -170,7 +170,7 @@
     history = ctrl+grave
 
     # Context menu.
-      context = ctrl+shift+period
+    context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
@@ -180,8 +180,8 @@
     timeout = 10
 
 [urgency_normal]
-    background = "#014421"
-    foreground = "#ffffff"
+    background = "#073642"
+    foreground = "#93a1a1"
     timeout = 10
 
 [urgency_critical]
