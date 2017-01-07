@@ -9,3 +9,8 @@ alias mars='python manage.py runserver_plus'
 function pless(){
   pcat "$1" | less -R
 }
+
+function cdp() {
+  file=$(python -c "import ${1}; print(${1}.__file__)")
+  pushd "$(dirname $(realpath "$file"))"
+}
