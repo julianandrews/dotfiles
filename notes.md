@@ -136,7 +136,7 @@ Tarsnap
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
-* `sude update-alternatives --set x-www-browser /usr/bin/chromium`
+* `sudo update-alternatives --set x-www-browser /usr/bin/chromium`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
 * In Weechat `/script install lnotify.py`
