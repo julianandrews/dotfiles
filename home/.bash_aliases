@@ -4,7 +4,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 alias m='python manage.py'
 alias mash='python manage.py shell_plus --use-pythonrc'
-alias mars='python manage.py runserver_plus'
+alias mars='WERKZEUG_DEBUG_PIN=off python manage.py runserver_plus'
 
 function pless(){
   pcat "$1" | less -R
