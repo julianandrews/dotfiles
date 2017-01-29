@@ -1,21 +1,27 @@
-Shared
+Libraries and build tools
+-------------------------
+build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev libqt4-dev libphonon-dev qtmobility-dev
+
+CLI tools
+---------
+git mercurial checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg netselect-apt scrot imagemagick gnupg nmap zip screen pigz lolcat cowsay libav-tools ecryptfs-utils exfat-utils
+
+Dev
+---
+python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint rustc cargo default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev octave texlive texlive-latex-extra texlive-fonts-extra
+
+Services
 --------
-build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev
+exfat-fuse iptables-persistent udevil postgresql postgresql-server-dev-all postgis sqlite wicd
 
-checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-utils apg silversearcher-ag netselect-apt scrot imagemagick iptables-persistent gnupg nmap macchanger zip exfat-fuse exfat-utils texlive texlive-latex-extra texlive-fonts-extra screen pigz cowsay smartmontools ecryptfs-utils
+Gui
+---
+lightdm xorg xorg-dev xinput feh xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst
 
-git mercurial python python-dev python3 python3-dev cython libperl-dev ruby ruby-dev python-flake8 python-xdg python-xmpp python3-dbus flake8 default-jre postgresql postgresql-server-dev-all sqlite exuberant-ctags postgis hlint rustc cargo openjdk-8-jdk gradle
+Sound/Printer
+-------------
+alsa-utils pulseaudio bluez-firmware pulseaudio-module-bluetooth bluez-tools cups cups-client hplip
 
-lightdm xorg xorg-dev xinput feh alsa-utils pulseaudio wicd wicd-curses xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring cups cups-client hplip xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color udevil kupfer fonts-font-awesome fonts-dejavu dunst
-
-chromium pepperflashplugin-nonfree gnumeric pavucontrol weechat evince gimp libav-tools gparted eog
-
-nfs-kernel-server vagrant libvirt-bin qemu-kvm bridge-utils virt-manager libvirt-dev vagrant-libvirt
-
-Work only
----------
-mysql-client mysql-server iceweasel libmysqlclient-dev
-
-Home only
----------
-electrum gourmet slashem vlc transmission-cli transmission-gtk bluez-firmware pulseaudio-module-bluetooth bluez-tools libqt4-dev libphonon-dev qtmobility-dev slashem guvcview easytag sgt-puzzles haskell-platform haskell-stack
+Apps
+----
+chromium gnumeric pavucontrol evince gimp gparted eog electrum gourmet vlc transmission-gtk sgt-puzzles qgo parted slashem weechat transmission-cli wicd-curses
