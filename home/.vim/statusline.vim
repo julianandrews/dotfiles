@@ -20,9 +20,9 @@ function! GitStatus()
 endfunction
 
 function! SetGitStatus()
-  let l:gitstatus = system('bash -c "source /usr/lib/git-core/git-sh-prompt && cd ' . expand('%:p:h') . ' && __git_ps1"')
+  let l:gitstatus = system("bash -c 'source /usr/lib/git-core/git-sh-prompt && cd \"" . expand('%:p:h') . "\" && __git_ps1'")
   let l:length = len(l:gitstatus)
-  if l:length > 0
+  if l:length > 3
     let b:gitstatus = strpart(l:gitstatus, 2, l:length - 3)
   else
     let b:gitstatus = ""
