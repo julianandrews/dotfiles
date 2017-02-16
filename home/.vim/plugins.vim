@@ -31,6 +31,8 @@ let g:ale_linters = {
       \'python': ['flake8'],
       \'javascript': ['eslint'],
       \'haskell': ['hlint'],
+      \'rust': ['cargo'],
+      \'java': ['javac'],
       \}
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
