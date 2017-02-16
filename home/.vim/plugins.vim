@@ -34,6 +34,8 @@ let g:ale_linters = {
       \}
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
+hi link AleError ErrorMsg
+hi link AleWarning WarningMsg
 
 " YCM config
 let g:ycm_goto_buffer_command = 'new-tab'
