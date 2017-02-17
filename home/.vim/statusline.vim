@@ -19,7 +19,7 @@ function! GitStatus()
   " return StatusFormat(fugitive#head())
 endfunction
 
-function! SetGitStatus()
+function! SetGitStatus(...)
   let l:gitstatus = system("bash -c 'source /usr/lib/git-core/git-sh-prompt && cd \"" . expand('%:p:h') . "\" && __git_ps1'")
   let l:length = len(l:gitstatus)
   if l:length > 3
@@ -27,9 +27,11 @@ function! SetGitStatus()
   else
     let b:gitstatus = ""
   endif
+  redrawstatus!
 endfunction
 
 autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * silent! call SetGitStatus()
+call timer_start(1000, 'SetGitStatus', {'repeat': -1})
 
 " Status Line
 set statusline=%<                                           "Truncation Point
