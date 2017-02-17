@@ -36,6 +36,7 @@ let g:ale_linters = {
       \}
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
+let g:ale_set_highlights = 0
 hi link AleError ErrorMsg
 hi link AleWarning WarningMsg
 
