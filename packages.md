@@ -8,7 +8,7 @@ git mercurial checkinstall htop httpie tree pv jq p7zip-full unzip unrar pm-util
 
 Dev
 ---
-python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint rustc cargo default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev octave texlive texlive-latex-extra texlive-fonts-extra
+python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev octave texlive texlive-latex-extra texlive-fonts-extra
 
 Services
 --------
