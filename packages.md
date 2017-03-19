@@ -24,4 +24,4 @@ alsa-utils pulseaudio bluez-firmware pulseaudio-module-bluetooth bluez-tools cup
 
 Apps
 ----
-chromium gnumeric pavucontrol evince gimp gparted eog electrum gourmet vlc transmission-gtk sgt-puzzles qgo parted slashem weechat transmission-cli wicd-curses
+chromium gnumeric pavucontrol evince gimp gparted eog electrum gourmet vlc transmission-gtk sgt-puzzles quarry parted slashem weechat transmission-cli wicd-curses
