@@ -1,6 +1,6 @@
 syntax on
 set expandtab
-set shiftwidth=2 tabstop=2 softtabstop=2
+set shiftwidth=4 tabstop=4 softtabstop=4
 set number
 set clipboard=unnamed
 set backspace=2
