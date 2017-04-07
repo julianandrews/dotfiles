@@ -16,7 +16,6 @@ function! GitStatus()
   else
     return ""
   endif
-  " return StatusFormat(fugitive#head())
 endfunction
 
 function! SetGitStatus(...)
@@ -27,7 +26,7 @@ function! SetGitStatus(...)
   else
     let b:gitstatus = ""
   endif
-  redrawstatus!
+  " redrawstatus!
 endfunction
 
 autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * silent! call SetGitStatus()
