@@ -8,13 +8,13 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --tern-completer --racer-completer' }
+Plug 'maralla/completor.vim', { 'do': 'make js' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 Plug 'hynek/vim-python-pep8-indent'
 
-Plug 'ternjs/tern_for_vim'
+Plug 'davidhalter/jedi-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'stephpy/vim-yaml'
 Plug 'saltstack/salt-vim'
@@ -40,5 +40,10 @@ let g:ale_set_highlights = 0
 hi link AleError ErrorMsg
 hi link AleWarning WarningMsg
 
-" YCM config
-let g:ycm_goto_buffer_command = 'new-tab'
+" Completor config
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" Jedi config
+let g:jedi#auto_initialization = 0

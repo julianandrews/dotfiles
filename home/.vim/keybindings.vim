@@ -14,10 +14,6 @@ nnoremap <leader>g :Buffers<cr>
 nnoremap <leader>c :Commits<cr>
 nnoremap <leader>r :History<cr>
 
-" YouCompleteMe
-nnoremap <leader>j :YcmCompleter GoTo<cr>
-nnoremap <leader>J :YcmCompleter GoToReferences<cr>
-
 " Toggle search highlighting
 nnoremap <silent> <leader>/ :noh<cr>
 

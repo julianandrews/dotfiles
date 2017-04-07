@@ -38,8 +38,8 @@ Python Packages
 
 Also install https://github.com/john2x/solarized-pygment to user space (python3).
 
-Node + Eslint
--------------
+Node & Node packages
+--------------------
 
     curl <tarball_url> | tar -xz
     cd <node_dir>
@@ -47,6 +47,7 @@ Node + Eslint
     make
     make install
     npm install -g eslint
+    npm install -g tern
 
 Auto lock on suspend
 ------------------
