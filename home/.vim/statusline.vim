@@ -29,15 +29,15 @@ function! SetGitStatus(...)
   " redrawstatus!
 endfunction
 
-autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * silent! call SetGitStatus()
-call timer_start(1000, 'SetGitStatus', {'repeat': -1})
+" autocmd! VimEnter,BufNewFile,BufRead,BufWritePost,ShellCmdPost * silent! call SetGitStatus()
+" call timer_start(1000, 'SetGitStatus', {'repeat': -1})
 
 " Status Line
 set statusline=%<                                           "Truncation Point
 set statusline+=%1*%h%r%w%m%*                               "Flags
 set statusline+=%f\                                         "File Name
 set statusline+=%2*%{FiletypeStatus()}%*                    "File Type
-set statusline+=%3*%{GitStatus()}%*                         "Git Branch
+" set statusline+=%3*%{GitStatus()}%*                         "Git Branch
 set statusline+=%4*%{VirtualenvStatus()}%*                  "Virtualenv
 set statusline+=%=                                          "Right Align
 set statusline+=%5*%{ALEGetStatusLine()}%*\                 "Ale
