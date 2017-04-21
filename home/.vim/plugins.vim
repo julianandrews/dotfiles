@@ -40,5 +40,7 @@ let g:ale_set_highlights = 0
 hi link AleError ErrorMsg
 hi link AleWarning WarningMsg
 
-" YCM config
+" YouCompleteMe config
 let g:ycm_goto_buffer_command = 'new-tab'
+nnoremap <leader>j :YcmCompleter GoTo<cr>
+nnoremap <leader>J :YcmCompleter GoToReferences<cr>
