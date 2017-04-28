@@ -1,3 +1,7 @@
 {
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "rules": {
+        "semi": 2,
+        "no-undef": 0
+    }
 }
