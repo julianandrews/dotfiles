@@ -1,7 +1,22 @@
 {
     "extends": "eslint:recommended",
     "rules": {
-        "semi": 2,
-        "no-undef": 0
+        "array-bracket-spacing": "warn",
+        "block-spacing": "warn",
+        "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+        "camelcase": "warn",
+        "eqeqeq": "warn",
+        "indent": ["error", 2, { "SwitchCase": 1 }],
+        "key-spacing": "warn",
+        "keyword-spacing": "warn",
+        "linebreak-style": ["error", "unix"],
+        "no-tabs": "error",
+        "no-undef": "off",
+        "no-unused-vars": "warn",
+        "func-call-spacing": "warn",
+        "radix": "warn",
+        "semi": "error",
+        "semi-spacing": "warn",
+        "space-in-parens": "warn"
     }
 }
