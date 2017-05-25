@@ -11,3 +11,4 @@
   ff = false
 [alias]
   lg = log --pretty=format:'%C(blue)%h%Creset - %s %Cgreen(%cr) %C(magenta bold)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
+  ls-conflicts = diff --name-only --diff-filter=U
