@@ -39,3 +39,8 @@ nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 inoremap <S-Insert> <C-R>+
+
+" YouCompleteMe config
+let g:ycm_goto_buffer_command = 'new-tab'
+nnoremap <leader>j :YcmCompleter GoTo<cr>
+nnoremap <leader>J :YcmCompleter GoToReferences<cr>

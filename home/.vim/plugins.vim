@@ -39,8 +39,3 @@ let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
 let g:ale_set_highlights = 0
 hi link AleError ErrorMsg
 hi link AleWarning WarningMsg
-
-" YouCompleteMe config
-let g:ycm_goto_buffer_command = 'new-tab'
-nnoremap <leader>j :YcmCompleter GoTo<cr>
-nnoremap <leader>J :YcmCompleter GoToReferences<cr>
