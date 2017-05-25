@@ -11,7 +11,7 @@
         "keyword-spacing": "warn",
         "linebreak-style": ["error", "unix"],
         "no-tabs": "error",
-        "no-undef": "off",
+        "no-undef": "warn",
         "no-unused-vars": "warn",
         "func-call-spacing": "warn",
         "radix": "warn",
