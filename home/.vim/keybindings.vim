@@ -11,7 +11,6 @@ command! -nargs=+ -bang Rg call fzf#vim#grep(
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>F :GitFiles<cr>
 nnoremap <leader>g :Buffers<cr>
-nnoremap <leader>c :Commits<cr>
 nnoremap <leader>r :History<cr>
 
 " Toggle search highlighting
@@ -44,3 +43,14 @@ inoremap <S-Insert> <C-R>+
 let g:ycm_goto_buffer_command = 'new-tab'
 nnoremap <leader>j :YcmCompleter GoTo<cr>
 nnoremap <leader>J :YcmCompleter GoToReferences<cr>
+
+nnoremap <silent> <leader>c :set opfunc=ReplaceWithoutOverwrite<cr>g@
+function! ReplaceWithoutOverwrite(type)
+    if a:type == 'line'
+        silent exe "normal! '[V']\"_dp"
+    elseif a:type == 'block'
+        silent exe "normal! `[\<C-V>`]\"_dp"
+    else
+        silent exe "normal! `[v`]\"_dp"
+    endif
+endfunction
