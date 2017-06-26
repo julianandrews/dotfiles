@@ -20,6 +20,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'saltstack/salt-vim'
 Plug 'glench/vim-jinja2-syntax'
 Plug 'rust-lang/rust.vim'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 filetype plugin indent on
@@ -39,3 +40,6 @@ let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
 let g:ale_set_highlights = 0
 hi link AleError ErrorMsg
 hi link AleWarning WarningMsg
+
+" vim-jsx config
+let g:jsx_ext_required = 0
