@@ -12,6 +12,7 @@ set cursorline
 set wildmenu
 set tags=tags
 set completeopt=menu
+set hidden
 
 set undofile
 set undodir=~/.vim/undodir//
