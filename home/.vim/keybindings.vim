@@ -16,13 +16,10 @@ nnoremap <silent> <leader>/ :noh<cr>
 " Cycle through quickfix/location lists
 fun! CycleList(nextcom, firstcom)
     try
-        try
-            execute a:nextcom
-        catch /^Vim\%((\a\+)\)\=:E553/
-            execute a:firstcom
-        catch /^Vim\%((\a\+)\)\=:E776/
-        endtry
-    catch /^Vim\%((\a\+)\)\=:E42/
+        execute a:nextcom
+    catch /^Vim\%((\a\+)\)\=:E553/
+        execute a:firstcom
+    catch /^Vim\%((\a\+)\)\=:E\(42\|776\)/
     endtry
 endfun
 
