@@ -9,9 +9,6 @@ command! -nargs=+ -bang Rg call fzf#vim#grep(
     \<bang>0
     \)
 nnoremap <leader>f :Files<cr>
-nnoremap <leader>F :GitFiles<cr>
-nnoremap <leader>g :Buffers<cr>
-nnoremap <leader>r :History<cr>
 
 " Toggle search highlighting
 nnoremap <silent> <leader>/ :noh<cr>
