@@ -14,10 +14,7 @@ function pless(){
 }
 
 function rgv() {
-    ${IFS+"false"} && unset oldifs || oldIFS="$IFS"
-    IFS=$' \t\n'
-    vim -q <(rg -n "$*")
-    IFS=$oldIFS
+    vim -q <(rg -n "$@")
 }
 
 function ptouch() {
