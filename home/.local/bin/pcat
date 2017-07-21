@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-~/.local/bin/pygmentize -f terminal256 -O style=solarized256 "${1:--}" 2> /dev/null || cat "${1:--}"

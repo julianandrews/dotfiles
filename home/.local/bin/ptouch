@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-while [ -n "$1" ]
-do
-  install -D -m 644 /dev/null "$1"
-  shift
-done
