@@ -12,15 +12,15 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
-Plug 'hynek/vim-python-pep8-indent'
 
-Plug 'ternjs/tern_for_vim'
-Plug 'pangloss/vim-javascript'
-Plug 'stephpy/vim-yaml'
+Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'saltstack/salt-vim'
 Plug 'glench/vim-jinja2-syntax'
-Plug 'rust-lang/rust.vim'
-Plug 'mxw/vim-jsx'
 call plug#end()
 
 filetype plugin indent on
