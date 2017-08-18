@@ -123,7 +123,7 @@ Yubikey
 
         LABEL="u2f_end"
 
-  sude udevadm control --reload-rules
+  sudo udevadm control --reload-rules
 
 Tarsnap
 -------
