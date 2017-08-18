@@ -50,48 +50,6 @@ Node & Node packages
     npm install -g eslint
     npm install -g tern
 
-Auto lock on suspend
-------------------
-
-    sudo -e /etc/systemd/system/screen-lock.service
-
-        [Unit]
-        Description=screen-lock
-        After=suspend.target
-
-        [Service]
-        User=julian
-        Type=forking
-        Environment=DISPLAY=:0
-        ExecStart=/home/julian/.local/bin/screen-lock
-        StandardOutput=syslog
-
-        [Install]
-        WantedBy=multi-user.target sleep.target
-
-    sudo systemctl enable screen-lock.service
-
-Reset xset options on wake
---------------------------
-
-    sudo -e /etc/systemd/system/xset-on-wake.service
-
-        [Unit]
-        Description=Reset xset options on wake
-        After=suspend.target
-        After=hibernate.target
-
-        [Service]
-        User=julian
-        Environment=DISPLAY=:0
-        ExecStart=/home/julian/.local/bin/xconfig
-
-        [Install]
-        WantedBy=suspend.target
-        WantedBy=hibernate.target
-
-  sudo systemctl enable xset-on-wake.service
-
 Monitor Hotplugging
 -------------------
 
