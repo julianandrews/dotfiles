@@ -14,40 +14,15 @@ hasdisplay() {
 }
 
 primary() {
-  if [ "$hostname" = 'dean' ]
-  then
-    hasdisplay 'DP-2' && [ "$1" = 'DP-2' ] && echo -n ' --primary'
-  elif [ "$hostname" = 'orpheus' ]
-  then
-    if hasdisplay 'HDMI-1'
-    then
-      [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
-    elif hasdisplay 'VGA-1'
-    then
-      [ "$1" = 'VGA-1' ] && echo -n ' --primary'
-    fi
-  fi
+  hasdisplay 'DP-1' && [ "$1" = 'DP-1' ] && echo -n ' --primary'
 }
 
 positioning() {
-  if [ "$hostname" = 'dean' ]
-  then
-    [ "$1" = 'LVDS-1' ] && hasdisplay 'DP-2' && echo -n ' --right-of DP-2'
-  elif [ "$hostname" = 'orpheus' ]
-  then
-    if hasdisplay 'HDMI-1'
-    then
-      [ "$1" = 'VGA-1' ] && echo -n ' --right-of HDMI-1'
-      [ "$1" = 'HDMI-1' ] && hasdisplay 'eDP-1' && echo -n ' --right-of eDP-1'
-    elif hasdisplay 'VGA-1'
-    then
-      [ "$1" = 'VGA-1' ] && hasdisplay 'eDP-1' && echo -n ' --right-of eDP-1'
-    fi
-  fi
+  [ "$1" = 'eDP-1' ] && hasdisplay 'DP-1' && echo -n ' --right-of DP-2'
 }
 
 rotation() {
-  [ "$hostname" = 'orpheus' ] && [ "$1" = 'HDMI-1' ] && echo -n ' --rotate left'
+  echo -n ''
 }
 
 modifiers() {
