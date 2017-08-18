@@ -140,20 +140,3 @@ Misc Setup
 * `sudo update-alternatives --set x-www-browser /usr/bin/chromium`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
 * Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
-* In Weechat `/script install lnotify.py`
-* `mkdir -p ~/.weechat/python/autoload`
-* `ln -s "$(realpath ~/.weechat/python/i3lock_away.py)" ~/.weechat/python/autoload/`
-* add `contrib non-free` to all etc/apt/sources.list lines
-
-Home Computer Specific
-----------------------
-* Add `acpi_backlight=vendor` to `GRUB_CMDLINE_LINUX_DEFAULT` in
-  `/etc/default/grub` and run `sudo update-grub`
-* Edit `/etc/pulse/defaul.pa`. Add `load-module module-switch-on-connect` to end.
-
-Issues
-======
-* screen dims on power plug in
-* screen *doesn't* dim on idle
-* No good media key bindings for normal keyboard
-* Missing instructions for brightness control (see /etc/acpi/)
