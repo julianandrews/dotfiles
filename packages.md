@@ -16,7 +16,7 @@ exfat-fuse iptables-persistent udevil postgresql postgresql-server-dev-all postg
 
 Gui
 ---
-lightdm xorg xorg-dev xinput xautolock i3lock faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst feh
+lightdm xorg xorg-dev xinput xautolock i3lock gnome-icon-theme faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst feh
 
 Sound/Printer
 -------------
