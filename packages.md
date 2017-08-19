@@ -12,7 +12,7 @@ python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmp
 
 Services
 --------
-exfat-fuse iptables-persistent udevil postgresql postgresql-server-dev-all postgis sqlite wicd
+acpid laptop-mode-tools exfat-fuse iptables-persistent udevil postgresql postgresql-server-dev-all postgis sqlite wicd
 
 Gui
 ---
