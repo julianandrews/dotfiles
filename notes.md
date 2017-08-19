@@ -93,6 +93,42 @@ Tarsnap
 
     sudo chmod a+x /etc/crond.daily/tarsnap-backup
 
+Backlight keys
+--------------
+
+    Make sure acpid is installed and running
+    Run `acpi_listen` and press the backlight keys - this should generate BRTDN and BRTUP events
+    sudo -e /etc/acpi/actions/bl.sh
+
+        #!/bin/sh
+
+        bl_device=/sys/class/backlight/intel_backlight
+        read brightness < ${bl_device}/brightness
+        read max_brightness < ${bl_device}/max_brightness
+
+        if [ "$1" = "up" ]; then
+            new_brightness=$(($brightness + $max_brightness / 5))
+            [ "$new_brightness" -gt "$max_brightness" ] && new_brightness=$max_brightness
+        elif [ "$1" = "down" ]; then
+            new_brightness=$(($brightness - $max_brightness / 5))
+            [ "$new_brightness" -lt 0 ] && new_brightness=0
+        fi
+
+        echo $new_brightness > "${bl_device}/brightness"
+
+    sudo chmod a+x /etc/acpi/actions/bl.sh
+    sudo -e /etc/acpi/events/bl_down (take events from `acpi_listen`)
+
+        event=video/brightnessdown BRTDN 00000087 00000000
+        action=/etc/acpi/actions/bl.sh down
+
+    sudo -e /etc/acpi/events/bl_up
+
+        event=video/brightnessup BRTUP 00000086 00000000
+        action=/etc/acpi/actions/bl.sh up
+
+    sudo systemctl restart acpid.service
+
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
