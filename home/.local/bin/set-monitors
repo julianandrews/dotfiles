@@ -14,11 +14,11 @@ hasdisplay() {
 }
 
 primary() {
-  hasdisplay 'DP-1' && [ "$1" = 'DP-1' ] && echo -n ' --primary'
+  hasdisplay 'HDMI-1' && [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
 }
 
 positioning() {
-  [ "$1" = 'eDP-1' ] && hasdisplay 'DP-1' && echo -n ' --right-of DP-2'
+  [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --right-of HDMI-1'
 }
 
 rotation() {
@@ -35,5 +35,6 @@ do
   args="$args --output $display --auto$(modifiers $display)"
 done
 
+echo $args
 xrandr $args
 [ -x "$home/.fehbg" ] && "$home/.fehbg"
