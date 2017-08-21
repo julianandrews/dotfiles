@@ -135,16 +135,21 @@ CapsLock->Esc
 Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
 udevadm trigger --subsystem-match=input --action=change
 
+Lightdm
+-------
+Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
+
+* `greeter-hide-users=false`
+* `xserver-command=X -ardelay 250 -arinterval 20`
+
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
 * `sudo update-alternatives --set x-www-browser /usr/bin/chromium`
 * `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
-* Edit `/etc/lightdm/lightdm.conf`. Set `greeter-hide-users=false` under `[Seat:*]`
 
 Todo
 ----
 Write up acpi volume instructions
 Laptop lid handling
 Xscreensaver hack selection
-xset repeat/delay reset on keyboard plug/unplug or suspend

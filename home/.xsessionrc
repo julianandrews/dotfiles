@@ -5,9 +5,6 @@ then
   xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
 fi
 
-# Increase keyboard repeat rate
-xset r rate 250 50
-
 # Setup monitors and load wallpaper.
 ~/.local/bin/set-monitors && ~/.fehbg &
 
