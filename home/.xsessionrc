@@ -9,8 +9,7 @@ fi
 ~/.local/bin/set-monitors && ~/.fehbg &
 
 # Setup autolock
-env XSECURELOCK_WANT_FIRST_KEYPRESS=1 XSECURELOCK_SAVER=saver_xscreensaver xss-lock -l -- xsecurelock &
-
+xss-lock -l -- ~/.local/bin/screen-lock &
 # urxvt daemon
 urxvtd -q -f -o &
 

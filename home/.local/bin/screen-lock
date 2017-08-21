@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_WANT_FIRST_KEYPRESS=1 XSECURELOCK_SAVER=saver_xscreensaver xsecurelock
