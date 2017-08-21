@@ -119,12 +119,12 @@ Backlight keys
     sudo chmod a+x /etc/acpi/actions/bl.sh
     sudo -e /etc/acpi/events/bl_down (take events from `acpi_listen`)
 
-        event=video/brightnessdown BRTDN 00000087 00000000
+        event=video/brightnessdown
         action=/etc/acpi/actions/bl.sh down
 
     sudo -e /etc/acpi/events/bl_up
 
-        event=video/brightnessup BRTUP 00000086 00000000
+        event=video/brightnessup
         action=/etc/acpi/actions/bl.sh up
 
     sudo systemctl restart acpid.service
