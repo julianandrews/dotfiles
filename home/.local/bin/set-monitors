@@ -7,34 +7,44 @@ export XAUTHORITY="$home/.Xauthority"
 
 hostname=$(hostname)
 displays=$(xrandr | grep 'connected' | cut -d ' ' -f 1)
-connected_displays=$(xrandr | grep ' connected' | cut -d ' ' -f 1)
+connected_displays=$(xrandr | grep ' connected ' | cut -d ' ' -f 1)
 
 hasdisplay() {
-  echo $connected_displays | grep -q $1
+    echo $connected_displays | grep -qE "( |^)$1( |$)"
 }
 
 primary() {
-  hasdisplay 'HDMI-1' && [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
+    if hasdisplay 'HDMI-1'
+    then
+        [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
+    elif [ "$1" = 'eDP-1' ]
+    then
+        echo -n ' --primary'
+    fi
 }
 
 positioning() {
-  [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --right-of HDMI-1'
+    [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --right-of HDMI-1'
 }
 
 rotation() {
-  echo -n ''
+    echo -n ''
 }
 
 modifiers() {
-  echo -n "$(primary $1)$(positioning $1)$(rotation $1)"
+    if hasdisplay "$1"
+    then
+        echo -n "--auto$(primary $1)$(positioning $1)$(rotation $1)"
+    else
+        echo -n "--off"
+    fi
 }
 
 args=''
 for display in $displays
 do
-  args="$args --output $display --auto$(modifiers $display)"
+    args="$args --output $display $(modifiers $display)"
 done
 
-echo $args
 xrandr $args
 [ -x "$home/.fehbg" ] && "$home/.fehbg"
