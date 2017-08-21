@@ -97,7 +97,6 @@ Misc Setup
 
 Todo
 ----
-Xscreensaver hack selection
 Laptop lid open/close on ac power
     should call set-monitors
     set-monitors should do the right thing based on lid state
