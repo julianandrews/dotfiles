@@ -1,5 +1,5 @@
 Installation/Setup
-========================
+==================
 
 Dotfiles
 --------
@@ -50,39 +50,6 @@ Node & Node packages
     npm install -g eslint
     npm install -g tern
 
-Monitor Hotplugging
--------------------
-
-    sudo -e /etc/udev/rules.d/70-monitor.rules
-
-        SUBSYSTEM=="drm", ACTION=="change", RUN+="/home/julian/.local/bin/set-monitors"
-
-    sudo udevadm control --reload-rules
-
-Yubikey
--------
-
-    sudo -e /etc/udev/rules.d/70-u2f.rules
-
-        # this udev file should be used with udev 188 and newer
-        ACTION!="add|change", GOTO="u2f_end"
-
-        # Yubico YubiKey
-        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0113|0114|0115|0116|0120|0402|0403|0406|0407|0410", TAG+="uaccess"
-
-        # Happlink (formerly Plug-Up) Security KEY
-        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2581", ATTRS{idProduct}=="f1d0", TAG+="uaccess"
-
-        #  Neowave Keydo and Keydo AES
-        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1e0d", ATTRS{idProduct}=="f1d0|f1ae", TAG+="uaccess"
-
-        # HyperSecu HyperFIDO
-        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="096e", ATTRS{idProduct}=="0880", TAG+="uaccess"
-
-        LABEL="u2f_end"
-
-  sudo udevadm control --reload-rules
-
 Tarsnap
 -------
 
@@ -93,63 +60,44 @@ Tarsnap
 
     sudo chmod a+x /etc/crond.daily/tarsnap-backup
 
-Backlight keys
---------------
+ACPI event handlers (backlight, lid, volume)
+--------------------------------------------
 
-    Make sure acpid is installed and running
-    Run `acpi_listen` and press the backlight keys - this should generate BRTDN and BRTUP events
-    sudo -e /etc/acpi/actions/bl.sh
-
-        #!/bin/sh
-
-        bl_device=/sys/class/backlight/intel_backlight
-        read brightness < ${bl_device}/brightness
-        read max_brightness < ${bl_device}/max_brightness
-
-        if [ "$1" = "up" ]; then
-            new_brightness=$(($brightness + $max_brightness / 5))
-            [ "$new_brightness" -gt "$max_brightness" ] && new_brightness=$max_brightness
-        elif [ "$1" = "down" ]; then
-            new_brightness=$(($brightness - $max_brightness / 5))
-            [ "$new_brightness" -lt 0 ] && new_brightness=0
-        fi
-
-        echo $new_brightness > "${bl_device}/brightness"
-
-    sudo chmod a+x /etc/acpi/actions/bl.sh
-    sudo -e /etc/acpi/events/bl_down (take events from `acpi_listen`)
-
-        event=video/brightnessdown
-        action=/etc/acpi/actions/bl.sh down
-
-    sudo -e /etc/acpi/events/bl_up
-
-        event=video/brightnessup
-        action=/etc/acpi/actions/bl.sh up
-
+    sudo cp ~/.dotfiles/acpi/actions/* /etc/acpi/actions
+    sudo cp ~/.dotfiles/acpi/events/* /etc/acpi/events
     sudo systemctl restart acpid.service
+
+UDev rules (monitor hotplug, u2f key)
+-------------------------------------
+
+    sudo cp ~/.dotfiles/udev-rules/* /etc/udev/rules.d/
+    sudo udevadm control --reload-rules
 
 CapsLock->Esc
 -------------
 
 Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
-udevadm trigger --subsystem-match=input --action=change
+
+    udevadm trigger --subsystem-match=input --action=change
 
 Lightdm
 -------
+
 Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
 
-* `greeter-hide-users=false`
-* `xserver-command=X -ardelay 250 -arinterval 20`
+    * `greeter-hide-users=false`
+    * `xserver-command=X -ardelay 250 -arinterval 20`
 
 Misc Setup
 ----------
-* `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
-* `sudo update-alternatives --set x-www-browser /usr/bin/chromium`
-* `xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet`
+
+    sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+    sudo update-alternatives --set x-www-browser /usr/bin/chromium
+    xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
 
 Todo
 ----
-Write up acpi volume instructions
-Laptop lid handling
 Xscreensaver hack selection
+Laptop lid open/close on ac power
+    should call set-monitors
+    set-monitors should do the right thing based on lid state
