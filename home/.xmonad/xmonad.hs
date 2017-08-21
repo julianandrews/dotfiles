@@ -74,7 +74,7 @@ myKeys = [
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
-    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock"),
+    ("M-S-z", spawn "env XSECURELOCK_WANT_FIRST_KEYPRESS=1 XSECURELOCK_SAVER=saver_xscreensaver xsecurelock"),
     ("M-,", sendMessage $ IncLayoutN (-1)),
     ("M-.", sendMessage $ IncLayoutN 1),
     ("M-w", onPrevNeighbour W.view),
