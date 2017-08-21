@@ -129,6 +129,12 @@ Backlight keys
 
     sudo systemctl restart acpid.service
 
+CapsLock->Esc
+-------------
+
+Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
+udevadm trigger --subsystem-match=input --action=change
+
 Misc Setup
 ----------
 * `sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt`
