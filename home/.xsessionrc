@@ -8,8 +8,11 @@ fi
 # Setup monitors and load wallpaper.
 ~/.local/bin/set-monitors && ~/.fehbg &
 
-# Setup autolock
+# Setup screenlock/saver
+xset s 300 600
+xset dpms 600 900 1200
 xss-lock -l -- ~/.local/bin/screen-lock &
+
 # urxvt daemon
 urxvtd -q -f -o &
 
