@@ -1,6 +1,13 @@
 #!/usr/bin/env sh
 
-ethernet_up=$(cat /sys/class/net/eth0/operstate | grep 'up')
+ethernet_up=''
+for f in /sys/class/net/*
+do
+    if [ ! -d "$f/wireless" ] && [ "$f" != "/sys/class/net/lo" ]
+    then
+        $(grep -q 'up' "${f}/operstate") && ethernet_up=1
+    fi
+done
 ssid=$(/sbin/iwgetid -r)
 color=\#268bd2
 wifi_text="<fc=#6c71c4><fn=1></fn></fc> $ssid"
@@ -14,4 +21,4 @@ else
   [ ! "$ssid" ] && full_text="$netdown_text" || full_text="$wifi_text"
 fi
 
-echo "<action=\`x-terminal-emulator -e wicd-curses\`><fc=$color>$full_text</fc></action>"
+echo "<action=\`wicd-client\`><fc=$color>$full_text</fc></action>"
