@@ -1,3 +1,7 @@
 #!/usr/bin/env sh
 
-env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_SAVER=saver_xscreensaver xsecurelock
+set_lock() {
+  i3lock -n -c 000000
+}
+
+set_lock &

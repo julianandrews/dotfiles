@@ -1,5 +1,11 @@
+set nocompatible
+
+source /usr/share/vim/google/google.vim
+source $HOME/.vim/keybindings.vim
 source $HOME/.vim/plugins.vim
 source $HOME/.vim/general.vim
-source $HOME/.vim/keybindings.vim
 source $HOME/.vim/statusline.vim
 source $HOME/.vim/autocommands.vim
+
+filetype plugin indent on
+syntax on

@@ -38,17 +38,36 @@ if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
   fi
 fi
 
+__p4_ps1() {
+  local p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
+
+  if [ -z "$p4_client" ]; then
+    PS1_PWD="$(dirs | cut -d' ' -f1)"
+    PS1_PREFIX="${debian_chroot:+($debian_chroot)}"
+  else
+    local client_root="$(g4 --format '%clientRoot%' info)"
+    local rel_path="/${PWD##${client_root}}"
+    [[ "$rel_path" =~ //google3/java/com/google(.*) ]] && rel_path="(jcg)${BASH_REMATCH[1]}"
+    [[ "$rel_path" =~ //google3/javatests/com/google(.*) ]] && rel_path="(jtcg)${BASH_REMATCH[1]}"
+    [[ "$rel_path" =~ //google3/ads/crm/gamma(.*) ]] && rel_path="(gamma)${BASH_REMATCH[1]}"
+    PS1_PWD="$rel_path"
+    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$p4_client] "
+  fi
+}
+
+PROMPT_COMMAND="__p4_ps1"
+
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[32m\]\u@\h\[\033[0m\]:\[\033[36m\]\w\[\033[0m\]\$ '
+    PS1='\[\e[35m\]${PS1_PREFIX}\[\e[32m\]\u@\h\[\e[0m\]:\[\e[36m\]${PS1_PWD}\[\e[0m\] $ '
   else
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\w\[\033[0m\]\$ '
+    PS1='\[\e[35m\]${PS1_PREFIX}\[\e[36m\]${PS1_PWD}\[\e[0m\] $ '
   fi
 else
   if [ -n "${SSH_TTY}" ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${PS1_PREFIX}\u@\h:${PS1_PWD} $ '
   else
-    PS1='${debian_chroot:+($debian_chroot)}\w\$ '
+    PS1='${PS1_PREFIX}${PS1_PWD} $ '
   fi
 fi
 unset color_prompt force_color_prompt
@@ -94,29 +113,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set default editor to vim
-export EDITOR=vim
-
-# enable gnome-keyring for ssh keys
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
-
-# setup virtualenvwrapper
-if [ -e ~/.local/bin/virtualenvwrapper.sh ]
-then
-  export WORKON_HOME=$HOME/.virtualenvs
-  export PROJECT_HOME=$HOME/sites
-  export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-  source ~/.local/bin/virtualenvwrapper.sh
-fi
-
-# setup libvirt/vagrant
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export VAGRANT_DEFAULT_PROVIDER=libvirt
-
 # setup git prompt
 if git --version &>/dev/null
 then
@@ -125,17 +121,19 @@ then
   export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[1;35m\](%s)\[\033[00m\]\") \$ "
 fi
 
+# set default editor to vim
+export EDITOR=vim
+
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-# ruby gem bin path
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
 PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
+
+# dart binaries
+export PATH=/usr/lib/google-dartlang/bin:${PATH}
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
 export FZF_DEFAULT_OPTS='--tiebreak=end,begin,length,index'
+

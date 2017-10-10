@@ -1,0 +1,4 @@
+test --test_output=errors
+
+import /home/build/nonconf/google3/dart/tools/iblaze/blazerc
+import %workspace%/javascript/typescript/blazerc

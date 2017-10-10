@@ -2,14 +2,6 @@
 noremap <space> <nop>
 let mapleader = "\<space>"
 
-" fzf
-command! -nargs=+ -bang Rg call fzf#vim#grep(
-    \'rg --column --line-number --no-heading --color=always '.<q-args>,
-    \1,
-    \<bang>0
-    \)
-nnoremap <leader>f :Files<cr>
-
 " Toggle search highlighting
 nnoremap <silent> <leader>/ :noh<cr>
 
@@ -32,18 +24,3 @@ nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 inoremap <S-Insert> <C-R>+
-
-" YouCompleteMe keybindings
-nnoremap <leader>j :YcmCompleter GoTo<cr>
-nnoremap <leader>J :YcmCompleter GoToReferences<cr>
-
-nnoremap <silent> <leader>c :set opfunc=ReplaceWithoutOverwrite<cr>g@
-function! ReplaceWithoutOverwrite(type)
-    if a:type == 'line'
-        silent exe "normal! '[V']\"_dp"
-    elseif a:type == 'block'
-        silent exe "normal! `[\<C-V>`]\"_dp"
-    else
-        silent exe "normal! `[v`]\"_dp"
-    endif
-endfunction
