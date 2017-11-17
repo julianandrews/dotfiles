@@ -6,6 +6,8 @@ alias launchpad='/google/data/ro/teams/ads-engprod/ap/tools/launchpad/launchpad_
 
 alias newterm='urxvtc -cd "$PWD"'
 
+alias set-monitors='xrandr --output DP-5 --auto --primary --output DP-4 --auto --right-of DP-5'
+
 function pcat() {
     pygmentize -f terminal256 "${1:--}" 2> /dev/null || cat "${1:--}"
 }
