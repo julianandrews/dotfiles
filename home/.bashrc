@@ -132,6 +132,9 @@ PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
 # dart binaries
 export PATH=/usr/lib/google-dartlang/bin:${PATH}
 
+# dart pub
+export PATH=$PATH:~/.pub-cache/bin
+
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'

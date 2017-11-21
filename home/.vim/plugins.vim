@@ -4,6 +4,7 @@ Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'w0rp/ale'
+Plug 'natebosch/vim-lsc'
 call plug#end()
 
 Glug youcompleteme-google
@@ -36,3 +37,10 @@ endif
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '✓ ok']
 let g:ale_set_highlights = 1
+
+" lsc
+let g:lsc_server_commands = {
+    \ 'dart': 'dart_language_server',
+    \ 'html': 'dart_language_server',
+    \}
+let g:lsc_auto_map = v:true

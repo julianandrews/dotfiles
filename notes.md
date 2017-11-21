@@ -16,12 +16,13 @@ Lightdm
 -------
 Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
 
-    * `greeter-hide-users=false`
     * `xserver-command=X -ardelay 250 -arinterval 20`
 
 Misc Setup
 ----------
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
+/google/src/head/depot/google3/dart/tools/dart_rapture_setup.sh
+pub global activate dart_language_server
 
 Todo
 ----
