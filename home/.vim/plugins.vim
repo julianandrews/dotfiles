@@ -25,10 +25,14 @@ augroup END
 set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 
-" YCM
+" ycm
 nnoremap <leader>j :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>J :YcmCompleter GoToReferences<cr>
 if !exists("g:ycm_semantic_triggers")
    let g:ycm_semantic_triggers = {}
 endif
-let g:EclimCompletionMethod = 'omnifunc'
+
+" ale
+let g:ale_set_signs = 0
+let g:ale_statusline_format = ['x %d', '⚠ %d', '✓ ok']
+let g:ale_set_highlights = 1
