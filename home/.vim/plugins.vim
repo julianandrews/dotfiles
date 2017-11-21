@@ -37,6 +37,8 @@ endif
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '✓ ok']
 let g:ale_set_highlights = 1
+hi link ALEWarningLine warning
+hi link ALEErrorLine error
 
 " lsc
 let g:lsc_server_commands = {
