@@ -18,6 +18,7 @@ call plug#end()
 Glug youcompleteme-google
 Glug codefmt
 Glug codefmt-google
+Glug csearch
 
 augroup autoformat_settings
   autocmd!
@@ -29,6 +30,9 @@ augroup autoformat_settings
   autocmd FileType proto AutoFormatBuffer clang-format
   autocmd FileType textpb AutoFormatBuffer text-proto-format
 augroup END
+
+" csearch
+let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_results=50'
 
 " fzf
 set rtp+=~/.fzf
