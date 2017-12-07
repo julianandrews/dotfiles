@@ -5,6 +5,14 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'w0rp/ale'
 Plug 'natebosch/vim-lsc'
+
+Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 call plug#end()
 
 Glug youcompleteme-google
@@ -46,3 +54,18 @@ let g:lsc_server_commands = {
     \ 'html': 'dart_language_server',
     \}
 let g:lsc_auto_map = v:true
+
+" vim-jsx config
+let g:jsx_ext_required = 0
+
+" fzf ripgrep
+if executable("rg")
+    command! -bang -nargs=* Rg
+          \ call fzf#vim#grep(
+          \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
+          \   <bang>0 ? fzf#vim#with_preview('up:60%')
+          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+          \   <bang>0)
+
+    nnoremap <C-p>a :Rg
+endif
