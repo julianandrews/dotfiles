@@ -9,7 +9,11 @@
   rebase = true
 [merge]
   ff = false
+  conflictstyle = diff3
+  tool = vimdiff
 [alias]
   lg = log --pretty=format:'%C(blue)%h%Creset - %s %Cgreen(%cr) %C(magenta bold)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
   ls-conflicts = diff --name-only --diff-filter=U
   edit-conflicts = !conflicts=$(git ls-conflicts) && [ -z "$conflicts" ] || ${EDITOR:-vim} $(echo $conflicts | cut -f2)
+[mergetool]
+  prompt = false
