@@ -14,11 +14,13 @@ Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
-Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
-Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+
 call plug#end()
 
 filetype plugin indent on
