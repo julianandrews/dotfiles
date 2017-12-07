@@ -26,4 +26,4 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-command! -nargs=+ Sgrep execute 'silent grep! <args>' | copen 33
+command! -nargs=+ Grep execute 'silent grep! <args>' | copen 33
