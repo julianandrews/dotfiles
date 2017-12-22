@@ -5,6 +5,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'w0rp/ale'
 Plug 'natebosch/vim-lsc'
+Plug 'Quramy/tsuquyomi'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
@@ -33,6 +34,11 @@ augroup END
 
 " csearch
 let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_results=50'
+
+" tsuquyomi
+let g:tsuquyomi_use_dev_node_module = 2
+let g:tsuquyomi_tsserver_path = '/google/src/head/depot/google3/third_party/javascript/node_modules/typescript/stable/lib/tsserver.js'
+nnoremap <silent> <leader>h :echo tsuquyomi#hint()<CR>
 
 " fzf
 set rtp+=~/.fzf
