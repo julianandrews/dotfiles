@@ -38,20 +38,42 @@ if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
   fi
 fi
 
+find_hg_root() {
+  local d=${PWD%/}
+
+  while [[ -n $d ]]; do
+    [[ -e $d/.hg ]] && {
+      echo $d
+      return 0
+    }
+    d=${d%/*}
+  done
+  [[ -e /.hg ]] && echo / || return 1
+}
+
 __p4_ps1() {
   local p4_client="$(which g4 && g4 set P4CLIENT -q | cut -s -d: -f2)"
+  local hg_root="$(find_hg_root)"
+  local client_root=""
 
-  if [ -z "$p4_client" ]; then
+  if [ ! -z "$p4_client" ]; then
+    client_root="$(g4 --format '%clientRoot%' info)"
+    client_name="$p4_client"
+  elif [ ! -z "$hg_root" ]; then
+    client_root="$hg_root"
+    client_name="${hg_root##*/}"
+  fi
+
+  if [ -z "$client_root" ]; then
     PS1_PWD="$(dirs | cut -d' ' -f1)"
     PS1_PREFIX="${debian_chroot:+($debian_chroot)}"
   else
-    local client_root="$(g4 --format '%clientRoot%' info)"
     local rel_path="/${PWD##${client_root}}"
     [[ "$rel_path" =~ //google3/java/com/google(.*) ]] && rel_path="(jcg)${BASH_REMATCH[1]}"
     [[ "$rel_path" =~ //google3/javatests/com/google(.*) ]] && rel_path="(jtcg)${BASH_REMATCH[1]}"
     [[ "$rel_path" =~ //google3/ads/crm/gamma(.*) ]] && rel_path="(gamma)${BASH_REMATCH[1]}"
     PS1_PWD="$rel_path"
-    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$p4_client] "
+    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$client_name] "
   fi
 }
 
