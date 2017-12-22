@@ -39,7 +39,7 @@ if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
 fi
 
 __p4_ps1() {
-  local p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
+  local p4_client="$(which g4 && g4 set P4CLIENT -q | cut -s -d: -f2)"
 
   if [ -z "$p4_client" ]; then
     PS1_PWD="$(dirs | cut -d' ' -f1)"
