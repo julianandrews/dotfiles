@@ -28,6 +28,8 @@ function ptouch() {
     done
 }
 
+alias br='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
+
 function prodaccess() {
   /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }
