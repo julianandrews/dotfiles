@@ -55,6 +55,8 @@ myManageHook = composeAll [
     windowRole =? "gimp-image-window" --> (ask >>= doF . W.sink),
     fmap (isPrefixOf "Gimp-") className --> doFloat,
     className =? "Transmission-gtk" --> doFloat,
+    className =? "gnubby_ssh_prompt" --> doFloat,
+    title =? "gnubbyd" --> doFloat,
     fmap (isPrefixOf "Sgt-") className --> doFloat,
     manageDocks,
     fullscreenManageHook,
