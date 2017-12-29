@@ -34,11 +34,16 @@ let g:ale_linters = {
       \'haskell': ['hlint'],
       \'rust': ['cargo'],
       \'java': ['javac'],
+      \'cpp': ['clang'],
+      \}
+let g:ale_fixers = {
+      \'cpp': ['clang-format'],
       \}
 let g:ale_set_signs = 0
 let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
 let g:ale_set_highlights = 1
 let g:ale_type_map = {'flake8': {'ES': 'WS'}}
+let g:ale_fix_on_save = 1
 
 " vim-jsx config
 let g:jsx_ext_required = 0

@@ -1,10 +1,10 @@
 Libraries and build tools
 -------------------------
-build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev libqt4-dev libphonon-dev automake libpam0g-dev
+build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev libqt4-dev libphonon-dev automake libpam0g-dev libboost-dev libboost-test-dev libboost-date-time-dev libboost-regex-dev
 
 CLI tools
 ---------
-git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils
+git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils clang-format
 
 Dev
 ---
