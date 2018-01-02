@@ -28,6 +28,7 @@ augroup autoformat_settings
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType javascript AutoFormatBuffer clang-format
   autocmd FileType proto AutoFormatBuffer clang-format
   autocmd FileType textpb AutoFormatBuffer text-proto-format
   autocmd FileType typescript AutoFormatBuffer clang-format
