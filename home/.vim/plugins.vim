@@ -9,6 +9,7 @@ Plug 'natebosch/vim-lsc'
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+Plug 'leafgarland/typescript-vim'
 
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
@@ -29,6 +30,7 @@ augroup autoformat_settings
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType proto AutoFormatBuffer clang-format
   autocmd FileType textpb AutoFormatBuffer text-proto-format
+  autocmd FileType typescript AutoFormatBuffer clang-format
 augroup END
 
 " csearch
@@ -44,6 +46,7 @@ nnoremap <leader>J :YcmCompleter GoToReferences<cr>
 if !exists("g:ycm_semantic_triggers")
    let g:ycm_semantic_triggers = {}
 endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " ale
 let g:ale_set_signs = 0
