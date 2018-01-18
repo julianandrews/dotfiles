@@ -41,13 +41,6 @@ let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_
 set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 
-" ycm
-nnoremap <leader>j :YcmCompleter GoToDefinition<cr>
-nnoremap <leader>J :YcmCompleter GoToReferences<cr>
-if !exists("g:ycm_semantic_triggers")
-   let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
 
 " ale
 let g:ale_set_signs = 0
