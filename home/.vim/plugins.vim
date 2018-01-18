@@ -40,6 +40,7 @@ let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_
 " fzf
 set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :Files %:p:h<cr>
 
 
 " ale
