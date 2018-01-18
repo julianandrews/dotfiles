@@ -3,7 +3,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 Plug 'w0rp/ale'
-Plug 'natebosch/vim-lsc'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
@@ -53,16 +54,6 @@ let g:ale_typescript_tslint_config_path = '/usr/local/google/home/julianandrews/
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
 
-" lsc
-let g:lsc_server_commands = {
-    \ 'dart': 'dart_language_server',
-    \ 'html': 'dart_language_server',
-    \}
-let g:lsc_auto_map = v:true
-
-" vim-jsx config
-let g:jsx_ext_required = 0
-
 " fzf ripgrep
 if executable("rg")
     command! -bang -nargs=* Rg
@@ -74,3 +65,12 @@ if executable("rg")
 
     nnoremap <C-p>a :Rg
 endif
+
+" vim-lsp config
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'Kythe Language Server',
+    \ 'cmd': {server_info->['/google/data/ro/teams/grok/tools/kythe_languageserver', '--google3']},
+    \ 'whitelist': ['python', 'go', 'java', 'cpp', 'proto', 'typescript'],
+    \})
+
+nnoremap gd :LspDefinition<cr>
