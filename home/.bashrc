@@ -38,7 +38,7 @@ if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
   fi
 fi
 
-__p4_ps1() {
+__ps1_vars() {
   local p4_client=""
   command -v g4 >/dev/null 2>&1 && p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
 
@@ -47,16 +47,14 @@ __p4_ps1() {
     PS1_PREFIX="${debian_chroot:+($debian_chroot)}"
   else
     local client_root="$(g4 --format '%clientRoot%' info)"
-    local rel_path="/${PWD##${client_root}}"
-    [[ "$rel_path" =~ //google3/java/com/google(.*) ]] && rel_path="(jcg)${BASH_REMATCH[1]}"
-    [[ "$rel_path" =~ //google3/javatests/com/google(.*) ]] && rel_path="(jtcg)${BASH_REMATCH[1]}"
-    [[ "$rel_path" =~ //google3/ads/crm/gamma(.*) ]] && rel_path="(gamma)${BASH_REMATCH[1]}"
-    PS1_PWD="$rel_path"
+    PS1_PWD="/${PWD##${client_root}}"
     PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$p4_client] "
   fi
+  PS1_PWD=${PS1_PWD/google3\/java\/com\/google/(java)}
+  PS1_PWD=${PS1_PWD/google3\/javatests\/com\/google/(javatests)}
 }
 
-PROMPT_COMMAND="__p4_ps1"
+PROMPT_COMMAND="__ps1_vars"
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
