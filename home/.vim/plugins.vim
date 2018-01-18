@@ -2,7 +2,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
-Plug 'dart-lang/dart-vim-plugin'
 Plug 'w0rp/ale'
 Plug 'natebosch/vim-lsc'
 
@@ -11,12 +10,9 @@ Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'leafgarland/typescript-vim'
 
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 call plug#end()
 
-Glug youcompleteme-google
 Glug codefmt
 Glug codefmt-google
 Glug csearch
