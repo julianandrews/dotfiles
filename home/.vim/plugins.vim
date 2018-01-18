@@ -17,6 +17,7 @@ call plug#end()
 Glug codefmt
 Glug codefmt-google
 Glug csearch
+Glug youcompleteme-google
 
 augroup autoformat_settings
   autocmd!
@@ -39,6 +40,8 @@ set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
 
+" ycm
+let g:ycm_filetype_blacklist = {'typescript': 1}
 
 " ale
 let g:ale_set_signs = 0
