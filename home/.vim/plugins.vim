@@ -49,7 +49,10 @@ let g:ale_statusline_format = ['x %d', '⚠ %d', '✓ ok']
 let g:ale_set_highlights = 1
 let g:ale_linters = {
       \'html': [],
+      \'typescript': ['tslint'],
+      \'java': [],
       \}
+let g:ale_typescript_tslint_config_path = '/usr/local/google/home/julianandrews/.config/tslint.json'
 
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
