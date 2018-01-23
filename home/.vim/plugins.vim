@@ -51,6 +51,7 @@ let g:ale_linters = {
       \'html': [],
       \'typescript': ['tslint'],
       \'java': [],
+      \'cpp': [],
       \}
 let g:ale_typescript_tslint_config_path = '/usr/local/google/home/julianandrews/.config/tslint.json'
 
