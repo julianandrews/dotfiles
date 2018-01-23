@@ -126,7 +126,7 @@ export EDITOR=vim
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
+PATH=~/.local/bin:~/bin:$PATH:/sbin:/usr/sbin
 
 # dart binaries
 export PATH=/usr/lib/google-dartlang/bin:${PATH}
