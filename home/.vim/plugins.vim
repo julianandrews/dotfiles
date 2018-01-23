@@ -41,7 +41,7 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
 
 " ycm
-let g:ycm_filetype_blacklist = {'typescript': 1}
+let g:ycm_enable_diagnostic_signs = 0
 
 " ale
 let g:ale_set_signs = 0
