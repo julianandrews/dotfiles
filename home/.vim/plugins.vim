@@ -51,8 +51,10 @@ let g:ale_linters = {
       \'html': [],
       \'typescript': ['tslint'],
       \'java': [],
-      \'cpp': [],
+      \'cpp': ['clangtidy'],
       \}
+let g:ale_cpp_clangtidy_executable = 'clang_tidy'
+let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-google3-custom-weak-log']
 let g:ale_typescript_tslint_config_path = '/usr/local/google/home/julianandrews/.config/tslint.json'
 
 hi link ALEWarningLine warning
