@@ -38,23 +38,46 @@ if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
   fi
 fi
 
-__ps1_vars() {
-  local p4_client=""
-  command -v g4 >/dev/null 2>&1 && p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
+find_hg_root() {
+  local d=${PWD%/}
 
-  if [ -z "$p4_client" ]; then
+  while [[ -n $d ]]; do
+    [[ -e $d/.hg ]] && {
+      echo $d
+      return 0
+    }
+    d=${d%/*}
+  done
+  [[ -e /.hg ]] && echo / || return 1
+}
+
+__p4_ps1() {
+  local p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
+  local hg_root="$(find_hg_root)"
+  local client_root=""
+
+  if [ ! -z "$p4_client" ]; then
+    client_root="$(g4 --format '%clientRoot%' info)"
+    client_name="$p4_client"
+  elif [ ! -z "$hg_root" ]; then
+    client_root="$hg_root"
+    client_name="${hg_root##*/}"
+  fi
+
+  if [ -z "$client_root" ]; then
     PS1_PWD="$(dirs | cut -d' ' -f1)"
     PS1_PREFIX="${debian_chroot:+($debian_chroot)}"
   else
-    local client_root="$(g4 --format '%clientRoot%' info)"
-    PS1_PWD="/${PWD##${client_root}}"
-    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$p4_client] "
+    local rel_path="/${PWD##${client_root}}"
+    [[ "$rel_path" =~ //google3/java/com/google(.*) ]] && rel_path="(jcg)${BASH_REMATCH[1]}"
+    [[ "$rel_path" =~ //google3/javatests/com/google(.*) ]] && rel_path="(jtcg)${BASH_REMATCH[1]}"
+    [[ "$rel_path" =~ //google3/ads/crm/gamma(.*) ]] && rel_path="(gamma)${BASH_REMATCH[1]}"
+    PS1_PWD="$rel_path"
+    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$client_name] "
   fi
-  PS1_PWD=${PS1_PWD/google3\/java\/com\/google/(java)}
-  PS1_PWD=${PS1_PWD/google3\/javatests\/com\/google/(javatests)}
 }
 
-PROMPT_COMMAND="__ps1_vars"
+PROMPT_COMMAND="__p4_ps1"
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "${SSH_TTY}" ]; then
@@ -126,7 +149,7 @@ export EDITOR=vim
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-PATH=~/.local/bin:~/bin:$PATH:/sbin:/usr/sbin
+PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
 
 # dart binaries
 export PATH=/usr/lib/google-dartlang/bin:${PATH}
@@ -139,7 +162,3 @@ export PATH=$PATH:~/.pub-cache/bin
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
 export FZF_DEFAULT_OPTS='--tiebreak=end,begin,length,index'
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
