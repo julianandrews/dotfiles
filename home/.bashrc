@@ -149,13 +149,13 @@ export EDITOR=vim
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
+PATH=~/.local/bin:~/bin:/sbin:/usr/sbin:${PATH}
 
 # dart binaries
 export PATH=/usr/lib/google-dartlang/bin:${PATH}
 
 # dart pub
-export PATH=$PATH:~/.pub-cache/bin
+export PATH=~/.pub-cache/bin:${PATH}
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
