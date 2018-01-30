@@ -18,6 +18,7 @@ Glug codefmt
 Glug codefmt-google
 Glug csearch
 Glug youcompleteme-google
+Glug blazedeps
 
 augroup autoformat_settings
   autocmd!
