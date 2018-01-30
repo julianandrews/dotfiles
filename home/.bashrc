@@ -28,71 +28,64 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# uncomment the line below to force color if supported
-# force_color_prompt=yes
-if [ -n "$force_color_prompt" ] || [[ "$TERM" == *color* ]]; then
-  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    color_prompt=yes
-  else
-    color_prompt=
+### PROMPT ###
+
+source ~/.fig_prompt
+
+__ps1_prefix() {
+  local ps1_prefix="${debian_chroot:+($debian_chroot)}"
+  if is_fig_client; then
+    ps1_prefix="$ps1_prefix[$(get_fig_client_name)]"
   fi
-fi
 
-find_hg_root() {
-  local d=${PWD%/}
-
-  while [[ -n $d ]]; do
-    [[ -e $d/.hg ]] && {
-      echo $d
-      return 0
-    }
-    d=${d%/*}
-  done
-  [[ -e /.hg ]] && echo / || return 1
+  printf "${1-%s}" "$ps1_prefix"
 }
 
-__p4_ps1() {
-  local p4_client="$(g4 set P4CLIENT -q | cut -s -d: -f2)"
-  local hg_root="$(find_hg_root)"
-  local client_root=""
-
-  if [ ! -z "$p4_client" ]; then
-    client_root="$(g4 --format '%clientRoot%' info)"
-    client_name="$p4_client"
-  elif [ ! -z "$hg_root" ]; then
-    client_root="$hg_root"
-    client_name="${hg_root##*/}"
-  fi
-
-  if [ -z "$client_root" ]; then
-    PS1_PWD="$(dirs | cut -d' ' -f1)"
-    PS1_PREFIX="${debian_chroot:+($debian_chroot)}"
-  else
-    local rel_path="/${PWD##${client_root}}"
-    [[ "$rel_path" =~ //google3/java/com/google(.*) ]] && rel_path="(jcg)${BASH_REMATCH[1]}"
-    [[ "$rel_path" =~ //google3/javatests/com/google(.*) ]] && rel_path="(jtcg)${BASH_REMATCH[1]}"
-    [[ "$rel_path" =~ //google3/ads/crm/gamma(.*) ]] && rel_path="(gamma)${BASH_REMATCH[1]}"
-    PS1_PWD="$rel_path"
-    PS1_PREFIX="${debian_chroot:+($debian_chroot)}[$client_name] "
-  fi
-}
-
-PROMPT_COMMAND="__p4_ps1"
-
-if [ "$color_prompt" = yes ]; then
+__ps1_host() {
   if [ -n "${SSH_TTY}" ]; then
-    PS1='\[\e[35m\]${PS1_PREFIX}\[\e[32m\]\u@\h\[\e[0m\]:\[\e[36m\]${PS1_PWD}\[\e[0m\] $ '
-  else
-    PS1='\[\e[35m\]${PS1_PREFIX}\[\e[36m\]${PS1_PWD}\[\e[0m\] $ '
+    local ps1_host="${USER}@${HOSTNAME}"
+    printf "${1-%s}" "$ps1_host"
   fi
+}
+
+__ps1_pwd() {
+  local ps1_pwd="$(dirs | cut -d' ' -f1)"
+
+  if is_fig_client; then
+    local client_root="$(get_fig_client_root)"
+    ps1_pwd="/${PWD##${client_root}}"
+    [[ "$ps1_pwd" =~ //google3/java/com/google(.*) ]] && ps1_pwd="(jcg)${BASH_REMATCH[1]}"
+    [[ "$ps1_pwd" =~ //google3/javatests/com/google(.*) ]] && ps1_pwd="(jtcg)${BASH_REMATCH[1]}"
+  fi
+
+  printf "${1-%s}" "$ps1_pwd"
+}
+
+__ps1_suffix() {
+  if git --version &>/dev/null
+  then
+    export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWUNTRACKEDFILES=true
+    local git_ps1="$(__git_ps1)"
+  fi
+  local fig_ps1="$(get_fig_prompt)"
+
+  printf "${1-%s}" "${git_ps1}${fig_ps1}"
+}
+
+if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
+  pwd_template='\001\e[36m\002%s\001\e[0m\002'
+  host_template='\001\e[32m\002%s\001\e[0m\002: '
+  prefix_template='\001\e[35m\002%s\001\e[0m\002'
+  suffix_template='\001\e[34m\002%s\001\e[0m\002'
 else
-  if [ -n "${SSH_TTY}" ]; then
-    PS1='${PS1_PREFIX}\u@\h:${PS1_PWD} $ '
-  else
-    PS1='${PS1_PREFIX}${PS1_PWD} $ '
-  fi
+  host_template='%s: '
 fi
-unset color_prompt force_color_prompt
+
+PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'") \$ '
+unset pwd_template host_template prefix_template suffix_template
+
+### END PROMPT ###
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -135,14 +128,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# setup git prompt
-if git --version &>/dev/null
-then
-  export GIT_PS1_SHOWDIRTYSTATE=true
-  export GIT_PS1_SHOWUNTRACKEDFILES=true
-  export PS1="${PS1:0:-3}\$(__git_ps1 \" \[\033[1;35m\](%s)\[\033[00m\]\") \$ "
-fi
-
 # set default editor to vim
 export EDITOR=vim
 
@@ -161,4 +146,3 @@ export PATH=~/.pub-cache/bin:${PATH}
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
 export FZF_DEFAULT_OPTS='--tiebreak=end,begin,length,index'
-

@@ -1,0 +1,135 @@
+#!/bin/bash
+
+# Common global variables that specify what to cache where.
+FIG_CACHE_BASE_DIR=/tmp/fig-cache
+FIG_STATE_INDICATOR_FILES=(".hg/blackbox.log" ".citc/manifest.rawproto")
+FIG_STATUS_FILE="status.txt"
+FIG_STATE_HASH_FILE="state.hash"
+# Lines from .blackbox.log matching the following pattern will be ignored for
+# hash computation and thus will prevent the status being updated. Add commands
+# in here that do not change the Fig state.
+BLACKBOX_IGNORE=">.*(xl|ll|figstatus|status|diff)"
+
+# Returns the root directory of the current Fig client. Should only be called
+# from within a Fig client.
+function get_fig_client_root() {
+  local root_dir="${PWD%/google3*}"
+  echo "$root_dir"
+}
+
+# Returns the name of the current Fig client. Should only be called from within
+# a Fig client.
+function get_fig_client_name() {
+  local root_dir="$( get_fig_client_root )"
+  local client_name="${root_dir##/google/*/}"
+  echo "$client_name"
+}
+
+# Returns the directory where we cache the status for the current Fig client.
+function get_fig_client_cache_dir() {
+  [ ! -d "$FIG_CACHE_BASE_DIR" ] && mkdir "$FIG_CACHE_BASE_DIR"
+  client_name=$( get_fig_client_name )
+  client_cache_dir="$FIG_CACHE_BASE_DIR/$client_name"
+  # Make sure the cache dir exists.
+  [ ! -d "$client_cache_dir" ] && mkdir "$client_cache_dir"
+  echo "$client_cache_dir"
+}
+
+# Returns the hash of the file state of the current Fig client.
+function get_fig_client_state_hash() {
+  local state_hash=""
+  local -a state_files
+  for file in ${FIG_STATE_INDICATOR_FILES}; do
+    file="$( get_fig_client_root )/${file}"
+    if [ -f "$file" ]; then
+      if [[ "$file" =~ ".*blackbox.log" ]]; then
+        state_hash="${state_hash}\n$( egrep -v "${BLACKBOX_IGNORE}" "$file" | \
+                                      md5sum )"
+      else
+        state_hash="${state_hash}\n$( md5sum "$file" )"
+      fi
+    fi
+  done
+  echo "$state_hash"
+}
+
+# Returns 0 if the status cache for the current Fig client is outdated and
+# needs to be updated and 1 otherwise. Should only be called from within a Fig
+# client.
+function should_update_fig_status_cache() {
+  local state_hash="$( get_fig_client_state_hash )"
+  local cached_state_hash="emptycache"
+  local cached_state_hash_file
+  cached_state_hash_file="$( get_fig_client_cache_dir )/$FIG_STATE_HASH_FILE"
+  if [ -f "$cached_state_hash_file" ]; then
+    cached_state_hash=$(<"$cached_state_hash_file")
+  fi
+  if [ "$cached_state_hash" != "$state_hash" ]; then
+    # Update cache since the state hash has changed.
+    return 0
+  fi
+
+  # Do not update cache.
+  return 1
+}
+
+# Updates the status cache for the current Fig client. Should only be called
+# from within a Fig client.
+function update_fig_status_cache() {
+  local status_file="$( get_fig_client_cache_dir )/$FIG_STATUS_FILE"
+  hg figstatus > "$status_file"
+
+  local state_hash="$( get_fig_client_state_hash )"
+  local cached_state_hash_file
+  cached_state_hash_file="$( get_fig_client_cache_dir )/$FIG_STATE_HASH_FILE"
+  echo "$state_hash" > "$cached_state_hash_file"
+}
+
+# Returns a multi-line output of the status of the current Fig client by either
+# looking the status up in the cache file if the cache is current or loading it
+# directly from Fig and updating the cache. Should only be called from within a
+# Fig client.
+function fig_status() {
+  if should_update_fig_status_cache; then
+    update_fig_status_cache
+  fi
+  local status_file="$( get_fig_client_cache_dir )/$FIG_STATUS_FILE"
+  cat "$status_file"
+}
+
+# Returns whether the current directory is (likely) a Fig-on-CITC client.
+function is_fig_client() {
+  if [[ "$PWD" =~ /google/src/cloud/$USER/* ]] && \
+     [[ -d ${PWD%%/google3*}/.hg ]]; then
+    return 0
+  fi
+  return 1
+}
+
+# Returns a string that can be used in a ZSH prompt to display the status of
+# the current Fig client.
+function get_fig_prompt() {
+  if ! is_fig_client; then
+    return 0
+  fi
+
+  if should_update_fig_status_cache; then
+    update_fig_status_cache
+  fi
+
+  readarray figstatus < "$( get_fig_client_cache_dir )/$FIG_STATUS_FILE"
+  modified=${figstatus[0]%%[[:space:]]}
+  added=${figstatus[1]%%[[:space:]]}
+  deleted=${figstatus[2]%%[[:space:]]}
+  unknown=${figstatus[3]%%[[:space:]]}
+  unexported=${figstatus[4]%%[[:space:]]}
+  obsolete=${figstatus[5]%%[[:space:]]}
+  cl=${figstatus[6]%%[[:space:]]}
+  description=${figstatus[7]%%[[:space:]]}
+  branch=${figstatus[8]%%[[:space:]]}
+  if [ -e "$branch" ]; then
+    branch="$cl"
+  fi
+
+  echo -n " (${branch}${modified}${added}${deleted}${unknown}${unexported}${obsolete})"
+}
