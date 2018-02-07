@@ -30,6 +30,8 @@ function ptouch() {
 
 alias br='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
 
+alias btcfg=/google/data/ro/projects/bigtable/contrib/btcfg/btcfg
+
 function prodaccess() {
   /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
 }
