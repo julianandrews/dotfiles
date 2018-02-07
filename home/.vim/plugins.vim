@@ -53,6 +53,7 @@ let g:ale_linters = {
       \'typescript': ['tslint'],
       \'java': [],
       \'cpp': ['clangtidy'],
+      \'javascript': [],
       \}
 let g:ale_cpp_clangtidy_executable = 'clang_tidy'
 let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-google3-custom-weak-log']
