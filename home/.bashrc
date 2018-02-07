@@ -131,9 +131,6 @@ fi
 # set default editor to vim
 export EDITOR=vim
 
-# python 2 tab completion
-export PYTHONSTARTUP=~/.config/pystartup
-
 PATH=~/.local/bin:~/bin:/sbin:/usr/sbin:${PATH}
 
 # dart binaries
