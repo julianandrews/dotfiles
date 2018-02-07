@@ -75,14 +75,14 @@ __ps1_suffix() {
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
   pwd_template='\001\e[36m\002%s\001\e[0m\002'
-  host_template='\001\e[32m\002%s\001\e[0m\002: '
+  host_template='\001\e[32m\002%s\001\e[0m\002:'
   prefix_template='\001\e[35m\002%s\001\e[0m\002'
   suffix_template='\001\e[34m\002%s\001\e[0m\002'
 else
-  host_template='%s: '
+  host_template='%s:'
 fi
 
-PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'") \$ '
+PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'")\$ '
 unset pwd_template host_template prefix_template suffix_template
 
 ### END PROMPT ###
