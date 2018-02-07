@@ -43,7 +43,7 @@ __ps1_prefix() {
 
 __ps1_host() {
   if [ -n "${SSH_TTY}" ]; then
-    local ps1_host="${USER}@${HOSTNAME}"
+    local ps1_host="${USER}@${HOSTNAME/.irv.corp.google.com/}"
     printf "${1-%s}" "$ps1_host"
   fi
 }
@@ -75,7 +75,7 @@ __ps1_suffix() {
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
   pwd_template='\001\e[36m\002%s\001\e[0m\002'
-  host_template='\001\e[32m\002%s\001\e[0m\002:'
+  host_template='\001\e[91m\002%s\001\e[0m\002:'
   prefix_template='\001\e[35m\002%s\001\e[0m\002'
   suffix_template='\001\e[34m\002%s\001\e[0m\002'
 else
