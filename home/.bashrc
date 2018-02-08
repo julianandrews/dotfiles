@@ -43,7 +43,7 @@ __ps1_prefix() {
 
 __ps1_host() {
   if [ -n "${SSH_TTY}" ]; then
-    local ps1_host="${USER}@${HOSTNAME/.irv.corp.google.com/}"
+    local ps1_host="${USER}@${HOSTNAME%%.*}"
     printf "${1-%s}" "$ps1_host"
   fi
 }
