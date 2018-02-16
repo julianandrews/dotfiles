@@ -5,8 +5,8 @@ case $- in
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-HISTSIZE=5000
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=10000
 HISTFILESIZE=10000
 
 # append to the history file, don't overwrite it
