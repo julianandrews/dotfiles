@@ -19,6 +19,7 @@ Glug codefmt-google
 Glug csearch
 Glug youcompleteme-google
 Glug blazedeps
+Glug g4
 
 augroup autoformat_settings
   autocmd!
@@ -82,3 +83,17 @@ au User lsp_setup call lsp#register_server({
     \})
 
 nnoremap gd :LspDefinition<cr>
+
+" g4 config
+function! PiperOpenedFiles()
+  let l:opened_files = []
+  for l:ofile in piperlib#GetActiveFiles()
+    call add(l:opened_files, fnamemodify(l:ofile, ':.'))
+  endfor
+  return l:opened_files
+endfunction
+
+nnoremap <silent> <leader>h :call fzf#run(fzf#wrap(
+  \ 'piper-files', {
+  \ 'source': PiperOpenedFiles(),
+  \ }))<CR>
