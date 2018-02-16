@@ -59,3 +59,14 @@ EOF
     /usr/bin/env git "$@"
   fi
 }
+
+# toggles between .../java/... and .../javatests/...
+function jt {
+  NORMAL_DIR="${PWD/\/javatests\//\/java\/}"
+  TEST_DIR="${PWD/\/java\//\/javatests\/}"
+  if [[ ($NORMAL_DIR != $PWD) && (-d $NORMAL_DIR) ]]; then
+    cd $NORMAL_DIR
+  elif [[ ($TEST_DIR != $PWD) && (-d $TEST_DIR) ]]; then
+    cd $TEST_DIR
+  fi
+}
