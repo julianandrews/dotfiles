@@ -1,5 +1,6 @@
 [ui]
 username = julianandrews
+merge = vimdiff
 
 [merge-tools]
 vimdiff.executable = vimdiff
