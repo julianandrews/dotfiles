@@ -28,14 +28,3 @@ inoremap <S-Insert> <C-R>+
 " YouCompleteMe keybindings
 nnoremap <leader>j :YcmCompleter GoTo<cr>
 nnoremap <leader>J :YcmCompleter GoToReferences<cr>
-
-nnoremap <silent> <leader>c :set opfunc=ReplaceWithoutOverwrite<cr>g@
-function! ReplaceWithoutOverwrite(type)
-    if a:type == 'line'
-        silent exe "normal! '[V']\"_dp"
-    elseif a:type == 'block'
-        silent exe "normal! `[\<C-V>`]\"_dp"
-    else
-        silent exe "normal! `[v`]\"_dp"
-    endif
-endfunction
