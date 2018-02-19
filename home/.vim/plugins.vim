@@ -63,3 +63,4 @@ if executable("rg")
     nnoremap <C-p>a :Rg
 endif
 nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :Files %:p:h<cr>
