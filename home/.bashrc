@@ -135,11 +135,6 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
-# ruby gem bin path
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
-
 PATH=$PATH:~/.cargo/bin:~/.local/bin:~/bin:/sbin:/usr/sbin
 
 # fzf
