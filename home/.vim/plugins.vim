@@ -19,7 +19,6 @@ Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 
 call plug#end()
 
@@ -47,9 +46,6 @@ let g:ale_type_map = {'flake8': {'ES': 'WS'}}
 let g:ale_fix_on_save = 1
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
-
-" vim-jsx config
-let g:jsx_ext_required = 0
 
 " fzf
 if executable("rg")
