@@ -2,14 +2,6 @@
 noremap <space> <nop>
 let mapleader = "\<space>"
 
-" fzf
-command! -nargs=+ -bang Rg call fzf#vim#grep(
-    \'rg --column --line-number --no-heading --color=always '.<q-args>,
-    \1,
-    \<bang>0
-    \)
-nnoremap <leader>f :Files<cr>
-
 " Toggle search highlighting
 nnoremap <silent> <leader>/ :noh<cr>
 

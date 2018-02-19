@@ -48,7 +48,7 @@ let g:ale_fix_on_save = 1
 " vim-jsx config
 let g:jsx_ext_required = 0
 
-" fzf ripgrep
+" fzf
 if executable("rg")
     command! -bang -nargs=* Rg
           \ call fzf#vim#grep(
@@ -59,3 +59,4 @@ if executable("rg")
 
     nnoremap <C-p>a :Rg
 endif
+nnoremap <leader>f :Files<cr>
