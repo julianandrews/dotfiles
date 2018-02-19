@@ -128,10 +128,6 @@ then
   source ~/.local/bin/virtualenvwrapper.sh
 fi
 
-# setup libvirt/vagrant
-export LIBVIRT_DEFAULT_URI=qemu:///system
-export VAGRANT_DEFAULT_PROVIDER=libvirt
-
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
