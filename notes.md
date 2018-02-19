@@ -94,6 +94,7 @@ Misc Setup
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-alternatives --set x-www-browser /usr/bin/chromium
     xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
+    curl https://sh.rustup.rs -sSf | sh
 
 Todo
 ----

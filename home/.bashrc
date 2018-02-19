@@ -140,7 +140,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-PATH=$PATH:~/.local/bin:~/bin:/sbin:/usr/sbin
+PATH=$PATH:~/.cargo/bin:~/.local/bin:~/bin:/sbin:/usr/sbin
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
