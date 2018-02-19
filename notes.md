@@ -4,14 +4,13 @@ Installation/Setup
 Dotfiles
 --------
 
+Use the https url since on a new machine I won't yet have ssh keys in place.
+
     git clone https://github.com/julianandrews/dotfiles.git
     git remote set-url origin git@github.com:julianandrews/dotfiles.git
     mv dotfiles ~/.dotfiles
     cd ~/.dotfiles
     ./install.sh
-
-Using the https url to clone avoids having to configure ssh just to get the
-dotfiles.
 
 Vim
 ---
@@ -32,10 +31,9 @@ Python Packages
 
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
       python3 get-pip.py --user && \
-      python2 get-pip.py --user && rm get-pip.py
-    python2 -m pip install --user notify2
-    python3 -m pip install --user bpython gmailcount[secretservice] pillow pygments pyxdg \
-      requests six virtualenv virtualenvwrapper
+      rm get-pip.py
+    python3 -m pip install --user gmailcount[secretservice] pillow pygments \
+      pyxdg requests six virtualenv virtualenvwrapper
 
 Also install https://github.com/john2x/solarized-pygment to user space (python3).
 
