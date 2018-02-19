@@ -86,13 +86,18 @@ Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
     * `greeter-hide-users=false`
     * `xserver-command=X -ardelay 250 -arinterval 20`
 
+Rust
+----
+    curl https://sh.rustup.rs -sSf | sh
+    rustup component add rustfmt-preview
+    rustup component add rls-preview rust-analysis rust-src
+
 Misc Setup
 ----------
 
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-alternatives --set x-www-browser /usr/bin/chromium
     xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
-    curl https://sh.rustup.rs -sSf | sh
 
 Todo
 ----
