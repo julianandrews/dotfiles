@@ -92,6 +92,11 @@ Rust
     rustup component add rustfmt-preview
     rustup component add rls-preview rust-analysis rust-src
 
+Crontab
+-------
+
+`0 */3 * * * DISPLAY=:0.0 ${HOME}/.local/bin/artsandculturedesktop > /tmp/artsandculturedesktop.log 2>&1`
+
 Misc Setup
 ----------
 
