@@ -50,7 +50,10 @@ def save_images(images):
 
 
 def get_data_directory():
-    directory = os.path.join(xdg.BaseDirectory.xdg_data_home, __name__)
+    directory = os.path.join(
+        xdg.BaseDirectory.xdg_data_home,
+        os.path.basename(__file__)
+    )
     os.makedirs(directory, exist_ok=True)
     return directory
 
