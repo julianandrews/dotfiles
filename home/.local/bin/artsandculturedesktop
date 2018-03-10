@@ -1,0 +1,65 @@
+#!/usr/bin/python3
+
+import io
+import os
+import random
+import requests
+import subprocess
+import xdg.BaseDirectory
+
+from PIL import Image
+
+REQUEST_HEADERS = {'User-Agent': 'Arts and Culture Desktop Fetcher 0.1'}
+IMAGE_DATA_URL = "https://www.gstatic.com/culturalinstitute/tabext/imax.json"
+
+
+def fetch_dekstop_images():
+    selected_urls = random.sample(get_image_urls(), len(screen_resolutions()))
+    filenames = save_images(fetch_image(url) for url in selected_urls)
+    set_desktop_images(filenames)
+
+
+def screen_resolutions():
+    xrandr_lines = subprocess.check_output(
+        ['xrandr', '-q'], universal_newlines=True
+    ).split('\n')
+    lines = [line.strip().split()[0] for line in xrandr_lines if '*' in line]
+    return [map(int, line.split('x')) for line in lines]
+
+
+def get_image_urls():
+    response = requests.get(IMAGE_DATA_URL, headers=REQUEST_HEADERS)
+    response.raise_for_status()
+    return [entry['image'] + "=s1200-rw" for entry in response.json()]
+
+
+def fetch_image(url):
+    response = requests.get(url, stream=True, headers=REQUEST_HEADERS)
+    response.raise_for_status()
+    return Image.open(io.BytesIO(response.content))
+
+
+def save_images(images):
+    filenames = []
+    directory = get_data_directory()
+    for index, image in enumerate(images):
+        filename = os.path.join(directory, "image-%s.jpg" % index)
+        image.save(filename)
+        filenames.append(filename)
+    return filenames
+
+
+def get_data_directory():
+    directory = os.path.join(xdg.BaseDirectory.xdg_data_home, __name__)
+    os.makedirs(directory, exist_ok=True)
+    return directory
+
+
+def set_desktop_images(filenames):
+    subprocess.call(
+        sum((['--bg-fill', filename] for filename in filenames), ['feh'])
+    )
+
+
+if __name__ == '__main__':
+    fetch_dekstop_images()
