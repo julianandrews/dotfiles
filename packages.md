@@ -4,7 +4,7 @@ build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-
 
 CLI tools
 ---------
-git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils clang-format
+git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils clang-format valgrind
 
 Dev
 ---
