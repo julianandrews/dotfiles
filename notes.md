@@ -18,6 +18,14 @@ Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
 
     * `xserver-command=X -ardelay 250 -arinterval 20`
 
+Python
+------
+    python3 -m pip install --user pillow
+
+Crontab
+-------
+`0 */3 * * * DISPLAY=:0.0 ${HOME}/.local/bin/artsandculturedesktop > /tmp/artsandculturedesktop.log 2>&1`
+
 Misc Setup
 ----------
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
