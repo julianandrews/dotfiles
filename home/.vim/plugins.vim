@@ -24,7 +24,7 @@ Glug g4
 augroup autoformat_settings
   autocmd!
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp AutoFormatBuffer clang-format
+  " autocmd FileType c,cpp AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
@@ -47,7 +47,6 @@ let g:ycm_enable_diagnostic_signs = 0
 
 " ale
 let g:ale_set_signs = 0
-let g:ale_statusline_format = ['x %d', '⚠ %d', '✓ ok']
 let g:ale_set_highlights = 1
 let g:ale_linters = {
       \'html': [],
