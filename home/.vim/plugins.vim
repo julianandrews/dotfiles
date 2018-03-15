@@ -41,6 +41,7 @@ let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_
 set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
+nnoremap <leader>b :Buffers<cr>
 
 " ycm
 let g:ycm_enable_diagnostic_signs = 0
