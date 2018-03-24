@@ -85,16 +85,31 @@ au User lsp_setup call lsp#register_server({
 
 nnoremap gd :LspDefinition<cr>
 
-" g4 config
-function! PiperOpenedFiles()
-  let l:opened_files = []
-  for l:ofile in piperlib#GetActiveFiles()
-    call add(l:opened_files, fnamemodify(l:ofile, ':.'))
+" Get changed fig files.
+function! GetFigFiles() abort
+  let syscall_info =
+      \ maktaba#syscall#Create('HGPLAIN=1 hg status --rev "parents(.)" -man').Call()
+  let found = split(l:syscall_info.stdout, "\n")
+  if len(found) == 0
+    echo 'Could not find any active files'
+    return []
+  endif
+
+  let root_directory = piperlib#GetRootDir()
+  let processed = []
+  for prep in found
+    let fullpath = maktaba#path#Join([root_directory, prep])
+    let relpath = fnamemodify(fullpath, ':.')
+    if filereadable(relpath) &&
+        \ match(relpath, '_meta$') == -1  " Don't show HIP metadata
+      call add(processed, relpath)
+    endif
   endfor
-  return l:opened_files
+
+  return processed
 endfunction
 
 nnoremap <silent> <leader>h :call fzf#run(fzf#wrap(
   \ 'piper-files', {
-  \ 'source': PiperOpenedFiles(),
+  \ 'source': GetFigFiles(),
   \ }))<CR>
