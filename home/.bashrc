@@ -128,6 +128,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Python startup
+export PYTHONSTARTUP=~/.pythonrc
+
 # set default editor to vim
 export EDITOR=vim
 
