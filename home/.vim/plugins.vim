@@ -14,6 +14,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 call plug#end()
 
+Glug glug sources+=`$HOME . '/.vim/glug-local'`
 Glug codefmt
 Glug codefmt-google
 Glug csearch
