@@ -83,6 +83,7 @@ au User lsp_setup call lsp#register_server({
     \})
 
 nnoremap gd :LspDefinition<cr>
+nnoremap gr :LspReferences<cr>
 
 " Get changed fig files.
 function! GetFigFiles() abort
