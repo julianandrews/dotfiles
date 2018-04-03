@@ -26,6 +26,10 @@ Crontab
 -------
 `0 */3 * * * DISPLAY=:0.0 ${HOME}/.local/bin/artsandculturedesktop > /tmp/artsandculturedesktop.log 2>&1`
 
+Vim
+---
+Install glint (instructions at go/glint-ale)
+
 Misc Setup
 ----------
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
