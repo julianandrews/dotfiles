@@ -1,6 +1,6 @@
 alias newterm='urxvtc -cd "$PWD"'
 
-alias affected_tests='/google/src/head/depot/google3/experimental/users/julianandrews/run_affected_tests'
+alias run_affected='/google/src/head/depot/google3/experimental/users/julianandrews/run_affected --nodirect --fig'
 
 alias set-monitors='xrandr --output DP-4 --auto --primary --output DP-5 --auto --right-of DP-4'
 
