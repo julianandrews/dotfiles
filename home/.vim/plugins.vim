@@ -51,11 +51,13 @@ let g:ycm_enable_diagnostic_signs = 0
 let g:ale_set_signs = 0
 let g:ale_set_highlights = 1
 let g:ale_linters = {
-      \'html': ['glint'],
-      \'typescript': ['glint'],
-      \'java': ['glint'],
       \'cpp': ['glint', 'clangtidy'],
+      \'html': ['glint'],
+      \'java': ['glint'],
       \'javascript': ['glint'],
+      \'python': ['glint'],
+      \'proto': ['glint'],
+      \'typescript': ['glint'],
       \}
 let g:ale_cpp_clangtidy_executable = 'clang_tidy'
 let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic,-google3-custom-weak-log']
