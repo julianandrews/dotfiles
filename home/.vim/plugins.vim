@@ -9,8 +9,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-Plug 'leafgarland/typescript-vim'
-
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 call plug#end()
 
