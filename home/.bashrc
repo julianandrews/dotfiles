@@ -52,22 +52,24 @@ __ps1_pwd() {
 }
 
 __ps1_suffix() {
-  __git_ps1 "${1:-%s}"
+  if git --version &>/dev/null
+  then
+    __git_ps1 "${1:-%s}"
+  fi
 }
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
-  pwd_template="$(tput setaf 6)%s$(tput sgr0)"
-  host_template="$(tput setaf 2)%s$(tput sgr0)"
-  prefix_template="$(tput setaf 4)%s$(tput sgr0)"
-  suffix_template=" $(tput setaf 5)(%s)$(tput sgr0)"
+  pwd_template="\[$(tput setaf 6)\]%s\[$(tput sgr0)\]"
+  host_template="\[$(tput setaf 2)\]%s\[$(tput sgr0)\]:"
+  prefix_template="\[$(tput setaf 4)\]%s\[$(tput sgr0)\]"
+  suffix_template="\[$(tput setaf 5)\] (%s)\[$(tput sgr0)\]"
 else
   host_template='%s:'
   suffix_template=' (%s)'
 fi
 
-PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_host "'$host_template'")$(__ps1_suffix "'$suffix_template'")\$ '
-
-unset prefix_template pwd_template host_template suffix_template
+PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'")\$ '
+unset pwd_template host_template prefix_template suffix_template
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
