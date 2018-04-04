@@ -47,8 +47,7 @@ __ps1_host() {
 }
 
 __ps1_pwd() {
-  local ps1_pwd"=$(dirs | cut -d' ' -f1)"
-  printf "${1:-%s}" "$ps1_pwd"
+  printf "${1}"
 }
 
 __ps1_suffix() {
@@ -59,12 +58,14 @@ __ps1_suffix() {
 }
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
-  pwd_template="\[$(tput setaf 6)\]%s\[$(tput sgr0)\]"
-  host_template="\[$(tput setaf 2)\]%s\[$(tput sgr0)\]:"
   prefix_template="\[$(tput setaf 4)\]%s\[$(tput sgr0)\]"
+  host_template="\[$(tput setaf 2)\]%s\[$(tput sgr0)\]:"
+  pwd_template="\[$(tput setaf 6)\]\w\[$(tput sgr0)\]"
   suffix_template="\[$(tput setaf 5)\] (%s)\[$(tput sgr0)\]"
 else
+  prefix_template="%s"
   host_template='%s:'
+  pwd_template="\w"
   suffix_template=' (%s)'
 fi
 
