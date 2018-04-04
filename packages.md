@@ -10,6 +10,10 @@ Dev
 ---
 python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev texlive texlive-latex-extra texlive-fonts-extra
 
+Android Studio Deps
+-------------------
+libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 qemu-kvm
+
 Services
 --------
 acpid laptop-mode-tools exfat-fuse iptables-persistent udevil postgresql postgresql-server-dev-all postgis sqlite wicd
