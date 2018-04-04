@@ -65,7 +65,7 @@ else
   suffix_template=' (%s)'
 fi
 
-PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_host "'$host_template'")$(__ps1_suffix "'$suffix_template'") \$ '
+PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_host "'$host_template'")$(__ps1_suffix "'$suffix_template'")\$ '
 
 unset prefix_template pwd_template host_template suffix_template
 
