@@ -58,8 +58,8 @@ __ps1_suffix() {
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
   pwd_template="$(tput setaf 6)%s$(tput sgr0)"
   host_template="$(tput setaf 2)%s$(tput sgr0)"
-  prefix_template="$(tput setaf 5)%s$(tput sgr0)"
-  suffix_template="$(tput setaf 4)(%s)$(tput sgr0)"
+  prefix_template="$(tput setaf 4)%s$(tput sgr0)"
+  suffix_template=" $(tput setaf 5)(%s)$(tput sgr0)"
 else
   host_template='%s:'
   suffix_template=' (%s)'
