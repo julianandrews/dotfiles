@@ -49,13 +49,15 @@ __ps1_host() {
 }
 
 __ps1_pwd() {
-  local ps1_pwd="$(dirs | cut -d' ' -f1)"
+  local ps1_pwd="$PWD"
 
   if is_fig_client; then
     local client_root="$(get_fig_client_root)"
     ps1_pwd="/${PWD##${client_root}}"
     [[ "$ps1_pwd" =~ //google3/java/com/google(.*) ]] && ps1_pwd="(jcg)${BASH_REMATCH[1]}"
     [[ "$ps1_pwd" =~ //google3/javatests/com/google(.*) ]] && ps1_pwd="(jtcg)${BASH_REMATCH[1]}"
+  else
+    [[ "$ps1_pwd" =~ "$HOME"(.*) ]] && ps1_pwd="~${BASH_REMATCH[1]}"
   fi
 
   printf "${1-%s}" "$ps1_pwd"
@@ -74,12 +76,15 @@ __ps1_suffix() {
 }
 
 if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
-  pwd_template="$(tput setaf 6)%s$(tput sgr0)"
-  host_template="$(tput setaf 9)%s$(tput sgr0)"
-  prefix_template="$(tput setaf 5)%s$(tput sgr0)"
-  suffix_template="$(tput setaf 4)%s$(tput sgr0)"
+  prefix_template="\[$(tput setaf 4)\]%s\[$(tput sgr0)\]"
+  host_template="\[$(tput setaf 9)\]%s\[$(tput sgr0)\]:"
+  pwd_template="\[$(tput setaf 6)\]%s\[$(tput sgr0)\]"
+  suffix_template="\[$(tput setaf 5)\]%s\[$(tput sgr0)\]"
 else
+  prefix_template="%s"
   host_template='%s:'
+  pwd_template="%s"
+  suffix_template='%s'
 fi
 
 PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'")\$ '
