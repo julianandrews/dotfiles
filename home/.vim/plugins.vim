@@ -57,7 +57,7 @@ endif
 " Get changed fig files.
 function! GetFigFiles() abort
   let syscall_info =
-        \ maktaba#syscall#Create('HGPLAIN=1 hg status --rev "parents(.)" -man').Call()
+        \ maktaba#syscall#Create('HGPLAIN=1 hg status --rev "parents(.)" -maun').Call()
   let found = split(l:syscall_info.stdout, "\n")
   if len(found) == 0
     echo 'Could not find any active files'
