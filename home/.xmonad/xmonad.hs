@@ -3,6 +3,8 @@ import Data.List (isPrefixOf)
 import XMonad
 import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour)
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
+import XMonad.Hooks.ManageHelpers (isDialog)
+
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Layout.Fullscreen (fullscreenManageHook)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
@@ -52,12 +54,11 @@ myEventHook = composeAll [
 myLayout = myHorizontal ||| myVertical ||| myTabbed
 
 myManageHook = composeAll [
+    isDialog --> doFloat,
     windowRole =? "gimp-image-window" --> (ask >>= doF . W.sink),
     fmap (isPrefixOf "Gimp-") className --> doFloat,
-    className =? "Transmission-gtk" --> doFloat,
-    className =? "gnubby_ssh_prompt" --> doFloat,
     title =? "gnubbyd" --> doFloat,
-    fmap (isPrefixOf "Sgt-") className --> doFloat,
+    title =? "Share your screen" --> doFloat,
     manageDocks,
     fullscreenManageHook,
     manageHook defaultConfig
@@ -65,12 +66,6 @@ myManageHook = composeAll [
   where windowRole = stringProperty "WM_WINDOW_ROLE"
 
 myKeys = [
-    ("<XF86Sleep>", spawn "systemctl suspend"),
-    ("<XF86HomePage>", spawn "sensible-browser"),
-    ("<XF86Mail>", spawn "sensible-browser https://mail.google.com"),
-    ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
-    ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
-    ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "$HOME/.local/bin/screen-lock"),
     ("M-,", sendMessage $ IncLayoutN (-1)),
     ("M-.", sendMessage $ IncLayoutN 1),
