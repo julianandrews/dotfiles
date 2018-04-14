@@ -24,3 +24,14 @@ nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 inoremap <S-Insert> <C-R>+
+
+function! JTSwap()
+  let l:cwd = getcwd()
+  if l:cwd =~ "\/java\/"
+    execute "cd" substitute(l:cwd, "/java/", "/javatests/", "")
+  elseif l:cwd =~ "\/javatests\/"
+    execute "cd" substitute(l:cwd, "/javatests/", "/java/", "")
+  endif
+endfunction
+
+command! JTSwap call JTSwap()
