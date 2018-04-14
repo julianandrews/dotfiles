@@ -16,4 +16,3 @@ endfunction
 
 " So we can use :RunTaze to call our function.
 command! RunTaze call RunTaze()
-autocmd BufWritePost *.ts silent RunTaze
