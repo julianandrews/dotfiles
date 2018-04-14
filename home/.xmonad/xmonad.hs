@@ -4,9 +4,9 @@ import XMonad
 import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour)
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
-import XMonad.Layout.Fullscreen (fullscreenManageHook)
+import XMonad.Hooks.ManageHelpers ((-?>), composeOne, isDialog)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
-import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OtherIndicated))
+import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyFloat))
 import XMonad.Util.EZConfig (additionalKeysP)
 
 import qualified XMonad.StackSet as W
@@ -24,7 +24,7 @@ myConfig = defaultConfig {
     terminal = "urxvtc",
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
-    layoutHook = lessBorders OtherIndicated myLayout,
+    layoutHook = lessBorders OnlyFloat myLayout,
     manageHook = myManageHook,
     startupHook = myStartupHook,
     focusedBorderColor = solarizedYellow,
@@ -57,15 +57,13 @@ myEventHook = composeAll [
 myLayout = myHorizontal ||| myVertical ||| myTabbed
 
 myManageHook = composeAll [
-    windowRole =? "gimp-image-window" --> (ask >>= doF . W.sink),
-    fmap (isPrefixOf "Gimp-") className --> doFloat,
-    className =? "Transmission-gtk" --> doFloat,
-    fmap (isPrefixOf "Sgt-") className --> doFloat,
-    manageDocks,
-    fullscreenManageHook,
-    manageHook defaultConfig
+    composeOne [
+        isDialog -?> doFloat,
+        className =? "Transmission-gtk" -?> doFloat,
+        fmap (isPrefixOf "Sgt-") className -?> doFloat
+    ],
+    manageDocks
   ]
-  where windowRole = stringProperty "WM_WINDOW_ROLE"
 
 myKeys = [
     ("<XF86Sleep>", spawn "systemctl suspend"),
@@ -75,8 +73,6 @@ myKeys = [
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "/home/julian/.local/bin/screen-lock"),
-    ("M-,", sendMessage $ IncLayoutN (-1)),
-    ("M-.", sendMessage $ IncLayoutN 1),
     ("M-w", onPrevNeighbour W.view),
     ("M-e", onNextNeighbour W.view),
     ("M-S-w", onPrevNeighbour W.shift),
