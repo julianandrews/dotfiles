@@ -6,14 +6,14 @@ let mapleader = "\<space>"
 nnoremap <silent> <leader>/ :noh<cr>
 
 " Cycle through quickfix/location lists
-fun! CycleList(nextcom, firstcom)
-    try
-        execute a:nextcom
-    catch /^Vim\%((\a\+)\)\=:E553/
-        execute a:firstcom
-    catch /^Vim\%((\a\+)\)\=:E\(42\|776\)/
-    endtry
-endfun
+function! CycleList(nextcom, firstcom)
+  try
+    execute a:nextcom
+  catch /^Vim\%((\a\+)\)\=:E553/
+    execute a:firstcom
+  catch /^Vim\%((\a\+)\)\=:E\(42\|776\)/
+  endtry
+endfunction
 
 nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
 nnoremap <silent> <F2> :call CycleList("lnext", "lfirst")<cr>
