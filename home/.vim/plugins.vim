@@ -20,7 +20,7 @@ if exists('g:installed_glug')
   Glug codefmt
   Glug codefmt-google
   Glug csearch
-  Glug youcompleteme-google
+  " Glug youcompleteme-google
   Glug blazedeps
   Glug g4
   Glug glint-ale
