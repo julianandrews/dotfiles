@@ -1,8 +1,7 @@
 Installation/Setup
 ==================
 
-Dotfiles
---------
+Dotfiles --------
 
 Use the https url since on a new machine I won't yet have ssh keys in place.
 
@@ -33,7 +32,8 @@ Python Packages
       python3 get-pip.py --user && \
       rm get-pip.py
     python3 -m pip install --user gmailcount[secretservice] pillow pygments \
-      pyxdg requests six virtualenv virtualenvwrapper
+      pyxdg requests six virtualenv virtualenvwrapper \
+      python-language-server
 
 Also install https://github.com/john2x/solarized-pygment to user space (python3).
 
