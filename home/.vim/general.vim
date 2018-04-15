@@ -1,16 +1,13 @@
 syntax on
 set expandtab
-set shiftwidth=4 tabstop=4 softtabstop=4
 set number
 set clipboard=unnamed
 set backspace=2
 set lazyredraw
-set wildignore+=*.pyc
 set mouse=a
 set hlsearch
 set cursorline
 set wildmenu
-set tags=tags
 set completeopt=menu
 set hidden
 
@@ -26,4 +23,4 @@ if executable("rg")
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
-command! -nargs=+ Grep execute 'silent grep! <args>' | copen 33
+command! -nargs=+ Grep execute 'silent grep! <args>' | redraw!

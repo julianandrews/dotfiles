@@ -7,24 +7,19 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 install.py --tern-completer --racer-completer' }
 Plug 'w0rp/ale'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 
 call plug#end()
 
 filetype plugin indent on
-
-set rtp+=~/.fzf
 
 " Ale config
 let g:ale_linters = {
@@ -40,7 +35,6 @@ let g:ale_fixers = {
       \'rust': ['rustfmt'],
       \}
 let g:ale_set_signs = 0
-let g:ale_statusline_format = ['x %d', '⚠ %d', '⬥ ok']
 let g:ale_set_highlights = 1
 let g:ale_type_map = {'flake8': {'ES': 'WS'}}
 let g:ale_fix_on_save = 1
@@ -48,15 +42,7 @@ hi link ALEWarningLine warning
 hi link ALEErrorLine error
 
 " fzf
-if executable("rg")
-    command! -bang -nargs=* Rg
-          \ call fzf#vim#grep(
-          \   'rg --column --line-number --no-heading --color=always --ignore-case '.shellescape(<q-args>), 1,
-          \   <bang>0 ? fzf#vim#with_preview('up:60%')
-          \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-          \   <bang>0)
-
-    nnoremap <C-p>a :Rg
-endif
+set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
+nnoremap <leader>b :Buffers<cr>

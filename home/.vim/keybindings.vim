@@ -1,10 +1,3 @@
-" Remap leader key to space
-noremap <space> <nop>
-let mapleader = "\<space>"
-
-" Toggle search highlighting
-nnoremap <silent> <leader>/ :noh<cr>
-
 " Cycle through quickfix/location lists
 fun! CycleList(nextcom, firstcom)
     try
@@ -14,6 +7,13 @@ fun! CycleList(nextcom, firstcom)
     catch /^Vim\%((\a\+)\)\=:E\(42\|776\)/
     endtry
 endfun
+
+" Remap leader key to space
+noremap <space> <nop>
+let mapleader = "\<space>"
+
+" Toggle search highlighting
+nnoremap <silent> <leader>/ :noh<cr>
 
 nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
 nnoremap <silent> <F2> :call CycleList("lnext", "lfirst")<cr>
