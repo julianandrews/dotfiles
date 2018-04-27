@@ -8,6 +8,19 @@ fun! CycleList(nextcom, firstcom)
     endtry
 endfun
 
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
 " Remap leader key to space
 noremap <space> <nop>
 let mapleader = "\<space>"
@@ -25,6 +38,8 @@ nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 inoremap <S-Insert> <C-R>+
 
-" YouCompleteMe keybindings
-nnoremap <leader>j :YcmCompleter GoTo<cr>
-nnoremap <leader>J :YcmCompleter GoToReferences<cr>
+" Easier splits
+map <silent> <C-h> :call WinMove('h')<cr>
+map <silent> <C-j> :call WinMove('j')<cr>
+map <silent> <C-k> :call WinMove('k')<cr>
+map <silent> <C-l> :call WinMove('l')<cr>
