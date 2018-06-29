@@ -92,6 +92,7 @@ let g:ale_linters = {
       \}
 let g:ale_cpp_clangtidy_executable = 'clang_tidy'
 let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic']
+let g:ale_lint_delay = 2000
 
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
