@@ -96,6 +96,9 @@ let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointe
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
 
+nnoremap <silent> <F1> :ALEPreviousWrap<cr>
+nnoremap <silent> <F2> :ALENextWrap<cr>
+
 " vim-lsp config
 nnoremap gd :LspDefinition<cr>
 nnoremap gr :LspReferences<cr>

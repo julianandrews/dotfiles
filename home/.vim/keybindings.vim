@@ -15,8 +15,6 @@ function! CycleList(nextcom, firstcom)
   endtry
 endfunction
 
-nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
-nnoremap <silent> <F2> :call CycleList("lnext", "lfirst")<cr>
 nnoremap <silent> <F3> :call CycleList("cprev", "clast")<cr>
 nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 
