@@ -29,6 +29,7 @@ Crontab
 Vim
 ---
 Install glint (instructions at go/glint-ale)
+Install clang-include-fixer (go/clang-include-fixer)
 
 Misc Setup
 ----------
