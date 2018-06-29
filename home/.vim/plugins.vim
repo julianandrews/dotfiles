@@ -19,11 +19,10 @@ if exists('g:installed_glug')
   Glug glug sources+=`$HOME . '/.vim/glug-local'`
   Glug codefmt
   Glug codefmt-google
-  Glug csearch
-  " Glug youcompleteme-google
   Glug blazedeps
   Glug g4
   Glug glint-ale
+  Glug youcompleteme-google
 endif
 
 augroup autoformat_settings
@@ -74,11 +73,10 @@ nnoremap <silent> <leader>h :call fzf#run(fzf#wrap(
       \ 'source': GetFigFiles(),
       \ }))<CR>
 
-" csearch
-let g:csearch_options = '--search_service_bns="" --enable_local_proxy --max_num_results=50'
-
 " ycm
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 " ale
 let g:ale_set_signs = 0
