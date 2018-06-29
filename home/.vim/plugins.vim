@@ -108,6 +108,6 @@ if executable('/google/data/ro/teams/grok/tools/kythe_languageserver')
   au User lsp_setup call lsp#register_server({
         \ 'name': 'Kythe Language Server',
         \ 'cmd': {server_info->['/google/data/ro/teams/grok/tools/kythe_languageserver', '--google3']},
-        \ 'whitelist': ['python', 'go', 'java', 'cpp', 'proto', 'typescript'],
+        \ 'whitelist': ['python', 'go', 'java', 'cpp', 'proto', 'typescript', 'javascript'],
         \})
 endif
