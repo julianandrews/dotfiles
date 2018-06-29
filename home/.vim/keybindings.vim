@@ -21,8 +21,8 @@ nnoremap <silent> <F3> :call CycleList("cprev", "clast")<cr>
 nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 
 " Paste from PRIMARY buffer
-nnoremap <leader>p "+p
-vnoremap <leader>p "+p
+nnoremap <S-Insert> "+p
+vnoremap <S-Insert> "+p
 inoremap <S-Insert> <C-R>+
 
 function! JTSwap()
