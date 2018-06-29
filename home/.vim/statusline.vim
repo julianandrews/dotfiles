@@ -3,6 +3,9 @@ function! StatusFormat(text)
 endfunction
 
 function! LinterStatus() abort
+  if (ale#engine#IsCheckingBuffer(bufnr('')))
+    return '◌'
+  else
     let l:counts = ale#statusline#Count(bufnr(''))
 
     let l:all_errors = l:counts.error + l:counts.style_error
@@ -13,6 +16,7 @@ function! LinterStatus() abort
     \   all_non_errors,
     \   all_errors
     \)
+  endif
 endfunction
 
 " Status Line
