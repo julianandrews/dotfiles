@@ -30,14 +30,15 @@ URxvt.cursorUnderline:      false
 URxvt.matcher.rend.0:       Uline fg5
 URxvt.pointerBlank:         false
 
-/* ! Background */
-/* URxvt.transparent:          true */
-/* URxvt.shading:              10 */
+! Scrollback
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
 
 /* ! Colors */
 /* *foreground:                #9ECFF5 */
 /* *background:                #000000 */
-/* *cursorColor:               #0D4C80 */      
+/* *cursorColor:               #0D4C80 */
 /* *color0:                    #000000 */
 /* *color1:                    #AA0000 */
 /* *color2:                    #00AA00 */
