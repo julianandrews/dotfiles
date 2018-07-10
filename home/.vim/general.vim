@@ -11,6 +11,7 @@ set undodir=~/.vim/undodir//
 
 set t_Co=256
 set background=dark
+set ttymouse=urxvt
 colorscheme solarized
 
 if executable("rg")
