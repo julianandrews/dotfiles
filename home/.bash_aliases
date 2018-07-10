@@ -30,3 +30,9 @@ function jt {
     cd $TEST_DIR
   fi
 }
+
+function hge {
+  local files
+  IFS= readarray -d '' files < <(hg status --rev 'parents(".")' -mau0n 2>/dev/null)
+  $EDITOR "${files[@]}" "$@"
+}
