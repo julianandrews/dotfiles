@@ -24,7 +24,7 @@ primary() {
 }
 
 positioning() {
-    [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --right-of HDMI-1'
+    [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --left-of HDMI-1'
 }
 
 rotation() {

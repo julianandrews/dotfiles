@@ -29,6 +29,7 @@ filetype plugin indent on
 let g:ale_linters = {
       \'python': ['flake8'],
       \'javascript': ['eslint'],
+      \'typescript': ['tsserver'],
       \'haskell': ['hlint'],
       \'rust': ['rls'],
       \'java': ['javac'],
@@ -42,6 +43,7 @@ let g:ale_set_signs = 0
 let g:ale_set_highlights = 1
 let g:ale_type_map = {'flake8': {'ES': 'WS'}}
 let g:ale_fix_on_save = 1
+let g:ale_typescript_tslint_config_path = "~/.config/tslint.json"
 hi link ALEWarningLine warning
 hi link ALEErrorLine error
 
@@ -69,6 +71,14 @@ if executable('rls')
         \ 'name': 'rls',
         \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
         \ 'whitelist': ['rust'],
+        \ })
+endif
+if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript'],
         \ })
 endif
 
