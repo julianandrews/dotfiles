@@ -9,6 +9,7 @@ vimdiff.premerge = keep
 
 [extensions]
 figstatus = /google/src/head/depot/google3/experimental/fig_contrib/prompts/fig_status/fig_status.py
+hgext.beautifygraph=
 
 [trainingwheels]
 prevent-revert--all=false
