@@ -4,6 +4,12 @@ alias run_affected='/google/src/head/depot/google3/experimental/users/julianandr
 
 alias set-monitors='xrandr --output DP-4 --auto --primary --output DP-5 --auto --right-of DP-4'
 
+alias iwyu="/google/src/head/depot/google3/devtools/maintenance/include_what_you_use/iwyu.py --nosafe_headers"
+
+alias flex="/usr/bin/flex.par"
+
+alias f1-sql="/google/data/ro/projects/storage/f1/tools/f1-sql"
+
 function ptouch() {
     while [ -n "$1" ]
     do
