@@ -22,6 +22,7 @@ if exists('g:installed_glug')
   Glug blazedeps
   Glug g4
   Glug glint-ale
+  Glug relatedfiles plugin[mappings]
   Glug youcompleteme-google
 endif
 
