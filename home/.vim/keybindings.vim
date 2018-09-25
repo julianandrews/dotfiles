@@ -33,3 +33,5 @@ function! JTSwap()
 endfunction
 
 command! JTSwap call JTSwap()
+
+nnoremap <silent> <leader>i :call ImportJavaSymbol()<cr>
