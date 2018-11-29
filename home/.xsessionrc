@@ -20,3 +20,5 @@ devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
 
 # Startup kupfer
 kupfer --no-splash > /dev/null &
+
+setxkbmap -option caps:swapescape
