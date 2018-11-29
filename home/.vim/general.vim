@@ -35,13 +35,13 @@ function! ImportJavaSymbol()
     " Multiple results. Show options in a temporary buffer where <Enter>
     " selects the import statement and closes the temporary buffer.
     belowright new
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted
     exe 'resize' . string(numresults)
-    setlocal buftype=nofile bufhidden=hide noswapfile
     set paste
     exe "normal! i" . results
     exe "normal! gg"
-    nnoremap <buffer> <CR> yy:q<CR>2Gpjvip:sort<CR><C-O>
     set nopaste
+    nnoremap <buffer> <CR> yy:q<CR>2Gpjvip:sort<CR><C-O>
   else
    " Only option. Insert and show at the command line the imported statment.
     set paste
