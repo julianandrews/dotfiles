@@ -3,9 +3,9 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'
   Plug 'altercation/vim-colors-solarized'
-  Plug 'w0rp/ale'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
+  Plug 'vim-syntastic/syntastic'
 
   Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
   Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
@@ -21,9 +21,9 @@ if exists('g:installed_glug')
   Glug codefmt-google
   Glug blazedeps
   Glug g4
-  Glug glint-ale
   Glug relatedfiles plugin[mappings]
   Glug youcompleteme-google
+  Glug syntastic-google checkers=`{'proto': ['glint'], 'borg': ['borgcfg'], 'java': ['glint']}`
 endif
 
 augroup autoformat_settings
@@ -79,27 +79,13 @@ let g:ycm_show_diagnostics_ui = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
 
-" ale
-let g:ale_set_signs = 0
-let g:ale_set_highlights = 1
-let g:ale_linters = {
-      \'cpp': ['glint', 'clangtidy'],
-      \'html': ['glint'],
-      \'java': ['glint'],
-      \'javascript': ['glint'],
-      \'python': ['glint'],
-      \'proto': ['glint'],
-      \'typescript': ['glint'],
-      \}
-let g:ale_cpp_clangtidy_executable = 'clang_tidy'
-let g:ale_cpp_clangtidy_checks = ['-cppcoreguidelines-pro-bounds-array-to-pointer-decay,-cppcoreguidelines-pro-bounds-pointer-arithmetic']
-let g:ale_lint_delay = 2000
-
-hi link ALEWarningLine warning
-hi link ALEErrorLine error
-
-nnoremap <silent> <F1> :ALEPreviousWrap<cr>
-nnoremap <silent> <F2> :ALENextWrap<cr>
+" syntastic
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_enable_signs = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 1
 
 " vim-lsp config
 nnoremap gd :LspDefinition<cr>
