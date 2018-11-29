@@ -25,15 +25,4 @@ nnoremap <S-Insert> "+p
 vnoremap <S-Insert> "+p
 inoremap <S-Insert> <C-R>+
 
-function! JTSwap()
-  let l:cwd = getcwd()
-  if l:cwd =~ "\/java\/"
-    execute "cd" substitute(l:cwd, "/java/", "/javatests/", "")
-  elseif l:cwd =~ "\/javatests\/"
-    execute "cd" substitute(l:cwd, "/javatests/", "/java/", "")
-  endif
-endfunction
-
-command! JTSwap call JTSwap()
-
 nnoremap <silent> <leader>i :call ImportJavaSymbol()<cr>
