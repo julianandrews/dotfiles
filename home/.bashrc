@@ -70,7 +70,8 @@ __ps1_suffix() {
     export GIT_PS1_SHOWUNTRACKEDFILES=true
     local git_ps1="$(__git_ps1)"
   fi
-  local fig_ps1="$(get_fig_prompt)"
+  # local fig_ps1="$(get_fig_prompt)"
+  local fig_ps1=""
 
   printf "${1-%s}" "${git_ps1}${fig_ps1}"
 }
