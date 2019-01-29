@@ -28,7 +28,7 @@ endif
 augroup autoformat_settings
   autocmd!
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp AutoFormatBuffer clang-format
+  autocmd FileType c,cpp NoAutoFormatBuffer
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType java AutoFormatBuffer google-java-format
