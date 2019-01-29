@@ -1,5 +1,3 @@
-alias newterm='urxvtc -cd "$PWD"'
-
 alias run_affected='/google/src/head/depot/google3/experimental/users/julianandrews/run_affected --nodirect --fig'
 
 alias set-monitors='xrandr --output DP-4 --auto --primary --output DP-5 --auto --right-of DP-4'
@@ -37,8 +35,18 @@ function jt {
   fi
 }
 
+function hgtidy {
+  local files
+  IFS= readarray -d '' files < <(hg status --rev p4base -mau0n 2>/dev/null)
+  for index in "${!files[@]}" ; do
+    [[ ${files[$index]} =~ \.(cc|h)$ ]] || unset -v 'files[$index]'
+  done
+  echo clang_tidy $(realpath "${files[@]}")
+  clang_tidy $(realpath "${files[@]}")
+}
+
 function hge {
   local files
-  IFS= readarray -d '' files < <(hg status --rev 'parents(".")' -mau0n 2>/dev/null)
+  IFS= readarray -d '' files < <(hg status --rev p4base -mau0n 2>/dev/null)
   $EDITOR "${files[@]}" "$@"
 }
