@@ -7,8 +7,7 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
   Plug 'prabirshrestha/vim-lsp'
   Plug 'vim-syntastic/syntastic'
 
-  Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
-  Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+  Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
   Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
   Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
   Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
@@ -86,7 +85,11 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_enable_signs = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 1
+
+" vim-cpp-enhanced-highlight
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_scope_highlight = 1
+
 
 " vim-lsp config
 nnoremap gd :LspDefinition<cr>
