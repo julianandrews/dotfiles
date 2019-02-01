@@ -21,28 +21,13 @@ alias br='/google/src/head/depot/google3/devtools/blaze/scripts/blaze-run.sh'
 alias btcfg=/google/data/ro/projects/bigtable/contrib/btcfg/btcfg
 
 function prodaccess() {
-  /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space
+  /usr/bin/prodaccess "$@" && /google/data/ro/users/di/diamondm/engfortunes/fortune.sh --extra_space && bigstore_aliases
 }
 
-# toggles between .../java/... and .../javatests/...
-function jt {
-  NORMAL_DIR="${PWD/\/javatests\//\/java\/}"
-  TEST_DIR="${PWD/\/java\//\/javatests\/}"
-  if [[ ($NORMAL_DIR != $PWD) && (-d $NORMAL_DIR) ]]; then
-    cd $NORMAL_DIR
-  elif [[ ($TEST_DIR != $PWD) && (-d $TEST_DIR) ]]; then
-    cd $TEST_DIR
+function bigstore_aliases() {
+  if [ -f /google/src/head/depot/google3/cloud/bigstore/tools/bigstore.bashrc ]; then
+    . /google/src/head/depot/google3/cloud/bigstore/tools/bigstore.bashrc
   fi
-}
-
-function hgtidy {
-  local files
-  IFS= readarray -d '' files < <(hg status --rev p4base -mau0n 2>/dev/null)
-  for index in "${!files[@]}" ; do
-    [[ ${files[$index]} =~ \.(cc|h)$ ]] || unset -v 'files[$index]'
-  done
-  echo clang_tidy $(realpath "${files[@]}")
-  clang_tidy $(realpath "${files[@]}")
 }
 
 function hge {
@@ -50,3 +35,5 @@ function hge {
   IFS= readarray -d '' files < <(hg status --rev p4base -mau0n 2>/dev/null)
   $EDITOR "${files[@]}" "$@"
 }
+
+bigstore_aliases

@@ -153,10 +153,5 @@ export PATH=~/.pub-cache/bin:${PATH}
 export FZF_DEFAULT_COMMAND='find * -path "*/\.*" -prune -o -type f -not -name "*.pyc" -print -o -type l -not -name "*.pyc" -print 2> /dev/null'
 export FZF_DEFAULT_OPTS='--tiebreak=end,begin,length,index'
 
-# bigstore
-if [ -f /google/src/head/depot/google3/cloud/bigstore/tools/bigstore.bashrc ]; then
-  . /google/src/head/depot/google3/cloud/bigstore/tools/bigstore.bashrc
-fi
-
 # blaze
 export BLAZE_COMPLETION_USE_QUERY=true
