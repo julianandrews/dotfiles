@@ -55,6 +55,8 @@ function! ImportJavaSymbol()
 endfunction
 
 function! FormatChangedLines()
-  silent let lines = systemlist("diff --unchanged-line-format=\"\" --old-line-format=\"\" --new-line-format=\"\%dn\%c'\012'\" " . expand("%:p") . " -", bufnr('%'))
-  exe join(lines, ",") . "FormatLines"
+  if (filereadable(@%))
+    silent let lines = systemlist("diff --unchanged-line-format=\"\" --old-line-format=\"\" --new-line-format=\"\%dn\%c'\012'\" " . expand("%:p") . " -", bufnr('%'))
+    exe join(lines, ",") . "FormatLines"
+  endif
 endfunction
