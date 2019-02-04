@@ -9,8 +9,6 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 
   Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
   Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
-  Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
-  Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
   call plug#end()
 endif
 

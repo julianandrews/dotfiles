@@ -28,19 +28,18 @@ Crontab
 
 Vim
 ---
-Install glint (instructions at go/glint-ale)
 Install clang-include-fixer (go/clang-include-fixer)
+Install vim-plug
+Run :PlugInstall
 
 Misc Setup
 ----------
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
-/google/src/head/depot/google3/dart/tools/dart_rapture_setup.sh
-pub global activate dart_language_server
-/google/data/ro/teams/jade/install
 /google/data/ro/teams/fig/install.sh
+Install fzf
+Install ripgrep
 
 Todo
 ----
 xsslock
-remap capslock
 vim setup fiddling
