@@ -37,3 +37,13 @@ function hge {
 }
 
 bigstore_aliases
+
+alias gs-oauth-prod="/google/data/ro/projects/cloud/bigstore/mpm/gs_oauth/live/gs_oauth.par \
+  --client_id=909320924072.apps.googleusercontent.com \
+  --client_secret=p3RlpR10xMFh9ZXBS/ZNLYUu \
+  --scope='https://www.googleapis.com/auth/cloud-platform' \
+  --scope='https://www.googleapis.com/auth/devstorage.full_control' \
+  -f ~/.oauth2-prod.dat \
+  --authorization_header=true"
+
+httpa () { http "$@" "`gs-oauth-prod`"; }
