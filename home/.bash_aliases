@@ -47,3 +47,5 @@ alias gs-oauth-prod="/google/data/ro/projects/cloud/bigstore/mpm/gs_oauth/live/g
   --authorization_header=true"
 
 httpa () { http "$@" "`gs-oauth-prod`"; }
+
+alias @dbg=/google/bin/releases/ads-test-debugger/public/atdbg.par
