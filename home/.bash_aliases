@@ -49,3 +49,5 @@ alias gs-oauth-prod="/google/data/ro/projects/cloud/bigstore/mpm/gs_oauth/live/g
 httpa () { http "$@" "`gs-oauth-prod`"; }
 
 alias @dbg=/google/bin/releases/ads-test-debugger/public/atdbg.par
+
+test_at() { (set -x; cd /google/src/components/$1/google3; shift; rabbit test --runs_per_test=10 --runs_per_test_detects_flakes "$@"); }
