@@ -69,10 +69,10 @@ myKeys = [
     ("M-S-z", spawn "$HOME/.local/bin/screen-lock"),
     ("M-,", sendMessage $ IncLayoutN (-1)),
     ("M-.", sendMessage $ IncLayoutN 1),
-    ("M-w", onPrevNeighbour W.view),
-    ("M-e", onNextNeighbour W.view),
-    ("M-S-w", onPrevNeighbour W.shift),
-    ("M-S-e", onNextNeighbour W.shift)
+    ("M-w", onPrevNeighbour def W.view),
+    ("M-e", onNextNeighbour def W.view),
+    ("M-S-w", onPrevNeighbour def W.shift),
+    ("M-S-e", onNextNeighbour def W.shift)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces myWorkspaceKeys,
