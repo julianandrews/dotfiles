@@ -14,6 +14,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'dart-lang/dart-vim-plugin', { 'for': ['dart'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
