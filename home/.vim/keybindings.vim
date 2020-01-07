@@ -1,4 +1,5 @@
-" Cycle through quickfix/location lists
+" Cycle through quickfix/location lists e.g.:
+" nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
 fun! CycleList(nextcom, firstcom)
     try
         execute a:nextcom
@@ -27,11 +28,6 @@ let mapleader = "\<space>"
 
 " Toggle search highlighting
 nnoremap <silent> <leader>/ :noh<cr>
-
-nnoremap <silent> <F1> :call CycleList("lprev", "llast")<cr>
-nnoremap <silent> <F2> :call CycleList("lnext", "lfirst")<cr>
-nnoremap <silent> <F3> :call CycleList("cprev", "clast")<cr>
-nnoremap <silent> <F4> :call CycleList("cnext", "cfirst")<cr>
 
 " Paste from PRIMARY buffer
 nnoremap <leader>p "+p

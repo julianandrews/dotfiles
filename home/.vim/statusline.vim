@@ -7,20 +7,16 @@ function! FiletypeStatus()
 endfunction
 
 function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:counts = lsp#ui#vim#diagnostics#get_buffer_diagnostics_counts()
 
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
+    let l:all_errors = l:counts.error
+    let l:all_non_errors = l:counts.warning + l:counts.information + l:counts.hint
 
-    return l:counts.total == 0 ? '✓ ok' : printf(
+    return l:all_errors == 0 && l:all_non_errors == 0 ? '✓ ok' : printf(
     \   '⚠ %d x %d',
     \   all_non_errors,
     \   all_errors
     \)
-endfunction
-
-function! VirtualenvStatus()
-  return StatusFormat(([""] + split($VIRTUAL_ENV, "/"))[-1])
 endfunction
 
 " Status Line
@@ -28,7 +24,6 @@ set statusline=%<                                           "Truncation Point
 set statusline+=%1*%h%r%w%m%*                               "Flags
 set statusline+=%f\                                         "File Name
 set statusline+=%2*%{FiletypeStatus()}%*                    "File Type
-set statusline+=%3*%{VirtualenvStatus()}%*                  "Virtualenv
 set statusline+=%=                                          "Right Align
 set statusline+=%4*%{LinterStatus()}%*\                     "Linter
 set statusline+=%l:%c\                                      "Row and Column

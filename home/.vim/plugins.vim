@@ -11,7 +11,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
 Plug 'tpope/vim-commentary'
 Plug 'altercation/vim-colors-solarized'
 
@@ -25,28 +24,6 @@ call plug#end()
 
 filetype plugin indent on
 
-" Ale config
-let g:ale_linters = {
-      \'python': ['flake8'],
-      \'javascript': ['eslint'],
-      \'typescript': ['tsserver'],
-      \'haskell': ['hlint'],
-      \'rust': ['rls'],
-      \'java': ['javac'],
-      \'cpp': ['clang'],
-      \}
-let g:ale_fixers = {
-      \'cpp': ['clang-format'],
-      \'rust': ['rustfmt'],
-      \}
-let g:ale_set_signs = 0
-let g:ale_set_highlights = 1
-let g:ale_type_map = {'flake8': {'ES': 'WS'}}
-let g:ale_fix_on_save = 1
-let g:ale_typescript_tslint_config_path = "~/.config/tslint.json"
-hi link ALEWarningLine warning
-hi link ALEErrorLine error
-
 " fzf
 set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
@@ -54,9 +31,15 @@ nnoremap <leader>g :Files %:p:h<cr>
 nnoremap <leader>b :Buffers<cr>
 
 " vim-lsp config
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_enabled = 0
 let g:lsp_log_file = '/tmp/vim-lsp.log'
 nnoremap gd :LspDefinition<cr>
 nnoremap gr :LspReferences<cr>
+nnoremap <F1> :LspNextDiagnostic<cr>
+nnoremap <F2> :LspPreviousDiagnostic<cr>
+nnoremap <F3> :LspNextReference<cr>
+nnoremap <F4> :LspPreviousReference<cr>
 
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
@@ -73,6 +56,15 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+
+if executable('clangd-7')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd-7']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'typescript-language-server',
