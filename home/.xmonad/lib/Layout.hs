@@ -2,7 +2,7 @@ module Layout (myHorizontal, myVertical, myTabbed) where
 
 import XMonad
 import XMonad.Layout (Tall, Mirror)
-import XMonad.Layout.Decoration (Theme(..), defaultTheme, Decoration, DefaultShrinker)
+import XMonad.Layout.Decoration (Theme(..), def, Decoration, DefaultShrinker)
 import XMonad.Layout.Renamed (renamed, Rename(Replace))
 import XMonad.Layout.Tabbed (TabbedDecoration, tabbed, shrinkText)
 import XMonad.Util.Themes (ThemeInfo(..))
@@ -15,7 +15,7 @@ import qualified XMonad.StackSet as W
 
 solarizedTheme :: ThemeInfo
 solarizedTheme = TI "Solarized Theme" "Julian Andrews" "Theme using Solarized's colors" (
-  defaultTheme {
+  def {
       fontName            = "xft:Deja Vu Mono:size=10.5",
       activeColor         = solarizedCyan,
       activeBorderColor   = solarizedBase03,

@@ -6,8 +6,9 @@ import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Hooks.ManageHelpers ((-?>), composeOne, isDialog)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
-import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyFloat))
+import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyScreenFloat))
 import XMonad.Util.EZConfig (additionalKeysP)
+import Data.Default (def)
 
 import qualified XMonad.StackSet as W
 
@@ -24,7 +25,7 @@ myConfig = defaultConfig {
     terminal = "urxvtc",
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
-    layoutHook = lessBorders OnlyFloat myLayout,
+    layoutHook = lessBorders OnlyScreenFloat myLayout,
     manageHook = myManageHook,
     startupHook = myStartupHook,
     focusedBorderColor = solarizedYellow,
@@ -73,10 +74,10 @@ myKeys = [
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "/home/julian/.local/bin/screen-lock"),
-    ("M-w", onPrevNeighbour W.view),
-    ("M-e", onNextNeighbour W.view),
-    ("M-S-w", onPrevNeighbour W.shift),
-    ("M-S-e", onNextNeighbour W.shift)
+    ("M-w", onPrevNeighbour def W.view),
+    ("M-e", onNextNeighbour def W.view),
+    ("M-S-w", onPrevNeighbour def W.shift),
+    ("M-S-e", onNextNeighbour def W.shift)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces myWorkspaceKeys,
