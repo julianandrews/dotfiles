@@ -122,16 +122,6 @@ if [ -n "$DESKTOP_SESSION" ];then
     export SSH_AUTH_SOCK
 fi
 
-# setup virtualenvwrapper
-if [ -e ~/.local/bin/virtualenvwrapper.sh ]
-then
-  export WORKON_HOME=$HOME/.virtualenvs
-  export PROJECT_HOME=$HOME/sites
-  export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-  source ~/.local/bin/virtualenvwrapper.sh
-fi
-
 # python 2 tab completion
 export PYTHONSTARTUP=~/.config/pystartup
 
