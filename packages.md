@@ -1,10 +1,10 @@
 Libraries and build tools
 -------------------------
-build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev libqt4-dev libphonon-dev automake libpam0g-dev libboost-dev libboost-test-dev libboost-date-time-dev libboost-regex-dev
+build-essential cmake libvorbisfile3 libjpeg-dev libxslt-dev libxml2-dev zlib1g-dev libncurses5-dev gettext libssh2-1-dev e2fslibs-dev libmemcached-dev libqt4-dev libphonon-dev automake libpam0g-dev libboost-dev libboost-test-dev libboost-date-time-dev libboost-regex-dev libtool xclip
 
 CLI tools
 ---------
-git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils clang-format valgrind
+git curl checkinstall htop tree pv jq p7zip-full unzip unrar apg scrot imagemagick gnupg nmap zip screen libav-tools ecryptfs-utils exfat-utils clang-format valgrind pandoc
 
 Dev
 ---
@@ -20,7 +20,7 @@ acpid laptop-mode-tools exfat-fuse iptables-persistent udevil postgresql postgre
 
 Gui
 ---
-lightdm xorg xorg-dev xinput gnome-icon-theme faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst feh xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra
+lightdm xorg xorg-dev xinput gnome-icon-theme faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst feh xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra seahorse
 
 Sound/Printer
 -------------
