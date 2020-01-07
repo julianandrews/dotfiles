@@ -5,7 +5,8 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
   Plug 'altercation/vim-colors-solarized'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
-  Plug 'vim-syntastic/syntastic'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
   Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['cpp'] }
   Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
@@ -13,14 +14,10 @@ if !empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 if exists('g:installed_glug')
-  Glug glug sources+=`$HOME . '/.vim/glug-local'`
   Glug codefmt
   Glug codefmt-google
   Glug blazedeps
-  Glug g4
-  Glug relatedfiles plugin[mappings]
-  Glug youcompleteme-google
-  Glug syntastic-google checkers=`{'proto': ['glint'], 'borg': ['borgcfg'], 'java': ['glint']}`
+  Glug google-csimporter
 endif
 
 augroup autoformat_settings
@@ -72,31 +69,45 @@ nnoremap <silent> <leader>h :call fzf#run(fzf#wrap(
       \ 'source': GetFigFiles(),
       \ }))<CR>
 
-" ycm
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
-
-" syntastic
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_enable_signs = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_always_populate_loc_list = 1
-
 " vim-cpp-enhanced-highlight
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_scope_highlight = 1
 
+" vim-lsp
+au User lsp_setup call lsp#register_server({
+    \ 'name': 'CiderLSP',
+    \ 'cmd': {server_info->[
+    \   '/google/bin/releases/editor-devtools/ciderlsp',
+    \   '--tooltag=vim-lsp',
+    \   '--noforward_sync_responses',
+    \ ]},
+    \ 'whitelist': ['proto', 'textproto', 'go', 'java', 'python'],
+    \})
 
-" vim-lsp config
-nnoremap gd :LspDefinition<cr>
-nnoremap gr :LspReferences<cr>
-
-if executable('/google/data/ro/teams/grok/tools/kythe_languageserver')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'Kythe Language Server',
-        \ 'cmd': {server_info->['/google/data/ro/teams/grok/tools/kythe_languageserver', '--google3']},
-        \ 'whitelist': ['python', 'go', 'java', 'cpp', 'proto', 'typescript', 'javascript'],
-        \})
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
 endif
+
+nnoremap gd :LspDefinition<CR>
+nnoremap gr :LspReferences<CR>
+nnoremap <silent> <F1> :LspPreviousError<CR>
+nnoremap <silent> <F2> :LspNextError<CR>
+let g:lsp_async_completion = 1
+let g:lsp_signs_enabled = 0
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '⚠️'}
+let g:lsp_signs_information = {'text': 'ⓘ'}
+let g:lsp_signs_hint = {'text': 'ⓘ'}
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+
+" vim-lsp tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+imap <c-space> <Plug>(asyncomplete_force_refresh)

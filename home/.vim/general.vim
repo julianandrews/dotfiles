@@ -4,7 +4,6 @@ set mouse=a
 set hlsearch
 set cursorline
 set wildmenu
-set completeopt-=preview
 
 set undofile
 set undodir=~/.vim/undodir//
