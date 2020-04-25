@@ -1,15 +1,19 @@
 Installation/Setup
 ==================
 
-Dotfiles --------
+Dotfiles
+--------
 
 Use the https url since on a new machine I won't yet have ssh keys in place.
 
-    git clone https://github.com/julianandrews/dotfiles.git
-    git remote set-url origin git@github.com:julianandrews/dotfiles.git
-    mv dotfiles ~/.dotfiles
-    cd ~/.dotfiles
-    ./install.sh
+    alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    git clone --bare https://github.com/julianandrews/dotfiles.git $HOME/.dotfiles
+    dotfiles config --local status.showUntrackedFiles no
+    dotfiles remote set-url origin git@github.com:julianandrews/dotfiles.git
+    dotfiles checkout
+
+It will probably be necessary to remove existing files (after possibly backing
+them up), and then rerun `dotfiles checkout`.
 
 Vim
 ---
@@ -61,14 +65,14 @@ Tarsnap
 ACPI event handlers (backlight, lid, volume)
 --------------------------------------------
 
-    sudo cp ~/.dotfiles/acpi/actions/* /etc/acpi/actions
-    sudo cp ~/.dotfiles/acpi/events/* /etc/acpi/events
+    sudo cp ~/.dotfiles-notes/acpi/actions/* /etc/acpi/actions
+    sudo cp ~/.dotfiles-notes/acpi/events/* /etc/acpi/events
     sudo systemctl restart acpid.service
 
 UDev rules (monitor hotplug, u2f key)
 -------------------------------------
 
-    sudo cp ~/.dotfiles/udev-rules/* /etc/udev/rules.d/
+    sudo cp ~/.dotfiles-notes/udev-rules/* /etc/udev/rules.d/
     sudo udevadm control --reload-rules
 
 CapsLock->Esc
