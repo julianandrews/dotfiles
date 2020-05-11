@@ -4,27 +4,34 @@ home=/home/julian
 
 export DISPLAY=:0.0
 export XAUTHORITY="$home/.Xauthority"
+xrandr --setprovideroutputsource 1 0 && xrandr --setprovideroutputsource 2 0
 
-hostname=$(hostname)
 displays=$(xrandr | grep 'connected' | cut -d ' ' -f 1)
 connected_displays=$(xrandr | grep ' connected ' | cut -d ' ' -f 1)
 
 hasdisplay() {
-    echo $connected_displays | grep -qE "( |^)$1( |$)"
+  echo $connected_displays | grep -qe "\( \|^\)$1\( \|$\)"
 }
 
 primary() {
-    if hasdisplay 'HDMI-1'
-    then
-        [ "$1" = 'HDMI-1' ] && echo -n ' --primary'
-    elif [ "$1" = 'eDP-1' ]
-    then
-        echo -n ' --primary'
-    fi
+  [ "$1" = 'eDP-1' ] && echo -n ' --primary'
 }
 
 positioning() {
-    [ "$1" = 'eDP-1' ] && hasdisplay 'HDMI-1' && echo -n ' --left-of HDMI-1'
+  if hasdisplay 'DVI-I-2-2'
+  then
+    [ "$1" = 'eDP-1' ] && echo -n ' --pos 128x1080'
+    [ "$1" = 'DVI-I-1-1' ] && echo -n ' --pos 2048x552'
+  fi
+}
+
+mode() {
+  if [ "$1" = 'DVI-I-2-2' ]
+  then
+    echo -n  ' --mode 2048x1080'
+  else
+    echo -n ' --auto'
+  fi
 }
 
 rotation() {
@@ -32,19 +39,19 @@ rotation() {
 }
 
 modifiers() {
-    if hasdisplay "$1"
-    then
-        echo -n "--auto$(primary $1)$(positioning $1)$(rotation $1)"
-    else
-        echo -n "--off"
-    fi
+  if hasdisplay "$1"
+  then
+    echo -n "$(mode $1)$(primary $1)$(positioning $1)$(rotation $1)"
+  else
+    echo -n " --off"
+  fi
 }
 
 args=''
 for display in $displays
 do
-    args="$args --output $display $(modifiers $display)"
+  args="$args --output ${display}$(modifiers $display)"
 done
 
 xrandr $args
-[ -x "$home/.fehbg" ] && "$home/.fehbg"
+$home/.local/bin/artsandculturedesktop &
