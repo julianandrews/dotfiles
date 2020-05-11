@@ -6,3 +6,6 @@ tags
 .cache
 requirements.dev*
 .tern-project
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.tfstate.lock.info

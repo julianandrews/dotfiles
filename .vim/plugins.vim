@@ -32,3 +32,6 @@ set rtp+=~/.fzf
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
 nnoremap <leader>b :Buffers<cr>
+
+" vim-terraform
+let g:terraform_fmt_on_save=1
