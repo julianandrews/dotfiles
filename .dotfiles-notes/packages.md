@@ -8,7 +8,7 @@ git neovim curl htop tree pv jq p7zip-full unzip unrar apg imagemagick gnupg nma
 
 Dev
 ---
-python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev texlive texlive-latex-extra texlive-fonts-extra
+python python-dev python3 python3-dev cython python-flake8 python-xdg python-xmpp python3-dbus python3-gi python3-gi-cairo flake8 haskell-platform haskell-stack hlint default-jre openjdk-8-jdk gradle libperl-dev ruby ruby-dev texlive texlive-latex-extra texlive-fonts-extra golang
 
 Android Studio Deps
 -------------------

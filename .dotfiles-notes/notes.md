@@ -100,6 +100,7 @@ Install tarsnap
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-alternatives --set x-www-browser /usr/bin/chromium
     xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet
+    sudo apt install -t buster-backports golang-go
 
 Todo
 ----
