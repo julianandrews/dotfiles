@@ -15,20 +15,6 @@ Use the https url since on a new machine I won't yet have ssh keys in place.
 It will probably be necessary to remove existing files (after possibly backing
 them up), and then rerun `dotfiles checkout`.
 
-Vim
----
-
-    apt-get source vim
-    cd vim-*
-    ./configure --with-features=normal --with-x --enable-python3interp=dynamic
-    sudo apt-get remove vim-common vim-tiny
-    sudo checkinstall
-    sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
-    sudo update-alternatives --set editor /usr/local/bin/vim
-
-For the `checkinstall` step, setting the package name to `vim-custom` or
-something like that avoids potential conflicts.
-
 Python Packages
 ---------------
 
@@ -40,6 +26,11 @@ Python Packages
       python-language-server
 
 Also install https://github.com/john2x/solarized-pygment to user space (python3).
+
+Neovim
+------
+    :CocInstall coc-python
+    :CocInstall coc-rls
 
 Node & Node packages
 --------------------
@@ -103,7 +94,9 @@ Crontab
 
 Misc Setup
 ----------
+Install tarsnap
 
+    sudo update-alternatives --set editor /usr/bin/nvim
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
     sudo update-alternatives --set x-www-browser /usr/bin/chromium
     xdg-mime default transmission-gtk.desktop x-scheme-handler/magnet

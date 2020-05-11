@@ -10,13 +10,16 @@ set cursorline
 set wildmenu
 set completeopt=menu
 set hidden
-
 set undofile
 set undodir=~/.vim/undodir//
+set cmdheight=2
+set updatetime=300
+set shiftwidth=4 tabstop=4 softtabstop=4
 
 set t_Co=256
 set background=dark
-colorscheme solarized
+set signcolumn=yes
+highlight SignColumn ctermbg=Black
 
 if executable("rg")
   set grepprg=rg\ --vimgrep\ --no-heading
