@@ -13,3 +13,5 @@
   lg = log --pretty=format:'%C(blue)%h%Creset - %s %Cgreen(%cr) %C(magenta bold)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
   ls-conflicts = diff --name-only --diff-filter=U
   edit-conflicts = !conflicts=$(git ls-conflicts) && [ -z "$conflicts" ] || ${EDITOR:-vim} $(echo $conflicts | cut -f2)
+[credential]
+	helper = store

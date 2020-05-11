@@ -128,6 +128,7 @@ export PATH=${PATH}:${HOME}/.cargo/bin
 export PATH=${PATH}:${HOME}/opt/android-sdk/tools/bin
 export PATH=${PATH}:${HOME}/opt/android-sdk/platform-tools
 export PATH=${PATH}:${HOME}/opt/flutter/bin
+export PATH=${PATH}:${HOME}/two-sigma/bin
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
