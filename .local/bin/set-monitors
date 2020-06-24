@@ -20,15 +20,16 @@ primary() {
 positioning() {
   if hasdisplay 'DVI-I-2-2'
   then
-    [ "$1" = 'eDP-1' ] && echo -n ' --pos 128x1080'
-    [ "$1" = 'DVI-I-1-1' ] && echo -n ' --pos 2048x552'
+    [ "$1" = 'eDP-1' ] && echo -n ' --pos 0x1080'
+    [ "$1" = 'DVI-I-1-1' ] && echo -n ' --pos 1920x464'
+    [ "$1" = 'DVI-I-2-2' ] && echo -n ' --pos 0x0'
   fi
 }
 
 mode() {
   if [ "$1" = 'DVI-I-2-2' ]
   then
-    echo -n  ' --mode 2048x1080'
+    echo -n  ' --mode 1920x1080'
   else
     echo -n ' --auto'
   fi
