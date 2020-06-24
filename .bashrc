@@ -120,6 +120,16 @@ fi
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
+
+# go
+export GOPATH=~/.local/go
+export PATH=${PATH}:${GOPATH}/bin
+
+# PATH
 export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin:/sbin:/usr/sbin
 export PATH=${PATH}:${HOME}/.cargo/bin
 export PATH=${PATH}:${HOME}/opt/android-sdk/tools/bin
