@@ -24,8 +24,9 @@ Python Packages
 
 Neovim
 ------
-    :CocInstall coc-python
-    :CocInstall coc-rls
+
+    :PlugInstall
+    :CocInstall coc-python coc-rls coc-go
 
 Node & Node packages
 --------------------
