@@ -49,6 +49,8 @@ Tarsnap
 
     sudo chmod a+x /etc/crond.daily/tarsnap-backup
 
+Go download and actually install Tarsnap too!
+
 ACPI event handlers (backlight, lid, volume)
 --------------------------------------------
 
@@ -90,7 +92,6 @@ Crontab
 
 Misc Setup
 ----------
-Install tarsnap
 
     sudo update-alternatives --set editor /usr/bin/nvim
     sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
