@@ -25,3 +25,8 @@ alsa-utils pulseaudio cups cups-client hplip
 Apps
 ----
 chromium pavucontrol evince gimp gparted eog electrum vlc transmission-gtk sgt-puzzles quarry transmission-cli wicd-curses
+
+Slack
+-----
+libappindicator3-1 kde-cli-tools kde-runtime trash-cli libglib2.0-bin gvfs-bin
+slack-desktop (deb package)
