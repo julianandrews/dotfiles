@@ -117,9 +117,6 @@ if [ -n "$DESKTOP_SESSION" ];then
     export SSH_AUTH_SOCK
 fi
 
-# python 2 tab completion
-export PYTHONSTARTUP=~/.config/pystartup
-
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
