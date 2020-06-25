@@ -1,6 +1,6 @@
 Libraries and build tools
 -------------------------
-build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip
+build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip firmware-misc-nonfree
 
 CLI tools
 ---------
