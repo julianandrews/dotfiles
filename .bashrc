@@ -111,7 +111,7 @@ fi
 # set default editor to vim
 export EDITOR=vim
 
-# enable gnome-keyring for ssh keys
+# Connect to the running gnome-keyring-daemon and get our SSH_AUTH_SOCK variable
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
     export SSH_AUTH_SOCK
