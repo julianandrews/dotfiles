@@ -29,9 +29,11 @@ source $HOME/.vim/coc-config.vim
 
 " fzf
 set rtp+=~/.fzf
+command! -bang -nargs=* GitFiles call fzf#run(fzf#vim#with_preview(fzf#wrap({'source': "bash -c 'git diff --name-only HEAD~ && git ls-files -o'"})))
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :GitFiles<cr>
 
 " vim-terraform
 let g:terraform_fmt_on_save=1
