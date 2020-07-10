@@ -2,6 +2,10 @@ Libraries and build tools
 -------------------------
 build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip firmware-misc-nonfree
 
+Docker
+------
+apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli containerd.io
+
 Flop Ferret
 -----------
 cython patchelf dh_virtualenv python3-pip python-dev
