@@ -4,7 +4,7 @@ build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip firmware-m
 
 CLI tools
 ---------
-git neovim curl htop pv jq p7zip-full unzip unrar apg imagemagick nmap zip libav-tools ecryptfs-utils exfat-utils at
+git neovim curl htop pv jq p7zip-full unzip unrar apg imagemagick nmap zip libav-tools ecryptfs-utils exfat-utils at locate
 
 Dev
 ---
