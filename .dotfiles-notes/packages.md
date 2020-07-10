@@ -2,6 +2,11 @@ Libraries and build tools
 -------------------------
 build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip firmware-misc-nonfree
 
+Flop Ferret
+-----------
+cython patchelf dh_virtualenv python3-pip python-dev
+qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
+
 CLI tools
 ---------
 git neovim curl htop pv jq p7zip-full unzip unrar apg imagemagick nmap zip libav-tools ecryptfs-utils exfat-utils at locate
