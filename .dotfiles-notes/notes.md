@@ -26,7 +26,7 @@ Neovim
 ------
 
     :PlugInstall
-    :CocInstall coc-python coc-rls coc-go
+    :CocInstall coc-python coc-rls coc-go coc-yaml
 
 Node & Node packages
 --------------------
