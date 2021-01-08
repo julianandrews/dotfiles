@@ -1,2 +1,2 @@
-[pycodestyl]
+[pycodestyle]
 max-line-length = 89
