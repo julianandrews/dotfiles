@@ -10,15 +10,7 @@ Config {
         Run Date "<fc=#d33682>%a %b %_d %l:%M</fc>" "date" 10,
         Run Com "/home/julian/.config/xmobar/gmail-status.sh" ["15"] "gmail" 200,
         Run PipeReader "/tmp/.volume-pipe" "volume",
-        Run Battery [
-            "-t","<acstatus> <left>%",
-            "-L","20","-H","80","-h","#268bd2","-l","#dc322f",
-            "--",
-            "-O","<fc=#859900><fn=1></fn></fc>",
-            "-i","<fc=#6c71c4><fn=1></fn></fc>",
-            "-o","<fc=#073642><fn=1></fn></fc>"
-          ] 10,
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10
       ],
-    template = " %UnsafeStdinReader% } %date% { %gmail% | %volume% | %battery% | %netstatus% "
+    template = " %UnsafeStdinReader% } %date% { %gmail% | %volume% | %netstatus% "
   }
