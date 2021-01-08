@@ -1,17 +1,10 @@
-# Configure touchpad
-if [ hostname = dean ]
-then
-  xinput set-prop 'SynPS/2 Synaptics TouchPad' 'Synaptics Tap Time' 0
-  xinput --set-prop --type=int --format=8 'SynPS/2 Synaptics TouchPad' 'Synaptics Edge Scrolling' 1 0 0
-fi
-
 # Setup monitors and load wallpaper.
 ~/.local/bin/set-monitors && ~/.fehbg &
 
 # Setup screenlock/saver
-xset s 300 600
+xset s off
 xset dpms 600 900 1200
-xss-lock -l -- ~/.local/bin/screen-lock &
+xautolock -time 5 -locker 'env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_SAVER=saver_xscreensaver xsecurelock' &
 
 # Startup kupfer
 kupfer --no-splash > /dev/null &

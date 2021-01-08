@@ -73,7 +73,7 @@ myKeys = [
     ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
     ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
     ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
-    ("M-S-z", spawn "/home/julian/.local/bin/screen-lock"),
+    ("M-S-z", spawn "xautolock -locknow"),
     ("M-w", onPrevNeighbour def W.view),
     ("M-e", onNextNeighbour def W.view),
     ("M-S-w", onPrevNeighbour def W.shift),
