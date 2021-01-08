@@ -6,7 +6,7 @@ import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Hooks.ManageHelpers ((-?>), composeOne, isDialog)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
-import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyScreenFloat))
+import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyLayoutFloat))
 import XMonad.Util.EZConfig (additionalKeysP)
 import Data.Default (def)
 
@@ -25,7 +25,7 @@ myConfig = defaultConfig {
     terminal = "urxvt",
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
-    layoutHook = lessBorders OnlyScreenFloat myLayout,
+    layoutHook = lessBorders OnlyLayoutFloat myLayout,
     manageHook = myManageHook,
     startupHook = myStartupHook,
     focusedBorderColor = solarizedYellow,
@@ -35,7 +35,6 @@ myConfig = defaultConfig {
   `additionalKeysP` myKeys
 
 myStartupHook = do
-  spawn "/home/julian/.config/xmobar/volume.sh"
   spawn "/home/julian/.config/xmobar/gmail-status.sh"
 
 myWorkspaceKeys :: String
@@ -60,19 +59,12 @@ myLayout = myHorizontal ||| myVertical ||| myTabbed
 myManageHook = composeAll [
     composeOne [
         isDialog -?> doFloat,
-        className =? "Transmission-gtk" -?> doFloat,
         fmap (isPrefixOf "Sgt-") className -?> doFloat
     ],
     manageDocks
   ]
 
 myKeys = [
-    ("<XF86Sleep>", spawn "systemctl suspend"),
-    ("<XF86HomePage>", spawn "sensible-browser"),
-    ("<XF86Mail>", spawn "sensible-browser https://mail.google.com"),
-    ("<XF86AudioMute>", spawn "amixer -qD pulse set Master 1+ toggle"),
-    ("<XF86AudioLowerVolume>", spawn "amixer -qD pulse set Master 5%- unmute"),
-    ("<XF86AudioRaiseVolume>", spawn "amixer -qD pulse set Master 5%+ unmute"),
     ("M-S-z", spawn "xautolock -locknow"),
     ("M-w", onPrevNeighbour def W.view),
     ("M-e", onNextNeighbour def W.view),

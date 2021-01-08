@@ -101,8 +101,3 @@ sudo update-alternatives --set x-www-browser /usr/bin/chromium
 
 Download and install goban-screenhack, sgf-render, and markovpass
 Download and install xsecurelock from github
-
-TODO
-----
-
-Fix up the xmobar volume meter
