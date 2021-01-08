@@ -4,7 +4,6 @@ home=/home/julian
 
 export DISPLAY=:0.0
 export XAUTHORITY="$home/.Xauthority"
-xrandr --setprovideroutputsource 1 0 && xrandr --setprovideroutputsource 2 0
 
 displays=$(xrandr | grep 'connected' | cut -d ' ' -f 1)
 connected_displays=$(xrandr | grep ' connected ' | cut -d ' ' -f 1)
@@ -14,25 +13,15 @@ hasdisplay() {
 }
 
 primary() {
-  [ "$1" = 'eDP-1' ] && echo -n ' --primary'
+  [ "$1" = 'DP-2-8' ] && echo -n ' --primary'
 }
 
 positioning() {
-  if hasdisplay 'DVI-I-2-2'
-  then
-    [ "$1" = 'eDP-1' ] && echo -n ' --pos 0x1080'
-    [ "$1" = 'DVI-I-1-1' ] && echo -n ' --pos 1920x464'
-    [ "$1" = 'DVI-I-2-2' ] && echo -n ' --pos 0x0'
-  fi
+  [ "$1" = 'DP-2-1' ] && echo -n ' --right-of DP-2-8'
 }
 
 mode() {
-  if [ "$1" = 'DVI-I-2-2' ]
-  then
-    echo -n  ' --mode 1920x1080'
-  else
-    echo -n ' --auto'
-  fi
+  echo -n ' --auto'
 }
 
 rotation() {
