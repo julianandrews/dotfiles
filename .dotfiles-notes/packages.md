@@ -1,36 +1,36 @@
 Libraries and build tools
 -------------------------
-build-essential cmake gettext e2fslibs-dev libpam0g-dev libtool xclip firmware-misc-nonfree
-
-Docker
-------
-apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli containerd.io
-
-Flop Ferret
------------
-cython patchelf dh_virtualenv python3-pip python-dev
-qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
+build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev libtool xclip software-properties-common openssh-server
 
 CLI tools
 ---------
-git neovim curl htop pv jq p7zip-full unzip unrar apg imagemagick nmap zip libav-tools ecryptfs-utils exfat-utils at locate
+apg at bash-completion curl ffmpeg git htop imagemagick jq locate neovim nmap p7zip-full pv ripgrep sqlite unrar-free unzip zip rsync
 
 Dev
 ---
-python3 texlive texlive-latex-extra texlive-fonts-extra golang
-
-Services
---------
-acpid laptop-mode-tools exfat-fuse iptables-persistent udevil sqlite wicd
+golang python3 python3-distutils
 
 Gui
 ---
-lightdm xorg xorg-dev xinput gnome-icon-theme faenza-icon-theme libnotify-bin gnome-keyring xmonad xmonad-contrib xmobar xdotool rxvt-unicode-256color kupfer fonts-font-awesome fonts-dejavu dunst feh xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra seahorse xrandr arandr
+dunst faenza-icon-theme feh fonts-dejavu fonts-font-awesome gnome-icon-theme gnome-keyring kupfer libnotify-bin lightdm rxvt-unicode-256color seahorse xautolock x11-xserver-utils xdotool xinput xmobar xmonad xmonad-contrib xorg xorg-dev xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra
 
 Sound/Printer
 -------------
-alsa-utils pulseaudio cups cups-client hplip
+alsa-utils cups cups-client hplip pulseaudio
 
 Apps
 ----
-chromium pavucontrol evince gimp gparted eog electrum vlc transmission-gtk sgt-puzzles quarry transmission-cli wicd-curses
+chromium eog evince gimp gparted pavucontrol quarry sgt-puzzles vlc
+
+Docker (not installed yet)
+--------------------------
+apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli containerd.io
+
+Flop Ferret (not installed yet)
+-------------------------------
+cython patchelf dh_virtualenv python3-pip python-dev
+qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
+
+Goban Screenhack (not installed yet)
+------------------------------------
+libgtk-3-dev
