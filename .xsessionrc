@@ -13,9 +13,6 @@ xset s 300 600
 xset dpms 600 900 1200
 xss-lock -l -- ~/.local/bin/screen-lock &
 
-# urxvt daemon
-urxvtd -q -f -o &
-
 # Setup usb automount
 devmon --exec-on-drive "notify-send --urgency=normal \"%f mounted to %d.\"" &
 

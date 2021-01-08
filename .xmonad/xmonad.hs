@@ -22,7 +22,7 @@ main = do
 
 myConfig = defaultConfig {
     modMask = mod4Mask,
-    terminal = "urxvtc",
+    terminal = "urxvt",
     workspaces = myWorkspaces,
     handleEventHook = myEventHook,
     layoutHook = lessBorders OnlyScreenFloat myLayout,
