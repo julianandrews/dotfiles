@@ -8,7 +8,7 @@ apg at bash-completion curl ffmpeg git htop imagemagick jq locate neovim nmap p7
 
 Dev
 ---
-golang python3 python3-distutils
+clang golang python3 python3-distutils python3-dev
 
 Gui
 ---
@@ -22,15 +22,14 @@ Apps
 ----
 chromium eog evince gimp gparted pavucontrol quarry sgt-puzzles vlc
 
+Goban Screenhack Dev
+--------------------
+libgl1-mesa-dev
+
 Docker (not installed yet)
 --------------------------
 apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli containerd.io
 
-Flop Ferret (not installed yet)
--------------------------------
-cython patchelf dh_virtualenv python3-pip python-dev
-qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
-
-Goban Screenhack (not installed yet)
-------------------------------------
-libgtk-3-dev
+Flop Ferret Dev (not installed yet)
+-----------------------------------
+cython patchelf dh_virtualenv python3-pip python-dev qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
