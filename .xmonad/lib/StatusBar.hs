@@ -12,7 +12,7 @@ addStatusBarAction :: String -> String -> String
 addStatusBarAction action = wrap ("<action=" ++ action ++ ">") "</action>"
 
 addStatusBar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
-addStatusBar = statusBar "xmobar" myPP toggleStrutsKey
+addStatusBar = statusBar "/home/julian/.config/xmobar/run-xmobar.sh" myPP toggleStrutsKey
   where
     myPP = xmobarPP {
         ppCurrent = xmobarColor solarizedMagenta "",

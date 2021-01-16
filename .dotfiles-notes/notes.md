@@ -65,6 +65,7 @@ Rust
 
 curl https://sh.rustup.rs -sSf | sh
 rustup component add rustfmt-preview rust-analysis rust-src
+cargo install cargo-fuzz cargo-deb
 
 Crontab
 -------
@@ -101,3 +102,8 @@ sudo update-alternatives --set x-www-browser /usr/bin/chromium
 
 Download and install goban-screenhack, sgf-render, and markovpass
 Download and install xsecurelock from github
+
+TODO
+----
+
+Fix up the gmail count to be a CommandReader (and drop the process spawn in xmonad)
