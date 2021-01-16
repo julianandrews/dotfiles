@@ -105,5 +105,4 @@ Download and install xsecurelock from github
 
 TODO
 ----
-
-Fix up the gmail count to be a CommandReader (and drop the process spawn in xmonad)
+Monitor hotplugging?

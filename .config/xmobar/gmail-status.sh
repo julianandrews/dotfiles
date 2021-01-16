@@ -1,20 +1,15 @@
 #!/usr/bin/env sh
 
-STATUSFILE=/tmp/.gmail-status
 GMAILCOUNT=/home/julian/.local/bin/gmailcount
-SLEEPTIME=${1:-0}
-
-case $(hostname) in
-  orpheus)     EMAIL='jandrews@fusionbox.com'; URL='https://mail.google.com' ;;
-  *)           EMAIL='jandrews271@gmail.com'; URL='https://inbox.google.com' ;;
-esac
+SLEEPTIME=${1:-5}
+EMAIL='jandrews271@gmail.com'
+URL='https://mail.google.com'
 
 echo_status() {
   echo "<action=\`xdg-open $URL\`><fc=$2><fn=1></fn> $1</fc></action>"
 }
 
-write_data() {
-  sleep "$SLEEPTIME"
+get_status_output() {
   full_text=$("$GMAILCOUNT" "$EMAIL")
   full_text=${full_text:-?}
 
@@ -24,11 +19,11 @@ write_data() {
     *)           color=\#2AA198 ;;
   esac
 
-  echo_status "$full_text" "$color" > "$STATUSFILE"
+  echo_status "$full_text" "$color"
 }
 
-touch "$STATUSFILE"
-output=$(cat "$STATUSFILE")
-[ ! -z "$output" ] && echo "$output" || echo_status "?" \#6c71c4
-> "$STATUSFILE"
-write_data &
+echo_status "?" \#6c71c4
+while :; do
+  get_status_output
+  sleep "$SLEEPTIME"
+done

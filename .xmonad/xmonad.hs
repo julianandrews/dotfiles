@@ -27,15 +27,11 @@ myConfig = defaultConfig {
     handleEventHook = myEventHook,
     layoutHook = lessBorders OnlyLayoutFloat myLayout,
     manageHook = myManageHook,
-    startupHook = myStartupHook,
     focusedBorderColor = solarizedYellow,
     normalBorderColor = solarizedBase02,
     borderWidth = 2
   }
   `additionalKeysP` myKeys
-
-myStartupHook = do
-  spawn "/home/julian/.config/xmobar/gmail-status.sh"
 
 myWorkspaceKeys :: String
 myWorkspaceKeys = "1234567890"
