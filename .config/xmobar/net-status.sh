@@ -28,4 +28,4 @@ else
   [ ! "$ssid" ] && full_text="$netdown_text" || full_text="$wifi_text"
 fi
 
-echo "<action=\`wicd-client\`><fc=$color>$full_text</fc></action>"
+echo "<fc=$color>$full_text</fc>"
