@@ -99,6 +99,7 @@ Misc Setup
 sudo update-alternatives --set editor /usr/bin/nvim
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo update-alternatives --set x-www-browser /usr/bin/chromium
+sudo usermod -a -G lpadmin julian
 
 Download and install goban-screenhack, sgf-render, and markovpass
 Download and install xsecurelock from github
