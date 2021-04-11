@@ -2,4 +2,4 @@
 
 backupfile="$(uname -n)-$(date +%Y-%m-%d_%H-%M-%S)"
 keyfile=/home/julian/Private/keys/tarsnap-write.key
-tarsnap -c --keyfile "$keyfile" -f "$backupfile" /home/julian/Private /home/julian/Documents /home/julian/Pictures /home/julian/Videos
+tarsnap --quiet --no-print-stats -c --keyfile "$keyfile" -f "$backupfile" /home/julian/Private /home/julian/Documents /home/julian/Pictures /home/julian/Videos
