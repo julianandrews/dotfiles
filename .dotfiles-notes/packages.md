@@ -4,11 +4,11 @@ build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev li
 
 CLI tools
 ---------
-apg at bash-completion curl ffmpeg git htop imagemagick jq locate neovim nmap p7zip-full pv ripgrep sqlite unrar-free unzip zip rsync
+apg at bash-completion curl ffmpeg git htop imagemagick jq locate neovim nmap p7zip-full pv ripgrep sqlite unrar-free unzip zip rsync git-lfs dnsutils
 
 Dev
 ---
-clang golang python3 python3-distutils python3-dev
+clang golang python3 python3-distutils python3-dev linux-perf
 
 Gui
 ---
@@ -25,6 +25,10 @@ chromium eog evince gimp gparted pavucontrol quarry sgt-puzzles vlc
 Goban Screenhack Dev
 --------------------
 libgl1-mesa-dev
+
+mediarss rust
+------------
+libssl-dev
 
 Docker (not installed yet)
 --------------------------
