@@ -8,7 +8,7 @@ set mouse=a
 set hlsearch
 set cursorline
 set wildmenu
-set completeopt=menu
+set completeopt=menuone,noinsert,noselect
 set hidden
 set undofile
 set undodir=~/.vim/undodir//

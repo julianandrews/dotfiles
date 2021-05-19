@@ -7,10 +7,10 @@ function! FiletypeStatus()
 endfunction
 
 function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:buf = bufnr('')
+    let l:errors = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Error]])")
+    let l:warnings = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Warning]])")
 
-    let l:errors = l:counts.error + l:counts.style_error
-    let l:warnings = l:counts.total - l:errors
     if l:errors == 0 && l:warnings == 0
         return '✓ ok'
     else
