@@ -132,6 +132,7 @@ export PATH=${PATH}:${GOPATH}/bin
 # PATH
 export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin:/sbin:/usr/sbin
 export PATH=${PATH}:${HOME}/.cargo/bin
+export PATH=${PATH}:${HOME}/.npm/bin
 
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then

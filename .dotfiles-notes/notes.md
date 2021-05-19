@@ -93,6 +93,19 @@ sudo apt install docker
 After running docker:
 sudo usermod -aG docker julian
 
+Node
+----
+
+```
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/nodesource.gpg add -
+sudo tee /etc/apt/sources.list.d/nodesource.list <<EOF
+deb https://deb.nodesource.com/node_14.x $(lsb_release -cs) main
+deb-src https://deb.nodesource.com/node_14.x $(lsb_release -cs) main
+EOF
+sudo apt update
+sudo apt install nodejs npm
+```
+
 Misc Setup
 ----------
 
