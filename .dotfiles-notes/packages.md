@@ -37,3 +37,7 @@ apt-transport-https ca-certificates curl gnupg-agent software-properties-common 
 Flop Ferret Dev (not installed yet)
 -----------------------------------
 cython patchelf dh_virtualenv python3-pip python-dev qt5-default qt3d5-dev qtmultimedia5-dev libqt5gamepad5-dev libqt5webview5-dev libqt5gamepad5 libicu-dev libspeechd-dev
+
+Hardware (NUC) specific
+-----------------------
+intel-media-va-driver-non-free i965-va-driver-shaders
