@@ -8,6 +8,9 @@ endfunction
 
 function! LinterStatus() abort
     let l:buf = bufnr('')
+    if !has('nvim')
+        return ''
+    endif
     let l:errors = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Error]])")
     let l:warnings = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Warning]])")
 
