@@ -21,6 +21,20 @@ FZF
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+Neovim
+------
+
+```
+sudo mkdir /opt/bin
+curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage | sudo tee /opt/bin/nvim >/dev/null
+sudo chmod a+x /opt/bin/nvim
+sudo update-alternatives --install /usr/bin/editor editor /opt/bin/nvim 0
+sudo update-alternatives --set editor /opt/bin/nvim
+```
+
+In nvim:
+:PlugInstall
+
 Python Packages
 ---------------
 
@@ -28,10 +42,6 @@ curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python3 /tmp/get
 python3 -m pip install --user black gmailcount[secretservice] pillow pygments pylint \
   pyxdg requests six virtualenv virtualenvwrapper python-language-server
 
-Neovim
-------
-
-:PlugInstall
 
 Tarsnap
 -------
@@ -109,7 +119,6 @@ sudo apt install nodejs npm
 Misc Setup
 ----------
 
-sudo update-alternatives --set editor /usr/bin/nvim
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo update-alternatives --set x-www-browser /usr/bin/chromium
 sudo usermod -a -G lpadmin julian

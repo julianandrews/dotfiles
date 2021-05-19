@@ -5,6 +5,7 @@
   default = simple
 [core]
   excludesfile = /home/julian/.gitignore_global
+  editor = /opt/bin/nvim
 [pull]
   rebase = true
 [merge]
