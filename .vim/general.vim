@@ -14,7 +14,11 @@ set cmdheight=2
 set updatetime=300
 set shiftwidth=4 tabstop=4 softtabstop=4
 set undofile
+set signcolumn=yes
+set t_Co=256
+set background=dark
 
+" nvim undofiles are no longer compatible with vim undo files
 if has('nvim')
     set undodir=~/.vim/undodir/nvim//
 else

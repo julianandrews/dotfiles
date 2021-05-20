@@ -32,9 +32,6 @@ filetype plugin indent on
 
 " Configure colorscheme
 silent! colorscheme solarized
-set t_Co=256
-set background=dark
-set signcolumn=yes
 highlight SignColumn ctermbg=Black
 
 " nvim-lsp
