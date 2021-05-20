@@ -11,11 +11,10 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 
-if has('nvim')
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-lua/lsp_extensions.nvim'
-    Plug 'nvim-lua/completion-nvim'
-endif
+" Neovim specific plugins
+Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
+Plug 'nvim-lua/lsp_extensions.nvim', has('nvim') ? {} : { 'on': [] }
+Plug 'nvim-lua/completion-nvim', has('nvim') ? {} : { 'on': [] }
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'
@@ -32,7 +31,7 @@ call plug#end()
 filetype plugin indent on
 
 " Configure colorscheme
-colorscheme solarized
+silent! colorscheme solarized
 set t_Co=256
 set background=dark
 set signcolumn=yes
