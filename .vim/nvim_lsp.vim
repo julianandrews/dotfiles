@@ -50,7 +50,17 @@ nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " completion config
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<S-Tab>"
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <Tab> <Plug>(completion_smart_tab)
 imap <S-Tab> <Plug>(completion_smart_s_tab)
+let g:completion_chain_complete_list = {
+    \ 'markdown': [
+    \     {'mode': '<c-n>'}
+    \ ],
+    \ 'default': [
+    \     {'complete_items': ['lsp', 'snippet']},
+    \     {'mode': '<c-p>'},
+    \     {'mode': '<c-n>'}
+    \]
+\}
