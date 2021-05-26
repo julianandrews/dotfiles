@@ -4,7 +4,7 @@ build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev li
 
 CLI tools
 ---------
-apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find
+apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find traceroute
 
 Dev
 ---
