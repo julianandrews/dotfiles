@@ -17,12 +17,8 @@ URxvt.letterSpace:          -1
 URxvt.intensityStyles:      true
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher,keyboard-select
 URxvt.urlLauncher:          /usr/bin/xdg-open
 URxvt.matcher.button:       3
-URxvt.keysym.Meta-a:        perl:matcher:last
-URxvt.keysym.Meta-A:        perl:matcher:list
-URxvt.keysym.Meta-z:        perl:keyboard-select:activate
 
 ! Cursor/Pointer
 URxvt.cursorBlink:          false
@@ -37,7 +33,7 @@ URxvt.pointerBlank:         false
 /* ! Colors */
 /* *foreground:                #9ECFF5 */
 /* *background:                #000000 */
-/* *cursorColor:               #0D4C80 */      
+/* *cursorColor:               #0D4C80 */
 /* *color0:                    #000000 */
 /* *color1:                    #AA0000 */
 /* *color2:                    #00AA00 */
