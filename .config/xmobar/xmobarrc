@@ -9,9 +9,10 @@ Config {
         Run UnsafeStdinReader,
         Run Date "<fc=#d33682>%a %b %_d %l:%M</fc>" "date" 10,
         Run Com "/home/julian/.config/xmobar/gargantua-two-mail.sh" [] "gargmail" 10,
+        Run Com "/home/julian/.config/xmobar/site-status.sh" [] "sitestatus" 60,
         Run CommandReader "/home/julian/.config/xmobar/gmail-status.sh" "gmail",
         Run CommandReader "/home/julian/.config/xmobar/volume.sh" "volume",
         Run Com "/home/julian/.config/xmobar/net-status.sh" [] "netstatus" 10
       ],
-    template = " %UnsafeStdinReader% } %date% { %gargmail% | %gmail% | %volume% | %netstatus% "
+    template = " %UnsafeStdinReader% } %date% { %sitestatus% %gargmail% | %gmail% | %volume% | %netstatus% "
   }
