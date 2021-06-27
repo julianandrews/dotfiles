@@ -41,3 +41,7 @@ cython patchelf dh_virtualenv python3-pip python-dev qt5-default qt3d5-dev qtmul
 Hardware (NUC) specific
 -----------------------
 intel-media-va-driver-non-free i965-va-driver-shaders
+
+Zoom (deb)
+----------
+libgl1-mesa-glx libxcb-xtest0 ibus
