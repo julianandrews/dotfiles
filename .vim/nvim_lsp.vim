@@ -47,7 +47,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 if has_lsp_extensions then
     vim.api.nvim_command([[
         autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost
-        \ * lua require'lsp_extensions'.inlay_hints{
+        \ *.rs lua require'lsp_extensions'.inlay_hints{
         \ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"}
         \ }
     ]])
@@ -58,6 +58,7 @@ EOF
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> gn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
