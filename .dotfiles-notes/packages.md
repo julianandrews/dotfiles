@@ -45,3 +45,7 @@ intel-media-va-driver-non-free i965-va-driver-shaders
 Zoom (deb)
 ----------
 libgl1-mesa-glx libxcb-xtest0 ibus
+
+Katrain/KataGo
+--------------
+libeigen3-dev libgoogle-perftools-dev libzip-dev zlib1g-dev libsdl2-2.0-0 libsdl2-image-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0 libasound2-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
