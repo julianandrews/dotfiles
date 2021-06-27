@@ -177,7 +177,6 @@ sudo usermod -a -G dialout julian
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
-Download and install xsecurelock from github
 
 TODO
 ----

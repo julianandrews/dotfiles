@@ -12,7 +12,7 @@ clang golang python3 python3-distutils python3-dev linux-perf postgresql clangd-
 
 Gui
 ---
-dunst faenza-icon-theme feh fonts-dejavu fonts-font-awesome gnome-icon-theme gnome-keyring kupfer libnotify-bin lightdm rxvt-unicode-256color seahorse xautolock x11-xserver-utils xdotool xinput xmobar xmonad xmonad-contrib xorg xorg-dev xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra
+dunst faenza-icon-theme feh fonts-dejavu fonts-font-awesome gnome-icon-theme gnome-keyring kupfer libnotify-bin lightdm rxvt-unicode-256color seahorse xautolock x11-xserver-utils xdotool xinput xmobar xmonad xmonad-contrib xorg xorg-dev xscreensaver xscreensaver-data-extra xscreensaver-gl xscreensaver-gl-extra xsecurelock
 
 Sound/Printer
 -------------
