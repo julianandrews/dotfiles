@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.42 for julian on Fri Jan  8 12:39:16 2021.
+# Written by xscreensaver-demo 5.42 for julian on Tue Jun  8 20:41:16 2021.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -44,7 +44,8 @@ textProgram:	fortune
 textURL:	https://planet.debian.org/rss20.xml
 
 programs:								      \
-  GL: 				goban -root -move-delay 500		    \n\
+  GL: 				goban -root -move-delay 2100 -end-delay	      \
+				  9900					    \n\
 				maze -root				    \n\
   GL: 				superquadrics -root			    \n\
 				attraction -root			    \n\
