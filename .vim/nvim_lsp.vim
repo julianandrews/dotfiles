@@ -7,25 +7,31 @@ local has_lsp_extensions,_ = pcall(require, 'lsp_extensions')
 
 -- Enable langauge servers
 if has_nvim_lsp then
-    local servers = { "bashls", "pyright", "rust_analyzer", "tsserver", "vimls", "yamlls" }
     local on_attach = function(client)
         if has_completion then
             completion.on_attach(client)
         end
     end
 
-    for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup {
-            settings = {
-                ["rust-analyzer"] = {
-                    diagnostics = {
-                        disabled = { "unresolved-proc-macro" }
-                    },
+    nvim_lsp.bashls.setup{on_attach=on_attach}
+    nvim_lsp.pyright.setup{on_attach=on_attach}
+    nvim_lsp.tsserver.setup{on_attach=on_attach}
+    nvim_lsp.vimls.setup{on_attach=on_attach}
+    nvim_lsp.yamlls.setup{on_attach=on_attach}
+    nvim_lsp.rust_analyzer.setup{
+        on_attach=on_attach,
+        settings = {
+            ["rust-analyzer"] = {
+                diagnostics = {
+                    disabled = { "unresolved-proc-macro" }
                 },
             },
-            on_attach = on_attach
-        }
-    end
+        },
+    }
+    nvim_lsp.clangd.setup{
+        on_attach=on_attach,
+        cmd = { "clangd-9", "--background-index" },
+    }
 end
 
 -- Enable diagnostics
