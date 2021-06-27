@@ -15,7 +15,16 @@ if has_nvim_lsp then
     end
 
     for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup { on_attach = on_attach }
+        nvim_lsp[lsp].setup {
+            settings = {
+                ["rust-analyzer"] = {
+                    diagnostics = {
+                        disabled = { "unresolved-proc-macro" }
+                    },
+                },
+            },
+            on_attach = on_attach
+        }
     end
 end
 
