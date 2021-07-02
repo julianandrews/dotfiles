@@ -30,7 +30,7 @@ Neovim
 
 ```
 sudo mkdir /opt/bin
-curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage | sudo tee /opt/bin/nvim >/dev/null
+curl -L https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | sudo tee /opt/bin/nvim >/dev/null
 sudo chmod a+x /opt/bin/nvim
 sudo update-alternatives --install /usr/bin/editor editor /opt/bin/nvim 0
 sudo update-alternatives --set editor /opt/bin/nvim
