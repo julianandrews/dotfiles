@@ -8,7 +8,7 @@ apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-ful
 
 Dev
 ---
-clang golang python3 python3-distutils python3-dev linux-perf postgresql clangd-9
+clang golang python3 python3-distutils python3-dev python3-venv linux-perf postgresql clangd-9
 
 Gui
 ---

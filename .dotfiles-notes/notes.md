@@ -166,6 +166,30 @@ pip install .
 
 Launch KaTrain, and configure it to use the build KataGo executable
 
+Terraform
+---------
+
+```
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key --keyring /etc/apt/trusted.gpg.d/hashicorp.gpg add -
+sudo tee /etc/apt/sources.list.d/hashicorp.list <<EOF
+deb [arch=amd64] https://apt.releases.hashicorp.com buster main
+EOF
+sudo apt update
+sudo apt install terraform
+```
+
+Note: Update to bullseye when possible!
+
+AWS
+---
+
+```
+cd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install -i ~/.local/lib/aws-cli -b ~/.local/bin
+```
+
 Misc Setup
 ----------
 
