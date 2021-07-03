@@ -72,7 +72,7 @@ CapsLock->Esc
 Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
 
 ```
-udevadm trigger --subsystem-match=input --action=change
+sudo udevadm trigger --subsystem-match=input --action=change
 ```
 
 Lightdm
@@ -123,6 +123,7 @@ sudo apt install docker
 After running docker:
 
 ```
+sudo groupadd docker
 sudo usermod -aG docker julian
 ```
 
@@ -206,6 +207,7 @@ sudo usermod -a -G dialout julian
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
+Download and install chrome and zoom `.deb` files
 
 TODO
 ----
