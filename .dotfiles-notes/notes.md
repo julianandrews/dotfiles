@@ -162,6 +162,7 @@ git clone https://github.com/sanderland/katrain.git
 cd katrain
 pip install -r requirements.txt --no-binary kivy
 pip install .
+ln -s /home/julian/.virtualenvs/katrain/bin/katrain ~/.local/bin/katrain
 ```
 
 Launch KaTrain, and configure it to use the build KataGo executable

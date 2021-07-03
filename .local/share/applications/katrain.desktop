@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=KaTrain
+Icon=katrain.png
+Exec=/home/julian/.local/bin/katrain
+Terminal=false
+Categories=Game
