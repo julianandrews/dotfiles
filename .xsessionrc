@@ -4,7 +4,7 @@
 # Setup screenlock/saver
 xset s off
 xset dpms 600 900 1200
-xautolock -time 5 -locker 'env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_SAVER=saver_xscreensaver xsecurelock' &
+xautolock -time 5 -locker 'env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_SAVER=saver_xscreensaver XSECURELOCK_XSCREENSAVER_PATH=/usr/libexec/xscreensaver xsecurelock' &
 
 # Startup kupfer
 kupfer --no-splash > /dev/null &
