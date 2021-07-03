@@ -108,8 +108,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set default editor to vim
-export EDITOR=vim
+# set default editor to nvim
+export EDITOR=nvim
 
 # Connect to the running gnome-keyring-daemon and get our SSH_AUTH_SOCK variable
 if [ -n "$DESKTOP_SESSION" ];then
