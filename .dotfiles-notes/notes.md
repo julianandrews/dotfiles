@@ -86,9 +86,13 @@ Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
 Rust
 ----
 
+```
 curl https://sh.rustup.rs -sSfL | sh
 rustup component add rustfmt-preview rust-analysis rust-src
 cargo install cargo-fuzz cargo-deb
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
+```
 
 Crontab
 -------
