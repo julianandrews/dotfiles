@@ -17,7 +17,33 @@ if has_nvim_lsp then
     nvim_lsp.pyright.setup{on_attach=on_attach}
     nvim_lsp.tsserver.setup{on_attach=on_attach}
     nvim_lsp.vimls.setup{on_attach=on_attach}
-    nvim_lsp.yamlls.setup{on_attach=on_attach}
+    nvim_lsp.terraformls.setup{on_attach=on_attach}
+    nvim_lsp.yamlls.setup{
+        on_attach=on_attach,
+        settings = {
+            ["yaml"] = {
+                customTags = {
+                    "!Base64",
+                    "!Cidr",
+                    "!FindInMap sequence",
+                    "!GetAtt",
+                    "!GetAZs",
+                    "!ImportValue",
+                    "!Join sequence",
+                    "!Ref",
+                    "!Select sequence",
+                    "!Split sequence",
+                    "!Sub sequence",
+                    "!Sub",
+                    "!And sequence",
+                    "!Equals sequence",
+                    "!If sequence",
+                    "!Not sequence",
+                    "!Or sequence",
+                },
+            },
+        },
+    }
     nvim_lsp.rust_analyzer.setup{
         on_attach=on_attach,
         settings = {
@@ -63,11 +89,12 @@ nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 
 " completion config
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+imap <silent> <c-p> <Plug>(completion_trigger)
 imap <Tab> <Plug>(completion_smart_tab)
 imap <S-Tab> <Plug>(completion_smart_s_tab)
 let g:completion_chain_complete_list = {
