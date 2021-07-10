@@ -36,6 +36,7 @@ if has_nvim_lsp then
                     "!Sub sequence",
                     "!Sub",
                     "!And sequence",
+                    "!Condition",
                     "!Equals sequence",
                     "!If sequence",
                     "!Not sequence",
