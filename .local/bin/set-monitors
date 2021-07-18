@@ -17,7 +17,7 @@ primary() {
 }
 
 positioning() {
-  [ "$1" = 'DP-2-1' ] && echo -n ' --right-of DP-2-8'
+  [ "$1" = 'DP-2-1' ] && echo -n ' --left-of DP-2-8'
 }
 
 mode() {
