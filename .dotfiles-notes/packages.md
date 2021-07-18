@@ -4,7 +4,7 @@ build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev li
 
 CLI tools
 ---------
-apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite3 unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find traceroute python-is-python3
+apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite3 unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find traceroute python-is-python3 wpasupplicant wireless-tools
 
 Dev
 ---
@@ -40,7 +40,7 @@ cython patchelf dh_virtualenv python3-pip python-dev qt5-default qt3d5-dev qtmul
 
 Hardware (NUC) specific
 -----------------------
-intel-media-va-driver-non-free i965-va-driver-shaders
+intel-media-va-driver-non-free i965-va-driver-shaders firmware-iwlwifi
 
 Zoom (deb)
 ----------
