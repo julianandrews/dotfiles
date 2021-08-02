@@ -43,3 +43,5 @@ Subject: $subject
 $message_body
 EOF
 }
+
+source "$HOME/.bash_aliases_work"

@@ -1,0 +1,2 @@
+alias daws='aws --profile TerraformRunner-373265925886'
+alias saws='aws --profile AdministratorAccess-111523221852'
