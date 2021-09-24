@@ -1,2 +1,2 @@
-alias daws='aws --profile TerraformRunner-373265925886'
-alias saws='aws --profile AdministratorAccess-111523221852'
+alias daws='aws --profile shared-dev'
+alias paws='aws --profile julian-dev'
