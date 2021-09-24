@@ -207,6 +207,7 @@ sudo usermod -a -G dialout julian
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
+Download and install selenite-lamp, and set up the /etc/udev/rules.d rule for the lamp.
 Download and install chrome and zoom `.deb` files
 
 TODO
