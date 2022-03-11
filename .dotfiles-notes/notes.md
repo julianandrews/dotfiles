@@ -222,6 +222,7 @@ sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
 systemctl --user daemon-reload
 systemctl --user enable --now gmailcount.timer
+systemctl --user enable --now site-status.timer
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass

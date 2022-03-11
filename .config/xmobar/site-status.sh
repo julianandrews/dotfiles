@@ -1,9 +1,12 @@
+#!/usr/bin/env sh
+
+CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+
 site_status() {
-  site="$1"
-  curl -sL --max-time 1 -w "%{http_code}\\n" "$site" -o /dev/null
+  cat "$CACHE_DIR/site-status/$1"
 }
 
-for entry in "https://jellyfin.seemyvest.net 200 " "https://wiki.seemyvest.net 401 "
+for entry in "jellyfin.seemyvest.net 200 "
 do
   set -- $entry
   site="$1"

@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for the Site Status service
+Requires=site-status.service
+
+[Timer]
+OnActiveSec=0
+OnUnitActiveSec=10
+AccuracySec=10
+
+[Install]
+WantedBy=timers.target

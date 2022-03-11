@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SITE="$1"
+CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+
+output="$(curl -sL -w "%{http_code}\\n" "https://$SITE" -o /dev/null)"
+if [ ! $? -eq 0 ]; then
+  echo "update-site-status failed for $SITE"
+  exit 1
+fi
+
+mkdir -p "$CACHE_DIR/site-status"
+echo -n "$output" > "$CACHE_DIR/site-status/$SITE"

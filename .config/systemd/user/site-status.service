@@ -1,0 +1,6 @@
+[Unit]
+Description=Site Status Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/julian/.local/bin/update-site-status jellyfin.seemyvest.net
