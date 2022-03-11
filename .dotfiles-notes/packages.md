@@ -32,7 +32,7 @@ libssl-dev
 
 Docker (not installed yet)
 --------------------------
-apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli containerd.io
+apt-transport-https ca-certificates curl gnupg-agent software-properties-common docker-ce docker-ce-cli docker-compose containerd.io
 
 Flop Ferret Dev (not installed yet)
 -----------------------------------
