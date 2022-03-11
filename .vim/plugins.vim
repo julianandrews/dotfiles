@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
+Plug 'sbdchd/neoformat'
 
 " Neovim specific plugins
 Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
@@ -47,6 +48,10 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>g :Files %:p:h<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :GitFiles<cr>
+
+" neoformat
+let g:neoformat_enabled_python = ['black']
+let g:neoformat_enabled_typescript = ['prettier']
 
 " vim-terraform
 let g:terraform_fmt_on_save=1
