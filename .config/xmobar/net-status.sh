@@ -4,7 +4,7 @@ ethernet_up=''
 ethernet_unknown=''
 for f in /sys/class/net/*
 do
-    if [ ! -d "$f/wireless" ] && [ "$f" != "/sys/class/net/lo" ]
+    if [ ! -d "$f/wireless" ] && [ -d "$f/device" ]
     then
         $(grep -q 'up' "${f}/operstate") && ethernet_up=1
         $(grep -q 'unknown' "${f}/operstate") && ethernet_unknown=1
