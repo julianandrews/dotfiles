@@ -196,6 +196,19 @@ unzip awscliv2.zip
 ./aws/install -i ~/.local/lib/aws-cli -b ~/.local/bin
 ```
 
+Selenite Lamp
+-------------
+
+```
+wget https://github.com/julianandrews/selenite-lamp/releases/latest/download/selenite-lamp -O ~/.local/bin/selenite-lamp
+sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
+EOF
+systemctl --user daemon-reload
+systemctl --user enable selenite
+```
+
+
 Misc Setup
 ----------
 
@@ -207,7 +220,6 @@ sudo usermod -a -G dialout julian
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
-Download and install selenite-lamp, and set up the /etc/udev/rules.d rule for the lamp.
 Download and install chrome and zoom `.deb` files
 
 TODO
