@@ -1,2 +1,24 @@
-alias daws='aws --profile shared-dev'
+alias daws='aws --profile pocus-dev'
 alias paws='aws --profile julian-dev'
+
+function ensureAWSSSO() {
+    profile=$1
+
+    if [ "$profile" = "" ]; then
+      echo "You must specify an aws profile"
+      exit
+    fi
+
+    aws_user=$(aws --profile $profile sts get-caller-identity | grep UserId)
+
+    if [ "$aws_user" = "" ]; then
+        echo "not logged in to AWS SSO, logging in"
+        aws --profile $profile sso login
+    fi
+}
+
+function cleanUpBuckets() {
+	ensureAWSSSO "datacollector-testing"
+
+	for b in $(AWS_PROFILE=datacollector-testing aws s3api list-buckets | jq -r '.Buckets | .[] | .Name'); do AWS_PROFILE=datacollector-testing aws s3 rm s3://$b --recursive && AWS_PROFILE=datacollector-testing aws s3 rb s3://$b & done
+}
