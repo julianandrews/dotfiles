@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+export SELENITE_PORT=/dev/selenite-lamp
+
+EMAIL=jandrews271@gmail.com
+SLEEP_TIME=10
+BINARY=/home/julian/.local/bin/selenite-lamp
+
+log () {
+  while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done
+}
+
+echo "Starting." | log
+
+while :; do
+  email_count=$(/home/julian/.local/bin/gmailcount --debug $EMAIL 2> >(>&2 log))
+  email_count=${email_count:-0}
+  hour=$(date +%H)
+  minute=$(date +%M)
+  query_output="$($BINARY query 2> >(>&2 log))"
+  if [ ! $? -eq 0 ]; then
+    continue
+  fi
+  current_state="$(echo "$query_output" | jq -cS)"
+
+  if [ $hour -lt 8 ]; then
+    if ! $(cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":52000,"period":10000,"wait":20000}}')); then
+      echo "Setting night mode" | log
+      $BINARY pulse-hue 52000 10000 20000 2>&1 | log
+    fi
+  elif [ $hour -eq 21 ] && [ $minute -gt 29 -a $minute -lt 46 ]; then
+    if ! cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":10000,"period":2000,"wait":0}}'); then
+      echo "Setting catfood mode" | log
+      $BINARY pulse-hue 10000 2000 2>&1 | log
+    fi
+  elif [ $email_count -gt 0 ]; then
+    if ! cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":40000,"period":2000,"wait":0}}'); then
+      echo "Setting email alert" | log
+      $BINARY pulse-hue 40000 2000 2>&1 | log
+    fi
+  elif [ $minute -eq 55 ]; then
+    if ! $(cmp -s <(echo "$current_state") <(echo '{"cycle-hues":{"period":500}}')); then
+      echo "Setting party mode!" | log
+      $BINARY cycle-hues 500 2>&1 | log
+    fi
+  else
+    if ! $(cmp -s <(echo "$current_state") <(echo '{"gleam":{"frequency":0.002,"num_groups":4,"period":10000}}')); then
+      echo "Restoring default state" | log
+      $BINARY gleam 10000 0.002 4 2>&1 | log
+    fi
+  fi
+  sleep $SLEEP_TIME
+done
+echo "Stopping." | log

@@ -1,0 +1,9 @@
+[Unit]
+Description=Selenite Lamp Service
+
+[Service]
+Type=simple
+ExecStart=/home/julian/.local/bin/update-lamp-state
+
+[Install]
+WantedBy=multi-user.target
