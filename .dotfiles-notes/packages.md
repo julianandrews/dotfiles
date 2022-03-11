@@ -1,6 +1,6 @@
 Libraries and build tools
 -------------------------
-build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev libtool xclip software-properties-common openssh-server grub-efi
+build-essential cmake firmware-misc-nonfree gettext e2fslibs-dev libpam0g-dev libtool xclip software-properties-common openssh-server grub-efi gcc-avr binutils-avr avr-libc
 
 CLI tools
 ---------
