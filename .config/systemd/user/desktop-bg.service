@@ -1,0 +1,6 @@
+[Unit]
+Description=Arts & Culture Desktop Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/julian/.local/bin/artsandculturedesktop

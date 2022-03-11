@@ -1,0 +1,11 @@
+[Unit]
+Description=Timer for the Arts & Culture Desktop service
+Requires=desktop-bg.service
+StopWhenUnneeded=true
+
+[Timer]
+OnCalendar=*-*-* 00,03,06,09,12,15,18,21:00:55
+RandomizedDelaySec=600
+
+[Install]
+WantedBy=timers.target

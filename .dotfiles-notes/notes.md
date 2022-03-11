@@ -94,10 +94,13 @@ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/
 chmod +x ~/.local/bin/rust-analyzer
 ```
 
-Crontab
--------
+Desktop Background Switcher
+---------------------------
 
-`0 */3 * * * DISPLAY=:0.0 ${HOME}/.local/bin/artsandculturedesktop > /tmp/artsandculturedesktop.log 2>&1`
+```
+systemctl --user daemon-reload
+systemctl --user enable --now desktop-bg.timer
+```
 
 Steam
 -----
