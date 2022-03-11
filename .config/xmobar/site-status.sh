@@ -1,16 +1,17 @@
 #!/usr/bin/env sh
 
-CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/site-status"
+ERROR_COLOR="#cb4b16"
 
 site_status() {
-  cat "$CACHE_DIR/site-status/$1"
+  cat "$CACHE_DIR/$1"
 }
 
-for entry in "jellyfin.seemyvest.net 200 "
+for entry in "$@"
 do
   set -- $entry
   site="$1"
   status="$2"
   output="$3"
-  [ "$(site_status "$site")" = "$status" ] || echo -n "<fc=#cb4b16><fn=1>$output</fn></fc> | "
+  [ "$(site_status "$site")" = "$status" ] || echo -n "<fc=$ERROR_COLOR><fn=1>$output</fn></fc> | "
 done

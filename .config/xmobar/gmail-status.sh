@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
-EMAIL='jandrews271@gmail.com'
+EMAIL="$1"
 URL='https://mail.google.com'
-CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/gmailcount/$EMAIL"
 
 echo_status() {
   echo "<action=\`xdg-open $URL\`><fc=$2><fn=1></fn> $1</fc></action>"
 }
 
 get_status_output() {
-  full_text=$(cat "$CACHE_DIR/gmailcount/$EMAIL")
+  full_text=$(cat "$CACHE_FILE")
   full_text=${full_text:-?}
 
   case $full_text in

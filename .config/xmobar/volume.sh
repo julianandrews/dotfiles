@@ -2,10 +2,9 @@
 
 low_volume=35
 high_volume=100
-max_volume=150
 
 getdefaultsinkname() {
-    pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
+  pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
 }
 
 getsinkvol() {
@@ -34,7 +33,13 @@ update() {
       color="#268bd2"
     fi
   fi
-  echo "<action=\`pactl set-sink-mute \"$sink\" toggle\` button=2><action=\`pactl set-sink-volume \"$sink\" -5%\` button=3><action=\`pactl set-sink-volume \"$sink\" -1%\` button=5><action=\`pactl set-sink-volume \"$sink\" +5%\` button=1><action=\`pactl set-sink-volume \"$sink\" +1%\` button=4><fc=${color}>$icon_string ${volume}</fc>%</action></action></action></action></action>"
+  echo -n "<action=\`pactl set-sink-mute \"$sink\" toggle\` button=2>"
+  echo -n "<action=\`pactl set-sink-volume \"$sink\" -5%\` button=3>"
+  echo -n "<action=\`pactl set-sink-volume \"$sink\" -1%\` button=5>"
+  echo -n "<action=\`pactl set-sink-volume \"$sink\" +5%\` button=1>"
+  echo -n "<action=\`pactl set-sink-volume \"$sink\" +1%\` button=4>"
+  echo -n "<fc=${color}>$icon_string ${volume}</fc>%"
+  echo "</action></action></action></action></action>"
 }
 
 update
