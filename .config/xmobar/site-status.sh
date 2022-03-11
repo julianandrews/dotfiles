@@ -1,6 +1,6 @@
 site_status() {
   site="$1"
-  curl -sL -w "%{http_code}\\n" "$site" -o /dev/null
+  curl -sL --max-time 1 -w "%{http_code}\\n" "$site" -o /dev/null
 }
 
 for entry in "https://jellyfin.seemyvest.net 200 " "https://wiki.seemyvest.net 401 "
