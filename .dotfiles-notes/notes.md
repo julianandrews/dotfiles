@@ -220,6 +220,8 @@ sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo update-alternatives --set x-www-browser /usr/bin/chromium
 sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
+systemctl --user daemon-reload
+systemctl --user enable --now gmailcount.timer
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass

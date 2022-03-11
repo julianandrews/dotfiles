@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+EMAIL="$1"
+BINARY=/home/julian/.local/bin/gmailcount
+CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+
+output="$("$BINARY" "$EMAIL")"
+if [ ! $? -eq 0 ]; then
+  echo "gmailcount failed"
+  exit 1
+fi
+
+mkdir -p "$CACHE_DIR/gmailcount"
+echo -n "$output" > "$CACHE_DIR/gmailcount/$EMAIL"

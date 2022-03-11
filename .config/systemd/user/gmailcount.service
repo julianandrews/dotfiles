@@ -1,0 +1,6 @@
+[Unit]
+Description=Gmail Count Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/julian/.local/bin/update-gmail-count jandrews271@gmail.com

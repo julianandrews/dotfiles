@@ -4,12 +4,13 @@ export SELENITE_PORT=/dev/selenite-lamp
 
 EMAIL=jandrews271@gmail.com
 BINARY=/home/julian/.local/bin/selenite-lamp
+CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
 
 log () {
   while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done
 }
 
-email_count=$(/home/julian/.local/bin/gmailcount --debug $EMAIL 2> >(>&2 log))
+email_count=$(cat $CACHE_DIR/gmailcount/$EMAIL)
 email_count=${email_count:-0}
 hour=$(date +%H)
 minute=$(date +%M)
