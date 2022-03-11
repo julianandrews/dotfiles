@@ -1,0 +1,12 @@
+[Unit]
+Description=Timer for the Selenite service
+Requires=selenite.service
+StopWhenUnneeded=true
+
+[Timer]
+OnActiveSec=0
+OnUnitActiveSec=10
+AccuracySec=5
+
+[Install]
+WantedBy=dev-selenite\x2dlamp.device

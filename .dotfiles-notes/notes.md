@@ -205,7 +205,7 @@ sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
 EOF
 systemctl --user daemon-reload
-systemctl --user enable selenite
+systemctl --user enable selenite.timer
 ```
 
 
