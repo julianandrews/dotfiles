@@ -18,6 +18,13 @@ if has_nvim_lsp then
     nvim_lsp.tsserver.setup{on_attach=on_attach}
     nvim_lsp.vimls.setup{on_attach=on_attach}
     nvim_lsp.terraformls.setup{on_attach=on_attach}
+    nvim_lsp.arduino_language_server.setup{
+        on_attach=on_attach,
+        cmd = {
+            "arduino-language-server",
+            "-cli-config", "$HOME/.arduino15/arduino-cli.yaml"
+        }
+    }
     nvim_lsp.yamlls.setup{
         on_attach=on_attach,
         settings = {
