@@ -44,8 +44,8 @@ Python Packages
 
 ```
 curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python3 /tmp/get-pip.py --user
-python3 -m pip install --user black gmailcount[secretservice] pillow pygments pylint \
-  pyxdg requests six virtualenv virtualenvwrapper python-language-server
+python3 -m pip install --user black pillow pygments pylint pyxdg requests six \
+          virtualenv virtualenvwrapper python-language-server
 ```
 
 
@@ -211,6 +211,17 @@ systemctl --user daemon-reload
 systemctl --user enable selenite.timer
 ```
 
+Gmail Count
+-----------
+
+Have an app password ready
+
+```
+curl -L https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar xzf - > ~/.local/bin/gmailcount
+systemctl --user daemon-reload
+systemctl --user enable --now gmailcount.timer
+gmailcount jandrews271@gmail.com set-password
+```
 
 Misc Setup
 ----------
@@ -221,7 +232,6 @@ sudo update-alternatives --set x-www-browser /usr/bin/chromium
 sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
 systemctl --user daemon-reload
-systemctl --user enable --now gmailcount.timer
 systemctl --user enable --now site-status.timer
 ```
 
