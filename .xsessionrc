@@ -1,10 +1,10 @@
 # Setup monitors and load wallpaper.
 ~/.local/bin/set-monitors && ~/.fehbg &
 
-# Setup screenlock/saver
+# Configure screenlock/saver
 xset s off
 xset dpms 600 900 1200
-xautolock -time 5 -locker 'env XSECURELOCK_FONT=lucidasans-18 XSECURELOCK_SAVER=saver_xscreensaver XSECURELOCK_XSCREENSAVER_PATH=/usr/libexec/xscreensaver xsecurelock' &
 
-# Startup kupfer
-kupfer --no-splash > /dev/null &
+# Start systemctl graphical user services
+systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
+systemctl --no-block --user start xsession.target

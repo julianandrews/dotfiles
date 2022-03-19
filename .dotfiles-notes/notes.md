@@ -94,14 +94,6 @@ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/
 chmod +x ~/.local/bin/rust-analyzer
 ```
 
-Desktop Background Switcher
----------------------------
-
-```
-systemctl --user daemon-reload
-systemctl --user enable --now desktop-bg.timer
-```
-
 Steam
 -----
 
@@ -207,8 +199,6 @@ wget https://github.com/julianandrews/selenite-lamp/releases/latest/download/sel
 sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
 EOF
-systemctl --user daemon-reload
-systemctl --user enable selenite.timer
 ```
 
 Gmail Count
@@ -218,8 +208,6 @@ Have an app password ready
 
 ```
 curl -L https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar xzf - > ~/.local/bin/gmailcount
-systemctl --user daemon-reload
-systemctl --user enable --now gmailcount.timer
 gmailcount jandrews271@gmail.com set-password
 ```
 
@@ -232,7 +220,7 @@ sudo update-alternatives --set x-www-browser /usr/bin/chromium
 sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
 systemctl --user daemon-reload
-systemctl --user enable --now site-status.timer
+systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass

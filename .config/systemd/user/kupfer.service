@@ -1,0 +1,10 @@
+[Unit]
+Description=Kupfer Quick Launcher
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kupfer --no-splash
+
+[Install]
+WantedBy=xsession.target
