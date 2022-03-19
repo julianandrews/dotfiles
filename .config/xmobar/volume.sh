@@ -42,7 +42,6 @@ update() {
   echo "</action></action></action></action></action>"
 }
 
-update
 pactl subscribe | grep --line-buffered 'sink' | while read line; do
   update
 done
