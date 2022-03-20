@@ -6,44 +6,40 @@ EMAIL=jandrews271@gmail.com
 BINARY=/home/julian/.local/bin/selenite-lamp
 CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
 
-log () {
-  while IFS= read -r line; do printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$line"; done
-}
-
 email_count=$(cat $CACHE_DIR/gmailcount/$EMAIL)
 email_count=${email_count:-0}
 hour=$(date +%H)
 minute=$(date +%M)
-query_output="$($BINARY query 2> >(>&2 log))"
+query_output="$($BINARY query)"
 if [ ! $? -eq 0 ]; then
-  echo "Query failed" | log
+  echo "Query failed"
   exit 1
 fi
 current_state="$(echo "$query_output" | jq -cS)"
 
 if [ $hour -lt 8 ]; then
   if ! $(cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":52000,"period":10000,"wait":20000}}')); then
-    echo "Setting night mode" | log
-    $BINARY pulse-hue 52000 10000 20000 2>&1 | log
+    echo "Setting night mode"
+    $BINARY pulse-hue 52000 10000 20000
   fi
 elif [ $hour -eq 21 ] && [ $minute -gt 29 -a $minute -lt 46 ]; then
   if ! cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":10000,"period":2000,"wait":0}}'); then
-    echo "Setting catfood mode" | log
-    $BINARY pulse-hue 10000 2000 2>&1 | log
+    echo "Setting catfood mode"
+    $BINARY pulse-hue 10000 2000
   fi
 elif [ $email_count -gt 0 ]; then
   if ! cmp -s <(echo "$current_state") <(echo '{"pulse-hue":{"hue":40000,"period":2000,"wait":0}}'); then
-    echo "Setting email alert" | log
-    $BINARY pulse-hue 40000 2000 2>&1 | log
+    echo "Setting email alert"
+    $BINARY pulse-hue 40000 2000
   fi
 elif [ $minute -eq 55 ]; then
   if ! $(cmp -s <(echo "$current_state") <(echo '{"cycle-hues":{"period":500}}')); then
-    echo "Setting party mode!" | log
-    $BINARY cycle-hues 500 2>&1 | log
+    echo "Setting party mode!"
+    $BINARY cycle-hues 500
   fi
 else
   if ! $(cmp -s <(echo "$current_state") <(echo '{"gleam":{"frequency":0.002,"num_groups":4,"period":10000}}')); then
-    echo "Restoring default state" | log
-    $BINARY gleam 10000 0.002 4 2>&1 | log
+    echo "Restoring default state"
+    $BINARY gleam 10000 0.002 4
   fi
 fi
