@@ -207,7 +207,7 @@ Gmail Count
 Have an app password ready
 
 ```
-curl -L https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar xzf - > ~/.local/bin/gmailcount
+curl -L https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar xzf - -C ~/.local/bin/
 gmailcount jandrews271@gmail.com set-password
 ```
 
@@ -221,6 +221,7 @@ sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
 systemctl --user daemon-reload
 systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service
+curl -L https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz | tar xzf - -C ~/.local/bin/
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass

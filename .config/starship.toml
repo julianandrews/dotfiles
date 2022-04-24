@@ -1,0 +1,40 @@
+add_newline = false
+format = """
+$directory\
+[](bg:13 fg:8)\
+$git_branch\
+$git_status\
+$git_state\
+[](bg:6 fg:13)\
+$aws\
+$character\
+"""
+
+[aws]
+style = "bg:6 fg:7"
+symbol = " "
+format = "[ $symbol$profile ]($style)"
+
+[character]
+success_symbol = "[](bg:8 fg:6)"
+error_symbol = "[](bg:8 fg:1)"
+
+[directory]
+style = "bg:8"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[git_branch]
+symbol = ""
+style = "bg:13 fg:7"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:13 fg:8"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+style = "bg:13 fg:8"
+format = '\([$state( $progress_current/$progress_total)]($style)\)'

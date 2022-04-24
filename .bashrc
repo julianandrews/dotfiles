@@ -28,50 +28,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
   debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-if git --version &>/dev/null
-then
-  export GIT_PS1_SHOWDIRTYSTATE=true
-  export GIT_PS1_SHOWUNTRACKEDFILES=true
-fi
-
-__ps1_prefix() {
-  local ps1_prefix="${debian_chroot:+($debian_chroot)}"
-  printf "${1:-%s}" "$ps1_prefix"
-}
-
-__ps1_host() {
-  if [ -n "${SSH_TTY}" ]; then
-    local ps1_host="${USER}@${HOSTNAME}"
-    printf "${1:-%s}" "$ps1_host"
-  fi
-}
-
-__ps1_pwd() {
-  printf "${1}"
-}
-
-__ps1_suffix() {
-  if git --version &>/dev/null
-  then
-    __git_ps1 "${1:-%s}"
-  fi
-}
-
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then # color works
-  prefix_template="\[$(tput setaf 4)\]%s\[$(tput sgr0)\]"
-  host_template="\[$(tput setaf 2)\]%s\[$(tput sgr0)\]:"
-  pwd_template="\[$(tput setaf 6)\]\w\[$(tput sgr0)\]"
-  suffix_template="\[$(tput setaf 5)\] (%s)\[$(tput sgr0)\]"
-else
-  prefix_template="%s"
-  host_template='%s:'
-  pwd_template="\w"
-  suffix_template=' (%s)'
-fi
-
-PS1='$(__ps1_prefix "'$prefix_template'")$(__ps1_host "'$host_template'")$(__ps1_pwd "'$pwd_template'")$(__ps1_suffix "'$suffix_template'")\$ '
-unset pwd_template host_template prefix_template suffix_template
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
   xterm*|rxvt*)
@@ -142,3 +98,7 @@ fi
 
 # Selenite lamp
 export SELENITE_PORT=/dev/selenite-lamp
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
