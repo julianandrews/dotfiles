@@ -26,6 +26,7 @@ Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'towolf/vim-helm'
 
 call plug#end()
 
