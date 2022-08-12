@@ -1,24 +1,30 @@
 alias daws='aws --profile pocus-dev'
 alias paws='aws --profile julian-dev'
 
-function ensureAWSSSO() {
-    profile=$1
+function sso_login() {
+    profile="${1:-$AWS_PROFILE}"
 
     if [ "$profile" = "" ]; then
       echo "You must specify an aws profile"
       exit
     fi
 
-    aws_user=$(aws --profile $profile sts get-caller-identity | grep UserId)
-
-    if [ "$aws_user" = "" ]; then
-        echo "not logged in to AWS SSO, logging in"
-        aws --profile $profile sso login
-    fi
+    AWS_PROFILE="$profile" aws sts get-caller-identity >/dev/null || BROWSER=google-chrome AWS_PROFILE="$profile" aws sso login
 }
 
 function cleanUpBuckets() {
-	ensureAWSSSO "datacollector-testing"
+	sso_login "datacollector-testing"
 
 	for b in $(AWS_PROFILE=datacollector-testing aws s3api list-buckets | jq -r '.Buckets | .[] | .Name'); do AWS_PROFILE=datacollector-testing aws s3 rm s3://$b --recursive && AWS_PROFILE=datacollector-testing aws s3 rb s3://$b & done
 }
+
+alias garden='garden --env=cloud'
+
+function penv() {
+  export AWS_PROFILE="pocus-$1"
+  sso_login
+  export KUBECONFIG="$HOME/.kube/pocus-$1.config"
+  aws eks update-kubeconfig --region us-east-1 --name $1 >/dev/null
+}
+
+alias pdev='penv dev'
