@@ -26,6 +26,10 @@ URxvt.cursorUnderline:      false
 URxvt.matcher.rend.0:       Uline fg5
 URxvt.pointerBlank:         false
 
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
+URxvt*scrollTtyKeypress:    true
+
 /* ! Background */
 /* URxvt.transparent:          true */
 /* URxvt.shading:              10 */
