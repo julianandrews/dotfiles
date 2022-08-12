@@ -17,6 +17,7 @@ set updatetime=300
 set undofile
 set signcolumn=yes
 set shiftwidth=4 tabstop=4 softtabstop=4
+set title
 set t_Co=256
 
 if executable("rg")
