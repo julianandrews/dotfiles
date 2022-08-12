@@ -222,11 +222,17 @@ sudo usermod -a -G dialout julian
 systemctl --user daemon-reload
 systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service
 curl -L https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz | tar xzf - -C ~/.local/bin/
+curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl
+chmod a+x ~/.local/bin/kubectl
+curl -L "https://get.helm.sh/helm-$(curl -Ls https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name)-linux-amd64.tar.gz" | tar --strip-components 1 -xzf - -C ~/.local/bin linux-amd64/helm
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
 Download and install chrome and zoom `.deb` files
 
-TODO
-----
-Monitor hotplugging?
+Work Programs
+-------------
+garden
+werf
+pnpm
+argocd

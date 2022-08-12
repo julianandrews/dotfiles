@@ -107,3 +107,6 @@ if command -v starship &> /dev/null; then
 
   starship_precmd_user_func="set_win_title"
 fi
+
+# kubectl
+source <(kubectl completion bash)
