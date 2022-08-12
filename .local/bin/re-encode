@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -e
+
+infile="$1"
+
+ssh gargantua-two cat "'$infile'" | ffmpeg -f matroska -i pipe: -c:v libx265 -vf scale=1280:720 -c:a copy -c:s copy -movflags +faststart -tune zerolatency -f matroska pipe: | ssh gargantua-two 'cat > "'$infile.new'"'
+ssh gargantua-two mv "'$infile'" "'$infile.old'"
+ssh gargantua-two mv "'$infile.new'" "'$infile'"
