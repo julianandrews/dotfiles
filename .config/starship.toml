@@ -1,40 +1,64 @@
 add_newline = false
 format = """
-$directory\
-[](bg:13 fg:8)\
 $git_branch\
-$git_status\
 $git_state\
-[](bg:6 fg:13)\
+$git_status\
+$python\
 $aws\
+$kubernetes\
+$username\
+$hostname\
+$directory\
 $character\
 """
 
-[aws]
-style = "bg:6 fg:7"
-symbol = " "
-format = "[ $symbol$profile ]($style)"
+[username]
+style_user = 'fg:13'
+format = '[$user@]($style)'
 
-[character]
-success_symbol = "[](bg:8 fg:6)"
-error_symbol = "[](bg:8 fg:1)"
+[hostname]
+style = 'fg:13'
+format='[$hostname]($style):'
 
 [directory]
-style = "bg:8"
-format = "[ $path ]($style)"
-truncation_length = 3
-truncation_symbol = "…/"
+style = 'fg:6'
+format = '[$path]($style)'
+truncation_length = 4
+truncation_symbol = '…/'
 truncate_to_repo = false
 
+[character]
+success_symbol = '\$'
+error_symbol = '[\$](fg:9)'
+
 [git_branch]
-symbol = ""
-style = "bg:13 fg:7"
-format = '[ $symbol $branch ]($style)'
+style = "fg:5"
+format = '[\[$branch\]]($style)'
 
 [git_status]
-style = "bg:13 fg:8"
+style = "fg:10"
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [git_state]
-style = "bg:13 fg:8"
-format = '\([$state( $progress_current/$progress_total)]($style)\)'
+style = "fg:10"
+format = '[\[$state ($progress_current/$progress_total)\]]($style)'
+
+[python]
+style = "fg:2"
+format = '[\[$virtualenv\]]($style)'
+detect_extensions = []
+detect_files = []
+
+[aws]
+style = "fg:3"
+format = '[\[$profile\]]($style)'
+
+[kubernetes]
+disabled = false
+style = "fg:4"
+format = '[(\[$context( \($namespace\))\])]($style)'
+
+[kubernetes.context_aliases]
+"arn:aws:eks:us-east-1:373265925886:cluster/dev" = ""
+"arn:aws:eks:us-east-1:134914356994:cluster/staging" = "staging"
+"arn:aws:eks:us-east-1:282229155751:cluster/production" = "prod"
