@@ -48,23 +48,14 @@ python3 -m pip install --user black pillow pygments pylint pyxdg requests six \
           virtualenv virtualenvwrapper python-language-server
 ```
 
-
-Tarsnap
--------
+Brave
+-----
 
 ```
 curl -sSfL https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/tarsnap-archive-keyring.gpg add -
-echo "deb http://pkg.tarsnap.com/deb/$(lsb_release -s -c) ./" | sudo tee /etc/apt/sources.list.d/tarsnap.list
-sudo apt update
-sudo apt install tarsnap
+echo "deb [signed-by=//usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update && sudo apt install brave-browser
 ```
-
-sudo -e /etc/cron.daily/tarsnap-backup
-
-    #!/usr/bin/env sh
-    su julian -c /home/julian/.local/bin/tarsnap-backup
-
-sudo chmod a+x /etc/cron.daily/tarsnap-backup
 
 CapsLock->Esc
 -------------
@@ -82,6 +73,23 @@ Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
 
 * `greeter-hide-users=false`
 * `xserver-command=X -ardelay 250 -arinterval 20`
+
+Tarsnap
+-------
+
+```
+curl -sSfL https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/tarsnap-archive-keyring.gpg add -
+echo "deb http://pkg.tarsnap.com/deb/$(lsb_release -s -c) ./" | sudo tee /etc/apt/sources.list.d/tarsnap.list
+sudo apt update
+sudo apt install tarsnap
+```
+
+sudo -e /etc/cron.daily/tarsnap-backup
+
+    #!/usr/bin/env sh
+    su julian -c /home/julian/.local/bin/tarsnap-backup
+
+sudo chmod a+x /etc/cron.daily/tarsnap-backup
 
 Rust
 ----
@@ -133,7 +141,7 @@ deb-src https://deb.nodesource.com/node_16.x $(lsb_release -cs) main
 EOF
 sudo apt update
 sudo apt install nodejs
-npm install -g bash-language-server pyright typescript typescript-language-server vim-language-server yaml-language-server
+npm install -g bash-language-server pyright typescript typescript-language-server vim-language-server yaml-language-server pnpm
 ```
 
 KaTrain
@@ -196,6 +204,7 @@ Selenite Lamp
 
 ```
 wget https://github.com/julianandrews/selenite-lamp/releases/latest/download/selenite-lamp -O ~/.local/bin/selenite-lamp
+chmod a+x ~/.local/bin/selenite-lamp
 sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
 EOF
@@ -228,11 +237,4 @@ curl -L "https://get.helm.sh/helm-$(curl -Ls https://api.github.com/repos/helm/h
 ```
 
 Download and install goban-screenhack, sgf-render, and markovpass
-Download and install chrome and zoom `.deb` files
-
-Work Programs
--------------
-garden
-werf
-pnpm
-argocd
+Download and install chrome, bat and zoom `.deb` files
