@@ -28,3 +28,5 @@ function penv() {
 }
 
 alias pdev='penv dev'
+
+alias ppsql='psql $(aws ssm get-parameter --name database-url --query '"'"'Parameter.Value'"'"' --output text --with-decryption)'
