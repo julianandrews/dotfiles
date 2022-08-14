@@ -4,7 +4,7 @@ firmware-misc-nonfree firmware-iwlwifi
 
 CLI tools
 ---------
-apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite3 unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find traceroute python-is-python3 wpasupplicant wireless-tools parted apt-file apt-transport-https
+apg at bash-completion curl ffmpeg git htop imagemagick jq locate nmap p7zip-full pv ripgrep sqlite3 unrar-free unzip zip rsync git-lfs dnsutils msmtp libsecret-tools fd-find traceroute python-is-python3 wpasupplicant wireless-tools parted apt-file apt-transport-https ecryptfs-utils
 
 Dev
 ---
