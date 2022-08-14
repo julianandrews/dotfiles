@@ -94,7 +94,10 @@ export PATH=${PATH}:${HOME}/.npm/bin
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
-. "$HOME/.cargo/env"
+
+if [ -f "HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # Selenite lamp
 export SELENITE_PORT=/dev/selenite-lamp
