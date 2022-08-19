@@ -1,0 +1,13 @@
+cython
+dh_virtualenv
+libicu-dev
+libqt5gamepad5
+libqt5gamepad5-dev
+libqt5webview5-dev
+libspeechd-dev
+patchelf
+python3-pip
+python-dev
+qt3d5-dev
+qt5-default
+qtmultimedia5-dev

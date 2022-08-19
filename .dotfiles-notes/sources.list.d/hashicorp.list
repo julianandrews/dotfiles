@@ -1,0 +1,1 @@
+deb [signed-by=//usr/share/keyrings/hashicorp.gpg arch=amd64] https://apt.releases.hashicorp.com buster main
