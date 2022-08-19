@@ -64,9 +64,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set default editor to nvim
-export EDITOR=nvim
-
 # Connect to the running gnome-keyring-daemon and get our SSH_AUTH_SOCK variable
 if [ -n "$DESKTOP_SESSION" ];then
     eval $(gnome-keyring-daemon --start)
@@ -90,6 +87,9 @@ export PATH=${PATH}:${HOME}/.local/bin:${HOME}/bin:/sbin:/usr/sbin:/opt/bin
 export PATH=${PATH}:${HOME}/.cargo/bin
 export PATH=${PATH}:${HOME}/.npm/bin
 
+# set default editor to nvim
+[ $(type -P nvim) ] && export EDITOR=nvim
+
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -112,4 +112,4 @@ if command -v starship &> /dev/null; then
 fi
 
 # kubectl
-source <(kubectl completion bash)
+[ $(type -P kubectl) ] && source <(kubectl completion bash)
