@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
 backupfile="$(uname -n)-$(date +%Y-%m-%d_%H-%M-%S)"
-keyfile=/home/julian/Private/keys/tarsnap-write.key
+keyfile="/home/julian/Private/keys/tarsnap-$(hostname)-write.key"
 tarsnap --quiet --no-print-stats -c --keyfile "$keyfile" -f "$backupfile" /home/julian/Private /home/julian/Documents

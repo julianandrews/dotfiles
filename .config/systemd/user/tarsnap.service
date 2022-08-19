@@ -1,0 +1,7 @@
+[Unit]
+Description=Run tarsnap backups
+OnFailure=notify-failure@%n.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/julian/.local/bin/tarsnap-backup

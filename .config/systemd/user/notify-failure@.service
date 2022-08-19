@@ -1,0 +1,6 @@
+[Unit]
+Description=OnFailure email for %i
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mail -s "Service %i failed" julian

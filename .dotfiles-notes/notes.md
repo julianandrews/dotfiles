@@ -88,15 +88,6 @@ curl -sSL "https://get.helm.sh/helm-$(curl -Ls https://api.github.com/repos/helm
 curl -sSL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl && chmod a+x ~/.local/bin/kubectl
 ```
 
-## Tarsnap
-
-sudo -e /etc/cron.daily/tarsnap-backup
-
-    #!/usr/bin/env sh
-    su julian -c /home/julian/.local/bin/tarsnap-backup
-
-sudo chmod a+x /etc/cron.daily/tarsnap-backup
-
 ## Rust
 
 ```
@@ -131,7 +122,7 @@ sudo update-alternatives --set editor /opt/bin/nvim
 sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
 
-# after running docker
+# After running docker
 sudo groupadd docker
 sudo usermod -aG docker julian
 
@@ -140,8 +131,9 @@ sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
 EOF
 
+# Enable services
 systemctl --user daemon-reload
-systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service
+systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer
 
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
