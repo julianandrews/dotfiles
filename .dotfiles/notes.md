@@ -6,8 +6,9 @@ Use the https url since on a new machine I won't yet have ssh keys in place.
 
 ```
 sudo apt-get install git
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-git clone --bare https://github.com/julianandrews/dotfiles.git $HOME/.dotfiles
+mkdir $HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/repo --work-tree=$HOME'
+git clone --bare https://github.com/julianandrews/dotfiles.git $HOME/.dotfiles/repo
 dotfiles config --local status.showUntrackedFiles no
 dotfiles remote set-url origin git@github.com:julianandrews/dotfiles.git
 dotfiles checkout
@@ -21,15 +22,15 @@ them up), and then rerun `dotfiles checkout`.
 Double check package-lists/hardware-specific before installing.
 
 ```
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/apt)
+sudo apt install $(cat ~/.dotfiles/package-lists/apt)
 sudo apt-add-repository contrib
 sudo apt-add-repository non-free
-sudo cp ~/.dotfiles-nodes/keyrings/* /usr/share/keyrings/
-sudo cp ~/.dotfiles-nodes/sources.list.d/* /etc/apt/sources.list.d/
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/hardware-specific)
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/base)
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/dev)
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/gui)
+sudo cp ~/.dotfiles/keyrings/* /usr/share/keyrings/
+sudo cp ~/.dotfiles/sources.list.d/* /etc/apt/sources.list.d/
+sudo apt install $(cat ~/.dotfiles/package-lists/hardware-specific)
+sudo apt install $(cat ~/.dotfiles/package-lists/base)
+sudo apt install $(cat ~/.dotfiles/package-lists/dev)
+sudo apt install $(cat ~/.dotfiles/package-lists/gui)
 sudo dpkg --add-architecture i386
 sudo apt install steam
 ```

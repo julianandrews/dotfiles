@@ -4,7 +4,7 @@ KaTrain
 ### Build KataGo
 
 ```
-sudo apt install $(cat ~/.dotfiles-notes/package-lists/katrain)
+sudo apt install $(cat ~/.dotfiles/package-lists/katrain)
 cd /tmp
 git clone https://github.com/lightvector/KataGo.git
 cd /KataGo/cpp
