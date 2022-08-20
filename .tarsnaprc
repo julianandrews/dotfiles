@@ -4,7 +4,7 @@
 cachedir ~/.cache/tarsnap/
 
 # Tarsnap key file
-keyfile ~/Private/keys/tarsnap.key
+keyfile ~/Private/keys/tarsnap-madagascar.key
 
 # Don't archive files which have the nodump flag set
 nodump
