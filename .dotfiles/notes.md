@@ -79,14 +79,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ## Install local binaries
 
 ```
-curl -sSL https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz | tar xzf - -C ~/.local/bin/
+curl -sSL https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C ~/.local/bin/
 curl -sSL https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar -xzf - -C ~/.local/bin/
-curl -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer && chmod +x ~/.local/bin/rust-analyzer
-curl -sSL https://github.com/julianandrews/selenite-lamp/releases/latest/download/selenite-lamp -o ~/.local/bin/selenite-lamp && chmod +x ~/.local/bin/selenite-lamp
+curl -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer && chmod a+x ~/.local/bin/rust-analyzer
+curl -sSL https://github.com/julianandrews/selenite-lamp/releases/latest/download/selenite-lamp -o ~/.local/bin/selenite-lamp && chmod a+x ~/.local/bin/selenite-lamp
 curl -sSL https://github.com/julianandrews/markovpass/releases/latest/download/markovpass-linux.tar.gz | tar -xzf - -C ~/.local/bin/ markovpass
 curl -sSL https://github.com/julianandrews/sgf-render/releases/latest/download/sgf-render-linux.tar.gz | tar -xzf - -C ~/.local/bin/ sgf-render
-curl -sSL "https://get.helm.sh/helm-$(curl -Ls https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name)-linux-amd64.tar.gz" | tar --strip-components 1 -xzf - -C ~/.local/bin linux-amd64/helm
-curl -sSL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl && chmod a+x ~/.local/bin/kubectl
+curl -sSL "https://get.helm.sh/helm-$(curl -sSL https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name)-linux-amd64.tar.gz" | tar --strip-components 1 -xzf - -C ~/.local/bin linux-amd64/helm
+curl -sSL "https://dl.k8s.io/release/$(curl -sSL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl && chmod a+x ~/.local/bin/kubectl
 ```
 
 ## Rust
@@ -132,7 +132,7 @@ sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
 EOF
 
-# Enable services
+# Enable user services
 systemctl --user daemon-reload
 systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer
 
