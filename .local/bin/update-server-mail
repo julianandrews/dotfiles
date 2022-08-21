@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+CACHE_DIR="${XDG_CACHE_HOME:-/home/julian/.cache}/server-mail"
+
+check_mail() {
+  # SSH into $1 check if there's mail, and write the result out to $CACHE_FILE
+  local cache_file="$CACHE_DIR/$1"
+  local result=$(ssh "$1" '[ -s "/var/mail/$USER" ] && echo yes || echo no')
+  mkdir -p "$CACHE_DIR"
+  if [ $? = 255 ]; then
+    # ssh returns 255 on a failed connection
+    echo 'error' > "$cache_file"
+  else
+    echo "$result" > "$cache_file"
+  fi
+}
+
+for server in "$@"; do
+  check_mail $server &
+done
+
+wait
