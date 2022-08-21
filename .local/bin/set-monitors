@@ -13,15 +13,15 @@ hasdisplay() {
 }
 
 primary() {
-  [ "$1" = 'DP-2-8' ] && echo -n ' --primary'
+  [ "$1" = 'DP-2-1' ] && echo -n ' --primary'
 }
 
 positioning() {
-  [ "$1" = 'DP-2-1' ] && echo -n ' --left-of DP-2-8'
+  [ "$1" = 'DP-2-8' ] && echo -n ' --right-of DP-2-1'
 }
 
 mode() {
-  echo -n ' --auto'
+  echo -n ' --mode 1920x1200'
 }
 
 rotation() {
