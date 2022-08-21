@@ -6,5 +6,5 @@ xset s off
 xset dpms 600 900 1200
 
 # Start systemctl graphical user services
-systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
+systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS SSH_AUTH_SOCK SSH_AGENT_PID
 systemctl --no-block --user start xsession.target
