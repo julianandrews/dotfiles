@@ -1,1 +1,1 @@
-deb [arch=amd64 signed-by=/usr/share/keyrings/seemyvest.gpg] http://apt.seemyvest.net stable main
+deb [arch=amd64 signed-by=/usr/share/keyrings/seemyvest.gpg] https://apt.seemyvest.net stable main
