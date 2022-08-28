@@ -106,13 +106,6 @@ unzip awscliv2.zip
 ./aws/install -i ~/.local/lib/aws-cli -b ~/.local/bin
 ```
 
-## Install from .deb files
-
-- chrome
-- bat
-- zoom
-- goban-screenhack
-
 ## Misc Setup
 
 ```
@@ -139,3 +132,5 @@ systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service s
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
 ```
+
+Install chrome from downloaded .deb file

@@ -9,6 +9,7 @@ fonts-font-awesome
 gimp
 gnome-icon-theme
 gnome-keyring
+goban-screenhack
 gparted
 kupfer
 libnotify-bin
@@ -33,3 +34,4 @@ xscreensaver-data-extra
 xscreensaver-gl
 xscreensaver-gl-extra
 xsecurelock
+zoom
