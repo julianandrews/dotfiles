@@ -4,7 +4,8 @@ CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
 
 update_site_status() {
   local site="$1"
-  local output="$(curl -sL -w "%{http_code}\\n" "https://$site" -o /dev/null)"
+  local user_agent="Site Status Updater ($(hostname))/1.0"
+  local output="$(curl --user-agent "$user_agent" -sL -w "%{http_code}\\n" "https://$site" -o /dev/null)"
   if [ ! $? -eq 0 ]; then
     echo "update-site-status failed for $site"
     exit 1
