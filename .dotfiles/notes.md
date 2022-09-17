@@ -134,3 +134,4 @@ gmailcount jandrews271@gmail.com set-password
 ```
 
 Install chrome from downloaded .deb file
+Install Yubico Authenticator (TODO: make this less manual)
