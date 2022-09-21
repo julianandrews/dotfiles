@@ -28,6 +28,7 @@ python3
 python-is-python3
 ripgrep
 rsync
+selenite-lamp
 sqlite3
 tarsnap
 traceroute

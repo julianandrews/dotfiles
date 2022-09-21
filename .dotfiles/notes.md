@@ -84,7 +84,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -sSL https://github.com/starship/starship/releases/latest/download/starship-x86_64-unknown-linux-gnu.tar.gz | tar -xzf - -C ~/.local/bin/
 curl -sSL https://github.com/julianandrews/gmailcount/releases/latest/download/gmailcount.tar.gz | tar -xzf - -C ~/.local/bin/
 curl -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer && chmod a+x ~/.local/bin/rust-analyzer
-curl -sSL https://github.com/julianandrews/selenite-lamp/releases/latest/download/selenite-lamp -o ~/.local/bin/selenite-lamp && chmod a+x ~/.local/bin/selenite-lamp
 curl -sSL https://github.com/julianandrews/markovpass/releases/latest/download/markovpass-linux.tar.gz | tar -xzf - -C ~/.local/bin/ markovpass
 curl -sSL https://github.com/julianandrews/sgf-render/releases/latest/download/sgf-render-linux.tar.gz | tar -xzf - -C ~/.local/bin/ sgf-render
 curl -sSL "https://get.helm.sh/helm-$(curl -sSL https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name)-linux-amd64.tar.gz" | tar --strip-components 1 -xzf - -C ~/.local/bin linux-amd64/helm

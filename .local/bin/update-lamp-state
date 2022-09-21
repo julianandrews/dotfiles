@@ -3,7 +3,7 @@
 export SELENITE_PORT=/dev/selenite-lamp
 
 EMAIL=jandrews271@gmail.com
-BINARY=/home/julian/.local/bin/selenite-lamp
+BINARY=/usr/bin/selenite-lamp
 CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
 
 email_count=$(cat $CACHE_DIR/gmailcount/$EMAIL)
