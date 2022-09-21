@@ -110,7 +110,6 @@ unzip awscliv2.zip
 
 ```
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
-sudo update-alternatives --set x-www-browser /usr/bin/brave-browser-stable
 sudo update-alternatives --set editor /opt/bin/nvim
 
 sudo usermod -a -G lpadmin julian
