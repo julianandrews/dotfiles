@@ -27,12 +27,14 @@ sudo apt-add-repository contrib
 sudo apt-add-repository non-free
 sudo cp ~/.dotfiles/keyrings/* /usr/share/keyrings/
 sudo cp ~/.dotfiles/sources.list.d/* /etc/apt/sources.list.d/
+sudo apt update
 sudo apt install $(cat ~/.dotfiles/package-lists/hardware-specific)
 sudo apt install $(cat ~/.dotfiles/package-lists/base)
 sudo apt install $(cat ~/.dotfiles/package-lists/dev)
 sudo apt install $(cat ~/.dotfiles/package-lists/gui)
 sudo dpkg --add-architecture i386
 sudo apt install steam
+sudo apt upgrade
 ```
 
 ## Neovim
