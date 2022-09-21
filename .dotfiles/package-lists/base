@@ -10,6 +10,7 @@ dnsutils
 ecryptfs-utils
 fd-find
 ffmpeg
+gmailcount
 golang
 htop
 imagemagick
@@ -17,6 +18,7 @@ jq
 libsecret-tools
 linux-perf
 locate
+markovpass
 msmtp
 nmap
 p7zip-full
@@ -29,6 +31,7 @@ python-is-python3
 ripgrep
 rsync
 selenite-lamp
+sgf-render
 sqlite3
 tarsnap
 traceroute

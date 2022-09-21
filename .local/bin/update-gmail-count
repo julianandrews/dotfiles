@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 EMAIL="$1"
-BINARY=/home/julian/.local/bin/gmailcount
+BINARY=/usr/bin/gmailcount
 CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
 
 mkdir -p "$CACHE_DIR/gmailcount"
