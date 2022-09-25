@@ -2,7 +2,7 @@
 
 EMAIL="$1"
 BINARY=/usr/bin/gmailcount
-CACHE_DIR=${XDG_CACHE_HOME:-/home/julian/.cache}
+CACHE_DIR=${XDG_CACHE_HOME:-/home/$USER/.cache}
 
 mkdir -p "$CACHE_DIR/gmailcount"
 output="$("$BINARY" "$EMAIL")"
