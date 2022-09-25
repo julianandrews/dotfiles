@@ -14,8 +14,6 @@ Plug 'sbdchd/neoformat'
 
 " Neovim specific plugins
 Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
-Plug 'nvim-lua/lsp_extensions.nvim', has('nvim') ? {} : { 'on': [] }
-Plug 'nvim-lua/completion-nvim', has('nvim') ? {} : { 'on': [] }
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'

@@ -6,7 +6,7 @@ endif
 
 set clipboard=unnamed
 set cmdheight=2
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
 set cursorline
 set expandtab
 set hidden
