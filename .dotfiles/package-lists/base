@@ -28,6 +28,7 @@ pulseaudio-utils
 pv
 python3
 python-is-python3
+resolvconf
 ripgrep
 rsync
 selenite-lamp
