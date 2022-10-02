@@ -54,13 +54,6 @@ Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
 sudo udevadm trigger --subsystem-match=input --action=change
 ```
 
-## Lightdm
-
-Edit `/etc/lightdm/lightdm.conf`. Under `[Seat:*]` set:
-
-* `greeter-hide-users=false`
-* `xserver-command=X -ardelay 250 -arinterval 20`
-
 ## Python and npm packages
 
 ```
@@ -110,6 +103,9 @@ unzip awscliv2.zip
 ```
 sudo update-alternatives --set x-terminal-emulator /usr/bin/urxvt
 sudo update-alternatives --set editor /opt/bin/nvim
+
+# LightDM
+sudo cp -r ~/.dotfiles/lightdm.conf.d /etc/lightdm/
 
 sudo usermod -a -G lpadmin julian
 sudo usermod -a -G dialout julian
