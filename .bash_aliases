@@ -5,6 +5,19 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 [ -x "$(which bat)" ] && alias cat='bat --theme "Solarized (dark)" --no-pager --style plain'
 
+# Generate a password with ~120 bits of entropy.
+password() {
+  local length=${1:-"20"}
+  case $length in
+      ''|*[!0-9]*)
+        echo 'Invalid password length '$length
+        return
+        ;;
+      *) ;;
+  esac
+  cat /dev/urandom | tr -dc A-Za-z0-9~_- | head -c $length && echo
+}
+
 function ptouch() {
     while [ -n "$1" ]
     do
