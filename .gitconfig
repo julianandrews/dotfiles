@@ -16,3 +16,8 @@
   edit-conflicts = !conflicts=$(git ls-conflicts) && [ -z "$conflicts" ] || ${EDITOR:-vim} $(echo $conflicts | cut -f2)
 [fetch]
 	prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
