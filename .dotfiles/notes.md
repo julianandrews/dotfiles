@@ -121,7 +121,7 @@ EOF
 
 # Enable user services
 systemctl --user daemon-reload
-systemctl --user enable --now desktop-bg.timer gmailcount.timer kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer server-mail.timer
+systemctl --user enable --now desktop-bg.timer gmailcount.service kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer server-mail.timer
 
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
