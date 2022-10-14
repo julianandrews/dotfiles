@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/site-status"
+CACHE_DIR="/var/cache/page-status"
 ERROR_COLOR="#cb4b16"
 
 site_status() {
