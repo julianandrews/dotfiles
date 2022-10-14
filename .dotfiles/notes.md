@@ -120,6 +120,18 @@ Edit `/etc/config/page-status/config.toml`:
 sudo systemctl restart page-status.service
 ```
 
+## Mail Server
+
+Run
+
+```
+sudo dpkg-reconfigure exim4-config
+```
+
+And set exim4 as an internet facing server, select "local delivery" and add the
+local network IP to the addresses to listen on. This will let me get mail from
+other servers on the network.
+
 ## Misc Setup
 
 ```
