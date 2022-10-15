@@ -1,68 +1,69 @@
 #!/usr/bin/python3
 
-import io
-import os
+from __future__ import annotations
+
+import json
 import random
 import requests
 import subprocess
 import xdg.BaseDirectory
 
+from io import BytesIO
 from PIL import Image
+from pathlib import Path
 
-REQUEST_HEADERS = {'User-Agent': 'Arts and Culture Desktop Fetcher 0.1'}
+REQUEST_HEADERS = {"User-Agent": "Arts and Culture Desktop Fetcher/0.2"}
 IMAGE_DATA_URL = "https://www.gstatic.com/culturalinstitute/tabext/imax.json"
 
 
-def fetch_dekstop_images():
-    selected_urls = random.sample(get_image_urls(), len(screen_resolutions()))
-    filenames = save_images(fetch_image(url) for url in selected_urls)
-    set_desktop_images(filenames)
+class ImageData:
+    def __init__(self, json) -> None:
+        self.json = json
+
+    def fetch(self: ImageData) -> Image.Image:
+        url = self.json["image"] + "=s1200-rw"
+        response = requests.get(url, stream=True, headers=REQUEST_HEADERS)
+        response.raise_for_status()
+        return Image.open(BytesIO(response.content))
+
+    def save_image(self: ImageData, filename: Path) -> None:
+        self.fetch().save(filename)
+
+    def save_json(self: ImageData, filename: Path) -> None:
+        with open(filename, "w") as f:
+            json.dump(self.json, f)
 
 
-def screen_resolutions():
+def screen_resolutions() -> list[tuple[int, int]]:
     xrandr_lines = subprocess.check_output(
-        ['xrandr', '-q'], universal_newlines=True
-    ).split('\n')
-    lines = [line.strip().split()[0] for line in xrandr_lines if '*' in line]
-    return [map(int, line.split('x')) for line in lines]
+        ["xrandr", "-q"], universal_newlines=True
+    ).split("\n")
+    lines = [line.strip().split()[0] for line in xrandr_lines if "*" in line]
+    return [(int(x), int(y)) for (x, _, y) in (line.partition("x") for line in lines)]
 
 
-def get_image_urls():
+def get_image_data() -> list[ImageData]:
     response = requests.get(IMAGE_DATA_URL, headers=REQUEST_HEADERS)
     response.raise_for_status()
-    return [entry['image'] + "=s1200-rw" for entry in response.json()]
+    return [ImageData(entry) for entry in response.json()]
 
 
-def fetch_image(url):
-    response = requests.get(url, stream=True, headers=REQUEST_HEADERS)
-    response.raise_for_status()
-    return Image.open(io.BytesIO(response.content))
-
-
-def save_images(images):
-    filenames = []
-    directory = get_data_directory()
-    for index, image in enumerate(images):
-        filename = os.path.join(directory, "image-%s.jpg" % index)
-        image.save(filename)
-        filenames.append(filename)
-    return filenames
-
-
-def get_data_directory():
-    directory = os.path.join(
-        xdg.BaseDirectory.xdg_data_home,
-        os.path.basename(__file__)
-    )
-    os.makedirs(directory, exist_ok=True)
+def get_data_directory() -> Path:
+    directory = Path(xdg.BaseDirectory.xdg_data_home) / Path(__file__).name
+    directory.mkdir(parents=True, exist_ok=True)
     return directory
 
 
-def set_desktop_images(filenames):
-    subprocess.call(
-        sum((['--bg-fill', filename] for filename in filenames), ['feh'])
-    )
+def set_desktop_images(filenames: list[Path]) -> None:
+    subprocess.call(sum((["--bg-fill", filename] for filename in filenames), ["feh"]))
 
 
-if __name__ == '__main__':
-    fetch_dekstop_images()
+if __name__ == "__main__":
+    num_images = len(screen_resolutions())
+    image_data = random.sample(get_image_data(), num_images)
+    data_dir = get_data_directory()
+    filenames = [data_dir / f"image-{i}.jpg" for i in range(num_images)]
+    for image, filename in zip(image_data, filenames):
+        image.save_image(filename)
+        image.save_json(filename.with_suffix(".json"))
+    set_desktop_images(filenames)
