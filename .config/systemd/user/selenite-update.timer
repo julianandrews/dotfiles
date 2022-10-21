@@ -1,6 +1,5 @@
 [Unit]
 Description=Timer for the Selenite service
-Requires=selenite.service
 
 [Timer]
 OnActiveSec=0

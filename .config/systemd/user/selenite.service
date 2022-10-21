@@ -2,5 +2,9 @@
 Description=Selenite Lamp Service
 
 [Service]
-Type=oneshot
-ExecStart=/home/julian/.local/bin/update-lamp-state
+ExecStartPre=/usr/bin/touch /tmp/selenite-lamp.json
+ExecStart=/usr/bin/selenite-lamp /dev/selenite-lamp watch-file /tmp/selenite-lamp.json
+Restart=always
+
+[Install]
+WantedBy=dev-selenite\x2dlamp.device

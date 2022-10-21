@@ -1,0 +1,6 @@
+[Unit]
+Description=Selenite Lamp Update Service
+
+[Service]
+Type=oneshot
+ExecStart=/home/julian/.local/bin/update-lamp-state
