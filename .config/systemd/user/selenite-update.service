@@ -2,5 +2,8 @@
 Description=Selenite Lamp Update Service
 
 [Service]
-Type=oneshot
-ExecStart=/home/julian/.local/bin/update-lamp-state
+ExecStart=/usr/bin/selenite-lamp-updater -c /home/julian/.config/selenite-lamp-updater/config.toml
+Restart=always
+
+[Install]
+WantedBy=dev-selenite\x2dlamp.device

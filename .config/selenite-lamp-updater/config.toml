@@ -1,0 +1,41 @@
+output-file = "/tmp/selenite-lamp.json"
+default-mode = "Resting"
+
+[[modes]]
+name = "Resting"
+command = {gleam = {frequency = 0.002, num_groups = 4, period = 10000}}
+
+[[modes]]
+name = "CatFood"
+command = { pulse-hue = {hue = 10000, period = 2000, wait = 0} }
+
+[[modes]]
+name = "Email"
+command = { pulse-hue = {hue = 40000, period = 2000, wait = 0} }
+
+[[modes]]
+name = "Party"
+command = { cycle-hues = {period = 500} }
+
+[[modes]]
+name = "Night"
+command = { pulse-hue = {hue = 52000, period = 10000, wait = 20000} }
+
+[[timers]]
+schedule = "0 0 0-8 * * * *"
+duration = 300
+mode = "Night"
+
+[[timers]]
+schedule = "0 55 * * * * *"
+duration = 300
+mode = "Party"
+
+[[timers]]
+schedule = "0 30 21 * * * *"
+duration = 600
+mode = "CatFood"
+
+[[count-files]]
+mode = "Email"
+file = "/home/julian/.cache/gmailcount/jandrews271@gmail.com"

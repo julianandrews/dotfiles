@@ -32,6 +32,7 @@ resolvconf
 ripgrep
 rsync
 selenite-lamp
+selenite-lamp-updater
 sgf-render
 sqlite3
 tarsnap
