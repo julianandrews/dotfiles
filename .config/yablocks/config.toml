@@ -1,0 +1,81 @@
+template = "{{{jellyfin-status}}}{{{apt-status}}}{{{local-mail}}} | {{{gmail}}} | {{{volume}}} | {{{wireless}}}{{{ethernet}}}"
+
+[ blocks.jellyfin-status ]
+kind = "inotify"
+file = "/var/cache/page-status/jellyfin"
+template = "{{#if (ne contents \"200\")}}<fc=#cb4b16><fn=1></fn></fc> | {{/if}}"
+
+[ blocks.apt-status ]
+kind = "inotify"
+file = "/var/cache/page-status/apt"
+template = "{{#if (ne contents \"200\")}}<fc=#cb4b16><fn=1></fn></fc> | {{/if}}"
+
+[ blocks.local-mail ]
+kind = "inotify"
+file = "/var/mail/julian"
+template = """\
+<fn=1></fn> \
+{{#if contents~}}
+<fc=#b48900><fn=1></fn></fc>\
+{{else}}\
+<fc=#268bd2>✓</fc>\
+{{/if}}\
+"""
+
+[ blocks.gmail ]
+kind = "inotify"
+file = "/home/julian/.cache/gmailcount/jandrews271@gmail.com"
+template = """\
+<action=`xdg-open https://mail.google.com`>\
+  <fc=\
+    {{#if (eq contents \"?\")~}}
+        #dc322f
+    {{~else~}}{{#if (eq contents \"0\")~}}
+        #586e75
+    {{~else~}}
+        #2aa198
+    {{~/if}}{{/if~}}
+  >\
+    <fn=1></fn> {{contents}}\
+  </fc>\
+</action>\
+"""
+
+[ blocks.volume ]
+kind = "pulse-volume"
+sink-name = "alsa_output.usb-GN_Audio_A_S_Jabra_EVOLVE_30_II_000264F8DC3A07-00.analog-stereo"
+template = """\
+<action=`pactl set-sink-mute \"{{sink_name}}\" toggle` button=2>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" -5%` button=3>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" -1%` button=5>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" +5%` button=1>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" +1%` button=4>\
+{{~#if muted~}}
+    <fc=#DC322F><fn=1></fn> {{volume}}</fc>%
+{{~else~}}{{~#if (lte volume 35)~}}
+    <fc=#586e75><fn=1></fn> {{volume}}</fc>%
+{{~else~}}{{~#if (gt volume 100)~}}
+    <fc=#b58900><fn=1></fn> {{volume}}</fc>%
+{{~else~}}
+    <fc=#268bd2><fn=1></fn> {{volume}}</fc>%
+{{~/if~}}{{~/if~}}{{~/if~}}
+</action></action></action></action></action>\
+"""
+
+[ blocks.ethernet ]
+kind = "network"
+device = "enp89s0"
+template = """\
+{{#if (eq operstate \"up\")~}}
+    <fc=#268bd2><fn=1></fn></fc>\
+{{~else}}{{#if (eq operstate \"down\")~}}
+    <fc=#dc322f><fn=1></fn></fc>\
+{{~else~}}
+    <fc=#268bd2><fn=1>⁇</fn></fc>\
+{{~/if}}{{/if~}}
+"""
+
+[ blocks.wireless ]
+kind = "network"
+device = "wlo1"
+template = "{{#if (eq operstate \"up\")}}<fc=#6c71c4><fn=1></fn></fc> {{essid}} | {{/if}}"
