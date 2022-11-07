@@ -46,9 +46,9 @@ kind = "pulse-volume"
 sink-name = "alsa_output.usb-GN_Audio_A_S_Jabra_EVOLVE_30_II_000264F8DC3A07-00.analog-stereo"
 template = """\
 <action=`pactl set-sink-mute \"{{sink_name}}\" toggle` button=2>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" -5%` button=3>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" -5%` button=1>\
+<action=`pactl set-sink-volume \"{{sink_name}}\" +5%` button=3>\
 <action=`pactl set-sink-volume \"{{sink_name}}\" -1%` button=5>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" +5%` button=1>\
 <action=`pactl set-sink-volume \"{{sink_name}}\" +1%` button=4>\
 {{~#if muted~}}
     <fc=#DC322F><fn=1></fn> {{volume}}</fc>%
