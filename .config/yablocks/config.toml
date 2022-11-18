@@ -1,80 +1,71 @@
-template = "{{{jellyfin-status}}}{{{apt-status}}}{{{local-mail}}} | {{{gmail}}} | {{{volume}}} | {{{wireless}}}{{{ethernet}}}"
+template = "{{jellyfin_status}}{{apt_status}}{{local_mail}} | {{gmail}} | {{volume}} | {{wireless}}{{ethernet}}"
 
-[ blocks.jellyfin-status ]
+[ blocks.jellyfin_status ]
 kind = "inotify"
 file = "/var/cache/page-status/jellyfin"
-template = "{{#if (ne contents \"200\")}}<fc=#cb4b16><fn=1></fn></fc> | {{/if}}"
+template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=1></fn></fc> | {% endif %}"
 
-[ blocks.apt-status ]
+[ blocks.apt_status ]
 kind = "inotify"
 file = "/var/cache/page-status/apt"
-template = "{{#if (ne contents \"200\")}}<fc=#cb4b16><fn=1></fn></fc> | {{/if}}"
+template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=1></fn></fc> | {% endif %}"
 
-[ blocks.local-mail ]
+[ blocks.local_mail ]
 kind = "inotify"
 file = "/var/mail/julian"
-template = """\
-<fn=1></fn> \
-{{#if contents~}}
-<fc=#b48900><fn=1></fn></fc>\
-{{else}}\
-<fc=#268bd2>✓</fc>\
-{{/if}}\
-"""
+template = "<fn=1></fn> {% if contents %}<fc=#b48900><fn=1></fn></fc>{% else %}<fc=#268bd2>✓</fc>{% endif %}"
 
 [ blocks.gmail ]
 kind = "inotify"
 file = "/home/julian/.cache/gmailcount/jandrews271@gmail.com"
-template = """\
-<action=`xdg-open https://mail.google.com`>\
-  <fc=\
-    {{#if (eq contents \"?\")~}}
-        #dc322f
-    {{~else~}}{{#if (eq contents \"0\")~}}
-        #586e75
-    {{~else~}}
-        #2aa198
-    {{~/if}}{{/if~}}
-  >\
-    <fn=1></fn> {{contents}}\
-  </fc>\
-</action>\
+template = """
+{%- set count = contents | int(default=-1) -%}
+<action=`xdg-open https://mail.google.com`>
+{%- if count > 0 -%}
+    <fc=#2aa198>
+{%- elif count == 0 -%}
+    <fc=#586e75>
+{%- else -%}
+    <fc=#dc322f>
+{%- endif -%}
+<fn=1></fn> {{ contents | trim -}}
+</fc></action>\
 """
 
 [ blocks.volume ]
 kind = "pulse-volume"
 template = """\
-<action=`pactl set-sink-mute \"{{sink_name}}\" toggle` button=2>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" -5%` button=1>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" +5%` button=3>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" -1%` button=5>\
-<action=`pactl set-sink-volume \"{{sink_name}}\" +1%` button=4>\
-{{~#if muted~}}
+<action=`pactl set-sink-mute "{{sink_name}}" toggle` button=2>\
+<action=`pactl set-sink-volume "{{sink_name}}" -5%` button=1>\
+<action=`pactl set-sink-volume "{{sink_name}}" +5%` button=3>\
+<action=`pactl set-sink-volume "{{sink_name}}" -1%` button=5>\
+<action=`pactl set-sink-volume "{{sink_name}}" +1%` button=4>\
+{%- if muted -%}
     <fc=#DC322F><fn=1></fn> {{volume}}</fc>%
-{{~else~}}{{~#if (lte volume 35)~}}
+{%- elif volume <= 35 -%}
     <fc=#586e75><fn=1></fn> {{volume}}</fc>%
-{{~else~}}{{~#if (gt volume 100)~}}
+{%- elif volume > 100 -%}
     <fc=#b58900><fn=1></fn> {{volume}}</fc>%
-{{~else~}}
+{%- else -%}
     <fc=#268bd2><fn=1></fn> {{volume}}</fc>%
-{{~/if~}}{{~/if~}}{{~/if~}}
+{%- endif -%}
 </action></action></action></action></action>\
 """
 
 [ blocks.ethernet ]
 kind = "network"
 device = "enp89s0"
-template = """\
-{{#if (eq operstate \"up\")~}}
-    <fc=#268bd2><fn=1></fn></fc>\
-{{~else}}{{#if (eq operstate \"down\")~}}
-    <fc=#dc322f><fn=1></fn></fc>\
-{{~else~}}
-    <fc=#268bd2><fn=1>⁇</fn></fc>\
-{{~/if}}{{/if~}}
+template = """
+{%- if operstate == "up" -%}
+    <fc=#268bd2><fn=1></fn></fc>
+{%- elif operstate == "down" -%}
+    <fc=#dc322f><fn=1></fn></fc>
+{%- else -%}
+    <fc=#268bd2><fn=1>{{device}} {{operstate}}</fn></fc>
+{%- endif -%}
 """
 
 [ blocks.wireless ]
 kind = "network"
 device = "wlo1"
-template = "{{#if (eq operstate \"up\")}}<fc=#6c71c4><fn=1></fn></fc> {{essid}} | {{/if}}"
+template = "{% if operstate == \"up\" %}<fc=#6c71c4><fn=1></fn></fc> {{essid}} | {% endif %}"
