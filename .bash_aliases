@@ -5,18 +5,32 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 [ -x "$(which bat)" ] && alias cat='bat --theme "Solarized (dark)" --no-pager --style plain'
 
-# Generate a password with ~120 bits of entropy.
-password() {
-  local length=${1:-"20"}
-  case $length in
-      ''|*[!0-9]*)
-        echo 'Invalid password length '$length
-        return
-        ;;
-      *) ;;
-  esac
-  cat /dev/urandom | tr -dc A-Za-z0-9~_- | head -c $length && echo
-}
+    # Generate a url safe password with ~120 bits of entropy.
+    password() {
+      local length=${1:-"20"}
+      cat /dev/urandom | tr -dc A-Za-z0-9~_- | head -c $length && echo
+    }
+
+    # Generate a url safe password that:
+    # - begins with a letter, and has at least
+    # - one uppercase letter,
+    # - one lowercase letter,
+    # - one digit, and
+    # - one special character.
+    stupid_password() {
+      while :
+      do
+        local length=${1:-"10"}
+        local pass=$(password "$length")
+        [[ $pass != *[~_-]* ]] && continue
+        [[ $pass != [A-Za-z]* ]] && continue
+        [[ $pass != *[A-Z]* ]] && continue
+        [[ $pass != *[a-z]* ]] && continue
+        [[ $pass != *[0-9]* ]] && continue
+        echo "$pass"
+        break
+      done
+    }
 
 function ptouch() {
     while [ -n "$1" ]
