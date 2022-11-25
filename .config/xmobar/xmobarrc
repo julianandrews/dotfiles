@@ -1,6 +1,6 @@
 Config {
     font = "xft:Deja Vu Mono-10.5",
-    additionalFonts = ["xft:FontAwesome-10"],
+    additionalFonts = ["xft:DejaVu Sans Mono Nerd Font-10.5", "xft:FontAwesome-10"],
     bgColor = "#000000",
     fgColor = "#586e75",
     alpha = 255,

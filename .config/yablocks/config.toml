@@ -1,19 +1,83 @@
-template = "{{jellyfin_status}}{{apt_status}}{{local_mail}} | {{gmail}} | {{volume}} | {{wireless}}{{ethernet}}"
+template = "{{weather}} | {{memory}} | {{cpu}} | {{jellyfin_status}}{{apt_status}}{{local_mail}} | {{gmail}} | {{volume}} | {{wireless}}{{ethernet}}"
+
+[ blocks.weather ]
+kind = "interval"
+command = "curl"
+args = [
+    "-s",
+    "https://forecast.weather.gov/MapClick.php?FcstType=json&lat=27.3087&lon=-82.5125"
+    ]
+interval = 600
+json = true
+template = """
+{%- set weather = output.currentobservation.Weather -%}
+{%- if weather == "Fair" -%}
+    <fc=#b58900><fn=1>滛 </fn></fc>
+{%- elif weather == "A Few Clouds" -%}
+    <fc=#eee8d5><fn=1>杖 </fn></fc>
+{%- elif weather == "Mostly Cloudy" -%}
+    <fc=#eee8d5><fn=1>  </fn></fc>
+{%- else -%}
+{{weather}}
+{%- endif -%}
+{%- set temp = output.currentobservation.Temp | int -%}
+{%- if temp < 60 -%}
+    <fc=#6c71c4>
+{%- elif temp > 80 -%}
+    <fc=#cb4b16>
+{%- else -%}
+    <fc=#268bd2>
+{%- endif -%}
+{{temp}}°</fc>\
+"""
+
+[ blocks.cpu ]
+kind = "cpu"
+template = """<fn=2> </fn>
+{%- if cpu_times.non_idle < 20 -%}
+    <fc=#586e75>
+{%- elif cpu_times.non_idle > 50 -%}
+    <fc=#dc322f>
+{%- else -%}
+    <fc=#268bd2>
+{%- endif -%}
+{{cpu_times.non_idle | round(precision=1)}}%</fc>\
+"""
+interval = 5
+
+[ blocks.memory ]
+kind = "interval"
+command = "awk"
+args = [
+    "/MemTotal:/{total=$2}/MemFree:/{free=$2}END{printf \"%.0f\", 100*free/total}",
+    "/proc/meminfo",
+    ]
+interval = 5
+template = """<fn=1></fn>
+{%- if output | int < 20 -%}
+    <fc=#586e75>
+{%- elif output | int > 50 -%}
+    <fc=#dc322f>
+{%- else -%}
+    <fc=#268bd2>
+{%- endif -%}
+{{output}}%</fc>\
+"""
 
 [ blocks.jellyfin_status ]
 kind = "inotify"
 file = "/var/cache/page-status/jellyfin"
-template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=1></fn></fc> | {% endif %}"
+template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=2></fn></fc> | {% endif %}"
 
 [ blocks.apt_status ]
 kind = "inotify"
 file = "/var/cache/page-status/apt"
-template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=1></fn></fc> | {% endif %}"
+template = "{% if contents != \"200\" %}<fc=#cb4b16><fn=2></fn></fc> | {% endif %}"
 
 [ blocks.local_mail ]
 kind = "inotify"
 file = "/var/mail/julian"
-template = "<fn=1></fn> {% if contents %}<fc=#b48900><fn=1></fn></fc>{% else %}<fc=#268bd2>✓</fc>{% endif %}"
+template = "<fn=2></fn> {% if contents %}<fc=#b48900><fn=2></fn></fc>{% else %}<fc=#268bd2>✓</fc>{% endif %}"
 
 [ blocks.gmail ]
 kind = "inotify"
@@ -28,7 +92,7 @@ template = """
 {%- else -%}
     <fc=#dc322f>
 {%- endif -%}
-<fn=1></fn> {{ contents | trim -}}
+<fn=2></fn> {{ contents | trim -}}
 </fc></action>\
 """
 
@@ -41,13 +105,13 @@ template = """\
 <action=`pactl set-sink-volume "{{sink_name}}" -1%` button=5>\
 <action=`pactl set-sink-volume "{{sink_name}}" +1%` button=4>\
 {%- if muted -%}
-    <fc=#DC322F><fn=1></fn> {{volume}}</fc>%
+    <fc=#DC322F><fn=2></fn> {{volume}}</fc>%
 {%- elif volume <= 35 -%}
-    <fc=#586e75><fn=1></fn> {{volume}}</fc>%
+    <fc=#586e75><fn=2></fn> {{volume}}</fc>%
 {%- elif volume > 100 -%}
-    <fc=#b58900><fn=1></fn> {{volume}}</fc>%
+    <fc=#b58900><fn=2></fn> {{volume}}</fc>%
 {%- else -%}
-    <fc=#268bd2><fn=1></fn> {{volume}}</fc>%
+    <fc=#268bd2><fn=2></fn> {{volume}}</fc>%
 {%- endif -%}
 </action></action></action></action></action>\
 """
@@ -57,15 +121,15 @@ kind = "network"
 device = "enp89s0"
 template = """
 {%- if operstate == "up" -%}
-    <fc=#268bd2><fn=1></fn></fc>
+    <fc=#268bd2><fn=2></fn></fc>
 {%- elif operstate == "down" -%}
-    <fc=#dc322f><fn=1></fn></fc>
+    <fc=#dc322f><fn=2></fn></fc>
 {%- else -%}
-    <fc=#268bd2><fn=1>{{device}} {{operstate}}</fn></fc>
+    <fc=#268bd2><fn=2>{{device}} {{operstate}}</fn></fc>
 {%- endif -%}
 """
 
 [ blocks.wireless ]
 kind = "network"
 device = "wlo1"
-template = "{% if operstate == \"up\" %}<fc=#6c71c4><fn=1></fn></fc> {{essid}} | {% endif %}"
+template = "{% if operstate == \"up\" %}<fc=#6c71c4><fn=2></fn></fc> {{essid}} | {% endif %}"
