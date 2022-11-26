@@ -22,8 +22,8 @@ name = "Night"
 command = { pulse-hue = {hue = 52000, period = 10000, wait = 20000} }
 
 [[timers]]
-schedule = "0 0 0-8 * * * *"
-duration = 300
+schedule = "0 0 0 * * * *"
+duration = 28800
 mode = "Night"
 
 [[timers]]
