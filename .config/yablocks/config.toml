@@ -9,16 +9,19 @@ args = [
     ]
 interval = 600
 json = true
-template = """
-{%- set weather = output.currentobservation.Weather -%}
+template = """\
+<action=`xdg-open https://www.google.com/search?q=weather+forecast`>
+{%- set weather = output.currentobservation.Weather | trim -%}
 {%- if weather == "Fair" -%}
     <fc=#b58900><fn=1>滛 </fn></fc>
 {%- elif weather == "A Few Clouds" -%}
     <fc=#eee8d5><fn=1>杖 </fn></fc>
 {%- elif weather == "Mostly Cloudy" -%}
     <fc=#eee8d5><fn=1>  </fn></fc>
+{%- elif weather == "Fog/Mist" -%}
+    <fc=#839496><fn=1>  </fn></fc>
 {%- else -%}
-{{weather}}
+    {{weather}}
 {%- endif -%}
 {%- set temp = output.currentobservation.Temp | int -%}
 {%- if temp < 60 -%}
@@ -28,7 +31,7 @@ template = """
 {%- else -%}
     <fc=#268bd2>
 {%- endif -%}
-{{temp}}°</fc>\
+{{temp}}°</fc></action>\
 """
 
 [ blocks.cpu ]
