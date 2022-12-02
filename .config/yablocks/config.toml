@@ -11,40 +11,62 @@ interval = 600
 json = true
 template = """\
 <action=`xdg-open https://www.google.com/search?q=weather+forecast`>
+{%- set hour = now() | date(format="%H") | int -%}
+{%- set is_day = hour > 5 and hour < 20 -%}
 {%- set weather = output.currentobservation.Weather | trim -%}
 {%- if weather == "Fair" -%}
-    <fc=#b58900><fn=1>滛 </fn></fc>
-{%- elif weather == "A Few Clouds" -%}
-    <fc=#eee8d5><fn=1>杖 </fn></fc>
-{%- elif weather == "Mostly Cloudy" -%}
-    <fc=#eee8d5><fn=1>  </fn></fc>
+    {%- if is_day -%}
+        {%- set weather_output="<fc=#b58900><fn=1>滛 </fn></fc>" -%}
+    {%- else -%}
+        {%- set weather_output="<fc=#93a1a1><fn=1>望 </fn></fc>" -%}
+    {%- endif -%}
+{%- elif weather == "A Few Clouds" or weather == "Partly Cloudy" -%}
+    {%- if is_day -%}
+        {%- set weather_output="<fc=#eee8d5><fn=1>杖 </fn></fc>" -%}
+    {%- else -%}
+        {%- set weather_output="<fc=#93a1a1><fn=1> </fn></fc>" -%}
+    {%- endif -%}
+{%- elif weather == "Mostly Cloudy" or weather == "Overcast" -%}
+    {%- if is_day -%}
+        {%- set weather_output="<fc=#eee8d5><fn=1>  </fn></fc>" -%}
+    {%- else -%}
+        {%- set weather_output="<fc=#93a1a1><fn=1>  </fn></fc>" -%}
+    {%- endif -%}
 {%- elif weather == "Fog/Mist" -%}
-    <fc=#839496><fn=1>  </fn></fc>
+    {%- set weather_output="<fc=#839496><fn=1>  </fn></fc>" -%}
+{%- elif weather == "Rain Fog/Mist" -%}
+    {%- if is_day -%}
+        {%- set weather_output="<fc=#eee8d5><fn=1>  </fn></fc>" -%}
+    {%- else -%}
+        {%- set weather_output="<fc=#93a1a1><fn=1>  </fn></fc>" -%}
+    {%- endif -%}
 {%- else -%}
-    {{weather}}
+    {%- set weather_output="{{weather}} " -%}
 {%- endif -%}
+
 {%- set temp = output.currentobservation.Temp | int -%}
 {%- if temp < 60 -%}
-    <fc=#6c71c4>
+    {%- set color="#6c71c4" -%}
 {%- elif temp > 80 -%}
-    <fc=#cb4b16>
+    {%- set color="#cb4b16" -%}
 {%- else -%}
-    <fc=#268bd2>
+    {%- set color="#268bd2" -%}
 {%- endif -%}
-{{temp}}°</fc></action>\
+
+{{weather_output}}<fc={{color}}>{{temp}}°</fc></action>\
 """
 
 [ blocks.cpu ]
 kind = "cpu"
 template = """<fn=2> </fn>
 {%- if cpu_times.non_idle < 20 -%}
-    <fc=#586e75>
+    {%- set color="#586e75" -%}
 {%- elif cpu_times.non_idle > 50 -%}
-    <fc=#dc322f>
+    {%- set color="#dc322f" -%}
 {%- else -%}
-    <fc=#268bd2>
+    {%- set color="#268bd2" -%}
 {%- endif -%}
-{{cpu_times.non_idle | round(precision=1)}}%</fc>\
+<fc={{color}}>{{cpu_times.non_idle | round(precision=1)}}%</fc>\
 """
 interval = 5
 
@@ -52,19 +74,19 @@ interval = 5
 kind = "interval"
 command = "awk"
 args = [
-    "/MemTotal:/{total=$2}/MemFree:/{free=$2}END{printf \"%.0f\", 100*free/total}",
+    "/MemTotal:/{total=$2}/MemAvailable:/{avail=$2}END{printf \"%.01f\", 100 * (1 - avail/total)}",
     "/proc/meminfo",
     ]
 interval = 5
 template = """<fn=1></fn>
 {%- if output | int < 20 -%}
-    <fc=#586e75>
+    {%- set color="#586e75" -%}
 {%- elif output | int > 50 -%}
-    <fc=#dc322f>
+    {%- set color="#dc322f" -%}
 {%- else -%}
-    <fc=#268bd2>
+    {%- set color="#268bd2" -%}
 {%- endif -%}
-{{output}}%</fc>\
+<fc={{color}}>{{output}}%</fc>\
 """
 
 [ blocks.jellyfin_status ]
@@ -87,35 +109,39 @@ kind = "inotify"
 file = "/home/julian/.cache/gmailcount/jandrews271@gmail.com"
 template = """
 {%- set count = contents | int(default=-1) -%}
-<action=`xdg-open https://mail.google.com`>
 {%- if count > 0 -%}
-    <fc=#2aa198>
+    {%- set color="#2aa198" -%}
 {%- elif count == 0 -%}
-    <fc=#586e75>
+    {%- set color="#586e75" -%}
 {%- else -%}
-    <fc=#dc322f>
+    {%- set color="#dc322f" -%}
 {%- endif -%}
-<fn=2></fn> {{ contents | trim -}}
-</fc></action>\
+<action=`xdg-open https://mail.google.com`><fc={{color}}><fn=2></fn> {{ contents | trim -}}</fc></action>\
 """
 
 [ blocks.volume ]
 kind = "pulse-volume"
 template = """\
+{%- if muted -%}
+    {%- set icon="<fn=2></fn>" -%}
+{%- else -%}
+    {%- set icon="<fn=2></fn>" -%}
+{%- endif -%}
+{%- if muted -%}
+    {%- set color="#DC322F" -%}
+{%- elif volume <= 35 -%}
+    {%- set color="#586e75" -%}
+{%- elif volume > 100 -%}
+    {%- set color="#b58900" -%}
+{%- else -%}
+    {%- set color="#268bd2" -%}
+{%- endif -%}
 <action=`pactl set-sink-mute "{{sink_name}}" toggle` button=2>\
 <action=`pactl set-sink-volume "{{sink_name}}" -5%` button=1>\
 <action=`pactl set-sink-volume "{{sink_name}}" +5%` button=3>\
 <action=`pactl set-sink-volume "{{sink_name}}" -1%` button=5>\
 <action=`pactl set-sink-volume "{{sink_name}}" +1%` button=4>\
-{%- if muted -%}
-    <fc=#DC322F><fn=2></fn> {{volume}}</fc>%
-{%- elif volume <= 35 -%}
-    <fc=#586e75><fn=2></fn> {{volume}}</fc>%
-{%- elif volume > 100 -%}
-    <fc=#b58900><fn=2></fn> {{volume}}</fc>%
-{%- else -%}
-    <fc=#268bd2><fn=2></fn> {{volume}}</fc>%
-{%- endif -%}
+<fc={{color}}>{{icon}} {{volume}}</fc>%\
 </action></action></action></action></action>\
 """
 
