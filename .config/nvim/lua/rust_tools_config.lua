@@ -1,14 +1,19 @@
 local has_rt,rt = pcall(require, "rust-tools")
 
 if has_rt then
+    local has_cmp_nvim_lsp,cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    local capabilities = has_cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities() or {}
+    local lsp_attach = function(client, buf)
+        vim.api.nvim_buf_set_option(buf, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+        vim.api.nvim_buf_set_option(buf, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        vim.api.nvim_buf_set_option(buf, "tagfunc", "v:lua.vim.lsp.tagfunc")
+    end
+
+    -- Setup rust_analyzer via rust-tools.nvim
     rt.setup({
-      server = {
-        on_attach = function(_, bufnr)
-          -- Hover actions
-          vim.keymap.set("n", "<Leader>q", rt.hover_actions.hover_actions, { buffer = bufnr })
-          -- Code action groups
-          vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
-        end,
-      },
+        server = {
+            capabilities = capabilities,
+            on_attach = lsp_attach,
+        }
     })
 end

@@ -15,6 +15,12 @@ Plug 'sbdchd/neoformat'
 " Neovim specific plugins
 Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
 Plug 'simrat39/rust-tools.nvim', has('nvim') ? {} : { 'on': [] }
+Plug 'hrsh7th/cmp-nvim-lsp', has('nvim') ? {} : { 'on': [] }
+Plug 'hrsh7th/cmp-buffer', has('nvim') ? {} : { 'on': [] }
+Plug 'hrsh7th/cmp-path', has('nvim') ? {} : { 'on': [] }
+Plug 'hrsh7th/cmp-cmdline', has('nvim') ? {} : { 'on': [] }
+Plug 'hrsh7th/nvim-cmp', has('nvim') ? {} : { 'on': [] }
+Plug 'L3MON4D3/LuaSnip', has('nvim') ? {} : { 'on': [] }
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'
@@ -37,8 +43,9 @@ highlight SignColumn ctermbg=Black
 
 " neo-vim specific config
 if has('nvim')
-    lua require ("rust_tools_config")
     lua require ("nvim_lsp_config")
+    lua require ("nvim_cmp_config")
+    lua require ("rust_tools_config")
 
     nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
     nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
