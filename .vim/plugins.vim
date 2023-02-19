@@ -14,6 +14,7 @@ Plug 'sbdchd/neoformat'
 
 " Neovim specific plugins
 Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
+Plug 'simrat39/rust-tools.nvim', has('nvim') ? {} : { 'on': [] }
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'
@@ -34,9 +35,19 @@ filetype plugin indent on
 silent! colorscheme solarized
 highlight SignColumn ctermbg=Black
 
-" nvim-lsp
+" neo-vim specific config
 if has('nvim')
-    source $HOME/.vim/nvim_lsp.vim
+    lua require ("rust_tools_config")
+    lua require ("nvim_lsp_config")
+
+    nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
+    nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
+    nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
+    nnoremap <silent> gn <cmd>lua vim.lsp.buf.rename()<CR>
+    nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
+    nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+    nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+    nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
 endif
 
 " fzf

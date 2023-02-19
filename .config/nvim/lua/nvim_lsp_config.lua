@@ -1,6 +1,3 @@
-lua <<EOF
-
--- check and load the various plugins I use
 local has_nvim_lsp,nvim_lsp = pcall(require, 'lspconfig')
 
 -- Enable langauge servers
@@ -44,16 +41,17 @@ if has_nvim_lsp then
             },
         },
     }
-    nvim_lsp.rust_analyzer.setup{
-        on_attach=on_attach,
-        settings = {
-            ["rust-analyzer"] = {
-                diagnostics = {
-                    disabled = { "unresolved-proc-macro" }
-                },
-            },
-        },
-    }
+    -- Handled by rust-tools
+    -- nvim_lsp.rust_analyzer.setup{
+    --     on_attach=on_attach,
+    --     settings = {
+    --         ["rust-analyzer"] = {
+    --             diagnostics = {
+    --                 disabled = { "unresolved-proc-macro" }
+    --             },
+    --         },
+    --     },
+    -- }
     nvim_lsp.clangd.setup{
         on_attach=on_attach,
         cmd = { "clangd-9", "--background-index" },
@@ -68,15 +66,3 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = true,
   }
 )
-EOF
-
-" lsp config
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent> gn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<cr>
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
-" autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
