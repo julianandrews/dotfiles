@@ -5,4 +5,4 @@ Description=Gmail Count Service
 ExecStart=/usr/bin/gmailcount jandrews271@gmail.com daemon --cache-dir /home/julian/.cache/gmailcount --poll-time 10
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
