@@ -157,6 +157,9 @@ EOF
 systemctl --user daemon-reload
 systemctl --user enable --now desktop-bg.timer gmailcount.service kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer server-mail.timer
 
+# Enable syncthing
+sudo systemctl enable --name syncthing@julian.service
+
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
 ```
