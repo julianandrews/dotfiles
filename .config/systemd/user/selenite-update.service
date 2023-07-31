@@ -2,7 +2,7 @@
 Description=Selenite Lamp Update Service
 
 [Service]
-ExecStart=/usr/bin/selenite-lamp-updater -c /home/julian/.config/selenite-lamp-updater/config.toml
+ExecStart=/usr/bin/selenite-lamp-updater -c %E/selenite-lamp-updater/config.toml
 Restart=always
 
 [Install]

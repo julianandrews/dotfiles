@@ -2,8 +2,7 @@
 Description=Selenite Lamp Service
 
 [Service]
-ExecStartPre=/usr/bin/touch /tmp/selenite-lamp.json
-ExecStart=/usr/bin/selenite-lamp /dev/selenite-lamp watch-file /tmp/selenite-lamp.json
+ExecStart=/usr/bin/selenite-lamp /dev/selenite-lamp watch-file %t/selenite-lamp.json
 Restart=always
 
 [Install]

@@ -1,4 +1,4 @@
-output-file = "/tmp/selenite-lamp.json"
+output-file = "/run/user/1000/selenite-lamp.json"
 default-mode = "Resting"
 
 [[modes]]
