@@ -100,7 +100,7 @@ unzip awscliv2.zip
 
 ## Page Status
 
-Edit `/etc/config/page-status/config.toml`:
+Edit `/etc/page-status/config.toml`:
 
 ```
 [pages]
