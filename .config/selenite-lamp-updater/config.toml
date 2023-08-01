@@ -6,10 +6,6 @@ name = "Resting"
 command = {gleam = {frequency = 0.002, num_groups = 4, period = 10000}}
 
 [[modes]]
-name = "CatFood"
-command = { pulse-hue = {hue = 10000, period = 2000, wait = 0} }
-
-[[modes]]
 name = "Email"
 command = { pulse-hue = {hue = 40000, period = 2000, wait = 0} }
 
@@ -30,11 +26,6 @@ mode = "Night"
 schedule = "0 55 * * * * *"
 duration = 300
 mode = "Party"
-
-[[timers]]
-schedule = "0 30 21 * * * *"
-duration = 600
-mode = "CatFood"
 
 [[count-files]]
 mode = "Email"
