@@ -14,7 +14,7 @@ function unlock-keyring ()
     unset pass
 }
 
-[ -x "$(which bat)" ] && alias cat='bat --theme "Solarized (dark)" --no-pager --style plain'
+[ -x "$(which bat)" ] && alias cat='batcat --theme "Solarized (dark)" --no-pager --style plain'
 
     # Generate a url safe password with ~120 bits of entropy.
     password() {
