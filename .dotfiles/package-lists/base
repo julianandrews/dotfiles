@@ -3,6 +3,7 @@ anacron
 apg
 at
 bash-completion
+bat
 cups
 cups-client
 curl
@@ -21,6 +22,8 @@ locate
 markovpass
 msmtp
 nmap
+nodejs
+npm
 p7zip-full
 parted
 pulseaudio

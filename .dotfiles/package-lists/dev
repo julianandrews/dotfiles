@@ -1,4 +1,3 @@
-bat
 build-essential
 clang
 clangd-9
@@ -9,10 +8,7 @@ docker-ce-cli
 git
 git-lfs
 libssl-dev
-nodejs
-postgresql
 python3-dev
 python3-distutils
-python3-venv
 terraform
 terraform-ls
