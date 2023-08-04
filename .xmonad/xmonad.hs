@@ -2,13 +2,12 @@ import Data.List (isPrefixOf)
 
 import XMonad
 import XMonad.Actions.PhysicalScreens (onNextNeighbour, onPrevNeighbour)
-import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
-import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
+import XMonad.Hooks.ManageDocks (manageDocks, docks)
+import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.ManageHelpers ((-?>), composeOne, isDialog)
 import XMonad.Layout.LayoutBuilder (IncLayoutN(..))
 import XMonad.Layout.NoBorders (lessBorders, Ambiguity(OnlyLayoutFloat))
 import XMonad.Util.EZConfig (additionalKeysP)
-import Data.Default (def)
 
 import qualified XMonad.StackSet as W
 
@@ -17,10 +16,10 @@ import Solarized
 import StatusBar
 
 main = do
-  config <- addStatusBar . ewmh $ myConfig
+  config <- addStatusBar . docks $ ewmhFullscreen $ ewmh $ myConfig
   xmonad config
 
-myConfig = defaultConfig {
+myConfig = XMonad.def {
     modMask = mod4Mask,
     terminal = "urxvt",
     workspaces = myWorkspaces,
@@ -45,10 +44,7 @@ myWorkspaces = clickable . map xmobarEscape $ workspaces
     escapeLT '<' = "<<"
     escapeLT c = [c]
 
-myEventHook = composeAll [
-    fullscreenEventHook,
-    docksEventHook
-  ]
+myEventHook = composeAll []
 
 myLayout = myHorizontal ||| myVertical ||| myTabbed
 
@@ -62,10 +58,10 @@ myManageHook = composeAll [
 
 myKeys = [
     ("M-S-z", spawn "xautolock -locknow"),
-    ("M-w", onPrevNeighbour def W.view),
-    ("M-e", onNextNeighbour def W.view),
-    ("M-S-w", onPrevNeighbour def W.shift),
-    ("M-S-e", onNextNeighbour def W.shift)
+    ("M-w", onPrevNeighbour XMonad.def W.view),
+    ("M-e", onNextNeighbour XMonad.def W.view),
+    ("M-S-w", onPrevNeighbour XMonad.def W.shift),
+    ("M-S-e", onNextNeighbour XMonad.def W.shift)
   ] ++ [
     ("M-" ++ modMasks ++ [key], action tag) |
       (tag, key)  <- zip myWorkspaces myWorkspaceKeys,
