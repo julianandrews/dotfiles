@@ -28,6 +28,10 @@ pulseaudio-utils
 pv
 python3
 python-is-python3
+python3-xdg
+python3-requests
+python3-virtualenv
+python3-virtualenvwrapper
 resolvconf
 ripgrep
 rsync

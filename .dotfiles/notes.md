@@ -54,14 +54,11 @@ Set `XKBOPTIONS="caps:escape"` in `/etc/default/keyboard`
 sudo udevadm trigger --subsystem-match=input --action=change
 ```
 
-## Python and npm packages
+## NPM packages
 
 ```
-curl -sSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python3 /tmp/get-pip.py --user
-python3 -m pip install --user black pillow pygments pylint pyxdg requests six \
-    virtualenv virtualenvwrapper python-language-server
 npm install -g bash-language-server pyright typescript \
-    typescript-language-server vim-language-server yaml-language-server pnpm
+    typescript-language-server vim-language-server yaml-language-server
 ```
 
 ## fzf
