@@ -21,8 +21,7 @@ mkvirtualenv katrain
 cd /tmp
 git clone https://github.com/sanderland/katrain.git
 cd katrain
-pip install -r requirements.txt --no-binary kivy
-pip install .
+pip install katrain
 ln -s /home/julian/.virtualenvs/katrain/bin/katrain ~/.local/bin/katrain
 ```
 
