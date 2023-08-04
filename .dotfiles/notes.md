@@ -151,7 +151,7 @@ EOF
 
 # Enable user services
 systemctl --user daemon-reload
-systemctl --user enable --now desktop-bg.timer gmailcount.service kupfer.service selenite.timer site-status.timer screenlock.service tarsnap.timer server-mail.timer
+systemctl --user enable --now desktop-bg.timer gmailcount.service kupfer.service selenite.service selenite-update.service screenlock.service tarsnap.timer
 
 # Enable syncthing
 sudo systemctl enable --name syncthing@julian.service
