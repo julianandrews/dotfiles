@@ -83,7 +83,3 @@ Subject: $subject
 $message_body
 EOF
 }
-
-alias ksh='kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh'
-
-source "$HOME/.bash_aliases_work"
