@@ -25,4 +25,10 @@ pip install katrain
 ln -s /home/julian/.virtualenvs/katrain/bin/katrain ~/.local/bin/katrain
 ```
 
-Launch KaTrain, and configure it to use the built KataGo executable
+Launch KaTrain, and configure it to use the built KataGo executable.
+
+It may be necessary to update the desktop database before KaTrain appears in menus.
+
+```
+update-desktop-database ~/.local/share/applications
+```
