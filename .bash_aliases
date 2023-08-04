@@ -3,17 +3,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/repo --work-tree=$HOME'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Unlock the gnome-keyring.
-# Note that this will replace any existing gnome-keyring-daemon,
-# essentially signing out other sessions.
-function unlock-keyring ()
-{
-    read -rsp "Password: " pass
-    export $(echo -n "$pass" | gnome-keyring-daemon --replace --unlock)
-    export SSH_AUTH_SOCK
-    unset pass
-}
-
 [ -x "$(which bat)" ] && alias cat='batcat --theme "Solarized (dark)" --no-pager --style plain'
 
     # Generate a url safe password with ~120 bits of entropy.
