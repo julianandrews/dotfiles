@@ -64,11 +64,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Connect to the running gnome-keyring-daemon and get our SSH_AUTH_SOCK variable
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
+# Use gnome-keyring ssh agent socket
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/keyring/ssh
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
