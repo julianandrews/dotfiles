@@ -75,7 +75,6 @@ curl -sSL https://github.com/starship/starship/releases/latest/download/starship
 curl -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > ~/.local/bin/rust-analyzer && chmod a+x ~/.local/bin/rust-analyzer
 curl -sSL "https://dl.k8s.io/release/$(curl -sSL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl && chmod a+x ~/.local/bin/kubectl
 curl -sSL "https://get.helm.sh/helm-$(curl -sSL https://api.github.com/repos/helm/helm/releases/latest | jq -r .tag_name)-linux-amd64.tar.gz" | tar --strip-components 1 -xzf - -C ~/.local/bin linux-amd64/helm
-curl -sSL https://github.com/airplanedev/cli/releases/latest/download/airplane_linux_x86_64.tar.gz | tar -xzf - -C ~/.local/bin
 ```
 
 ## Rust
