@@ -128,6 +128,13 @@ And set exim4 as an internet facing server, select "local delivery" and add the
 local network IP to the addresses to listen on. This will let me get mail from
 other servers on the network.
 
+## Nerd Fonts
+
+```
+curl -sSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/DejaVuSansMono.tar.xz | tar -xJf - -C ~/.local/share/fonts
+fc-cache -f -v
+```
+
 ## Misc Setup
 
 ```
