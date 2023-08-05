@@ -1,5 +1,6 @@
 [Unit]
 Description=Selenite Lamp Update Service
+StopWhenUnneeded=true
 
 [Service]
 ExecStart=/usr/bin/selenite-lamp-updater -c %E/selenite-lamp-updater/config.toml

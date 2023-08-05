@@ -1,5 +1,6 @@
 [Unit]
 Description=Selenite Lamp Service
+StopWhenUnneeded=true
 
 [Service]
 ExecStart=/usr/bin/selenite-lamp /dev/selenite-lamp watch-file %t/selenite-lamp.json
