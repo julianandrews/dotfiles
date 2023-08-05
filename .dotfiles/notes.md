@@ -153,7 +153,7 @@ sudo usermod -aG docker julian
 
 # Selenite Lamp
 sudo tee /etc/udev/rules.d/99-selenite-lamp.rules <<EOF
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="selenite-lamp", TAG+="systemd" RUN+="/bin/stty -F /dev/selenite-lamp -hupcl", ENV{SYSTEMD_ALIAS}="/dev/selenite-lamp"
 EOF
 
 # Enable user services
