@@ -1,0 +1,19 @@
+[repository]
+repository = "rclone:backblaze:madagascar-backups"
+password-file = "/home/julian/Private/rustic-password"
+
+[forget]
+keep-daily = 14
+keep-weekly = 5
+
+[[backup.sources]]
+source = "/home/julian/Private"
+
+[[backup.sources]]
+source = "/home/julian/Documents"
+
+[[backup.sources]]
+source = "/home/julian/Media/Pictures"
+
+[[backup.sources]]
+source = "/home/julian/Media/Videos"
