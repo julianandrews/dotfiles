@@ -3,7 +3,7 @@ default-mode = "Resting"
 
 [[modes]]
 name = "Resting"
-command = {gleam = {frequency = 0.002, num_groups = 4, period = 10000}}
+command = {gleam = {frequency = 0.006, num_groups = 4, period = 10000}}
 
 [[modes]]
 name = "Email"
