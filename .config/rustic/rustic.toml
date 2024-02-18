@@ -1,6 +1,6 @@
 [repository]
 repository = "rclone:backblaze:madagascar-backups"
-password-file = "/home/julian/Private/rustic-password"
+password-file = "/home/julian/Private/passwords/rustic-password"
 
 [forget]
 keep-daily = 14
