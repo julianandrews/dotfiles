@@ -14,6 +14,13 @@ if has_rt then
         server = {
             capabilities = capabilities,
             on_attach = lsp_attach,
+            settings = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        features = "all"
+                    }
+                }
+            }
         }
     })
 end
