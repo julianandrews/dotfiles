@@ -3,7 +3,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/repo --work-tree=$HOME'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-[ -x "$(which bat)" ] && alias cat='batcat --theme "Solarized (dark)" --no-pager --style plain'
+[ -x "$(which batcat)" ] && alias cat='batcat --theme "Solarized (dark)" --no-pager --style plain'
 
     # Generate a url safe password with ~120 bits of entropy.
     password() {
