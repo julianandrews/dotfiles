@@ -1,6 +1,6 @@
 [Unit]
 Description=Run tarsnap backups
-OnFailure=notify-failure@%n.service
+OnFailure=notify-failure@%n
 
 [Service]
 Type=oneshot
