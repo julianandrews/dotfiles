@@ -1,0 +1,8 @@
+[Unit]
+Description=Transfer files from ICD-UX570
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/icd-ux570-transfer
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority

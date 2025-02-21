@@ -166,6 +166,11 @@ sudo systemctl enable --name syncthing@julian.service
 
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
+
+# Sony IC recorder
+sudo tee /etc/udev/rules.d/99-icd-ux570.rules <<EOF
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="054c", ATTR{idProduct}=="0cf7", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="icd-ux570-transfer.service"
+EOF
 ```
 
 Install chrome from downloaded .deb file
