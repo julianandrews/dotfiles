@@ -30,11 +30,11 @@ fi
 echo "Device mounted at $MOUNT_POINT"
 
 # Destination directory for recordings
-DESTINATION_DIR="$HOME/ICD-UX570_Recordings"
+DESTINATION_DIR="$HOME/.local/share/audio-notes/raw"
 mkdir -p "$DESTINATION_DIR"
 
 # Transfer files using rsync
-rsync -av "$MOUNT_POINT/REC_FILE" "$DESTINATION_DIR/"
+rsync -av "$MOUNT_POINT/REC_FILE/" "$DESTINATION_DIR/"
 
 # Unmount the device
 if ! udisksctl unmount -b "$DEVICE" --no-user-interaction; then

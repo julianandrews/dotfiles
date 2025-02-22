@@ -136,6 +136,23 @@ curl -sSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/DejaV
 fc-cache -f -v
 ```
 
+## IC recording processor
+
+Add udev rule for autosync:
+
+```
+sudo tee /etc/udev/rules.d/99-icd-ux570.rules <<EOF
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="054c", ATTR{idProduct}=="0cf7", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="icd-ux570-transfer.service"
+EOF
+```
+
+Set up whisper:
+
+```
+mkvirtualenv inotify-whisper
+pip install inotify openai-whisper torch
+```
+
 ## Misc Setup
 
 ```
@@ -167,10 +184,8 @@ sudo systemctl enable --name syncthing@julian.service
 # Have an app password ready
 gmailcount jandrews271@gmail.com set-password
 
-# Sony IC recorder
-sudo tee /etc/udev/rules.d/99-icd-ux570.rules <<EOF
-ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="054c", ATTR{idProduct}=="0cf7", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="icd-ux570-transfer.service"
-EOF
+# Enable systemd lingering for long running services
+loginctl enable-linger $USER
 ```
 
 Install chrome from downloaded .deb file
