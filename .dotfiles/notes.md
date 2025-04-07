@@ -25,7 +25,7 @@ Double check package-lists/hardware-specific before installing.
 sudo apt install $(cat ~/.dotfiles/package-lists/apt)
 sudo apt-add-repository contrib
 sudo apt-add-repository non-free
-sudo cp ~/.dotfiles/keyrings/* /usr/share/keyrings/
+sudo cp ~/.dotfiles/keyrings/* /etc/apt/keyrings/
 sudo cp ~/.dotfiles/sources.list.d/* /etc/apt/sources.list.d/
 sudo apt update
 sudo apt install $(cat ~/.dotfiles/package-lists/hardware-specific)
