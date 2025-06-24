@@ -119,7 +119,7 @@ sudo systemctl restart page-status.service
 
 ## Mail Server
 
-Run
+Run:
 
 ```
 sudo dpkg-reconfigure exim4-config
@@ -131,8 +131,11 @@ other servers on the network.
 
 ## Nerd Fonts
 
+Download latest nerd font from https://www.nerdfonts.com/font-downloads and unpack to ~/.local/share/fonts
+
+Run:
+
 ```
-curl -sSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/DejaVuSansMono.tar.xz | tar -xJf - -C ~/.local/share/fonts
 fc-cache -f -v
 ```
 
