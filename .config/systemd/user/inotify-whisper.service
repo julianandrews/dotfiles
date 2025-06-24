@@ -1,5 +1,6 @@
 [Unit]
 Description=Watch for new audio files and transcribe them using Whisper
+OnFailure=notify-failure@%n
 
 [Service]
 ExecStart=%h/.local/bin/inotify-whisper --watch-dir %h/.local/share/audio-notes/raw --output-dir %h/.local/share/audio-notes/processed --model large --language en
