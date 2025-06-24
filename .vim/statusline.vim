@@ -7,12 +7,12 @@ function! FiletypeStatus()
 endfunction
 
 function! LinterStatus() abort
-    let l:buf = bufnr('')
     if !has('nvim')
         return ''
     endif
-    let l:errors = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Error]])")
-    let l:warnings = luaeval("vim.lsp.diagnostic.get_count(" . l:buf . ", [[Warning]])")
+    let l:buf = bufnr('')
+    let l:errors = len(luaeval("vim.diagnostic.get(" . l:buf . ", { severity = vim.diagnostic.severity.ERROR })"))
+    let l:warnings = len(luaeval("vim.diagnostic.get(" . l:buf . ", { severity = vim.diagnostic.severity.WARNING })"))
 
     if l:errors == 0 && l:warnings == 0
         return '✓ ok'
