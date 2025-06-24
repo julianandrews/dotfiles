@@ -11,8 +11,9 @@ URxvt.scrollBar:            false
 
 ! Fonts
 URxvt.allow_bold:           true
-URxvt.font:                 xft:DejavuSansMono-11
-URxvt.boldFont:             xft:DejavuSansMono-11:style=bold
+URxvt.font: xft:DejaVuSansM Nerd Font Mono:style=Regular:size=11
+URxvt.boldFont: xft:DejaVuSansM Nerd Font Mono:style=Bold:size=11
+URxvt.italicFont: xft:DejaVuSansM Nerd Font Mono:style=Oblique:size=11
 URxvt.letterSpace:          -1
 URxvt.intensityStyles:      true
 
