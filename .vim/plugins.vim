@@ -10,6 +10,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
 Plug 'sbdchd/neoformat'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'
@@ -43,13 +45,10 @@ if has('nvim')
 endif
 
 " fzf
-" set rtp+=~/.fzf
-" command! -bang -nargs=* GitFiles call fzf#run(fzf#vim#with_preview(fzf#wrap({'source':
-"             \"bash -c 'git diff --name-only HEAD~ && git ls-files -o --exclude-standard'"})))
-" nnoremap <leader>f :Files<cr>
-" nnoremap <leader>g :Files %:p:h<cr>
-" nnoremap <leader>b :Buffers<cr>
-" nnoremap <leader>h :GitFiles<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :Files %:p:h<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :GFiles<cr>
 
 " neoformat
 let g:neoformat_enabled_python = ['black']
