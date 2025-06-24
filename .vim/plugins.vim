@@ -58,11 +58,6 @@ let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_typescript = ['prettier']
 let g:neoformat_try_node_exe = 1
 
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
-augroup END
-
 " vim-terraform
 let g:terraform_fmt_on_save=1
 
