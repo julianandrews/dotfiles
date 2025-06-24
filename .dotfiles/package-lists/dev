@@ -8,7 +8,9 @@ docker-ce-cli
 git
 git-lfs
 libssl-dev
+pandoc
 python3-dev
 python3-distutils
 terraform
 terraform-ls
+weasyprint
