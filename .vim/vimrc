@@ -3,9 +3,6 @@
 noremap <space> <nop>
 let mapleader = "\<space>"
 
-" Clear trailing whitespace on save
-autocmd FileType c,cpp,python,typescript,javascript,rust BufWritePre * :%s/\s\+$//e
-
 source $HOME/.vim/general.vim
 source $HOME/.vim/plugins.vim
 source $HOME/.vim/keybindings.vim
