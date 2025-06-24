@@ -15,6 +15,8 @@ Plug 'junegunn/fzf.vim'
 
 " Neovim specific plugins
 Plug 'neovim/nvim-lspconfig', has('nvim') ? {} : { 'on': [] }
+" Run cargo build --release in ~/.vim/plugged/blink.cmp to build
+Plug 'saghen/blink.cmp'
 
 " Language specific plugins
 Plug 'hashivim/vim-terraform'
@@ -35,9 +37,10 @@ filetype plugin indent on
 silent! colorscheme solarized
 highlight SignColumn ctermbg=Black
 
-" neovim lsp configuration
+" neovim lsp and completion configuration
 if has('nvim')
     lua require ("nvim_lsp_config")
+    lua require ("nvim_blink_config")
     nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<cr>
     nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<cr>
     nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
