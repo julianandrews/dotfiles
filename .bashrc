@@ -68,7 +68,7 @@ fi
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/keyring/ssh
 
 # fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash || echo "~/.fzf.bash not found"
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
