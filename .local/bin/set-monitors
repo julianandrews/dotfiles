@@ -13,11 +13,11 @@ hasdisplay() {
 }
 
 primary() {
-  [ "$1" = 'DP-2-1' ] && echo -n ' --primary'
+  [ "$1" = 'DP-1-1' ] && echo -n ' --primary'
 }
 
 positioning() {
-  [ "$1" = 'DP-2-8' ] && echo -n ' --right-of DP-2-1'
+  [ "$1" = 'DP-1-8' ] && echo -n ' --right-of DP-1-1'
 }
 
 mode() {
