@@ -2,7 +2,7 @@ template = "{{memory}} | {{cpu}} | {{jellyfin_status}}{{apt_status}}{{local_mail
 
 [ blocks.cpu ]
 kind = "cpu"
-template = """<fn=2> </fn>
+template = """ 
 {%- if cpu_times.non_idle < 20 -%}
     {%- set color="#586e75" -%}
 {%- elif cpu_times.non_idle > 50 -%}
@@ -22,7 +22,7 @@ args = [
     "/proc/meminfo",
     ]
 interval = 5
-template = """<fn=1></fn>
+template = """<fn=1>󰍛 </fn>
 {%- if output | int < 20 -%}
     {%- set color="#586e75" -%}
 {%- elif output | int > 50 -%}
@@ -94,7 +94,7 @@ kind = "network"
 device = "enp89s0"
 template = """
 {%- if operstate == "up" -%}
-    <fc=#268bd2><fn=2></fn></fc>
+    <fc=#268bd2></fc>
 {%- elif operstate == "down" -%}
     <fc=#dc322f><fn=2></fn></fc>
 {%- else -%}
