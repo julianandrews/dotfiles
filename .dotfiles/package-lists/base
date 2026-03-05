@@ -3,6 +3,7 @@ anacron
 at
 bash-completion
 bat
+bluez
 cups
 cups-client
 curl
@@ -25,8 +26,7 @@ nodejs
 npm
 p7zip-full
 parted
-pulseaudio
-pulseaudio-utils
+pipewire-audio
 pv
 python3
 python-is-python3
