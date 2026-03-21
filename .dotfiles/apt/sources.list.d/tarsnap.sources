@@ -1,0 +1,5 @@
+Types: deb
+URIs: https://pkg.tarsnap.com/deb/trixie
+Suites: ./
+Signed-By: /etc/apt/keyrings/tarsnap-archive-keyring.gpg
+Architectures: amd64
