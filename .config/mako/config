@@ -1,0 +1,24 @@
+# --- General Appearance ---
+width=400
+height=120
+border-size=2
+padding=12
+
+# Color scheme
+background-color=#24273a
+text-color=#cad3f5
+border-color=#c6d0f5
+
+# Position and spacing
+anchor=top-right
+margin=20
+font=Monospace 11
+
+# Behavior
+default-timeout=5000
+layer=overlay
+
+# Critical Notifications
+[urgency=critical]
+default-timeout=0
+border-color=#e64553
