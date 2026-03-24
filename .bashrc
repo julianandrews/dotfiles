@@ -129,3 +129,14 @@ export HISTFILE="$HOME/.local/share/bash/history"
 export PYTHON_HISTORY="$HOME/.local/share/python/history"
 
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
+
+export PATH="$HOME/.local/share/cargo/bin:$HOME/.local/bin:$PATH"
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+  function set_win_title(){
+    echo -ne "\033]0; ${PWD/$HOME/\~} \007"
+  }
+
+  starship_precmd_user_func="set_win_title"
+fi

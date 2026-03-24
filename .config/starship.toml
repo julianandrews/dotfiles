@@ -1,0 +1,59 @@
+add_newline = false
+format = """
+$git_branch\
+$git_state\
+$git_status\
+$python\
+$aws\
+$kubernetes\
+$username\
+$hostname\
+$directory\
+$character\
+"""
+
+[username]
+style_user = 'fg:13'
+format = '[$user@]($style)'
+
+[hostname]
+style = 'fg:13'
+format='[$hostname]($style):'
+
+[directory]
+style = 'fg:6'
+format = '[$path]($style)'
+truncation_length = 4
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[character]
+success_symbol = '\$'
+error_symbol = '[\$](fg:9)'
+
+[git_branch]
+style = "fg:5"
+format = '[\[$branch\]]($style)'
+
+[git_status]
+style = "fg:10"
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[git_state]
+style = "fg:10"
+format = '[\[$state ($progress_current/$progress_total)\]]($style)'
+
+[python]
+style = "fg:2"
+format = '[\[$virtualenv\]]($style)'
+detect_extensions = []
+detect_files = []
+
+[aws]
+style = "fg:3"
+format = '[\[$profile\]]($style)'
+
+[kubernetes]
+disabled = false
+style = "fg:4"
+format = '[(\[$context( \($namespace\))\])]($style)'
