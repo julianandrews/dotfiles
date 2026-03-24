@@ -127,6 +127,8 @@ fi
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 export HISTFILE="$HOME/.local/share/bash/history"
 export PYTHON_HISTORY="$HOME/.local/share/python/history"
+export CARGO_HOME=~/.local/share/cargo
+export RUSTUP_HOME=~/.local/share/rustup
 
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
 
