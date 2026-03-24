@@ -52,4 +52,7 @@ fc-cache -fv
 # Rust setup
 rustup default stable
 cargo install cargo-deb cargo-fuzz
+
+# Python setup
+cargo install uv
 ```
