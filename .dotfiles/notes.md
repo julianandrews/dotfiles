@@ -25,6 +25,13 @@ dotfiles-local checkout desktop
 ## Manual Steps
 
 ```
+# Install packages
+sudo cp ~/.dotfiles/apt/keyrings/* /etc/apt/keyrings/
+sudo cp ~/.dotfiles/apt/sources.list.d/* /etc/apt/sources.list.d/
+sudo cp ~/.dotfiles/apt/preferences.d/* /etc/apt/preferences.d/
+sudo apt update
+sudo apt install $(cat ~/.dotfiles/packages{,.local})
+
 # Configure sudoers
 sudo usermod -a -G render julian
 echo "Defaults !admin_flag" | sudo tee /etc/sudoers.d/no-admin-flag
