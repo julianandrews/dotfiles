@@ -2,4 +2,10 @@
 	defaultBranch = main
 [user]
 	email = jandrews271@gmail.com
-	name = Julian Andews
+    name = Julian Andews
+[pull]
+    rebase = true
+[merge]
+    ff = false
+[alias]
+    lg = log --pretty=format:'%C(blue)%h%Creset - %s %Cgreen(%cr) %C(magenta bold)<%an>%Creset%C(yellow)%d%Creset' --abbrev-commit
