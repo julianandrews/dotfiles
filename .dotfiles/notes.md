@@ -48,4 +48,8 @@ curl -L -o /tmp/fontawesome.zip https://use.fontawesome.com/releases/v7.2.0/font
 unzip -j /tmp/fontawesome.zip -d ~/.local/share/fonts '*/otfs/*'
 rm /tmp/fontawesome.zip
 fc-cache -fv
+
+# Rust setup
+rustup default stable
+cargo install cargo-deb cargo-fuzz
 ```
