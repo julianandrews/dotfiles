@@ -1,4 +1,5 @@
 require ("config.lazy")
+require ("lsp")
 
 -- General settings
 vim.opt.title = true
@@ -8,6 +9,7 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes"
 vim.opt.hlsearch = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.completeopt = { 'menuone', 'noselect' }
 
 -- Tab / Indentation
 vim.opt.expandtab = true
