@@ -1,0 +1,6 @@
+Types: deb
+URIs: https://apt.seemyvest.net
+Suites: stable
+Components: main
+Signed-By: /etc/apt/keyrings/seemyvest.gpg
+Architectures: amd64
