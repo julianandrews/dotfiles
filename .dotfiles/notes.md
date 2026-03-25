@@ -79,6 +79,10 @@ npm install -g bash-language-server
 
 # yaml
 npm install -g yaml-language-server
+
+# Docker
+sudo usermod -aG docker julian
+npm install -g dockerfile-language-server-nodejs
 ```
 
 ## Yubico Authenticator
