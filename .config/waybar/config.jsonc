@@ -1,0 +1,7 @@
+// -*- mode: jsonc -*-
+{
+    "include": [
+        "config.shared.jsonc",
+        "config.local.jsonc"
+    ]
+}
