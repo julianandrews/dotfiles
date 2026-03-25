@@ -134,6 +134,8 @@ command -v fzf &>/dev/null && eval "$(fzf --bash)"
 
 export PATH="$HOME/.local/share/cargo/bin:$HOME/.local/bin:$PATH"
 
+eval "$(fnm env --use-on-cd --shell bash)"
+
 if command -v starship &> /dev/null; then
   eval "$(starship init bash)"
   function set_win_title(){

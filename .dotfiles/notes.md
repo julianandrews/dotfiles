@@ -51,17 +51,30 @@ unzip -j /tmp/fontawesome.zip -d ~/.local/share/fonts '*/otfs/*'
 rm /tmp/fontawesome.zip
 fc-cache -fv
 
-# Rust setup
+
+# Steam (run the installer)
+steam
+```
+
+## Dev setup
+
+```
+# Rust
 rustup default stable
 cargo install cargo-deb cargo-fuzz
 
-# Python setup
+# Python
 cargo install uv
 uv tool install basedpyright
 uv tool install ruff
 
-# Steam (run the installer)
-steam
+# Node
+cargo install fnm
+fnm install --lts
+fnm default lts-latest
+
+# Bash
+npm install -g bash-language-server
 ```
 
 ## Yubico Authenticator
