@@ -26,6 +26,7 @@ dotfiles-local checkout desktop
 
 ```
 # Install packages
+# First, manually add contrib and non-free to the debian sources
 sudo cp ~/.dotfiles/apt/keyrings/* /etc/apt/keyrings/
 sudo cp ~/.dotfiles/apt/sources.list.d/* /etc/apt/sources.list.d/
 sudo cp ~/.dotfiles/apt/preferences.d/* /etc/apt/preferences.d/
