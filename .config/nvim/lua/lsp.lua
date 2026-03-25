@@ -6,6 +6,23 @@ vim.lsp.config('rust_analyzer', {
 
 vim.lsp.enable('rust_analyzer')
 
+vim.lsp.config('basedpyright', {
+  cmd = { 'basedpyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  root_markers = { '.git', 'pyproject.toml', 'setup.py', 'requirements.txt', '.venv' },
+  settings = {
+    basedpyright = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = 'workspace',
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+
+vim.lsp.enable('basedpyright')
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -31,5 +48,12 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = { '*.rs' },
   callback = function(args)
     vim.lsp.buf.format({ async = false })
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.py' },
+  callback = function(args)
+    vim.lsp.buf.format({ async = false, formatters = { 'ruff' } })
   end,
 })
