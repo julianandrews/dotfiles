@@ -30,8 +30,9 @@ dotfiles-local checkout desktop
 sudo cp ~/.dotfiles/apt/keyrings/* /etc/apt/keyrings/
 sudo cp ~/.dotfiles/apt/sources.list.d/* /etc/apt/sources.list.d/
 sudo cp ~/.dotfiles/apt/preferences.d/* /etc/apt/preferences.d/
+sudo dpkg --add-architecture i386 # for steam-installer
 sudo apt update
-sudo apt install $(cat ~/.dotfiles/packages{,.local})
+sudo apt install $(cat ~/.dotfiles/packages{,.local,.contrib,.non-free})
 
 # Configure sudoers
 sudo usermod -a -G render julian
@@ -56,4 +57,7 @@ cargo install cargo-deb cargo-fuzz
 
 # Python setup
 cargo install uv
+
+# Steam (run the installer)
+steam
 ```
