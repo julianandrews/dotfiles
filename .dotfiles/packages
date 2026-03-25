@@ -27,6 +27,7 @@ hyprpaper
 hyprpolkitagent
 mako-notifier
 markovpass
+mpv
 neovim
 nmap
 pavucontrol
@@ -41,7 +42,6 @@ swayimg
 systemd-resolved
 traceroute
 tree-sitter-cli
-vlc
 waybar
 weasyprint
 wev
