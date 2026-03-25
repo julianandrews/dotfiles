@@ -8,7 +8,6 @@ clang
 curl
 dnsutils
 ffmpeg
-ffmpeg
 fonts-recommended
 foot
 foot-themes
@@ -32,7 +31,6 @@ nmap
 pavucontrol
 pipewire-audio
 python-is-python3
-ripgrep
 ripgrep
 rsync
 rustup
