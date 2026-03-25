@@ -72,9 +72,13 @@ uv tool install ruff
 cargo install fnm
 fnm install --lts
 fnm default lts-latest
+npm install -g pnpm
 
 # Bash
 npm install -g bash-language-server
+
+# yaml
+npm install -g yaml-language-server
 ```
 
 ## Yubico Authenticator

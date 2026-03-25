@@ -31,6 +31,14 @@ vim.lsp.config('bash_language_server', {
 
 vim.lsp.enable('bash_language_server')
 
+vim.lsp.config('yamlls', {
+  cmd = { 'yaml-language-server', '--stdio' },
+  filetypes = { 'yaml', 'yml' },
+  root_markers = { '.git', '.yamllint', '*.yaml', '*.yml' },
+})
+
+vim.lsp.enable('yamlls')
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
