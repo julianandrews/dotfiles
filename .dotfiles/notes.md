@@ -57,6 +57,8 @@ cargo install cargo-deb cargo-fuzz
 
 # Python setup
 cargo install uv
+uv tool install basedpyright
+uv tool install ruff
 
 # Steam (run the installer)
 steam
