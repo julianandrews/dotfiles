@@ -61,3 +61,11 @@ cargo install uv
 # Steam (run the installer)
 steam
 ```
+
+## Yubico Authenticator
+
+Download from https://github.com/Yubico/yubioath-flutter
+
+```
+sudo apt install $(cat ~/.dotfiles/packages/packages.yubico)`
+```
