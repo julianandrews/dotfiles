@@ -32,7 +32,7 @@ sudo cp ~/.dotfiles/apt/sources.list.d/* /etc/apt/sources.list.d/
 sudo cp ~/.dotfiles/apt/preferences.d/* /etc/apt/preferences.d/
 sudo dpkg --add-architecture i386 # for steam-installer
 sudo apt update
-sudo apt install $(cat ~/.dotfiles/packages{,.local,.contrib,.non-free})
+sudo apt install $(cat ~/.dotfiles/packages/packages{,.local,.contrib,.non-free})
 
 # Configure sudoers
 sudo usermod -a -G render julian
