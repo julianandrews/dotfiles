@@ -5,7 +5,7 @@ Two repo dotfiles.
 All shared config tracked in the main dotfiles repo. Computer specific config
 tracked in the dotfiles-local repo.
 
-## Setup
+## Dotfiles Setup
 
 ```
 sudo apt install git
@@ -22,7 +22,7 @@ dotfiles checkout
 dotfiles-local checkout desktop
 ```
 
-## Manual Steps
+## Basic Config
 
 ```
 # Install packages
@@ -35,7 +35,7 @@ sudo apt update
 sudo apt install $(cat ~/.dotfiles/packages/packages{,.local,.contrib,.non-free})
 
 # Configure sudoers
-sudo usermod -a -G render julian
+sudo usermod -a -G render $USER
 echo "Defaults !admin_flag" | sudo tee /etc/sudoers.d/no-admin-flag
 sudo chmod 0440 /etc/sudoers.d/no-admin-flag
 
@@ -50,10 +50,6 @@ curl -L -o /tmp/fontawesome.zip https://use.fontawesome.com/releases/v7.2.0/font
 unzip -j /tmp/fontawesome.zip -d ~/.local/share/fonts '*/otfs/*'
 rm /tmp/fontawesome.zip
 fc-cache -fv
-
-
-# Steam (run the installer)
-steam
 ```
 
 ## Dev setup
@@ -81,14 +77,22 @@ npm install -g bash-language-server
 npm install -g yaml-language-server
 
 # Docker
-sudo usermod -aG docker julian
+sudo usermod -aG docker $USER
 npm install -g dockerfile-language-server-nodejs
+```
+
+## Steam
+
+Run the installer:
+
+```
+steam
 ```
 
 ## Yubico Authenticator
 
-Download from https://github.com/Yubico/yubioath-flutter
-
 ```
 sudo apt install $(cat ~/.dotfiles/packages/packages.yubico)`
 ```
+
+Download and install from https://github.com/Yubico/yubioath-flutter
