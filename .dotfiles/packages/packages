@@ -24,7 +24,6 @@ hyprland-guiutils
 hyprlock
 hyprpaper
 hyprpolkitagent
-libsensors-dev
 mako-notifier
 markovpass
 mpv
@@ -32,7 +31,6 @@ neovim
 nmap
 pavucontrol
 pipewire-audio
-pkg-config
 python-is-python3
 ripgrep
 rsync
