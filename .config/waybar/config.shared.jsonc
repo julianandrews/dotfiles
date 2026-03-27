@@ -13,8 +13,10 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
-    "pulseaudio": {
+    "wireplumber": {
         "format": "{volume}% {icon} {format_source}",
+        // The Bluetooth formats don't do anything, but maybe they will eventually?
+        // https://github.com/Alexays/Waybar/issues/3892
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
@@ -29,6 +31,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
     }
 }
