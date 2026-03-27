@@ -1,0 +1,209 @@
+* {
+    font-family: "DejaVuSansM Nerd Font Propo", "Font Awesome 7 Free", sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: rgba(43, 48, 59, 0.5);
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#window,
+#clock,
+#battery,
+#network,
+#wireplumber,
+#bluetooth,
+#tray,
+#custom-madagascar-status,
+#custom-gargantua-two-status,
+#custom-apt-status,
+#custom-jellyfin-status {
+    padding: 0 10px;
+    background-color: rgba(36, 40, 59, 0.5);
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+#window:hover,
+#clock:hover,
+#battery:hover,
+#network:hover,
+#wireplumber:hover,
+#bluetooth:hover,
+#tray:hover,
+#custom-madagascar-status:hover,
+#custom-gargantua-two-status:hover,
+#custom-apt-status:hover,
+#custom-jellyfin-status:hover {
+    background-color: rgba(26, 27, 38, 0.5);
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: rgba(36, 40, 59, 0.5);
+    color: #565f89;
+}
+
+#workspaces button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #c0caf5;
+}
+
+#workspaces button.focused, #workspaces button.active {
+    background-color: #414868;
+    box-shadow: inset 0 -3px #7aa2f7;
+    color: #c0caf5;
+}
+
+#workspaces button.urgent {
+    background-color: #f7768e;
+    color: #1a1b26;
+}
+
+#window {
+    color: #c0caf5;
+    border-left: 4px solid #e0af68;
+}
+
+#clock {
+    color: #e0af68;
+    border-left: 4px solid #e0af68;
+}
+
+#battery {
+    color: #9ece6a;
+    border-left: 4px solid #9ece6a;
+}
+
+#battery.charging, #battery.plugged {
+    color: #73daca;
+    border-left: 4px solid #73daca;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    border-left: 4px solid #f7768e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: #f53c3c;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: #2ecc71;
+    color: #000000;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#network {
+    color: #7dcfff;
+    border-left: 4px solid #7dcfff;
+}
+
+#network.disconnected {
+    color: #f7768e;
+    border-left: 4px solid #f7768e;
+}
+
+#wireplumber {
+    color: #9d7cd8;
+    border-left: 4px solid #9d7cd8;
+}
+
+#wireplumber.muted {
+    color: #565f89;
+}
+
+#bluetooth {
+    color: #7aa2f7;
+    border-left: 4px solid #7aa2f7;
+}
+
+#tray {
+    color: #2ac3de;
+    border-left: 4px solid #2ac3de;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#custom-apt-status,
+#custom-madagascar-status,
+#custom-gargantua-two-status,
+#custom-jellyfin-status {
+    border-left: 4px solid #f7768e;
+    color: #f7768e;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #cf5700;
+}
+
+#privacy-item.audio-in {
+    background-color: #1ca000;
+}
+
+#privacy-item.audio-out {
+    background-color: #0069d4;
+}
