@@ -6,6 +6,9 @@
         "hyprland/workspaces",
         "hyprland/window",
     ],
+    "hyprland/window": {
+        "separate-outputs": true,
+    },
     "tray": {
         "spacing": 10
     },
