@@ -24,6 +24,8 @@ hyprland-guiutils
 hyprlock
 hyprpaper
 hyprpolkitagent
+imagemagick
+jq
 mako-notifier
 markovpass
 mpv
