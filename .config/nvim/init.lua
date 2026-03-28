@@ -1,4 +1,4 @@
-require ("config.lazy")
+require ("bootstrap")
 require ("lsp")
 
 -- General settings
