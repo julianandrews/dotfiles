@@ -4,6 +4,7 @@ require("lsp.typescript")
 require("lsp.bash")
 require("lsp.yaml")
 require("lsp.docker")
+require("lsp.clangd")
 
 vim.diagnostic.config({
   virtual_text = true,

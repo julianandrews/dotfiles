@@ -5,6 +5,7 @@ blueman
 bluez
 build-essential
 clang
+clangd
 curl
 dnsutils
 docker-ce
