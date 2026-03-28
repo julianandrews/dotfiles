@@ -70,6 +70,9 @@ fnm install --lts
 fnm default lts-latest
 npm install -g pnpm
 
+# Typescript
+npm install -g @vtsls/language-server
+
 # Bash
 npm install -g bash-language-server
 
