@@ -3,6 +3,7 @@ apt-file
 bash-completion
 blueman
 bluez
+btop
 build-essential
 clang
 clangd
@@ -18,7 +19,6 @@ fyi
 fzf
 git
 grim
-htop
 hypridle
 hyprland
 hyprland-guiutils
