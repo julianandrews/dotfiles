@@ -5,13 +5,14 @@ border-size=2
 padding=12
 
 # Color scheme
-background-color=#24273a
-text-color=#cad3f5
-border-color=#c6d0f5
+background-color=#1a1b26cd
+text-color=#c0caf5
+border-color=#414868
+border-radius=8
 
 # Position and spacing
 anchor=top-right
-margin=20
+margin=40
 font=Monospace 11
 
 # Behavior
@@ -21,4 +22,4 @@ layer=overlay
 # Critical Notifications
 [urgency=critical]
 default-timeout=0
-border-color=#e64553
+border-color=#f7768e
