@@ -99,3 +99,15 @@ sudo apt install $(cat ~/.dotfiles/packages/packages.yubico)`
 ```
 
 Download and install from https://github.com/Yubico/yubioath-flutter
+
+## Chrome
+
+- Install PWAs
+    - https://calendar.google.com
+    - https://mail.google.com
+    - https://messages.google.com
+    - https://jellyfin.seemyvest.net
+    - https://youtube.com
+    - https://chat.deepseek.com
+- Allow GMail to handle email addresses
+- Allow Google Calendar to handle "web calendar links"
