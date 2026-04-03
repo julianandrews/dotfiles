@@ -9,6 +9,16 @@
     "hyprland/window": {
         "separate-outputs": true,
     },
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "messages": "󰍡",
+            "email": "󰇰",
+            "ai": "󰧑",
+        },
+        "move-to-monitor": true,
+    },
     "tray": {
         "spacing": 10
     },
