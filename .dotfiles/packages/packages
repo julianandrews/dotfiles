@@ -40,6 +40,7 @@ ripgrep
 rsync
 rustup
 slurp
+starship
 swayimg
 systemd-resolved
 traceroute
