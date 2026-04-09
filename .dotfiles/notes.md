@@ -82,6 +82,9 @@ npm install -g yaml-language-server
 # Docker
 sudo usermod -aG docker $USER
 npm install -g dockerfile-language-server-nodejs
+
+# Twine
+uv tool install twine --with keyring --with keyring-pass
 ```
 
 ## Steam
