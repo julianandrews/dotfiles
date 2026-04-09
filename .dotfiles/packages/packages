@@ -33,12 +33,14 @@ markovpass
 mpv
 neovim
 nmap
+pass
 pavucontrol
 pipewire-audio
 python-is-python3
 ripgrep
 rsync
 rustup
+scdaemon
 slurp
 starship
 swayimg
