@@ -92,14 +92,6 @@ Run the installer:
 steam
 ```
 
-## Yubico Authenticator
-
-```
-sudo apt install $(cat ~/.dotfiles/packages/packages.yubico)`
-```
-
-Download and install from https://github.com/Yubico/yubioath-flutter
-
 ## Chrome
 
 - Install PWAs
