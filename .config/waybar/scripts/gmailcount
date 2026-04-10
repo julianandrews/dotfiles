@@ -94,11 +94,12 @@ unlock() {
         echo "Already unlocked"
         return
     else
-        fyi -a gmailcount "Tap your Yubikey to unlock"
+        notification_id=$(fyi -a gmailcount -p "Unlock Gmail" "Tap your Yubikey" | cut -d= -f2)
         password="$(pass "$PASS_PATH" 2>&1)" || {
             echo "Pass failed"
             return
         }
+        fyi --close "$notification_id"
         keyctl add user "$KEYCTL_DESC" "$password" @s > /dev/null
         if ! [ -z "$EMAIL" ]; then
             fetch_count "$EMAIL" > "$CACHE_FILE"
