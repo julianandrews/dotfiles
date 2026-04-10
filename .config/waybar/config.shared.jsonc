@@ -25,7 +25,7 @@
         "spacing": 10
     },
     "custom/gmail": {
-        "exec": "~/.config/waybar/scripts/gmailcount watch jandrews271@gmail.com",
+        "exec": "exec ~/.config/waybar/scripts/gmailcount watch jandrews271@gmail.com",
         "on-click": "~/.config/waybar/scripts/gmailcount click personal/google/gmailcount-app-password jandrews271@gmail.com",
         "return-type": "json",
         "format": "{icon}",
