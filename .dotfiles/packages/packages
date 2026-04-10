@@ -28,6 +28,7 @@ hyprpaper
 hyprpolkitagent
 imagemagick
 jq
+keyutils
 mako-notifier
 markovpass
 mpv

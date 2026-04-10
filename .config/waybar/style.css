@@ -32,16 +32,14 @@ button:hover {
 #wireplumber,
 #bluetooth,
 #tray,
+#gmail,
+#custom-gmail,
 #custom-madagascar-status,
 #custom-gargantua-two-status,
 #custom-apt-status,
 #custom-jellyfin-status {
     padding: 0 10px;
     background-color: rgba(36, 40, 59, 0.5);
-}
-
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
 }
 
 #window:hover,
@@ -51,11 +49,17 @@ button:hover {
 #wireplumber:hover,
 #bluetooth:hover,
 #tray:hover,
+#gmail:hover,
+#custom-gmail:hover,
 #custom-madagascar-status:hover,
 #custom-gargantua-two-status:hover,
 #custom-apt-status:hover,
 #custom-jellyfin-status:hover {
     background-color: rgba(26, 27, 38, 0.5);
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
 }
 
 #workspaces button {
@@ -118,25 +122,6 @@ button:hover {
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-    padding-right: 15px;
-}
-
-#power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
-}
-
-#power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
 label:focus {
     background-color: #000000;
 }
@@ -177,6 +162,23 @@ label:focus {
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
+}
+
+#custom-gmail {
+    color: #2ac3de;
+    border-left: 4px solid #2ac3de;
+}
+
+#custom-gmail.locked {
+    color: #f5a623;
+}
+
+#custom-gmail.inbox-empty {
+    color: #7d8590;
+}
+
+#custom-gmail.error {
+    color: #f53c3c;
 }
 
 #custom-apt-status,
