@@ -24,6 +24,18 @@
     "tray": {
         "spacing": 10
     },
+    "custom/gmail": {
+        "exec": "~/.config/waybar/scripts/gmailcount watch jandrews271@gmail.com",
+        "on-click": "~/.config/waybar/scripts/gmailcount click personal/google/gmailcount-app-password jandrews271@gmail.com",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "󰌾",
+            "inbox-empty": "",
+            "has-unread": "󰇮",
+            "error": "󰅖"
+        }
+    },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
