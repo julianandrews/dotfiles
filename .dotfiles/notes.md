@@ -87,6 +87,12 @@ npm install -g dockerfile-language-server-nodejs
 uv tool install twine --with keyring --with keyring-pass
 ```
 
+## Syncthing
+
+```
+sudo systemctl enable --now syncthing@julian.service
+```
+
 ## Steam
 
 Run the installer:
