@@ -1,3 +1,5 @@
 libsensors-dev
 libudev-dev
 pkg-config
+r-base
+r-base-dev
