@@ -85,6 +85,11 @@ npm install -g dockerfile-language-server-nodejs
 
 # Twine
 uv tool install twine --with keyring --with keyring-pass
+
+# R
+Rscript -e "install.packages('languageserver')"
+Rscript -e "install.packages('renv')"
+
 ```
 
 ## Syncthing
