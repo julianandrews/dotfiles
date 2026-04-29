@@ -1,0 +1,22 @@
+IMAPAccount purelymail
+Host imap.purelymail.com
+User julian@seemyvest.net
+PassCmd "/home/julian/.local/bin/mbsync-pass.sh"
+TLSType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore purelymail-remote
+Account purelymail
+
+MaildirStore purelymail-local
+Subfolders Verbatim
+Path ~/.local/share/mail/purelymail/
+Inbox ~/.local/share/mail/purelymail/Inbox
+
+Channel purelymail
+Far :purelymail-remote:
+Near :purelymail-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *

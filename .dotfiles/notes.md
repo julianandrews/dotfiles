@@ -117,3 +117,11 @@ steam
     - https://chat.deepseek.com
 - Allow GMail to handle email addresses
 - Allow Google Calendar to handle "web calendar links"
+
+## Mail (isync/mbsync)
+
+```
+mkdir -p ~/.local/share/mail/purelymail ~/.config/credstore
+pass show personal/purelymail/app-password | systemd-creds encrypt --user --name=purelymail-app-password - ~/.config/credstore/purelymail-app-password.cred
+systemctl --user enable --now mbsync.timer
+```
