@@ -33,6 +33,7 @@ keyutils
 mako-notifier
 markovpass
 mpv
+msmtp
 neovim
 nmap
 pass
