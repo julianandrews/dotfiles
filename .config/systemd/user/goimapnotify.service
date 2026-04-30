@@ -1,0 +1,14 @@
+[Unit]
+Description=IMAP notifier to trigger mbsync on new mail
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+LoadCredentialEncrypted=purelymail-app-password:/home/julian/.config/credstore/purelymail-app-password.cred
+ExecStart=/home/julian/.local/bin/goimapnotify
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

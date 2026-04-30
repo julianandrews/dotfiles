@@ -1,0 +1,10 @@
+configurations:
+  - host: imap.purelymail.com
+    port: 993
+    username: julian@seemyvest.net
+    tls: true
+    passwordCMD: "systemd-creds cat purelymail-app-password"
+    alias: "purelymail"
+    onNewMail: "mbsync -aV"
+    onChangedMail: "mbsync -aV"
+    onDeletedMail: "mbsync -aV"
