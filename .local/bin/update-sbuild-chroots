@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir ~/.cache/sbuild
+for release in trixie forky; do
+    mmdebstrap --variant=buildd --include=ca-certificates $release ~/.cache/sbuild/$release-amd64.tar.zst
+done
