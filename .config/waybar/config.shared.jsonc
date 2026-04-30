@@ -25,6 +25,8 @@
     },
     "custom/maildir": {
         "exec": "exec ~/.config/waybar/scripts/maildir-count",
+        "on-click": "footclient aerc",
+        "on-click-right": "mbsync -a",
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {

@@ -19,6 +19,10 @@ font=Monospace 11
 default-timeout=5000
 layer=overlay
 
+# Icons
+icon-path=/usr/share/icons/Papirus
+max-icon-size=48
+
 # Critical Notifications
 [urgency=critical]
 default-timeout=0
