@@ -1,7 +1,7 @@
 IMAPAccount purelymail
 Host imap.purelymail.com
 User julian@seemyvest.net
-PassCmd "/home/julian/.local/bin/mbsync-pass.sh"
+PassCmd "/home/julian/.local/bin/mbsync-pass"
 TLSType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
