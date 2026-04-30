@@ -1,0 +1,6 @@
+[Unit]
+Description=Update sbuild chroot tarballs
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/update-sbuild-chroots

@@ -89,7 +89,6 @@ uv tool install twine --with keyring --with keyring-pass
 # R
 Rscript -e "install.packages('languageserver')"
 Rscript -e "install.packages('renv')"
-
 ```
 
 ## Syncthing
@@ -124,4 +123,12 @@ steam
 mkdir -p ~/.local/share/mail/purelymail ~/.config/credstore
 pass show personal/purelymail/app-password | systemd-creds encrypt --user --name=purelymail-app-password - ~/.config/credstore/purelymail-app-password.cred
 systemctl --user enable --now mbsync.timer
+```
+
+## Debian packaging (sbuild)
+
+```
+sudo adduser $USER sbuild
+update-sbuild-chroots
+systemctl --user enable --now update-sbuild-chroots.timer 
 ```
