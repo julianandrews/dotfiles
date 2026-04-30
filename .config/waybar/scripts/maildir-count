@@ -1,0 +1,94 @@
+#!/bin/sh
+
+set -e
+
+# Configuration
+MAILDIR="$HOME/.local/share/mail/purelymail/Inbox"
+
+INBOX_NEW="$MAILDIR/new"
+INBOX_CUR="$MAILDIR/cur"
+
+# Verify maildir exists
+if [ ! -d "$MAILDIR" ]; then
+    echo "{\"text\": \"\", \"alt\": \"error\", \"tooltip\": \"Maildir not found: $MAILDIR\", \"class\": \"error\"}" || true
+    exit 1
+fi
+
+count_mail() {
+    new_count=0
+    unread_count=0
+
+    # Count new/ files (fresh arrivals, never seen by any client)
+    if [ -d "$INBOX_NEW" ]; then
+        new_count=$(find "$INBOX_NEW" -maxdepth 1 -type f 2>/dev/null | wc -l)
+    fi
+
+    # Count unread in cur/ (files without S flag in :2, info)
+    if [ -d "$INBOX_CUR" ]; then
+        for f in "$INBOX_CUR"/*; do
+            [ -f "$f" ] || continue
+            basename_f=$(basename "$f")
+            # Check if file has no S flag (not marked as seen)
+            if ! echo "$basename_f" | grep -q ':2,.*S'; then
+                unread_count=$((unread_count + 1))
+            fi
+        done
+    fi
+
+    echo "$new_count $unread_count"
+}
+
+output_status() {
+    local new_count="$1"
+    local unread_count="$2"
+    local total=$((new_count + unread_count))
+
+    # Determine class and alt based on priority: new > unread > empty
+    if [ "$new_count" -gt 0 ]; then
+        class="new-mail"
+        alt="new-mail"
+    elif [ "$unread_count" -gt 0 ]; then
+        class="has-unread"
+        alt="has-unread"
+    else
+        class="inbox-empty"
+        alt="inbox-empty"
+    fi
+
+    # Build tooltip
+    tooltip=""
+    if [ "$new_count" -gt 0 ] && [ "$unread_count" -gt 0 ]; then
+        tooltip="${new_count} new, ${unread_count} unread (${total} total)"
+    elif [ "$new_count" -gt 0 ]; then
+        tooltip="${new_count} new"
+    elif [ "$unread_count" -gt 0 ]; then
+        tooltip="${unread_count} unread"
+    else
+        tooltip="0 unread"
+    fi
+
+    # Output JSON, continue if pipe breaks (waybar restart)
+    echo "{\"text\": \"\", \"alt\": \"$alt\", \"tooltip\": \"$tooltip\", \"class\": \"$class\"}" || true
+}
+
+# Initial status
+read -r new_count unread_count << EOF
+$(count_mail)
+EOF
+output_status "$new_count" "$unread_count"
+
+# Watch for maildir changes via inotify (both new/ and cur/)
+inotifywait -q -m \
+    -e create \
+    -e delete \
+    -e moved_to \
+    -e moved_from \
+    -e modify \
+    "$INBOX_NEW" "$INBOX_CUR" 2>/dev/null | while read -r _; do
+    # Throttle to avoid rapid successive updates
+    sleep 0.1
+    read -r new_count unread_count << EOF
+$(count_mail)
+EOF
+    output_status "$new_count" "$unread_count"
+done

@@ -32,8 +32,7 @@ button:hover {
 #wireplumber,
 #bluetooth,
 #tray,
-#gmail,
-#custom-gmail,
+#custom-maildir,
 #custom-madagascar-status,
 #custom-gargantua-two-status,
 #custom-apt-status,
@@ -49,8 +48,7 @@ button:hover {
 #wireplumber:hover,
 #bluetooth:hover,
 #tray:hover,
-#gmail:hover,
-#custom-gmail:hover,
+#custom-maildir:hover,
 #custom-madagascar-status:hover,
 #custom-gargantua-two-status:hover,
 #custom-apt-status:hover,
@@ -164,20 +162,28 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#custom-gmail {
+#custom-maildir {
     color: #2ac3de;
     border-left: 4px solid #2ac3de;
 }
 
-#custom-gmail.locked {
+#custom-maildir.locked {
     color: #f5a623;
 }
 
-#custom-gmail.inbox-empty {
+#custom-maildir.new-mail {
+    color: #2ac3de;
+}
+
+#custom-maildir.has-unread {
     color: #7d8590;
 }
 
-#custom-gmail.error {
+#custom-maildir.inbox-empty {
+    color: #7d8590;
+}
+
+#custom-maildir.error {
     color: #f53c3c;
 }
 

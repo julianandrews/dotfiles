@@ -23,15 +23,14 @@
     "tray": {
         "spacing": 10
     },
-    "custom/gmail": {
-        "exec": "exec ~/.config/waybar/scripts/gmailcount watch jandrews271@gmail.com",
-        "on-click": "~/.config/waybar/scripts/gmailcount click personal/google/gmailcount-app-password jandrews271@gmail.com",
+    "custom/maildir": {
+        "exec": "exec ~/.config/waybar/scripts/maildir-count",
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {
-            "locked": "󰌾",
-            "inbox-empty": "",
+            "new-mail": "󰇮",
             "has-unread": "󰇮",
+            "inbox-empty": "",
             "error": "󰅖"
         }
     },
