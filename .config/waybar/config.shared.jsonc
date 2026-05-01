@@ -14,7 +14,6 @@
         "format": "{icon}",
         "format-icons": {
             "messages": "󰍡",
-            "email": "󰇰",
             "calendar": "󰸗",
         },
         "move-to-monitor": true,

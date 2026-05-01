@@ -127,7 +127,6 @@ pass show personal/purelymail/app-password | systemd-creds encrypt --user --name
 systemctl --user enable --now mbsync.timer goimapnotify.service
 ```
 
-
 ## Debian packaging (sbuild)
 
 ```
