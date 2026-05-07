@@ -5,6 +5,20 @@ configurations:
     tls: true
     passwordCMD: "systemd-creds cat purelymail-app-password"
     alias: "purelymail"
-    onNewMail: "mbsync -aV"
-    onChangedMail: "mbsync -aV"
-    onDeletedMail: "mbsync -aV"
+    boxes:
+      - mailbox: INBOX
+        onNewMail: "mbsync -V purelymail:INBOX"
+        onChangedMail: "mbsync -V purelymail:INBOX"
+        onDeletedMail: "mbsync -V purelymail:INBOX"
+      - mailbox: Sent
+        onNewMail: "mbsync -V purelymail:Sent"
+        onChangedMail: "mbsync -V purelymail:Sent"
+        onDeletedMail: "mbsync -V purelymail:Sent"
+      - mailbox: Archive
+        onNewMail: "mbsync -V purelymail:Archive"
+        onChangedMail: "mbsync -V purelymail:Archive"
+        onDeletedMail: "mbsync -V purelymail:Archive"
+      - mailbox: Drafts
+        onNewMail: "mbsync -V purelymail:Drafts"
+        onChangedMail: "mbsync -V purelymail:Drafts"
+        onDeletedMail: "mbsync -V purelymail:Drafts"
