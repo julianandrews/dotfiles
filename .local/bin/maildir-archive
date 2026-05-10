@@ -1,0 +1,50 @@
+#!/bin/bash
+set -euo pipefail
+
+MAILDIR="$HOME/.local/share/mail/fastmail"
+SRC=Archive
+DST="$MAILDIR/ArchiveByYear"
+CHANNEL=fastmail-archivebyyear
+
+DRY_RUN=false
+case "${1:-}" in
+    -n|--dry-run) DRY_RUN=true ;;
+esac
+
+notmuch new --quiet
+current_year=$(date +%Y)
+moved_years=()
+
+for year in $(seq 2000 $((current_year - 1))); do
+    query="folder:$SRC and date:${year} and not tag:flagged"
+
+    count=$(notmuch count "$query" 2>/dev/null || true)
+    [ "$count" -eq 0 ] 2>/dev/null && continue
+    [ -z "$count" ] && continue
+
+    dest="$DST/$year"
+
+    if $DRY_RUN; then
+        echo "would move $count messages from $SRC → $dest"
+        continue
+    fi
+
+    mkdir -p "$dest/cur" "$dest/new" "$dest/tmp"
+    while IFS= read -r -d '' file; do
+        name=$(basename "$file")
+        newname="${name/,U=*:2,/:2,}"
+        newname="${newname/,U=*/}"
+        mv "$file" "$dest/cur/$newname"
+    done < <(notmuch search --output=files --format=text0 "$query" 2>/dev/null)
+    echo "moved $count messages from $SRC → $dest"
+    moved_years+=("$year")
+done
+
+if $DRY_RUN; then
+    exit 0
+fi
+
+if [ ${#moved_years[@]} -gt 0 ]; then
+    mbsync "${CHANNEL}"
+    notmuch new --quiet
+fi

@@ -1,0 +1,9 @@
+[Unit]
+Description=Yearly maildir archive (runs Jan 15)
+
+[Timer]
+OnCalendar=*-01-15
+Persistent=true
+
+[Install]
+WantedBy=timers.target

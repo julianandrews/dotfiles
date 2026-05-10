@@ -1,0 +1,6 @@
+[Unit]
+Description=Maildir archive by year
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/maildir-archive

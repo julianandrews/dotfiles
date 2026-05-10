@@ -122,9 +122,12 @@ steam
 Install goimapnotify to ~/.local/bin (TODO: Make a debian package for this thing)
 
 ```
-mkdir -p ~/.local/share/mail/purelymail ~/.config/credstore
-pass show personal/purelymail/app-password | systemd-creds encrypt --user --name=purelymail-app-password - ~/.config/credstore/purelymail-app-password.cred
-systemctl --user enable --now mbsync.timer goimapnotify.service
+mkdir -p ~/.local/share/mail/fastmail ~/.config/credstore
+pass show personal/fastmail/app-password | systemd-creds encrypt --user --name=fastmail-app-password - ~/.config/credstore/fastmail-app-password.cred
+systemctl --user enable --now mbsync.timer
+systemctl --user enable --now notmuch.timer
+systemctl --user enable --now maildir-archive.timer
+systemctl --user enable --now goimapnotify.service
 ```
 
 ## Debian packaging (sbuild)
