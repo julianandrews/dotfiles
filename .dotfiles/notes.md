@@ -128,6 +128,7 @@ systemctl --user enable --now mbsync.timer
 systemctl --user enable --now notmuch.timer
 systemctl --user enable --now maildir-archive.timer
 systemctl --user enable --now goimapnotify.service
+systemctl --user enable --now vdirsyncer.timer
 ```
 
 ## Debian packaging (sbuild)

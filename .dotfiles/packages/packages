@@ -54,6 +54,7 @@ systemd-resolved
 traceroute
 tree-sitter-cli
 uwsm
+vdirsyncer
 waybar
 weasyprint
 wev
