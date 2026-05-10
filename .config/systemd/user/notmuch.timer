@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic notmuch index update
+
+[Timer]
+OnCalendar=minutely
+Persistent=true
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

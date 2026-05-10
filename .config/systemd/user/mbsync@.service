@@ -1,10 +1,10 @@
 [Unit]
-Description=Mailbox synchronization service for %i
+Description=Mailbox synchronization service for %I
 
 [Service]
 Type=oneshot
-LoadCredentialEncrypted=purelymail-app-password:/home/julian/.config/credstore/purelymail-app-password.cred
-ExecStart=/usr/bin/mbsync -V %i
+LoadCredentialEncrypted=fastmail-app-password:/home/julian/.config/credstore/fastmail-app-password.cred
+ExecStart=mbsync -V %I
 
 [Install]
 WantedBy=default.target

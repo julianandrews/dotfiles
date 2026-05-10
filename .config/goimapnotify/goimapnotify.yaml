@@ -1,24 +1,24 @@
 configurations:
-  - host: imap.purelymail.com
+  - host: imap.fastmail.com
     port: 993
     username: julian@seemyvest.net
     tls: true
-    passwordCMD: "systemd-creds cat purelymail-app-password"
-    alias: "purelymail"
+    passwordCMD: "systemd-creds cat fastmail-app-password"
+    alias: "fastmail"
     boxes:
       - mailbox: INBOX
-        onNewMail: "mbsync -V purelymail:INBOX"
-        onChangedMail: "mbsync -V purelymail:INBOX"
-        onDeletedMail: "mbsync -V purelymail:INBOX"
+        onNewMail: "mbsync -VL fastmail:INBOX"
+        onChangedMail: "mbsync -VL fastmail:INBOX"
+        onDeletedMail: "mbsync -VL fastmail:INBOX"
       - mailbox: Sent
-        onNewMail: "mbsync -V purelymail:Sent"
-        onChangedMail: "mbsync -V purelymail:Sent"
-        onDeletedMail: "mbsync -V purelymail:Sent"
+        onNewMail: "mbsync -VL fastmail:Sent"
+        onChangedMail: "mbsync -VL fastmail:Sent"
+        onDeletedMail: "mbsync -VL fastmail:Sent"
       - mailbox: Archive
-        onNewMail: "mbsync -V purelymail:Archive"
-        onChangedMail: "mbsync -V purelymail:Archive"
-        onDeletedMail: "mbsync -V purelymail:Archive"
+        onNewMail: "mbsync -VL fastmail:Archive"
+        onChangedMail: "mbsync -VL fastmail:Archive"
+        onDeletedMail: "mbsync -VL fastmail:Archive"
       - mailbox: Drafts
-        onNewMail: "mbsync -V purelymail:Drafts"
-        onChangedMail: "mbsync -V purelymail:Drafts"
-        onDeletedMail: "mbsync -V purelymail:Drafts"
+        onNewMail: "mbsync -VL fastmail:Drafts"
+        onChangedMail: "mbsync -VL fastmail:Drafts"
+        onDeletedMail: "mbsync -VL fastmail:Drafts"

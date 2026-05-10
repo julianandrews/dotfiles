@@ -3,7 +3,7 @@
 set -e
 
 # Configuration
-MAILDIR="$HOME/.local/share/mail/purelymail/Inbox"
+MAILDIR="$HOME/.local/share/mail/fastmail/Inbox"
 
 INBOX_NEW="$MAILDIR/new"
 INBOX_CUR="$MAILDIR/cur"

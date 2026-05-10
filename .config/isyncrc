@@ -16,6 +16,45 @@ Inbox ~/.local/share/mail/purelymail/Inbox
 Channel purelymail
 Far :purelymail-remote:
 Near :purelymail-local:
+Patterns * !ArchiveByYear !ArchiveByYear/*
+Create Both
+Expunge Both
+SyncState *
+
+Channel purelymail-archivebyyear
+Far :purelymail-remote:ArchiveByYear
+Near :purelymail-local:ArchiveByYear
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User julian@seemyvest.net
+PassCmd "/home/julian/.local/bin/mbsync-pass"
+TLSType IMAPS
+TLSVersions +1.2
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Subfolders Verbatim
+Path ~/.local/share/mail/fastmail/
+Inbox ~/.local/share/mail/fastmail/Inbox
+
+Channel fastmail
+Far :fastmail-remote:
+Near :fastmail-local:
+Patterns * !ArchiveByYear !ArchiveByYear/*
+Create Both
+Expunge Both
+SyncState *
+
+Channel fastmail-archivebyyear
+Far :fastmail-remote:ArchiveByYear
+Near :fastmail-local:ArchiveByYear
 Patterns *
 Create Both
 Expunge Both

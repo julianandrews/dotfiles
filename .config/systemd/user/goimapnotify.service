@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-LoadCredentialEncrypted=purelymail-app-password:/home/julian/.config/credstore/purelymail-app-password.cred
+LoadCredentialEncrypted=fastmail-app-password:/home/julian/.config/credstore/fastmail-app-password.cred
 ExecStart=/home/julian/.local/bin/goimapnotify
 Restart=on-failure
 RestartSec=5s
