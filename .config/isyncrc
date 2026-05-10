@@ -1,38 +1,8 @@
-IMAPAccount purelymail
-Host imap.purelymail.com
-User julian@seemyvest.net
-PassCmd "/home/julian/.local/bin/mbsync-pass"
-TLSType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-IMAPStore purelymail-remote
-Account purelymail
-
-MaildirStore purelymail-local
-Subfolders Verbatim
-Path ~/.local/share/mail/purelymail/
-Inbox ~/.local/share/mail/purelymail/Inbox
-
-Channel purelymail
-Far :purelymail-remote:
-Near :purelymail-local:
-Patterns * !ArchiveByYear !ArchiveByYear/*
-Create Both
-Expunge Both
-SyncState *
-
-Channel purelymail-archivebyyear
-Far :purelymail-remote:ArchiveByYear
-Near :purelymail-local:ArchiveByYear
-Create Both
-Expunge Both
-SyncState *
-
 IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993
 User julian@seemyvest.net
-PassCmd "/home/julian/.local/bin/mbsync-pass"
+PassCmd "/home/julian/.local/bin/fastmail-pass"
 TLSType IMAPS
 TLSVersions +1.2
 
