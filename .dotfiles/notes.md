@@ -109,7 +109,6 @@ steam
 
 - Install PWAs
     - https://calendar.google.com
-    - https://mail.google.com
     - https://messages.google.com
     - https://jellyfin.seemyvest.net
     - https://youtube.com
