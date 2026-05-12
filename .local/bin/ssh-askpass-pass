@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Ensure GPG is set up for pass if running non-interactively
+export GPG_TTY=$(tty)
+
+case "$1" in
+    "Enter passphrase for key '"*"': ")
+        # Extract the path inside single quotes
+        path="${1#*\'}"   # Remove everything up to and including the first '
+        path="${path%\'*}" # Remove everything from the last ' onward
+        keyname="${path##*/}"
+        ;;
+    *)
+        echo "Error: unexpected input format: '$1'" >&2
+        exit 1
+        ;;
+esac
+pass show "$(hostname)/ssh/$keyname"

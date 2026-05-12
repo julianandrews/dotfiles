@@ -23,6 +23,8 @@ fi
 
 # Config env vars
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export SSH_ASKPASS="$HOME/.local/bin/ssh-askpass-pass"
+export SSH_ASKPASS_REQUIRE=prefer
 export PYTHON_HISTORY="$HOME/.local/share/python/history"
 export CARGO_HOME=~/.local/share/cargo
 export RUSTUP_HOME=~/.local/share/rustup
