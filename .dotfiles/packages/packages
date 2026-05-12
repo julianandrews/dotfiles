@@ -33,6 +33,7 @@ jq
 keyutils
 khal
 khard
+libsixel-bin
 mako-notifier
 markovpass
 mpv
@@ -58,6 +59,7 @@ traceroute
 tree-sitter-cli
 uwsm
 vdirsyncer
+w3m-img
 waybar
 weasyprint
 wev
