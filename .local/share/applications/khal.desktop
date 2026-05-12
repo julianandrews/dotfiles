@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=khal
+GenericName=Calendar Client
+Comment=Interactive calendar client for the terminal
+Keywords=Calendar;Agenda;Events;Schedule
+Categories=Office;Calendar;ConsoleOnly
+Icon=x-office-calendar
+Terminal=true
+Exec=ikhal
