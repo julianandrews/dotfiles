@@ -4,9 +4,13 @@
 path = ~/.local/share/calendars/jandrews271@gmail.com
 color = light magenta
 
+[[diana]]
+path = ~/.local/share/calendars/diana
+color = light cyan
+
 [[family]]
 path = ~/.local/share/calendars/family05813653034255628210@group.calendar.google.com
-color = light red
+color = dark green
 
 [[home]]
 path = ~/.local/share/calendars/eb2b586ce675f8bcbedc65cfea5e62fd6cdaa76bac6e1598eba475e1845aa284@group.calendar.google.com
@@ -14,12 +18,12 @@ color = dark green
 
 [[holidays]]
 path = ~/.local/share/calendars/cln2stbjc4hmgrrcd5i62ua0ctp6utbg5pr2sor1dhimsp31e8n6errfctm6abj3dtmg@virtual
-color = light cyan
+color = light blue
 
 [[contacts]]
 path = ~/.local/share/contacts/Default
 type = birthdays
-color = light red
+color = light blue
 
 [locale]
 timeformat = %H:%M
