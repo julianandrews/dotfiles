@@ -2,17 +2,33 @@
 status_path = "~/.local/share/vdirsyncer/status"
 
 [pair contacts]
-a = "contacts_local"
-b = "contacts_remote"
+a = "local_contacts"
+b = "fastmail_contacts"
 collections = ["from a", "from b"]
 
-[storage contacts_local]
+[pair calendars]
+a = "local_calendars"
+b = "google_calendars"
+collections = ["from a", "from b"]
+
+[storage local_contacts]
 type = "filesystem"
 path = "~/.local/share/contacts"
 fileext = ".vcf"
 
-[storage contacts_remote]
+[storage local_calendars]
+type = "filesystem"
+path = "~/.local/share/calendars"
+fileext = ".ics"
+
+[storage fastmail_contacts]
 type = "carddav"
 url = "https://carddav.fastmail.com/"
 username = "julian@seemyvest.net"
-password.fetch = ["command", "/home/julian/.local/bin/fastmail-pass"]
+password.fetch = ["command", "~/.local/bin/systemd-pass-fallback", "fastmail-app-password", "personal/fastmail/app-password"]
+
+[storage google_calendars]
+type = "google_calendar"
+token_file = "~/.local/share/vdirsyncer/google_calendars"
+client_id = "544874212150-6ma0k22catb05aa1824c3sacrnfg0mmr.apps.googleusercontent.com"
+client_secret.fetch = ["command", "~/.local/bin/systemd-pass-fallback", "calendar-sync-client-secret", "personal/google/calendar-sync/client-secret"]

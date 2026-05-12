@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+cred_name="${1:?usage: systemd-pass-fallback <cred-name> <pass-path>}"
+pass_path="${2:?usage: systemd-pass-fallback <cred-name> <pass-path>}"
+
+if systemd-creds cat "$cred_name" 2>/dev/null; then
+    :
+else
+    notification_id=$(fyi -p -i gtk-dialog-authentication "systemd-pass-fallback" "Touch Yubikey to unlock")
+    notification_id=${notification_id#id=}
+    if pass show "$pass_path"; then
+        fyi -C "$notification_id" 2>/dev/null
+    fi
+fi

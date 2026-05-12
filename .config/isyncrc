@@ -2,7 +2,7 @@ IMAPAccount fastmail
 Host imap.fastmail.com
 Port 993
 User julian@seemyvest.net
-PassCmd "/home/julian/.local/bin/fastmail-pass"
+PassCmd "/home/julian/.local/bin/systemd-pass-fallback fastmail-app-password personal/fastmail/app-password"
 TLSType IMAPS
 TLSVersions +1.2
 
