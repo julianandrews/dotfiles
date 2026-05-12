@@ -11,6 +11,11 @@ a = "local_calendars"
 b = "google_calendars"
 collections = ["from a", "from b"]
 
+[pair diana_calendar]
+a = "diana_local_calendar"
+b = "diana_google_calendar"
+collections = null
+
 [storage local_contacts]
 type = "filesystem"
 path = "~/.local/share/contacts"
@@ -19,6 +24,11 @@ fileext = ".vcf"
 [storage local_calendars]
 type = "filesystem"
 path = "~/.local/share/calendars"
+fileext = ".ics"
+
+[storage diana_local_calendar]
+type = "filesystem"
+path = "~/.local/share/calendars/diana"
 fileext = ".ics"
 
 [storage fastmail_contacts]
@@ -32,3 +42,7 @@ type = "google_calendar"
 token_file = "~/.local/share/vdirsyncer/google_calendars"
 client_id = "544874212150-6ma0k22catb05aa1824c3sacrnfg0mmr.apps.googleusercontent.com"
 client_secret.fetch = ["command", "~/.local/bin/systemd-pass-fallback", "calendar-sync-client-secret", "personal/google/calendar-sync/client-secret"]
+
+[storage diana_google_calendar]
+type = "http"
+url.fetch = ["command", "~/.local/bin/systemd-pass-fallback", "calendar-sync-diana-ical-address", "diana/google/ical-address"]
