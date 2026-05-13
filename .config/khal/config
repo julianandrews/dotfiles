@@ -7,6 +7,7 @@ color = light cyan
 [[diana]]
 path = ~/.local/share/calendars/diana
 color = light magenta
+readonly = True
 
 [[family]]
 path = ~/.local/share/calendars/family05813653034255628210@group.calendar.google.com
@@ -19,6 +20,7 @@ color = dark green
 [[holidays]]
 path = ~/.local/share/calendars/cln2stbjc4hmgrrcd5i62ua0ctp6utbg5pr2sor1dhimsp31e8n6errfctm6abj3dtmg@virtual
 color = light blue
+readonly = True
 
 [[contacts]]
 path = ~/.local/share/contacts/Default
