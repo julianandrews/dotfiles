@@ -7,18 +7,18 @@ configurations:
     alias: "fastmail"
     boxes:
       - mailbox: INBOX
-        onNewMail: "mbsync -VL fastmail:INBOX"
+        onNewMail: "mbsync -VL fastmail:INBOX && notmuch new"
         onChangedMail: "mbsync -VL fastmail:INBOX"
         onDeletedMail: "mbsync -VL fastmail:INBOX"
       - mailbox: Sent
-        onNewMail: "mbsync -VL fastmail:Sent"
+        onNewMail: "mbsync -VL fastmail:Sent && notmuch new"
         onChangedMail: "mbsync -VL fastmail:Sent"
         onDeletedMail: "mbsync -VL fastmail:Sent"
       - mailbox: Archive
-        onNewMail: "mbsync -VL fastmail:Archive"
+        onNewMail: "mbsync -VL fastmail:Archive && notmuch new"
         onChangedMail: "mbsync -VL fastmail:Archive"
         onDeletedMail: "mbsync -VL fastmail:Archive"
       - mailbox: Drafts
-        onNewMail: "mbsync -VL fastmail:Drafts"
+        onNewMail: "mbsync -VL fastmail:Drafts && notmuch new"
         onChangedMail: "mbsync -VL fastmail:Drafts"
         onDeletedMail: "mbsync -VL fastmail:Drafts"
