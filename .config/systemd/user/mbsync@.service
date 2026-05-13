@@ -5,6 +5,7 @@ Description=Mailbox synchronization service for %I
 Type=oneshot
 LoadCredentialEncrypted=fastmail-app-password:/home/julian/.config/credstore/fastmail-app-password.cred
 ExecStart=mbsync -V %I
+ExecStartPost=/usr/bin/notmuch new
 
 [Install]
 WantedBy=default.target
