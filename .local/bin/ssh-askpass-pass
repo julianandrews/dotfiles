@@ -1,18 +1,24 @@
 #!/bin/sh
 
 # Ensure GPG is set up for pass if running non-interactively
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty 2>/dev/null) && export GPG_TTY
 
-case "$1" in
-    "Enter passphrase for key '"*"': ")
-        # Extract the path inside single quotes
-        path="${1#*\'}"   # Remove everything up to and including the first '
-        path="${path%\'*}" # Remove everything from the last ' onward
-        keyname="${path##*/}"
-        ;;
-    *)
-        echo "Error: unexpected input format: '$1'" >&2
-        exit 1
-        ;;
-esac
-pass show "$(hostname)/ssh/$keyname"
+keyname=$(printf '%s' "$1" | awk -F"'" '/^Enter passphrase for key /{n=split($2,a,"/"); print a[n]}')
+
+if [ -n "$keyname" ] && pass show "$(hostname)/ssh/$keyname"; then
+    :
+elif (exec < /dev/tty) 2>/dev/null; then
+    stty_orig=$(stty -g)
+    trap 'stty "$stty_orig"' EXIT
+    stty -echo
+    printf '%s' "$1" >&2
+    read -r password < /dev/tty
+    printf '%s\n' "$password"
+elif command -v zenity >/dev/null 2>&1; then
+    zenity --password --title="$1" 2>/dev/null
+elif command -v kdialog >/dev/null 2>&1; then
+    kdialog --password "$1"
+else
+    echo "ssh-askpass-pass: no terminal and no GUI available" >&2
+    exit 1
+fi
