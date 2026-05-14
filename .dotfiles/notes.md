@@ -89,6 +89,9 @@ uv tool install twine --with keyring --with keyring-pass
 # R
 Rscript -e "install.packages('languageserver')"
 Rscript -e "install.packages('renv')"
+
+# Opencode
+npm install -g opencode-ai
 ```
 
 ## Syncthing

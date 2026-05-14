@@ -29,7 +29,7 @@ export PYTHON_HISTORY="$HOME/.local/share/python/history"
 export CARGO_HOME=~/.local/share/cargo
 export RUSTUP_HOME=~/.local/share/rustup
 export R_ENVIRON_USER=${XDG_CONFIG_HOME:-$HOME/.config}/R/REnviron
-export PATH="$HOME/.opencode/bin:$HOME/.local/share/cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
 # Configure Tools
 command -v nvim &>/dev/null && export EDITOR=nvim
