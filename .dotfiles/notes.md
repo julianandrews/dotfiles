@@ -93,6 +93,9 @@ Rscript -e "install.packages('renv')"
 
 # Opencode
 npm install -g opencode-ai
+
+# AWS CLI
+# Just follow instructions - this seems to change too often.
 ```
 
 ## Syncthing
