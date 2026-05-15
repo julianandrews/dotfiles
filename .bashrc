@@ -35,6 +35,7 @@ export PATH="$HOME/.local/share/cargo/bin:$PATH"
 command -v nvim &>/dev/null && export EDITOR=nvim
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
 command -v fnm &>/dev/null && eval "$(fnm env --use-on-cd --shell bash)"
+command -v aws_completer &>/dev/null && complete -C $(which aws_completer) aws
 if command -v starship &> /dev/null; then
   eval "$(starship init bash)"
   function set_win_title(){
