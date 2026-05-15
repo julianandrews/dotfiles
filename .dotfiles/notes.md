@@ -87,6 +87,7 @@ npm install -g dockerfile-language-server-nodejs
 uv tool install twine --with keyring --with keyring-pass
 
 # R
+Rscript -e "dir.create(Sys.getenv('R_LIBS_USER'), recursive = TRUE, showWarnings = FALSE);"
 Rscript -e "install.packages('languageserver')"
 Rscript -e "install.packages('renv')"
 
