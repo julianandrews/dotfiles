@@ -116,7 +116,6 @@ steam
     - https://jellyfin.seemyvest.net
     - https://youtube.com
     - https://chat.deepseek.com
-- Allow GMail to handle email addresses
 - Allow Google Calendar to handle "web calendar links"
 
 ## Mail (isync/mbsync)
