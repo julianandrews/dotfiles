@@ -7,5 +7,5 @@ Comment=Interactive calendar client for the terminal
 Keywords=Calendar;Agenda;Events;Schedule
 Categories=Office;Calendar;ConsoleOnly
 Icon=x-office-calendar
-Terminal=true
-Exec=ikhal
+Terminal=false
+Exec=footclient --app-id khal ikhal %u
