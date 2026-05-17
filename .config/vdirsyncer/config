@@ -9,7 +9,7 @@ collections = ["from a", "from b"]
 [pair calendars]
 a = "local_calendars"
 b = "google_calendars"
-collections = ["from a", "from b"]
+collections = ["from b"]
 
 [pair diana_calendar]
 a = "diana_local_calendar"
