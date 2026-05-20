@@ -129,7 +129,7 @@ Install goimapnotify to ~/.local/bin (TODO: Make a debian package for this thing
 mkdir -p ~/.local/share/mail/fastmail ~/.config/credstore.encrypted
 pass show personal/fastmail/app-password | systemd-creds encrypt --user --name=fastmail-app-password - ~/.config/credstore.encrypted/fastmail-app-password.cred
 pass show personal/google/calendar-sync/client-secret | systemd-creds encrypt --user --name=calendar-sync-client-secret - ~/.config/credstore.encrypted/calendar-sync-client-secret.cred
-pass show diana/google/ical-address | systemd-creds encrypt --user --name=calendar-sync-diana-ical-address - ~/.configcredstore.encrypted//calendar-sync-diana-ical-address.cred
+pass show diana/google/ical-address | systemd-creds encrypt --user --name=calendar-sync-diana-ical-address - ~/.config/credstore.encrypted/calendar-sync-diana-ical-address.cred
 systemctl --user enable --now mbsync.timer
 systemctl --user enable --now notmuch.timer
 systemctl --user enable --now maildir-archive.timer
