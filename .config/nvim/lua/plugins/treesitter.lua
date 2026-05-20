@@ -16,6 +16,7 @@ return {
     "cpp",
     "c",
     "dockerfile",
+    "diff",
   },
       auto_install = true,
       highlight = { enable = true },
