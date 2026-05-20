@@ -55,6 +55,7 @@ starship
 swayimg
 syncthing
 systemd-resolved
+tpm2-tss
 traceroute
 tree-sitter-cli
 uwsm
