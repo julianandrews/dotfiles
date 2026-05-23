@@ -1,4 +1,6 @@
 devscripts
+libcurl4-openssl-dev
+libpq-dev
 libsensors-dev
 libudev-dev
 lintian
