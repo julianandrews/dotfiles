@@ -189,10 +189,19 @@ label:focus {
 
 #custom-apt-status,
 #custom-madagascar-status,
-#custom-gargantua-two-status,
 #custom-jellyfin-status {
     border-left: 4px solid #f7768e;
     color: #f7768e;
+}
+
+#custom-gargantua-two-status.down {
+    border-left: 4px solid #f7768e;
+    color: #f7768e;
+}
+
+#custom-gargantua-two-status.nodata {
+    border-left: 4px solid #e0af68;
+    color: #e0af68;
 }
 
 #privacy {
