@@ -12,6 +12,7 @@ cups
 curl
 dnsutils
 docker-ce
+dracut
 ffmpeg
 fonts-recommended
 foot
@@ -55,6 +56,7 @@ starship
 swayimg
 syncthing
 systemd-resolved
+tpm2-tools
 tpm2-tss
 traceroute
 tree-sitter-cli
