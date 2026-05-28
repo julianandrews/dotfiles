@@ -33,7 +33,7 @@ button:hover {
 #bluetooth,
 #tray,
 #custom-maildir,
-#custom-madagascar-status,
+#custom-systemd-status,
 #custom-gargantua-two-status,
 #custom-apt-status,
 #custom-jellyfin-status {
@@ -49,7 +49,7 @@ button:hover {
 #bluetooth:hover,
 #tray:hover,
 #custom-maildir:hover,
-#custom-madagascar-status:hover,
+#custom-systemd-status:hover,
 #custom-gargantua-two-status:hover,
 #custom-apt-status:hover,
 #custom-jellyfin-status:hover {
@@ -188,7 +188,7 @@ label:focus {
 }
 
 #custom-apt-status,
-#custom-madagascar-status,
+#custom-systemd-status,
 #custom-jellyfin-status {
     border-left: 4px solid #f7768e;
     color: #f7768e;

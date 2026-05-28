@@ -69,4 +69,15 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
+    "custom/systemd-status": {
+        "exec": "systemctl --user --failed --legend=no | grep -q . && echo '{\"text\": \"down\", \"alt\": \"down\", \"tooltip\": \"systemd service down\"}'",
+        "return-type": "json",
+        "format": "{icon}",
+        "hide-empty-text": true,
+        "interval": 30,
+        "on-click": "footclient bash -c '/usr/bin/systemctl --user --failed; bash -i'",
+        "format-icons": {
+            "down": "⏻",
+        },
+    },
 }
