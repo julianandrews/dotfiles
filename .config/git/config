@@ -2,7 +2,7 @@
 	defaultBranch = main
 [user]
 	email = jandrews271@gmail.com
-    name = Julian Andews
+    name = Julian Andrews
 [pull]
     rebase = true
 [merge]
