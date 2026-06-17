@@ -25,7 +25,7 @@ SyncState *
 Channel fastmail-archivebyyear
 Far :fastmail-remote:ArchiveByYear
 Near :fastmail-local:ArchiveByYear
-Patterns *
+Patterns /*
 Create Both
 Expunge Both
 SyncState *
