@@ -37,7 +37,8 @@
         }
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip": false,
+        "format": "{:%a %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "wireplumber": {
