@@ -47,5 +47,6 @@ fi
 # Set Aliases and functions
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias bat='batcat'
 dotfiles() { git --git-dir="$HOME/.dotfiles/shared" --work-tree="$HOME" "$@"; }
 dotfiles-local() { git --git-dir="$HOME/.dotfiles/local" --work-tree="$HOME" "$@"; }
