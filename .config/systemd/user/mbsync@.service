@@ -6,6 +6,9 @@ Type=oneshot
 LoadCredentialEncrypted=fastmail-app-password:fastmail-app-password.cred
 ExecStart=mbsync -V %I
 ExecStartPost=/usr/bin/notmuch new
+Restart=on-failure
+RestartSec=30s
+StartLimitBurst=3
 
 [Install]
 WantedBy=default.target
