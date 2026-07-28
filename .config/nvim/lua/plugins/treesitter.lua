@@ -3,12 +3,12 @@ return {
   lazy = false,
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter').setup()
-
-    require('nvim-treesitter').install({
-      "lua", "rust", "typescript", "python", "bash", "yaml",
-      "json", "toml", "cpp", "c", "dockerfile", "diff",
-      "markdown", "markdown_inline",
+    require('nvim-treesitter').setup({
+      ensure_installed = {
+        "lua", "rust", "typescript", "python", "bash", "yaml",
+        "json", "toml", "cpp", "c", "dockerfile", "diff",
+        "markdown", "markdown_inline",
+      },
     })
 
     vim.api.nvim_create_autocmd('FileType', {
