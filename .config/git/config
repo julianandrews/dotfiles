@@ -1,7 +1,7 @@
 [init]
 	defaultBranch = main
 [user]
-	email = jandrews271@gmail.com
+	email = julian@seemyvest.net
     name = Julian Andrews
 [pull]
     rebase = true
