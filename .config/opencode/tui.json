@@ -1,4 +1,14 @@
 {
   "$schema": "https://opencode.ai/tui.json",
-  "theme": "tokyonight"
+  "theme": "tokyonight",
+  "attention": {
+    "enabled": true,
+    "notifications": true,
+    "sound": true,
+    "volume": 1.0,
+    "sounds": {
+      "done": "./assets/church-bell.mp3",
+      "subagent_done": "./assets/silent.mp3"
+    }
+  }
 }
