@@ -1,0 +1,15 @@
+[Unit]
+Description=Build opencode Docker images (feature variants)
+Documentation=man:opencode-docker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+TimeoutStartSec=3600
+ExecStart=%h/.local/bin/opencode-docker --build
+Nice=10
+IOSchedulingClass=idle
+
+[Install]
+WantedBy=default.target
