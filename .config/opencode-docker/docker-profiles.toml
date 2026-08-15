@@ -1,0 +1,8 @@
+default_features = ["Rust"]
+
+[build]
+variants = [["Rust"], ["R"]]
+
+[profile.harvestflow]
+env = { HF_DB_URL = "postgres://hf:hf@host.docker.internal:5432/harvest_flow?sslmode=disable" }
+features = ["R"]
