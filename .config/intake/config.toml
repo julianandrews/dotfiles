@@ -1,0 +1,21 @@
+show_columns = ["calories", "carbs", "fat", "protein", "fiber"]
+maintenance_calories = 2400
+max_calories = 1800
+min_protein = 130
+min_fiber = 30
+min_fat = 70
+show_timestamp = false
+write_timestamps = true
+time_format = "24h"
+
+[ai]
+base_url = "https://opencode.ai/zen/go/v1"
+api_key = "sk-R5tZxZDajedfpDacxL88lmwogQLFFxPF7LR85i9bNHo4xldUnZFm3qsA8S52oOSe"
+model = "deepseek-v4-flash"
+max_retries = 3
+timeout_secs = 60
+usda_api_key = "J31YdwGZtdUp3tygxMTR0vxCKq49wWDn38YK2SRO"
+usda_timeout_secs = 15
+history_days = 14
+trace_requests = true
+trace_responses = true
