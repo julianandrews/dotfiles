@@ -10,6 +10,10 @@ TimeoutStartSec=3600
 ExecStart=%h/.local/bin/opencode-docker --build
 Nice=10
 IOSchedulingClass=idle
+Restart=on-failure
+RestartSec=30s
+StartLimitBurst=3
+StartLimitIntervalSec=10min
 
 [Install]
 WantedBy=default.target
