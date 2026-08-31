@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Column widths (display uses a monospace font)
+title_length=45
+ws_length=2
+icon_buffer=2      # spare columns reserved for the per-row icon
+
+# Map a window class to a bare icon name (or absolute path) for fuzzel to
+# resolve via the freedesktop icon theme. Fuzzel reuses this same lookup for
+# app-launching mode, so we just feed it a bare name and let it do the work.
+get_icon() {
+    local class="$1"
+    local desktop_dir
+    case "$class" in
+        footclient) class="foot" ;;
+    esac
+    for desktop_dir in ~/.local/share/applications /usr/share/applications; do
+        if [ -d "$desktop_dir" ]; then
+            icon=$(grep -ril "StartupWMClass=.*${class}" "$desktop_dir" 2>/dev/null \
+                | head -1 \
+                | xargs grep -m1 "^Icon=" 2>/dev/null \
+                | cut -d= -f2)
+            [ -n "$icon" ] && echo "$icon" && return
+        fi
+    done
+    echo "${class,,}"
+}
+
+# --match-nth lets us type the class name ("firefox") to filter even though the
+# class column isn't displayed. It was added in fuzzel 1.14.0; fall back to
+# matching the whole line on older versions.
+has_match_nth=0
+fuzzel_version=$(fuzzel --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+' | head -1)
+if [ -n "$fuzzel_version" ]; then
+    maj=${fuzzel_version%%.*}
+    min=${fuzzel_version##*.}
+    if [ "$maj" -gt 1 ] || { [ "$maj" -eq 1 ] && [ "$min" -ge 14 ]; }; then
+        has_match_nth=1
+    fi
+fi
+
+# Size the window to fit the content exactly. The window is always rendered at
+# the configured character width (fuzzel doesn't grow it for the dmenu list), so
+# compute it from the displayed columns only: title + workspace (+ icon buffer).
+# The class and address columns are hidden from display (on fuzzel >=1.14 the
+# class is matched specifically via --match-nth; on older versions it's still
+# matched as part of the whole line), so they don't contribute to the width.
+fuzzel_width=$((title_length + 1 + ws_length + icon_buffer))
+
+# Display column 1 (title + workspace merged), output column 3 (address).
+# --with-nth/--accept-nth only take a single integer on fuzzel 1.12, so the
+# display has to be one column. --match-nth=2 limits matching to the hidden
+# class column; it needs fuzzel >=1.14, otherwise the whole line is matched.
+fuzzel_args=(--dmenu --width="$fuzzel_width" --tabs=1 --lines=12
+    --with-nth=1 --accept-nth=3)
+if [ "$has_match_nth" -eq 1 ]; then
+    fuzzel_args+=(--match-nth=2)
+fi
+
+# Tab-separated columns: [title + workspace], class, address(hex). The title and
+# workspace are merged into one display column because fuzzel 1.12's --with-nth
+# only takes a single integer. The class is hidden (still matched) and the
+# address column is hidden and used as the selection output.
+# The icon-decoration loop must pipe directly into fuzzel: bash command
+# substitution ($(...)) strips the \0 byte that fuzzel's \0icon\x1f protocol
+# requires, which would silently drop all per-entry icons.
+row=$(
+    hyprctl clients -j | jq -r --arg title_length "$title_length" --arg ws_length "$ws_length" '
+    def rpad($len; $char):
+        if (.|length) > $len then .[:$len-1] + "\u2026" else . + $char * ($len - (.|length)) end;
+    .[]
+    | select(.mapped == true)
+    | "\(.title | rpad($title_length | tonumber; " ")) \(.workspace.name | rpad($ws_length | tonumber; " "))\t\(.class // "xwayland")\t\(.address)"
+    ' | while IFS= read -r line; do
+        icon=$(get_icon "$(echo "$line" | awk -F'\t' '{print $2}')")
+        printf '%s\0icon\x1f%s\n' "$line" "$icon"
+    done | fuzzel "${fuzzel_args[@]}"
+)
+
+if [ -n "$row" ]; then
+    hyprctl dispatch focuswindow "address:$row"
+fi
