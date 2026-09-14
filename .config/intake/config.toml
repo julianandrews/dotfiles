@@ -12,6 +12,7 @@ time_format = "24h"
 [ai]
 base_url = "https://opencode.ai/zen/go/v1"
 api_key = "sk-R5tZxZDajedfpDacxL88lmwogQLFFxPF7LR85i9bNHo4xldUnZFm3qsA8S52oOSe"
+session_header = "x-opencode-session"
 model = "deepseek-v4-flash"
 max_retries = 3
 timeout_secs = 60
