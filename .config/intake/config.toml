@@ -8,6 +8,7 @@ summary_days = 90
 show_timestamp = false
 write_timestamps = true
 time_format = "24h"
+weight_unit = "lbs"
 
 [ai]
 base_url = "https://opencode.ai/zen/go/v1"
