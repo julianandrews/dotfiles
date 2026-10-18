@@ -4,6 +4,7 @@ $git_branch\
 $git_state\
 $git_status\
 $python\
+$nix_shell\
 $aws\
 $kubernetes\
 $username\
@@ -48,6 +49,9 @@ style = "fg:2"
 format = '[\[$virtualenv\]]($style)'
 detect_extensions = []
 detect_files = []
+
+[nix_shell]
+format = '[\[$name\]]($style)'
 
 [aws]
 style = "fg:3"
