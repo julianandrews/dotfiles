@@ -30,6 +30,8 @@ export CARGO_HOME=~/.local/share/cargo
 export RUSTUP_HOME=~/.local/share/rustup
 export R_ENVIRON_USER=${XDG_CONFIG_HOME:-$HOME/.config}/R/REnviron
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
+export RCLONE_PASSWORD_COMMAND="pass security/rclone/config-password"
+export AUTOMUD_CONFIG_DIR="$HOME/.config/automud"
 
 # Configure Tools
 command -v nvim &>/dev/null && export EDITOR=nvim
